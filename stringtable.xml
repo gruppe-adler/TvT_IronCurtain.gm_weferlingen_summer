@@ -1,0 +1,20 @@
+// stringtable.xml
+<?xml version="1.0" encoding="utf-8" ?>
+<Project name="FALSE FRIENDS">
+	<Package name="module_nvacommand">
+		<Container name="Some Words">
+			<Key ID="str_nvacommand_tripflareTriggered">
+				<Original>Tripflare triggered.</Original>
+				<German>Alarmleuchtzeichen ausgelöst.</German>
+			</Key>
+			<Key ID="str_nvacommand_fenceCut">
+				<Original>Signal fence triggered.</Original>
+				<German>Alarm am Signalzaun ausgelöst.</German>
+			</Key>
+			<Key ID="str_nvacommand_alarmDismissed">
+				<Original>Alarm dismissed.</Original>
+				<German>Alarm abgeschaltet.</German>
+			</Key>
+		</Container>
+	</Package>
+</Project>

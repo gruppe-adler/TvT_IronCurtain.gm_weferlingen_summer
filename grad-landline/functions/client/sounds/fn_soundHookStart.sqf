@@ -1,0 +1,1 @@
+["GRAD_landline_hookStart"] call BIS_fnc_playSound;

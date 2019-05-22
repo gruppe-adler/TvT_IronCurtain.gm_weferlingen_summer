@@ -1,0 +1,45 @@
+enableDebugConsole = 1;
+
+#define MODULES_DIRECTORY node_modules
+
+// dialogs
+#include "grad-landline\dialogs\rscPhoneBook.hpp"
+#include "grad-landline\dialogs\rscRotary.hpp"
+#include "grad-landline\dialogs\rscKeypad.hpp"
+
+
+// dialogs aicommand
+#include "node_modules\grad-aicommand\grad_aicommand.hpp"
+
+
+class cfgFunctions {
+    #include "grad-nvacommand\cfgFunctions.hpp"
+    #include "node_modules\grad-aicommand\cfgFunctions.hpp"
+    #include "node_modules\grad-gpsTracker\cfgFunctions.hpp"
+    #include "grad-stasi\cfgFunctions.hpp"
+    #include "grad-landline\cfgFunctions.hpp"
+};
+
+class cfgSounds {
+    #include "grad-nvacommand\cfgSounds.hpp"
+    #include "grad-stasi\cfgSounds.hpp"
+    #include "grad-landline\cfgSounds.hpp"
+};
+
+class CfgGradAICommand {
+    canReceiveCommandsDefault = 1;
+    canGiveCommandsDefault = 1;
+    canUseHighcommandDefault = 0;
+    onMapOpenend = "systemChat 'triggered'; [_this] call GRAD_nvacommand_fnc_initMap;";
+
+    class customWaypointActions {
+        class repairFenceAction {
+            displayName = "Repair Fence";
+            statement = "hint 'Repair Fence'; [this] call GRAD_nvacommand_fnc_repairFence;";
+        };
+        class EnterTowerAction {
+            displayName = "Enter Tower";
+            statement = "hint 'Enter Tower'; [this] call GRAD_nvacommand_fnc_towerGetIn;";
+        };
+    };
+};
