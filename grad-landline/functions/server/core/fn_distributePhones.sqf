@@ -13,7 +13,7 @@ private _allObjects = [];
 {
     private _phone = _x;
     private _type = typeOf _phone;
-    diag_log ["GRAD-LANDLINE: type detected is %1", _type];
+    diag_log format ["GRAD-LANDLINE: type detected is %1", _type];
     private _isRotary = if (_type == "land_gm_euro_misc_feh_62_e") then { true } else { false };
     private _canOnlyCallNumber = if (
             _type == "land_gm_wall_gc_borderpost_03" || 
