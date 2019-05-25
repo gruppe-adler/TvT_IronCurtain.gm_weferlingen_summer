@@ -5,7 +5,7 @@ _flare setVelocity [random 5, random 5, 100];
 playSound3D ["A3\Sounds_F_Kart\Weapons\starting_pistol_1.wss", _flare, false, _position, 25, 1, 100];
 
 
-private _searchLights = nearestObjects [_position, ["rhs_KORD_high_MSV"], 1500];
+private _searchLights = nearestObjects [_position, ["gm_gc_bgs_searchlight_01"], 1500];
 
 private _identifier = format ["GRAD_nvacommand_alertIndex_%1", _index];
 private _isRunning = missionNamespace setVariable [_identifier, true];

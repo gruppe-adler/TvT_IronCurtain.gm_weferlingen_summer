@@ -1,6 +1,6 @@
 params ["_unit", "_group"];
 
-private _tower = (position leader _group) nearestObject "Land_Hlaska";
+private _tower = (position leader _group) nearestObject "land_gm_tower_bt_6_fuest_80";
 private _positionBehindDoor = _tower modelToWorld [0,0,-3];
 private _waypoint = _group addWaypoint [_positionBehindDoor, 0];
 private _statement = format ["

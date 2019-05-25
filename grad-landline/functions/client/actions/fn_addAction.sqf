@@ -25,10 +25,9 @@ _object addAction [
     "[_this, _target] call GRAD_landline_fnc_conditionCall"
 ];
 
-/*
 // later implementation for grenzmeldenetz
 _object addAction [
-    "Start Call",
+    "Call nearest Commandpost",
     {
         params ["_target", "_caller", "_actionId", "_arguments"];
 
@@ -47,7 +46,7 @@ _object addAction [
     [],9,true,true,"",
     "[_this, _target] call GRAD_landline_fnc_conditionDirectCall"
 ];
-*/
+
 
 _object addAction [
     "Accept Call",

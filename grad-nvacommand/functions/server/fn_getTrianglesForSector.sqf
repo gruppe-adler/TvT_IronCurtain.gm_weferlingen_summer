@@ -16,7 +16,7 @@ private _fnc_triangleHeight = { // height from v to uw
     private _c = _u vectorDistance _w;
 
     private _s = (_a+_b+_c)/2;
-    2/_c * sqrt (_s * (_s-_a) * (_s-_b) * (s-_c)) // return
+    2/_c * sqrt (_s * (_s-_a) * (_s-_b) * (_s-_c)) // return
 };
 
 private _fnc_splitTriangle = {

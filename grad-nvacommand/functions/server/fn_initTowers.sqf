@@ -25,11 +25,12 @@ private _towers =
     if (_type == "land_gm_tower_bt_11_60") then {
         _position set [2,13.6];
     } else {
-        _position set [2,8.6];
+        _position set [2,8.5];
     };
 
     private _searchlight = "gm_gc_bgs_searchlight_01" createVehicle [0,0,0];
     _searchlight setPos _position;
+    _searchlight attachTo [_newTower];
 
 
 	_newTower setVariable ["GRAD_nvaCommand_towerIsManned", 4, true];
@@ -43,8 +44,6 @@ private _towers =
 	private _curator = _x;
 	_curator addCuratorEditableObjects [_towers,true ];
 
-
-	
 	{
 	  [ _curator, ["\A3\ui_f\data\map\mapcontrol\taskIcon_ca.paa", [1,1,1,1], position _x, 1, 1, 45, "Tower", 1, 0.05, "TahomaB"], false ] call BIS_fnc_addCuratorIcon;
 	} forEach _towers;
