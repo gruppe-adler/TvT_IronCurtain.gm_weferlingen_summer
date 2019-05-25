@@ -1,8 +1,8 @@
 params ["_aiCommandParams"];
 _aiCommandParams params ["_unit","_player","_display","_map"];
 
-systemChat (str _display + " " + str _map);
-diag_log str (str _display + " " + str _map);
+// systemChat (str _display + " " + str _map);
+// diag_log str (str _display + " " + str _map);
 
 [_unit, _player, _display, _map] call GRAD_nvacommand_fnc_addMapEventhandler;
 
@@ -34,7 +34,25 @@ _map ctrlAddEventHandler ["MouseButtonClick", {
 
 /* add click EH for zeus functionality */
 
-if (player call BIS_fnc_isCurator) then {
+// if (player call BIS_fnc_isCurator) then {
+
+waitUntil {player call BIS_fnc_isCurator};
+
+(findDisplay 312) displayAddEventHandler ["MouseButtonUp",{
+        params ["_control", "_button", "_xPos", "_yPos", "_shift", "_ctrl", "_alt"];
+
+        private _position = screenToWorld [_xPos,_yPos];
+        private _object = nearestTerrainObjects [_position, [], 200];
+
+        if (count _object > 0) then {
+            _object =_object select 0;
+
+            systemChat format ["%1", _object];
+
+            [_object, 0, [0,0,0], [1, 0, 0, 1]] execVM "grad-nvacommand\functions\client\fn_drawBoundingBox.sqf";
+        };
+}];
+
 
     player addEventHandler ["CuratorObjectDoubleClicked", {
         params ["_curator", "_entity"];
@@ -46,4 +64,4 @@ if (player call BIS_fnc_isCurator) then {
         };
     }];
 
-};
+// };
