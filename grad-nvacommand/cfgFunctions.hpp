@@ -3,6 +3,7 @@ class GRAD_nvacommand {
   	class client {
     	file = grad-nvacommand\functions\client;
 
+        class openCuratorInterface;
     	class addMapEventhandler;
         class addRepairAction { postInit = 1; };
         class alarmDismissAction;

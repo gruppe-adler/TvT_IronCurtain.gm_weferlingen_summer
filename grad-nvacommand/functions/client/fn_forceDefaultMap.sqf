@@ -1,6 +1,6 @@
 player setVariable ["GRAD_nvacommand_isCommander", true];
 
-/*
+
 addMissionEventHandler ["Map", {
     params ["_mapIsOpened", "_mapIsForced"];
 
@@ -24,4 +24,3 @@ addMissionEventHandler ["Map", {
         openMap false;
     };
 }];
-*/
