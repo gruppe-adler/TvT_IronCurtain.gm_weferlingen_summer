@@ -3,10 +3,14 @@ class GRAD_nvacommand {
   	class client {
     	file = grad-nvacommand\functions\client;
 
-        class openCuratorInterface;
+        
     	class addMapEventhandler;
         class addRepairAction { postInit = 1; };
         class alarmDismissAction;
+        class curatorInterfaceDetection;
+        class curatorOnClick;
+        class curatorTowerHandler;
+        class curatorTowerInterfaceCreate;
         class deselectAllTowers;
         class forceDefaultMap { postInit = 1; };    	
     	class initMap;
@@ -24,6 +28,7 @@ class GRAD_nvacommand {
          class initTowers { postInit = 1; };
          class getTrianglesForSector;
          class handleAlarm;
+         class handleTripFlare;
          class serverLoop { postInit = 1; };
          class towerAlarm;
          class towerGetIn;

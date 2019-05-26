@@ -32,7 +32,9 @@ private _groupSearchLight = createGroup east;
 private _searchLightGuy = _groupSearchLight createUnit ["gm_gc_bgs_rifleman_mpikm72_80_str", [0,0,0], [], 0, "CAN_COLLIDE"];
 private _searchLight = (_tower getVariable ["GRAD_nvaCommand_towerSearchLight", objNull]);
 if (!isNull _searchLight && count (crew _searchLight) < 1) then {
-    _searchLightGuy moveInTurret _searchLight;
+    _searchLightGuy moveInAny _searchLight;
+    _searchLight setPilotLight true;
+    _searchLight action ["LightOn", _searchLight];
 };
 
 

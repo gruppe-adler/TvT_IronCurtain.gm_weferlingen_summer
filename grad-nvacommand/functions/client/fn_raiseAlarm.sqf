@@ -21,7 +21,7 @@ private _untriggeredSectorsTemp = + _untriggeredSectors;
         _triggeredSectors append [_x];
         _untriggeredSectorsTemp deleteAt _deleteIndex;
 
-        [_index, _position] call GRAD_nvacommand_fnc_handleAlarm;
+        [_index, _position, _type] call GRAD_nvacommand_fnc_handleTripFlare;
     };
 } forEach _untriggeredSectors;
 
@@ -36,7 +36,10 @@ switch (_type) do {
 	}; 
 	case "flare" : {
 		systemChat localize ("str_nvacommand_tripflareTriggered");
-	}; 
+	};
+    case "manual" : {
+        systemChat "activated Alarm";
+    };
 	default {
 		systemChat "error: raiseAlarm called without type.";
 	}; 

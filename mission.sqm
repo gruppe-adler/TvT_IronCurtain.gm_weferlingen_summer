@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=597;
+		nextID=600;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14176.114,351.92548,15360.518};
-		dir[]={-0.47200629,-0.45322737,0.7561869};
-		up[]={-0.2399929,0.8913877,0.38448277};
-		aside[]={0.84831548,-1.2107193e-008,0.52951354};
+		pos[]={14745.798,97.057167,15429.462};
+		dir[]={-0.26419231,-0.32938582,0.90648305};
+		up[]={-0.092164546,0.94419503,0.31622976};
+		aside[]={0.96005791,5.0611561e-008,0.27980685};
 	};
 };
 binarizationWanted=0;
@@ -216,7 +216,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=250;
+		items=249;
 		class Item0
 		{
 			dataType="Group";
@@ -5030,63 +5030,8 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={11406.261,69.487022,17322.641};
-				angles[]={0.019996032,2.296766,6.2671871};
-			};
-			areaSize[]={2000,0,5000};
-			flags=1;
-			id=593;
-			type="ModuleCuratorAddEditingArea_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ModuleCuratorAddEditingArea_F_Curator";
-					expression="_this setVariable ['Curator',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="";
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="ModuleCuratorAddEditingArea_F_Name";
-					expression="_this setVariable ['Name',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="";
-						};
-					};
-				};
-				nAttributes=2;
-			};
-		};
-		class Item248
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
 				position[]={11259.244,65.752884,17391.752};
-				angles[]={-0,2.3880565,0};
+				angles[]={0,2.3880565,0};
 			};
 			areaSize[]={2000,0,5000};
 			flags=1;
@@ -5135,7 +5080,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item249
+		class Item248
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -5268,11 +5213,11 @@ class Mission
 	{
 		class LinkIDProvider
 		{
-			nextID=62;
+			nextID=61;
 		};
 		class Links
 		{
-			items=62;
+			items=61;
 			class Item0
 			{
 				linkID=0;
@@ -5866,7 +5811,7 @@ class Mission
 			class Item59
 			{
 				linkID=59;
-				item0=593;
+				item0=594;
 				item1=168;
 				class CustomData
 				{
@@ -5876,16 +5821,6 @@ class Mission
 			class Item60
 			{
 				linkID=60;
-				item0=594;
-				item1=168;
-				class CustomData
-				{
-					type="Sync";
-				};
-			};
-			class Item61
-			{
-				linkID=61;
 				item0=596;
 				item1=168;
 				class CustomData

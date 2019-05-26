@@ -29,7 +29,7 @@ private _searchLights = [];
 	_newTower setVariable ["GRAD_nvaCommand_towerID", _forEachIndex, true];
 
     // searchlight pos
-    if (_type == "land_gm_tower_bt_11_60") then { _position set [2,13.6]; } else { _position set [2,8.5]; };
+    if (_type == "land_gm_tower_bt_11_60") then { _position set [2,13.6]; } else { _position set [2,8.4]; };
 
     private _searchLight = "gm_gc_bgs_searchlight_01" createVehicle [0,0,0];
     _searchLight setPos _position;
@@ -47,31 +47,17 @@ private _searchLights = [];
 {
 	private _curator = _x;
 	_curator addCuratorEditableObjects [_newTowers, true];
-    // _curator removeCuratorEditableObjects [_searchLights, true]
 	
-	{
-	  [ _curator, ["", [1,1,1,1], position _x, 1, 1, 45, "Tower", 1, 0.05, "TahomaB"], false ] call BIS_fnc_addCuratorIcon;
+	{ 
+        private _towerID = _x getVariable ["GRAD_nvaCommand_towerID", -1];
+	  [ _curator, ["", [1,1,1,1], position _x, 1, 1, 45, format ["BT-11 - %1", _towerID], 1, 0.05, "TahomaB"], false ] call BIS_fnc_addCuratorIcon;
 	} forEach _newTowers;
 
      // make curator selectable
-    _curator addEventHandler ["CuratorObjectSelectionChanged", {
-        params ["_curator", "_entity"];
-
-        private _isTower = ((_entity getVariable ["GRAD_nvaCommand_towerID", -1]) > -1);
-        
-        if (_isTower) then {
-            private _ctrl = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_TOWER", controlNull];
-            if (isNull _ctrl) then {
-                [] call GRAD_nvaCommand_fnc_openCuratorInterface;
-            };
-        } else {
-            private _ctrl = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_TOWER", controlNull];
-            if (isNull _ctrl) then {
-                ctrlDelete _ctrl;
-            };
-        };
-    }];
+    [_x] call GRAD_nvaCommand_fnc_curatorTowerHandler;
+    [] call GRAD_nvaCommand_fnc_curatorInterfaceDetection;
 
 } forEach allCurators;
 
 missionNamespace setVariable ["GRAD_nvaCommand_towerList", _newTowers, true];
+missionNamespace setVariable ["GRAD_nvaCommand_searchLightList", _searchLights, true];
