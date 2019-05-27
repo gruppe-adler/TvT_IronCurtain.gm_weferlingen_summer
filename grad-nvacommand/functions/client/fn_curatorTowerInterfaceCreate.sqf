@@ -18,11 +18,11 @@ _towerLabel ctrlCommit 0.1;
 
 private _towerButtonAlarm = _display ctrlCreate ["RscButton", -1];
 _towerButtonAlarm ctrlsetText "Alarm"; 
-_towerButtonAlarm ctrlSetPosition [0.7, 1.15, 0.1, 0.05];
+_towerButtonAlarm ctrlSetPosition [0.7, 1.25, 0.1, 0.05];
 _towerButtonAlarm ctrlSetBackgroundColor [0,0,0,0]; 
 _towerButtonAlarm ctrlCommit 0;
 
-_towerButtonAlarm ctrlSetPosition [0.7, 1.05, 0.1, 0.05];
+_towerButtonAlarm ctrlSetPosition [0.7, 1.15, 0.1, 0.05];
 _towerButtonAlarm ctrlSetBackgroundColor [0,0,0,0.5]; 
 _towerButtonAlarm ctrlCommit 0.1;
 

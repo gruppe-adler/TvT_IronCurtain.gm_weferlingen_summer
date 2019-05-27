@@ -34,7 +34,7 @@ private _searchLight = (_tower getVariable ["GRAD_nvaCommand_towerSearchLight", 
 if (!isNull _searchLight && count (crew _searchLight) < 1) then {
     _searchLightGuy moveInAny _searchLight;
     _searchLight setPilotLight true;
-    _searchLight action ["LightOn", _searchLight];
+    _searchLightGuy action ["SearchLightOn", _searchLight];
 };
 
 

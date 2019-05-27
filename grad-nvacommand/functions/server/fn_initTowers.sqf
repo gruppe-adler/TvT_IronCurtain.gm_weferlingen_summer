@@ -3,8 +3,11 @@
 // (allMissionObjects "Land_Hlaska")
 
 private _towers = 
-    ([worldSize/2, worldSize/2] nearObjects ["land_gm_tower_bt_11_60", worldsize/2]) +
-    ([worldSize/2, worldSize/2] nearObjects ["land_gm_tower_bt_6_fuest_80", worldsize/2]);
+    ([0, worldSize/2] nearObjects ["land_gm_tower_bt_11_60", worldsize]) +
+    ([0, worldSize/2] nearObjects ["land_gm_tower_bt_6_fuest_80", worldsize]);
+
+// sort to build a line
+_towers = [_towers, [], { [worldSize/2, 0] distance _x }, "ASCEND"] call BIS_fnc_sortBy;
 
 private _newTowers = [];
 private _searchLights = [];
@@ -29,12 +32,28 @@ private _searchLights = [];
 	_newTower setVariable ["GRAD_nvaCommand_towerID", _forEachIndex, true];
 
     // searchlight pos
-    if (_type == "land_gm_tower_bt_11_60") then { _position set [2,13.6]; } else { _position set [2,8.4]; };
+    if (_type == "land_gm_tower_bt_11_60") then { _position set [2,13.831]; } else { _position set [2,8.4]; };
 
     private _searchLight = "gm_gc_bgs_searchlight_01" createVehicle [0,0,0];
     _searchLight setPos _position;
-    _searchLight attachTo [_newTower];
+    _searchLight setDir _dir;
+    // _searchLight attachTo [_newTower];
+    _searchLight addWeaponTurret ["fakeweapon", [0]];
     _searchLights pushBackUnique _searchLight;
+
+    private _groupSearchLight = createGroup east;
+    private _searchLightGuy = _groupSearchLight createUnit ["gm_gc_bgs_rifleman_mpikm72_80_str", [0,0,0], [], 0, "CAN_COLLIDE"];
+    _searchLightGuy moveInAny _searchLight;
+    _searchLightGuy action ["SearchLightOn", _searchLight];
+    /*
+    _searchLightGuy disableAI "AUTOTARGET";
+    _searchLightGuy disableAI "FSM";
+    _searchLightGuy disableAI "CHECKVISIBLE";
+    _searchLightGuy disableAI "COVER";
+    _searchLightGuy disableAI "AUTOCOMBAT";
+    */
+    // _searchLight enableDynamicSimulation true;
+    [_searchLight] call GRAD_nvaCommand_fnc_searchLightScanRandom;
 
     _newTower setVariable ["GRAD_nvaCommand_towerSearchLight", _searchLight, true];
     _newTowers pushBackUnique _newTower;

@@ -3,8 +3,7 @@ class GRAD_nvacommand {
   	class client {
     	file = grad-nvacommand\functions\client;
 
-        
-    	class addMapEventhandler;
+        class addMapEventhandler;
         class addRepairAction { postInit = 1; };
         class alarmDismissAction;
         class curatorInterfaceDetection;
@@ -23,9 +22,11 @@ class GRAD_nvacommand {
          file = grad-nvacommand\functions\server;
 
          class addCBAEvents { postInit = 1; };
+         class addFakeCivilian;
          class addSectorPoint;
          class generateSectors;
          class initTowers { postInit = 1; };
+         class searchLightScanRandom;
          class getTrianglesForSector;
          class handleAlarm;
          class handleTripFlare;
