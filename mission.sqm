@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=646;
+		nextID=652;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14081.527,86.699188,15490.14};
-		dir[]={-0.4512201,-0.55199933,0.70123279};
-		up[]={-0.29870293,0.83383816,0.46420833};
-		aside[]={0.84095597,5.5646524e-008,0.54112768};
+		pos[]={14079.906,80.721649,15513.636};
+		dir[]={-0.96239179,-0.24516928,0.11718415};
+		up[]={-0.24341594,0.96946824,0.029638797};
+		aside[]={0.12087297,2.0081643e-009,0.99268335};
 	};
 };
 binarizationWanted=0;
@@ -50,13 +50,15 @@ addons[]=
 	"gm_objects_searchlight_gc_bgs_searchlight",
 	"A3_Characters_F",
 	"rhs_c_heavyweapons",
-	"rhs_c_troops"
+	"rhs_c_troops",
+	"A3_Structures_F_Enoch_VR_Helpers",
+	"CUP_CAMP_Armory_Misc_Red_Light"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=25;
+		items=27;
 		class Item0
 		{
 			className="gm_characters_gc_civilians";
@@ -224,6 +226,18 @@ class AddonsMetaData
 			author="Red Hammer Studios";
 			url="http://www.rhsmods.org/";
 		};
+		class Item25
+		{
+			className="A3_Structures_F_Enoch";
+			name="Arma 3 Enoch - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item26
+		{
+			className="CUP_CAMP_Armory_Misc_Red_Light";
+			name="CUP_CAMP_Armory_Misc_Red_Light";
+		};
 	};
 };
 randomSeed=200016;
@@ -256,7 +270,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=256;
+		items=258;
 		class Item0
 		{
 			dataType="Group";
@@ -5458,6 +5472,37 @@ class Mission
 			id=637;
 			type="land_gm_euro_platform_01";
 			atlOffset=-1.1999969;
+		};
+		class Item256
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14078.364,80.927528,15513.383};
+			};
+			side="Empty";
+			flags=1;
+			class Attributes
+			{
+			};
+			id=650;
+			type="Reflector_Cone_01_narrow_orange_F";
+			atlOffset=2.7335281;
+		};
+		class Item257
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14078.271,80.671387,15513.344};
+			};
+			side="Empty";
+			class Attributes
+			{
+			};
+			id=651;
+			type="Red_Light_Blinking_EP1";
+			atlOffset=2.6488037;
 		};
 	};
 	class Connections

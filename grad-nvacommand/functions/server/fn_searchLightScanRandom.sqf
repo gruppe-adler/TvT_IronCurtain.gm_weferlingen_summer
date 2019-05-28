@@ -1,7 +1,9 @@
 params ["_searchLight"];
 
 private _fakeRunner = [_searchLight] call GRAD_nvaCommand_fnc_addFakeCivilian;
-
+_fakeRunner hideObjectGlobal true;
+_fakeRunner allowDamage false;
+_fakeRunner enableDynamicSimulation true;
 
 [{
     params ["_args", "_handle"];
@@ -9,10 +11,8 @@ private _fakeRunner = [_searchLight] call GRAD_nvaCommand_fnc_addFakeCivilian;
 
     private _randomPos = [[[position _searchLight, 200]],[[position _searchLight, 30]]] call BIS_fnc_randomPos;
     _randomPos set [2,0];
-    /*
     _fakeRunner moveTo _randomPos;
     _fakeRunner setFatigue 0;
-    */
-    _searchLight doWatch _randomPos;
+    _searchLight doWatch _fakeRunner;
     
 }, 5, [_searchLight, _fakeRunner]] call CBA_fnc_addPerFrameHandler;

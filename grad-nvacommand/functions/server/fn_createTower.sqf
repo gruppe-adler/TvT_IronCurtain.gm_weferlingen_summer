@@ -12,7 +12,8 @@ _newTower animateSource ['searchlight_source',1,true];
 _newTower setVectorUp [0,0,1];
 
 private _searchLight = "gm_gc_bgs_searchlight_01" createVehicle [0,0,0];
-private _searchLightPosition = _newTower modelToWorld [0,-0.1,6.795];
+// [-0.615234,0.277344,-6.94839]
+private _searchLightPosition = _newTower modelToWorld [0,-0.1, 6.94839]; // [0,-0.1,6.795];
 _searchLight setPos _searchLightPosition;
 _searchLight addWeaponTurret ["fakeweapon", [0]];
 

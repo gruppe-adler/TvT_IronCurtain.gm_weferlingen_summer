@@ -32,11 +32,12 @@ private _searchLights = [];
 	_newTower setVariable ["GRAD_nvaCommand_towerID", _forEachIndex, true];
 
     // searchlight pos
-    if (_type == "land_gm_tower_bt_11_60") then { _position set [2,13.831]; } else { _position set [2,8.4]; };
+    _position = if (_type == "land_gm_tower_bt_11_60") then { (_newTower modelToWorld [0.615234,-0.277344,6.94839]) } else { (_newTower modelToWorld [-0.195313,0.713867,9.37675]) };
 
     private _searchLight = "gm_gc_bgs_searchlight_01" createVehicle [0,0,0];
-    _searchLight setPos _position;
     _searchLight setDir _dir;
+    _searchLight setPos _position;
+    
     // _searchLight attachTo [_newTower];
     _searchLight addWeaponTurret ["fakeweapon", [0]];
     _searchLights pushBackUnique _searchLight;
