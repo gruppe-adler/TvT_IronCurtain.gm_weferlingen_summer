@@ -1,9 +1,11 @@
 params ["_searchLight"];
 
 private _fakeRunner = [_searchLight] call GRAD_nvaCommand_fnc_addFakeCivilian;
-_fakeRunner hideObjectGlobal true;
-_fakeRunner allowDamage false;
-_fakeRunner enableDynamicSimulation true;
+
+{
+    private _curator = _x;
+    _curator removeCuratorEditableObjects [[_fakeRunner], true];
+} forEach allCurators;
 
 [{
     params ["_args", "_handle"];

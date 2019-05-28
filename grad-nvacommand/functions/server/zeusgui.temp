@@ -1,0 +1,24 @@
+/* #Fydafy
+$[
+    1.063,
+    ["zeusgui",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
+    [1000,"",[2,"",["0 * GUI_GRID_W + GUI_GRID_X","21 * GUI_GRID_H + GUI_GRID_Y","40 * GUI_GRID_W","4 * GUI_GRID_H"],[-1,-1,-1,-1],[0,0,0,0.7],[-1,-1,-1,-1],"","-1"],[]],
+    [1200,"",[2,"#(argb,8,8,3)color(1,1,1,0.2)",["0.5 * GUI_GRID_W + GUI_GRID_X","21.5 * GUI_GRID_H + GUI_GRID_Y","3.5 * GUI_GRID_W","3 * GUI_GRID_H"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+    [1001,"",[2,"BT-11",["1 * GUI_GRID_W + GUI_GRID_X","23.5 * GUI_GRID_H + GUI_GRID_Y","3 * GUI_GRID_W","0.5 * GUI_GRID_H"],[1,1,1,1],[0,0,0,0.5],[-1,-1,-1,-1],"","-1"],[]],
+    [1201,"",[2,"#(argb,8,8,3)color(1,1,1,1)",["5 * GUI_GRID_W + GUI_GRID_X","21.5 * GUI_GRID_H + GUI_GRID_Y","3.5 * GUI_GRID_W","3 * GUI_GRID_H"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+    [1202,"",[2,"#(argb,8,8,3)color(1,1,1,1)",["9 * GUI_GRID_W + GUI_GRID_X","21.5 * GUI_GRID_H + GUI_GRID_Y","3.5 * GUI_GRID_W","3 * GUI_GRID_H"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+    [1203,"",[2,"#(argb,8,8,3)color(1,1,1,1)",["13 * GUI_GRID_W + GUI_GRID_X","21.5 * GUI_GRID_H + GUI_GRID_Y","3.5 * GUI_GRID_W","3 * GUI_GRID_H"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+    [1204,"",[2,"#(argb,8,8,3)color(1,1,1,1)",["17 * GUI_GRID_W + GUI_GRID_X","21.5 * GUI_GRID_H + GUI_GRID_Y","3.5 * GUI_GRID_W","3 * GUI_GRID_H"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
+    [1600,"",[2,"Alarm",["33 * GUI_GRID_W + GUI_GRID_X","21.5 * GUI_GRID_H + GUI_GRID_Y","6.5 * GUI_GRID_W","3 * GUI_GRID_H"],[1,1,1,1],[1,1,1,1],[-1,-1,-1,-1],"","0.5"],[]],
+    [1601,"",[2,"Suchscheinwerfer",["26 * GUI_GRID_W + GUI_GRID_X","21.5 * GUI_GRID_H + GUI_GRID_Y","6.5 * GUI_GRID_W","3 * GUI_GRID_H"],[1,1,1,1],[1,1,1,1],[-1,-1,-1,-1],"","0.5"],[]],
+    [1002,"",[2,"",["0 * GUI_GRID_W + GUI_GRID_X","-25 * GUI_GRID_H + GUI_GRID_Y","40 * GUI_GRID_W","1.5 * GUI_GRID_H"],[-1,-1,-1,-1],[0,0,0,0.7],[-1,-1,-1,-1],"","-1"],[]],
+    [1602,"",[2,"Basis",["0.5 * GUI_GRID_W + GUI_GRID_X","19.5 * GUI_GRID_H + GUI_GRID_Y","5 * GUI_GRID_W","1 * GUI_GRID_H"],[1,1,1,1],[1,1,1,1],[-1,-1,-1,-1],"","1"],[]],
+    [1603,"",[2,"1",["8.5 * GUI_GRID_W + GUI_GRID_X","19.5 * GUI_GRID_H + GUI_GRID_Y","4 * GUI_GRID_W","1 * GUI_GRID_H"],[1,1,1,1],[1,1,1,1],[-1,-1,-1,-1],"","1"],[]],
+    [1604,"",[2,"2",["13 * GUI_GRID_W + GUI_GRID_X","19.5 * GUI_GRID_H + GUI_GRID_Y","4 * GUI_GRID_W","1 * GUI_GRID_H"],[1,1,1,1],[1,1,1,1],[-1,-1,-1,-1],"","1"],[]],
+    [1605,"",[2,"3",["17.5 * GUI_GRID_W + GUI_GRID_X","19.5 * GUI_GRID_H + GUI_GRID_Y","4 * GUI_GRID_W","1 * GUI_GRID_H"],[1,1,1,1],[1,1,1,1],[-1,-1,-1,-1],"","1"],[]],
+    [1606,"",[2,"4",["22 * GUI_GRID_W + GUI_GRID_X","19.5 * GUI_GRID_H + GUI_GRID_Y","4 * GUI_GRID_W","1 * GUI_GRID_H"],[1,1,1,1],[1,1,1,1],[-1,-1,-1,-1],"","1"],[]],
+    [1607,"",[2,"5",["26.5 * GUI_GRID_W + GUI_GRID_X","19.5 * GUI_GRID_H + GUI_GRID_Y","4 * GUI_GRID_W","1 * GUI_GRID_H"],[1,1,1,1],[1,1,1,1],[-1,-1,-1,-1],"","1"],[]],
+    [1608,"",[2,"6",["31 * GUI_GRID_W + GUI_GRID_X","19.5 * GUI_GRID_H + GUI_GRID_Y","4 * GUI_GRID_W","1 * GUI_GRID_H"],[1,1,1,1],[1,1,1,1],[-1,-1,-1,-1],"","1"],[]],
+    [1609,"",[2,"7",["35.5 * GUI_GRID_W + GUI_GRID_X","19.5 * GUI_GRID_H + GUI_GRID_Y","4 * GUI_GRID_W","1 * GUI_GRID_H"],[1,1,1,1],[1,1,1,1],[-1,-1,-1,-1],"","1"],[]]
+]
+*/
