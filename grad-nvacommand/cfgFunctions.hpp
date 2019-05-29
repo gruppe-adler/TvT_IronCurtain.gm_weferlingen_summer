@@ -16,6 +16,8 @@ class GRAD_nvacommand {
         class raiseAlarm;
         class repairFence;
         class selectTower;
+        class towerSelectTarget;
+        class zeusSelectDestination;
   	};
 
     class server {
@@ -34,5 +36,6 @@ class GRAD_nvacommand {
          class towerAlarm;
          class towerGetIn;
          class towerShowOptions;
+
     };
 };

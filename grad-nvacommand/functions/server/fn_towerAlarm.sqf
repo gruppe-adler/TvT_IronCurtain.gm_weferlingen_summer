@@ -1,7 +1,9 @@
 params ["_tower"];
 
-private _positionBehindDoor = _tower modelToWorld [0,1,-3];
-private _positionInFrontOfDoor = _tower modelToWorld [0,10,-3];
+private _positionBehindDoor = _tower modelToWorld [0,3,-3];
+private _positionInFrontOfDoor = _tower modelToWorld [0,30,-3];
+_positionBehindDoor set [2,0];
+_positionInFrontOfDoor set [2,0];
 private _towerCrewCount = _tower getVariable ["GRAD_nvaCommand_towerIsManned", 4];
 private _group = createGroup east;
 
@@ -10,7 +12,8 @@ if (_towerCrewCount < 1) exitWith {};
 systemChat "tower alarm";
 
 for "_i" from 1 to (_towerCrewCount) do {
-	_group createUnit ["gm_gc_bgs_rifleman_mpikm72_80_str", _positionBehindDoor, [], 0, "CAN_COLLIDE"];
+	_group createUnit ["gm_gc_bgs_rifleman_mpikm72_80_str", _positionBehindDoor, [], 0, "NONE"];
+    sleep 0.5;
 };
 
 // mark for auto deletion when necessary

@@ -7,7 +7,6 @@ enableDebugConsole = 1;
 #include "grad-landline\dialogs\rscRotary.hpp"
 #include "grad-landline\dialogs\rscKeypad.hpp"
 
-
 // dialogs aicommand
 #include "node_modules\grad-aicommand\grad_aicommand.hpp"
 
@@ -24,6 +23,11 @@ class cfgSounds {
     #include "grad-nvacommand\cfgSounds.hpp"
     #include "grad-stasi\cfgSounds.hpp"
     #include "grad-landline\cfgSounds.hpp"
+};
+
+class rscTitles {
+    // displays
+    #include "grad-nvacommand\cfgDisplays.hpp"
 };
 
 class CfgGradAICommand {

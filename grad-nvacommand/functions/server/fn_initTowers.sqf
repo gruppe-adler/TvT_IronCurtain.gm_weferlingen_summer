@@ -46,15 +46,18 @@ private _searchLights = [];
     private _searchLightGuy = _groupSearchLight createUnit ["gm_gc_bgs_rifleman_mpikm72_80_str", [0,0,0], [], 0, "CAN_COLLIDE"];
     _searchLightGuy moveInAny _searchLight;
     _searchLightGuy action ["SearchLightOn", _searchLight];
-    /*
+    
+    _searchLightGuy disableAI "TARGET";
     _searchLightGuy disableAI "AUTOTARGET";
     _searchLightGuy disableAI "FSM";
     _searchLightGuy disableAI "CHECKVISIBLE";
     _searchLightGuy disableAI "COVER";
     _searchLightGuy disableAI "AUTOCOMBAT";
-    */
+
+    private _searchLightTarget = "Sign_Sphere25cm_F" createVehicle _position;
+    _newTower setVariable ["GRAD_nvaCommand_towerDummyTarget", _searchLightTarget, true];
     // _searchLight enableDynamicSimulation true;
-    [_searchLight] call GRAD_nvaCommand_fnc_searchLightScanRandom;
+    [_newTower, _searchLight] call GRAD_nvaCommand_fnc_searchLightScanRandom;
 
     _newTower setVariable ["GRAD_nvaCommand_towerSearchLight", _searchLight, true];
     _newTowers pushBackUnique _newTower;
