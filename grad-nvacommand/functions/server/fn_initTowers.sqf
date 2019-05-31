@@ -30,9 +30,9 @@ private _searchLights = [];
 
     private _warnLamp = "Misc_Wall_lamp" createVehicle [0,0,0];
     private _warnLampPosition = if (_type == "land_gm_tower_bt_11_60") then { 
-        ([0.742188,0.0195313,-4.7576])
+        [0.742188,0.0195313,-4.7576]
     } else { 
-        ([-2.73352,-2.13086,0.319336])
+        [-0.268555,2.23633,-2.76051]
     };
     _warnLamp attachTo [_newTower, _warnLampPosition];
     
@@ -91,7 +91,7 @@ private _searchLights = [];
 	
 	{ 
         private _towerID = _x getVariable ["GRAD_nvaCommand_towerID", -1];
-	  [ _curator, ["", [1,1,1,1], position _x, 1, 1, 45, format ["BT-11 - %1", _towerID], 1, 0.05, "TahomaB"], false ] call BIS_fnc_addCuratorIcon;
+	   [ _curator, ["", [1,1,1,1], position _x, 1, 1, 45, format ["BT-11 - %1", _towerID], 1, 0.05, "TahomaB"], false ] call BIS_fnc_addCuratorIcon;
 	} forEach _newTowers;
 
      // make curator selectable

@@ -1,6 +1,6 @@
 player setVariable ["GRAD_nvacommand_isCommander", true];
 
-
+/*
 addMissionEventHandler ["Map", {
     params ["_mapIsOpened", "_mapIsForced"];
 
@@ -15,12 +15,15 @@ addMissionEventHandler ["Map", {
         player setVariable ["forceClose", true];
         openMap false;
 
+
         [{
             [player, player] call GRAD_aiCommand_fnc_openCommandWindow;
         }, [], 0.1] call CBA_fnc_waitAndExecute;
+        
         
     } else {
         systemChat "isClosed";
         openMap false;
     };
 }];
+*/

@@ -1,4 +1,4 @@
-params ["_position", "_type", ["_unit", objNull]];
+params ["_position"];
 
 private _sectorTriggered = [];
 

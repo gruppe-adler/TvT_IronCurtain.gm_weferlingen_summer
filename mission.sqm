@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=691;
+		nextID=692;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14092.717,100.02695,15512.505};
-		dir[]={-0.39916122,-0.61055303,-0.68409312};
-		up[]={-0.30770954,0.79196388,-0.52736336};
-		aside[]={-0.86375898,-3.6685378e-007,0.50399113};
+		pos[]={14072.959,89.673164,15522.206};
+		dir[]={0.30224821,-0.55898511,-0.77220637};
+		up[]={0.20375516,0.82915229,-0.52056545};
+		aside[]={-0.93126005,2.211309e-007,-0.36450979};
 	};
 };
 binarizationWanted=0;
@@ -46,20 +46,18 @@ addons[]=
 	"gm_vehicles_land_wheeled_p601_gc_civ_p601",
 	"CUP_Editor_A2_Roads_Config",
 	"A3_Structures_F_Orange_VR_Helpers",
-	"gm_characters_gc_characters",
-	"gm_objects_searchlight_gc_bgs_searchlight",
-	"rhs_c_heavyweapons",
-	"rhs_c_troops",
 	"A3_Characters_F",
 	"gm_vehicles_land_wheeled_typ1_ge_civ_typ1",
 	"A3_Structures_F_Walls",
-	"ace_logistics_wirecutter"
+	"ace_logistics_wirecutter",
+	"gm_characters_gc_characters",
+	"CUP_Misc3_Config"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=27;
+		items=25;
 		class Item0
 		{
 			className="gm_characters_gc_civilians";
@@ -194,52 +192,36 @@ class AddonsMetaData
 		};
 		class Item20
 		{
-			className="gm_characters_gc_characters";
-			name="gm_characters_gc_characters";
-			author="Global Mobilization";
-			url="global-mobilization.com";
-		};
-		class Item21
-		{
-			className="gm_objects_searchlight_gc_bgs_searchlight";
-			name="gm_objects_searchlight_gc_bgs_searchlight";
-			author="Global Mobilization";
-			url="global-mobilization.com";
-		};
-		class Item22
-		{
-			className="rhs_c_heavyweapons";
-			name="Heavy weapons pack";
-			author="Red Hammer Studios";
-			url="http://www.rhsmods.org/";
-		};
-		class Item23
-		{
-			className="rhs_c_troops";
-			name="AFRF Infantry & Equipment";
-			author="Red Hammer Studios";
-			url="http://www.rhsmods.org/";
-		};
-		class Item24
-		{
 			className="A3_Characters_F";
 			name="Arma 3 Alpha - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item25
+		class Item21
 		{
 			className="gm_vehicles_land_wheeled_typ1_ge_civ_typ1";
 			name="gm_vehicles_land_wheeled_typ1_ge_civ_typ1";
 			author="Global Mobilization";
 			url="global-mobilization.com";
 		};
-		class Item26
+		class Item22
 		{
 			className="ace_logistics_wirecutter";
 			name="ACE3 - Logistics Wire Cutter";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
+		};
+		class Item23
+		{
+			className="gm_characters_gc_characters";
+			name="gm_characters_gc_characters";
+			author="Global Mobilization";
+			url="global-mobilization.com";
+		};
+		class Item24
+		{
+			className="CUP_Misc3_Config";
+			name="CUP_Misc3_Config";
 		};
 	};
 };
@@ -273,7 +255,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=261;
+		items=258;
 		class Item0
 		{
 			dataType="Group";
@@ -5267,145 +5249,6 @@ class Mission
 		class Item249
 		{
 			dataType="Group";
-			side="East";
-			class Entities
-			{
-				items=1;
-				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={14100.532,78.063568,15502.51};
-						angles[]={6.247201,0,6.1775794};
-					};
-					side="East";
-					flags=6;
-					class Attributes
-					{
-						name="testSearchLightG";
-					};
-					id=608;
-					type="gm_gc_bgs_rifleman_mpikm72_80_str";
-				};
-			};
-			class Attributes
-			{
-			};
-			class CrewLinks
-			{
-				class LinkIDProvider
-				{
-					nextID=1;
-				};
-				class Links
-				{
-					items=1;
-					class Item0
-					{
-						linkID=0;
-						item0=608;
-						item1=607;
-						class CustomData
-						{
-							role=2;
-							turretPath[]={0};
-						};
-					};
-				};
-			};
-			id=606;
-		};
-		class Item250
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={14100.624,78.925476,15502.429};
-				angles[]={6.247201,0,6.1775794};
-			};
-			side="East";
-			flags=6;
-			class Attributes
-			{
-				init="call{this addWeaponTurret [""fakeweapon"", [0]]; this action [""SearchLightOn"", this];}";
-				name="testSearchLight";
-			};
-			id=607;
-			type="gm_gc_bgs_searchlight_01";
-		};
-		class Item251
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={14110.17,79.789635,15508.593};
-				angles[]={6.2232509,0,0.020001473};
-			};
-			side="East";
-			flags=6;
-			class Attributes
-			{
-				name="testSearchLightAA";
-			};
-			id=611;
-			type="rhs_Igla_AA_pod_msv";
-		};
-		class Item252
-		{
-			dataType="Group";
-			side="East";
-			class Entities
-			{
-				items=1;
-				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={14110.201,78.236664,15508.736};
-						angles[]={6.2232509,0,0.020001473};
-					};
-					side="East";
-					flags=6;
-					class Attributes
-					{
-						name="testSearchLightAAG";
-					};
-					id=612;
-					type="rhs_msv_rifleman";
-				};
-			};
-			class Attributes
-			{
-			};
-			class CrewLinks
-			{
-				class LinkIDProvider
-				{
-					nextID=1;
-				};
-				class Links
-				{
-					items=1;
-					class Item0
-					{
-						linkID=0;
-						item0=612;
-						item1=611;
-						class CustomData
-						{
-							role=2;
-							turretPath[]={0};
-						};
-					};
-				};
-			};
-			id=613;
-		};
-		class Item253
-		{
-			dataType="Group";
 			side="West";
 			class Entities
 			{
@@ -5431,7 +5274,7 @@ class Mission
 			};
 			id=631;
 		};
-		class Item254
+		class Item250
 		{
 			dataType="Object";
 			class PositionInfo
@@ -5448,7 +5291,7 @@ class Mission
 			type="land_gm_euro_platform_01";
 			atlOffset=-1.1999969;
 		};
-		class Item255
+		class Item251
 		{
 			dataType="Group";
 			side="Civilian";
@@ -5499,7 +5342,7 @@ class Mission
 			id=678;
 			atlOffset=-2.2888184e-005;
 		};
-		class Item256
+		class Item252
 		{
 			dataType="Object";
 			class PositionInfo
@@ -5516,7 +5359,7 @@ class Mission
 			type="gm_ge_civ_typ1200";
 			atlOffset=-2.2888184e-005;
 		};
-		class Item257
+		class Item253
 		{
 			dataType="Object";
 			class PositionInfo
@@ -5555,7 +5398,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item258
+		class Item254
 		{
 			dataType="Object";
 			class PositionInfo
@@ -5594,7 +5437,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item259
+		class Item255
 		{
 			dataType="Group";
 			side="East";
@@ -5726,7 +5569,7 @@ class Mission
 			id=685;
 			atlOffset=-0.00029754639;
 		};
-		class Item260
+		class Item256
 		{
 			dataType="Object";
 			class PositionInfo
@@ -5742,6 +5585,23 @@ class Mission
 			id=686;
 			type="gm_gc_army_t55a";
 			atlOffset=-0.00029754639;
+		};
+		class Item257
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14076.587,80.930489,15512.96};
+				angles[]={0,3.1041901,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="towerLamp";
+			};
+			id=691;
+			type="Misc_Wall_lamp";
+			atlOffset=2.6519089;
 		};
 	};
 	class Connections

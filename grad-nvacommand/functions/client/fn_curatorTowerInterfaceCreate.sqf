@@ -43,27 +43,24 @@ _towerButtonAlarm ctrlAddEventHandler ["ButtonClick", {
     params ["_control"]; 
 
     private _tower = missionNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_SELECTED", objNull];
-    [getPos _tower, "manual"] call GRAD_nvaCommand_fnc_raiseAlarm;
-    [_tower] remoteExec ["GRAD_nvacommand_fnc_towerAlarm",2];
+    
+    if (_tower getVariable ["GRAD_nvacommand_alarm", false]) then {
+        private _sector = [_tower] call GRAD_nvaCommand_fnc_alarmGetSector;
+        [_sector, false] call GRAD_nvaCommand_fnc_alarmSetSector;
+        [_tower] remoteExec ["GRAD_nvacommand_fnc_towerAlarmDismiss",2];
+    } else {
+        [getPos _tower, "manual"] call GRAD_nvaCommand_fnc_raiseAlarm;
+        [_tower] remoteExec ["GRAD_nvacommand_fnc_towerAlarmRaise",2];
+    };
 }];
 
-private _towerButtonCenter = _display ctrlCreate ["RscButton", -1];
-_towerButtonCenter ctrlsetText "Zentrieren"; 
-_towerButtonCenter ctrlSetPosition [0.85, 1.15, 0.1, 0.05];
-_towerButtonCenter ctrlSetBackgroundColor [0,0,0,0.5]; 
-_towerButtonCenter ctrlSetFade 1;
-_towerButtonCenter ctrlCommit 0;
-
-_towerButtonCenter ctrlSetPosition [0.85, 1.05, 0.1, 0.05];
-_towerButtonCenter ctrlSetFade 0;
-_towerButtonCenter ctrlCommit 0.1;
 
 
-_towerButtonCenter ctrlAddEventHandler ["ButtonClick", {
+_towerPic ctrlAddEventHandler ["ButtonClick", {
     params ["_control"]; 
 
     private _tower = missionNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_SELECTED", objNull];
-    private _positionAboveBehind = _tower getRelPos [100, curatorCamera getDir _tower];
+    private _positionAboveBehind = _tower getPos [50, curatorCamera getDir _tower];
     _positionAboveBehind set [2,50];
     [_positionAboveBehind, _tower, 1] spawn BIS_fnc_setCuratorCamera;
 }];
@@ -89,7 +86,7 @@ _towerButtonDoWatch ctrlAddEventHandler ["ButtonClick", {
 }];
 
 uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIELEMENTS", 
-    [_towerLabel, _towerPic, _towerButtonAlarm, _towerButtonCenter, _towerButtonDoWatch]
+    [_towerLabel, _towerPic, _towerButtonAlarm, _towerButtonDoWatch]
 ];
 
 missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_SELECTED", _entity];

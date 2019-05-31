@@ -3,6 +3,8 @@ params ["_position", "_type", ["_unit", objNull]];
 private _sector = [_position, _type, _unit] call GRAD_nvaCommand_fnc_alarmGetSector;
 [_sector, true] call GRAD_nvacommand_fnc_alarmSetSector;
 
+[_position] call GRAD_nvacommand_fnc_alarmSetTower;
+
 [_sector, _position, _type] call GRAD_nvacommand_fnc_handleTripFlare;
 
 // give feedback whats happening

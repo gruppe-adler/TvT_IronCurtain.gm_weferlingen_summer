@@ -5,7 +5,9 @@ class GRAD_nvacommand {
 
         class addMapEventhandler;
         class addRepairAction { postInit = 1; };
-        class alarmDismissAction;
+        class alarmGetSector;
+        class alarmSetSector;
+        class alarmSetTower;
         class curatorInterfaceDetection;
         class curatorOnClick;
         class curatorTowerHandler;
@@ -31,10 +33,10 @@ class GRAD_nvacommand {
          class initTowers { postInit = 1; };
          class searchLightScanRandom;
          class getTrianglesForSector;
-         class handleAlarm;
          class handleTripFlare;
          class serverLoop { postInit = 1; };
-         class towerAlarm;
+         class towerAlarmDismiss;
+         class towerAlarmRaise;
          class towerGetIn;
 
     };

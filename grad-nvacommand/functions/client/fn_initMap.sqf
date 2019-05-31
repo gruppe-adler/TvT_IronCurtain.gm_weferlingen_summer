@@ -1,3 +1,8 @@
+/*
+    
+    [player, player, (findDisplay 12), (findDisplay 12 displayCtrl 51)] call GRAD_nvaCommand_fnc_initMap;
+
+*/
 params ["_aiCommandParams"];
 _aiCommandParams params ["_unit","_player","_display","_map"];
 
