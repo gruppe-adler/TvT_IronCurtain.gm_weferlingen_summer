@@ -32,22 +32,29 @@ private _searchLights = [];
     private _warnLampPosition = if (_type == "land_gm_tower_bt_11_60") then { 
         [0.742188,0.0195313,-4.7576]
     } else { 
-        [-0.268555,2.23633,-2.76051]
+        [0.268555,-2.23633,2.76051]
     };
+
+    _newTower setVariable ["GRAD_nvaCommand_towerWarnLamp", _warnLamp, true];
     _warnLamp attachTo [_newTower, _warnLampPosition];
     
+
     if (_type == "land_gm_tower_bt_11_60") then {
-        private _y = -90; private _p = 0; private _r = 00; 
+        private _y = -90; private _p = 0; private _r = 0; 
         _warnLamp setVectorDirAndUp [ 
             [ sin _y * cos _p,cos _y * cos _p,sin _p], 
             [ [ sin _r,-sin _p,cos _r * cos _p],-_y] call BIS_fnc_rotateVector2D 
         ];
     };
 
-    _newTower setVariable ["GRAD_nvaCommand_towerWarnLamp", _warnLamp, true];
+    
 
     // searchlight pos
-    private _searchLightPosition = if (_type == "land_gm_tower_bt_11_60") then { (_newTower modelToWorld [0.615234,-0.277344,6.94839]) } else { (_newTower modelToWorld [-0.195313,0.713867,9.37675]) };
+    private _searchLightPosition = if (_type == "land_gm_tower_bt_11_60") then { 
+        (_newTower modelToWorld [0.615234,-0.277344,6.94839]) 
+    } else { 
+        (_newTower modelToWorld [-0.195313,0.713867,9.37675]) 
+    };
 
     private _searchLight = "gm_gc_bgs_searchlight_01" createVehicle [0,0,0];
     _searchLight setDir _dir;

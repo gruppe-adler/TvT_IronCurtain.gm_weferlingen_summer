@@ -17,8 +17,8 @@ class GRAD_nvacommand {
     	class initMap;
         class raiseAlarm;
         class repairFence;
-        class selectTower;
         class towerSelectTarget;
+        class towerGetNearest;
         class zeusSelectDestination;
   	};
 

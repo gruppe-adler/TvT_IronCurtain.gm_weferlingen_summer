@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14072.959,89.673164,15522.206};
-		dir[]={0.30224821,-0.55898511,-0.77220637};
-		up[]={0.20375516,0.82915229,-0.52056545};
-		aside[]={-0.93126005,2.211309e-007,-0.36450979};
+		pos[]={13380.188,78.334633,15846.365};
+		dir[]={0.021233825,-0.52110142,-0.85323906};
+		up[]={0.012963844,0.85349017,-0.52094722};
+		aside[]={-0.99969721,9.3954441e-008,-0.024878547};
 	};
 };
 binarizationWanted=0;
@@ -50,14 +50,13 @@ addons[]=
 	"gm_vehicles_land_wheeled_typ1_ge_civ_typ1",
 	"A3_Structures_F_Walls",
 	"ace_logistics_wirecutter",
-	"gm_characters_gc_characters",
-	"CUP_Misc3_Config"
+	"gm_characters_gc_characters"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=25;
+		items=24;
 		class Item0
 		{
 			className="gm_characters_gc_civilians";
@@ -218,11 +217,6 @@ class AddonsMetaData
 			author="Global Mobilization";
 			url="global-mobilization.com";
 		};
-		class Item24
-		{
-			className="CUP_Misc3_Config";
-			name="CUP_Misc3_Config";
-		};
 	};
 };
 randomSeed=200016;
@@ -255,7 +249,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=258;
+		items=257;
 		class Item0
 		{
 			dataType="Group";
@@ -5585,23 +5579,6 @@ class Mission
 			id=686;
 			type="gm_gc_army_t55a";
 			atlOffset=-0.00029754639;
-		};
-		class Item257
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={14076.587,80.930489,15512.96};
-				angles[]={0,3.1041901,0};
-			};
-			side="Empty";
-			class Attributes
-			{
-				name="towerLamp";
-			};
-			id=691;
-			type="Misc_Wall_lamp";
-			atlOffset=2.6519089;
 		};
 	};
 	class Connections

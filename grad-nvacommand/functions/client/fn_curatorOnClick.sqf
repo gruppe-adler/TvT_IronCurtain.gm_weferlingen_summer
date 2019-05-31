@@ -1,8 +1,12 @@
 params ["_entity"];
 
+if (GRAD_nvaCommand_zeusSelectDestinationRunning) exitWith {};
+
 if (isNull _entity) exitWith {
 
-    private _ctrls = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIELEMENTS", [controlNull,controlNull,controlNull,controlNull]];
+    private _ctrls = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIELEMENTS", 
+        [controlNull,controlNull,controlNull,controlNull, controlNull, controlNull, controlNull, controlNull, controlNull, controlNull]
+    ];
     missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_SELECTED", objNull];
     if (!isNull (_ctrls select 0)) then {
 
@@ -26,7 +30,9 @@ private _isTower = ((_entity getVariable ["GRAD_nvaCommand_towerID", -1]) > -1);
 missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_SELECTED", _entity];
         
 if (_isTower) then {
-    private _ctrls = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIELEMENTS", [controlNull,controlNull,controlNull, controlNull]];
+    private _ctrls = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIELEMENTS", 
+        [controlNull,controlNull,controlNull,controlNull, controlNull, controlNull, controlNull, controlNull, controlNull, controlNull]
+    ];
     if (isNull (_ctrls select 0)) then {
         [_entity] call GRAD_nvaCommand_fnc_curatorTowerInterfaceCreate;
     };
@@ -34,6 +40,7 @@ if (_isTower) then {
     [objNull] call GRAD_nvaCommand_fnc_curatorOnClick;
 };
 
+// detect if nothing is selected by curator, workaround for missing deselect EH
 [{
    (
         count (curatorSelected select 0) +
