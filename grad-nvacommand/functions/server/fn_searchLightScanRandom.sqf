@@ -2,10 +2,10 @@ params ["_newTower", "_searchLight"];
 
 private _fakeRunner = [_searchLight] call GRAD_nvaCommand_fnc_addFakeCivilian;
 private _dummyTarget = _newTower getVariable ["GRAD_nvaCommand_towerDummyTarget", objNull];
-{
-    private _curator = _x;
-    _curator removeCuratorEditableObjects [[_fakeRunner], true];
-} forEach allCurators;
+
+private _fakeRunners = missionNamespace getVariable ["GRAD_nvaCommand_fakeRunners", []];
+_fakeRunners pushBackUnique [_fakeRunner];
+missionNamespace getVariable ["GRAD_nvaCommand_fakeRunners", _fakeRunners, true];
 
 [{
     params ["_args", "_handle"];
