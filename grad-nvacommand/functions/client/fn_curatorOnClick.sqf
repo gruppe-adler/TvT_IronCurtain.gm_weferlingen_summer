@@ -7,6 +7,9 @@ if (isNull _entity) exitWith {
     private _ctrls = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIELEMENTS", 
         [controlNull,controlNull,controlNull,controlNull, controlNull, controlNull, controlNull, controlNull, controlNull, controlNull]
     ];
+
+    private _allGUISelects = uiNamespace getVariable ["GRAD_nvaCommand_allGUISelects", []];
+    uiNamespace setVariable ["GRAD_nvaCommand_allGUISelects", []];
     missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_SELECTED", objNull];
     if (!isNull (_ctrls select 0)) then {
 
@@ -15,12 +18,12 @@ if (isNull _entity) exitWith {
             _x ctrlSetPosition [_xPos, _yPos + 0.2, _width, _height];
             _x ctrlSetFade 1;
             _x ctrlCommit 0.2;
-        } forEach _ctrls;
+        } forEach (_ctrls + _allGUISelects);
 
-        [_ctrls] spawn {
-            params ["_ctrls"];
+        [_ctrls, _allGUISelects] spawn {
+            params ["_ctrls", "_allGUISelects"];
             uiSleep 0.2;
-            { ctrlDelete _x } forEach _ctrls;
+            { ctrlDelete _x } forEach (_ctrls + _allGUISelects);
         };
         
     };
@@ -28,8 +31,9 @@ if (isNull _entity) exitWith {
 
 private _isTower = ((_entity getVariable ["GRAD_nvaCommand_towerID", -1]) > -1);
 missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_SELECTED", _entity];
-        
+    
 if (_isTower) then {
+    [] call GRAD_nvaCommand_fnc_towerCenterSelected;
     private _ctrls = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIELEMENTS", 
         [controlNull,controlNull,controlNull,controlNull, controlNull, controlNull, controlNull, controlNull, controlNull, controlNull]
     ];
