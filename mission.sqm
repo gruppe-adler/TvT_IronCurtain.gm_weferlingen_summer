@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=655;
+		nextID=691;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14073.32,90.8367,15532.97};
-		dir[]={0.47975764,-0.2626583,-0.83721685};
-		up[]={0.13061975,0.96487534,-0.22794223};
-		aside[]={-0.86767834,1.4354009e-007,-0.49721232};
+		pos[]={14092.717,100.02695,15512.505};
+		dir[]={-0.39916122,-0.61055303,-0.68409312};
+		up[]={-0.30770954,0.79196388,-0.52736336};
+		aside[]={-0.86375898,-3.6685378e-007,0.50399113};
 	};
 };
 binarizationWanted=0;
@@ -48,11 +48,12 @@ addons[]=
 	"A3_Structures_F_Orange_VR_Helpers",
 	"gm_characters_gc_characters",
 	"gm_objects_searchlight_gc_bgs_searchlight",
-	"A3_Characters_F",
 	"rhs_c_heavyweapons",
 	"rhs_c_troops",
-	"A3_Structures_F_Enoch_VR_Helpers",
-	"CUP_CAMP_Armory_Misc_Red_Light"
+	"A3_Characters_F",
+	"gm_vehicles_land_wheeled_typ1_ge_civ_typ1",
+	"A3_Structures_F_Walls",
+	"ace_logistics_wirecutter"
 };
 class AddonsMetaData
 {
@@ -207,36 +208,38 @@ class AddonsMetaData
 		};
 		class Item22
 		{
-			className="A3_Characters_F";
-			name="Arma 3 Alpha - Characters and Clothing";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item23
-		{
 			className="rhs_c_heavyweapons";
 			name="Heavy weapons pack";
 			author="Red Hammer Studios";
 			url="http://www.rhsmods.org/";
 		};
-		class Item24
+		class Item23
 		{
 			className="rhs_c_troops";
 			name="AFRF Infantry & Equipment";
 			author="Red Hammer Studios";
 			url="http://www.rhsmods.org/";
 		};
-		class Item25
+		class Item24
 		{
-			className="A3_Structures_F_Enoch";
-			name="Arma 3 Enoch - Buildings and Structures";
+			className="A3_Characters_F";
+			name="Arma 3 Alpha - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item25
+		{
+			className="gm_vehicles_land_wheeled_typ1_ge_civ_typ1";
+			name="gm_vehicles_land_wheeled_typ1_ge_civ_typ1";
+			author="Global Mobilization";
+			url="global-mobilization.com";
+		};
 		class Item26
 		{
-			className="CUP_CAMP_Armory_Misc_Red_Light";
-			name="CUP_CAMP_Armory_Misc_Red_Light";
+			className="ace_logistics_wirecutter";
+			name="ACE3 - Logistics Wire Cutter";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
 		};
 	};
 };
@@ -262,15 +265,15 @@ class Mission
 		year=1983;
 		month=8;
 		day=3;
-		hour=4;
-		minute=-1;
+		hour=6;
+		minute=0;
 		startFogBase=-1000;
 		startFogDecay=0;
 		forecastFogDecay=0.014;
 	};
 	class Entities
 	{
-		items=258;
+		items=261;
 		class Item0
 		{
 			dataType="Group";
@@ -5333,34 +5336,6 @@ class Mission
 		};
 		class Item251
 		{
-			dataType="Group";
-			side="West";
-			class Entities
-			{
-				items=1;
-				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={14103.552,78.660736,15518.502};
-					};
-					side="West";
-					flags=7;
-					class Attributes
-					{
-					};
-					id=610;
-					type="B_Survivor_F";
-				};
-			};
-			class Attributes
-			{
-			};
-			id=609;
-		};
-		class Item252
-		{
 			dataType="Object";
 			class PositionInfo
 			{
@@ -5376,7 +5351,7 @@ class Mission
 			id=611;
 			type="rhs_Igla_AA_pod_msv";
 		};
-		class Item253
+		class Item252
 		{
 			dataType="Group";
 			side="East";
@@ -5428,7 +5403,7 @@ class Mission
 			};
 			id=613;
 		};
-		class Item254
+		class Item253
 		{
 			dataType="Group";
 			side="West";
@@ -5456,7 +5431,7 @@ class Mission
 			};
 			id=631;
 		};
-		class Item255
+		class Item254
 		{
 			dataType="Object";
 			class PositionInfo
@@ -5473,36 +5448,300 @@ class Mission
 			type="land_gm_euro_platform_01";
 			atlOffset=-1.1999969;
 		};
+		class Item255
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14146.115,77.999519,15504.762};
+						angles[]={6.2232561,3.3065336,6.2432065};
+					};
+					side="Civilian";
+					flags=6;
+					class Attributes
+					{
+					};
+					id=680;
+					type="gm_gc_civ_man_01_80_blu";
+				};
+			};
+			class Attributes
+			{
+			};
+			class CrewLinks
+			{
+				class LinkIDProvider
+				{
+					nextID=1;
+				};
+				class Links
+				{
+					items=1;
+					class Item0
+					{
+						linkID=0;
+						item0=680;
+						item1=679;
+						class CustomData
+						{
+							role=1;
+						};
+					};
+				};
+			};
+			id=678;
+			atlOffset=-2.2888184e-005;
+		};
 		class Item256
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={14078.364,80.927528,15513.383};
+				position[]={14146.179,79.497986,15504.625};
+				angles[]={6.2232561,3.3065336,6.2432065};
 			};
-			side="Empty";
-			flags=1;
+			side="Civilian";
+			flags=6;
 			class Attributes
 			{
 			};
-			id=650;
-			type="Reflector_Cone_01_narrow_orange_F";
-			atlOffset=2.7335281;
+			id=679;
+			type="gm_ge_civ_typ1200";
+			atlOffset=-2.2888184e-005;
 		};
 		class Item257
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={14078.271,80.671387,15513.344};
+				position[]={14152.67,81.712219,15543.065};
 			};
 			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				init="call{[this] call GRAD_nvaCommand_fnc_fenceDamageHandling;}";
+			};
+			id=681;
+			type="Land_Mil_WiredFence_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item258
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14160.968,81.403099,15542.659};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				init="call{[this] call GRAD_nvaCommand_fnc_fenceDamageHandling;}";
+			};
+			id=684;
+			type="Land_Mil_WiredFence_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item259
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=4;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14139.459,78.289162,15505.514};
+						angles[]={6.2252498,3.3065336,6.2631865};
+					};
+					side="East";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=687;
+					type="gm_gc_army_crew_mpiaks74nk_80_blk";
+				};
+				class Item1
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14139.459,78.289162,15505.514};
+						angles[]={6.2252498,3.3065336,6.2631865};
+					};
+					side="East";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=688;
+					type="gm_gc_army_crew_mpiaks74nk_80_blk";
+				};
+				class Item2
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14139.459,78.289162,15505.514};
+						angles[]={6.2252498,3.3065336,6.2631865};
+					};
+					side="East";
+					flags=6;
+					class Attributes
+					{
+					};
+					id=689;
+					type="gm_gc_army_crew_mpiaks74nk_80_blk";
+				};
+				class Item3
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={14139.459,78.289162,15505.514};
+						angles[]={6.2252498,3.3065336,6.2631865};
+					};
+					side="East";
+					flags=4;
+					class Attributes
+					{
+					};
+					id=690;
+					type="gm_gc_army_crew_mpiaks74nk_80_blk";
+				};
+			};
 			class Attributes
 			{
 			};
-			id=651;
-			type="Red_Light_Blinking_EP1";
-			atlOffset=2.6488037;
+			class CrewLinks
+			{
+				class LinkIDProvider
+				{
+					nextID=4;
+				};
+				class Links
+				{
+					items=4;
+					class Item0
+					{
+						linkID=0;
+						item0=687;
+						item1=686;
+						class CustomData
+						{
+							role=1;
+						};
+					};
+					class Item1
+					{
+						linkID=1;
+						item0=688;
+						item1=686;
+						class CustomData
+						{
+							role=2;
+							turretPath[]={0};
+						};
+					};
+					class Item2
+					{
+						linkID=2;
+						item0=689;
+						item1=686;
+						class CustomData
+						{
+							role=2;
+							turretPath[]={0,0};
+						};
+					};
+					class Item3
+					{
+						linkID=3;
+						item0=690;
+						item1=686;
+						class CustomData
+						{
+							role=2;
+							turretPath[]={0,1};
+						};
+					};
+				};
+			};
+			id=685;
+			atlOffset=-0.00029754639;
+		};
+		class Item260
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14139.566,81.438545,15505.281};
+				angles[]={6.2252498,3.3065336,6.2631865};
+			};
+			side="East";
+			flags=6;
+			class Attributes
+			{
+			};
+			id=686;
+			type="gm_gc_army_t55a";
+			atlOffset=-0.00029754639;
 		};
 	};
 	class Connections

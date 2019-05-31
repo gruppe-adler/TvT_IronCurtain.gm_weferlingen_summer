@@ -26,6 +26,7 @@ class GRAD_nvacommand {
          class addCBAEvents { postInit = 1; };
          class addFakeCivilian;
          class addSectorPoint;
+         class fenceDamageHandling;
          class generateSectors;
          class initTowers { postInit = 1; };
          class searchLightScanRandom;
