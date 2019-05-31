@@ -1,4 +1,4 @@
-params ["_map", "_tower"];
+/*params ["_map", "_tower"];
 
 
 private _btn = (ctrlParent _map) ctrlCreate ["RscButton", -1];
@@ -44,4 +44,5 @@ player setVariable ["GRAD_nvacommand_towersSelectedBtn", _btn];
     _btn ctrlCommit 0;
     
 }, 0, [_btn, _map, _tower, _marker]] call CBA_fnc_addPerFramehandler;
+*/
 

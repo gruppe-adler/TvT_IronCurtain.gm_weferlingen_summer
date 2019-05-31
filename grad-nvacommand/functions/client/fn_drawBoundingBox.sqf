@@ -1,3 +1,4 @@
+/*
 params [["_target", objNull], ["_rotation", 0], ["_offset", [0, 0, 0]], ["_color", [1, 0, 0, 1]]];
  
 if (isNull _target) exitWith {};
@@ -74,3 +75,4 @@ waitUntil {
 };
 
 [_obj call BIS_fnc_netId + "_drawBB_EH", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
+*/

@@ -11,6 +11,10 @@
 				<Original>Signal fence triggered.</Original>
 				<German>Alarm am Signalzaun ausgelöst.</German>
 			</Key>
+			<Key ID="str_nvacommand_alarmRaised">
+				<Original>Alarm raised.</Original>
+				<German>Alarm ausgelöst.</German>
+			</Key>
 			<Key ID="str_nvacommand_alarmDismissed">
 				<Original>Alarm dismissed.</Original>
 				<German>Alarm abgeschaltet.</German>

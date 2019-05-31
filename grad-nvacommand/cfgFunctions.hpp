@@ -36,7 +36,6 @@ class GRAD_nvacommand {
          class serverLoop { postInit = 1; };
          class towerAlarm;
          class towerGetIn;
-         class towerShowOptions;
 
     };
 };
