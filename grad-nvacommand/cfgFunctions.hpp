@@ -13,13 +13,15 @@ class GRAD_nvacommand {
         class curatorTowerHandler;
         class curatorTowerInterfaceCreate;
         class deselectAllTowers;
-        class forceDefaultMap { postInit = 1; };    	
+        class forceDefaultMap { postInit = 1; };    
+        class GUI_refreshSelects;	
     	class initMap;
         class raiseAlarm;
         class repairFence;
         class towerCenterSelected;
         class towerSelectTarget;
         class towerGetNearest;
+        class towerIsAlarmed;
         class zeusSelectDestination;
   	};
 
