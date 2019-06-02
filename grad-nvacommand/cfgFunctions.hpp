@@ -9,11 +9,13 @@ class GRAD_nvacommand {
         class alarmSetSector;
         class alarmSetTower;
         class curatorInterfaceDetection;
-        class curatorOnClick;
-        class curatorTowerHandler;
-        class curatorTowerInterfaceCreate;
+        class curatorOnSelect;
+        class curatorOnSelectEH;
+        class curatorInterfaceInfantryCreate;
+        class curatorInterfaceTowerCreate;
         class deselectAllTowers;
         class forceDefaultMap { postInit = 1; };    
+        class GUI_dismiss;
         class GUI_refreshSelects;	
     	class initMap;
         class raiseAlarm;
