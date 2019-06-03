@@ -102,7 +102,7 @@ private _searchLights = [];
 	} forEach _newTowers;
 
      // make curator selectable
-    [_x] call GRAD_nvaCommand_fnc_curatorTowerHandler;
+    [_x] call GRAD_nvaCommand_fnc_curatorOnSelectEH;
     [] call GRAD_nvaCommand_fnc_curatorInterfaceDetection;
 
 } forEach allCurators;

@@ -3,7 +3,7 @@ private _tower = missionNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTT
 if (!isNull _tower) then {
 	diag_log format ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_SELECTED %1", _tower];
 
-	private _positionAboveBehind = _tower getPos [75, ((curatorCamera getDir _tower) - 90)];
+	private _positionAboveBehind = _tower getPos [75, 220];
 	_positionAboveBehind set [2,50];
 	[_positionAboveBehind, _tower, 1] spawn BIS_fnc_setCuratorCamera;
 };

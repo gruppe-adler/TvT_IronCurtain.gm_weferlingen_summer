@@ -5,7 +5,7 @@ private _dummyTarget = _newTower getVariable ["GRAD_nvaCommand_towerDummyTarget"
 
 private _fakeRunners = missionNamespace getVariable ["GRAD_nvaCommand_fakeRunners", []];
 _fakeRunners pushBackUnique [_fakeRunner];
-missionNamespace getVariable ["GRAD_nvaCommand_fakeRunners", _fakeRunners, true];
+missionNamespace setVariable ["GRAD_nvaCommand_fakeRunners", _fakeRunners, true];
 
 [{
     params ["_args", "_handle"];

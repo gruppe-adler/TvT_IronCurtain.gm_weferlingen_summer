@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=696;
+		nextID=699;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={13380.188,78.334633,15846.365};
-		dir[]={0.021233825,-0.52110142,-0.85323906};
-		up[]={0.012963844,0.85349017,-0.52094722};
-		aside[]={-0.99969721,9.3954441e-008,-0.024878547};
+		pos[]={10582.786,172.38832,17513.283};
+		dir[]={-0.077427864,-0.76014084,0.64528674};
+		up[]={-0.090556599,0.64975446,0.75471812};
+		aside[]={0.99297124,1.6452832e-006,0.11914156};
 	};
 };
 binarizationWanted=0;
@@ -249,7 +249,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=261;
+		items=264;
 		class Item0
 		{
 			dataType="Group";
@@ -1802,7 +1802,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={10604.003,69.921593,17029.773};
+				position[]={10601.939,69.905899,17028.945};
 			};
 			side="Empty";
 			flags=5;
@@ -1811,7 +1811,6 @@ class Mission
 			};
 			id=203;
 			type="land_gm_fence_railing_02_200";
-			atlOffset=-7.6293945e-006;
 		};
 		class Item112
 		{
@@ -5621,11 +5620,58 @@ class Mission
 			class PositionInfo
 			{
 				position[]={13667.42,73.553886,16434.578};
-				angles[]={-0,0,0.013999403};
+				angles[]={0,0,0.013999403};
 			};
 			init="call{[this] call GRAD_nvacommand_fnc_addSectorPoint;}";
 			id=695;
 			type="Logic";
+		};
+		class Item261
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={10599.943,69.900658,17028.912};
+				angles[]={0,6.2318201,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=696;
+			type="land_gm_fence_railing_01_200";
+		};
+		class Item262
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={10597.889,69.900894,17028.793};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=697;
+			type="land_gm_fence_railing_02_200";
+		};
+		class Item263
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={10596.448,69.899117,17029.684};
+				angles[]={0,1.104058,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=698;
+			type="land_gm_fence_railing_02_200";
 		};
 	};
 	class Connections

@@ -4,14 +4,14 @@ private _allTowers =  missionNamespace getVariable ["GRAD_nvaCommand_towerList",
 {
     private _control = _x;
     private _towerID = _control getVariable ["IC_GUI_TOWERASSIGNED", -1];
+    private _tower = _allTowers select _towerID;
 
     // set all controls to default state
     _control ctrlSetBackgroundColor (_control getVariable ["IC_GUI_BGCOLOR", [0,0,0,0.5]]);
     _control ctrlSetTextColor (_control getVariable ["IC_GUI_TEXTCOLOR", [1,1,1,0.7]]);
     
     // set colors control for selected and alarmed
-    if (missionNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_SELECTED", objNull] ==
-        _allTowers select _towerID) then {
+    if (missionNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_SELECTED", objNull] == _tower) then {
 
         // active control is white with black/red text
         _control ctrlSetBackgroundColor [1,1,1,1];

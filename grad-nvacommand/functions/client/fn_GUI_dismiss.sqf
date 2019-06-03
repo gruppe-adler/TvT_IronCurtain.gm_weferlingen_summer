@@ -1,6 +1,6 @@
 private _type = "default";
 
-if (!isNull missionNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_SELECTED", objNull]) then {
+if (!isNull (missionNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_SELECTED", objNull])) then {
     _type = "tower";
 };
 
