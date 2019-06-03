@@ -244,7 +244,7 @@ private _allGUISelects = [];
         private _allTowers = missionNamespace getVariable ["GRAD_nvaCommand_towerList", []];
         private _selectedTower = _allTowers select _tower;
         diag_log format ["GUI SELECT: selected Tower %1", _selectedTower];
-        [_selectedTower] call GRAD_nvacommand_fnc_curatorOnClick;
+        [_selectedTower] call GRAD_nvacommand_fnc_curatorOnSelect;
 
         [] call GRAD_nvacommand_fnc_GUI_refreshSelects;
     }]; 
