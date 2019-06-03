@@ -11,6 +11,7 @@ class GRAD_nvacommand {
         class curatorInterfaceDetection;
         class curatorOnSelect;
         class curatorOnSelectEH;
+        class curatorSetCamera;
         class curatorInterfaceInfantryCreate;
         class curatorInterfaceTowerCreate;
         class deselectAllTowers;

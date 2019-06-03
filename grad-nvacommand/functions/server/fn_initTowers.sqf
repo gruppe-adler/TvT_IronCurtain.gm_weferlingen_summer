@@ -7,7 +7,8 @@ private _towers =
     ([0, worldSize/2] nearObjects ["land_gm_tower_bt_6_fuest_80", worldsize]);
 
 // sort to build a line
-_towers = [_towers, [], { [worldSize/2, 0] distance _x }, "ASCEND"] call BIS_fnc_sortBy;
+_towers = [_towers, [], { [worldSize/2, 0] distance _x }, "DESCEND"] call BIS_fnc_sortBy;
+_towers resize 10;
 
 private _newTowers = [];
 private _searchLights = [];

@@ -4,7 +4,7 @@ if (GRAD_nvaCommand_zeusSelectDestinationRunning) exitWith {};
 
 // if no object is selected, dismiss all existing GUIs
 if (isNull _entity) exitWith {
-         [] call GRAD_nvaCommand_fnc_GUI_dismiss;
+        [] call GRAD_nvaCommand_fnc_GUI_dismiss;
 };
 
 
