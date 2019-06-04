@@ -1,6 +1,6 @@
 params ["_unit"];
 
-private _nextState = _unit getVariable ["IC_respawnAs", "civilian_east"];
+private _nextState = _unit getVariable ["IC_respawnAs", "civilianEast"];
 
 switch (_nextState) do { 
     case "civilianEast" : {

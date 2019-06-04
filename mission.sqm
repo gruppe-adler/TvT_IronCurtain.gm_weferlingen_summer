@@ -8,18 +8,18 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=703;
+		nextID=712;
 	};
 	class MarkerIDProvider
 	{
-		nextID=36;
+		nextID=37;
 	};
 	class Camera
 	{
-		pos[]={10633.915,154.55453,17375.945};
-		dir[]={-0.8027848,-0.45620424,-0.38421693};
-		up[]={-0.41155207,0.88983607,-0.19696897};
-		aside[]={-0.43174478,-2.9036892e-007,0.90209997};
+		pos[]={14294.297,73.446915,19288.58};
+		dir[]={0.84158373,-0.12399212,-0.52573997};
+		up[]={0.10516592,0.99227971,-0.06569761};
+		aside[]={-0.52982783,-2.9802322e-007,-0.84812796};
 	};
 };
 binarizationWanted=0;
@@ -50,13 +50,14 @@ addons[]=
 	"gm_vehicles_land_wheeled_typ1_ge_civ_typ1",
 	"A3_Structures_F_Walls",
 	"ace_logistics_wirecutter",
-	"gm_characters_gc_characters"
+	"gm_characters_gc_characters",
+	"gm_vehicles_land_wheeled_bicycle_ge_civ_bicycle"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=24;
+		items=25;
 		class Item0
 		{
 			className="gm_characters_gc_civilians";
@@ -217,6 +218,13 @@ class AddonsMetaData
 			author="Global Mobilization";
 			url="global-mobilization.com";
 		};
+		class Item24
+		{
+			className="gm_vehicles_land_wheeled_bicycle_ge_civ_bicycle";
+			name="gm_vehicles_land_wheeled_bicycle_ge_civ_bicycle";
+			author="Global Mobilization";
+			url="global-mobilization.com";
+		};
 	};
 };
 randomSeed=200016;
@@ -249,7 +257,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=268;
+		items=274;
 		class Item0
 		{
 			dataType="Group";
@@ -5711,6 +5719,104 @@ class Mission
 			type="respawn_unknown";
 			colorName="ColorCIV";
 			id=702;
+		};
+		class Item268
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14300.145,74.385414,19284.049};
+				angles[]={6.2771854,5.2284064,6.2731905};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=703;
+			type="gm_gc_civ_p601";
+		};
+		class Item269
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14257.579,74.424942,18992.047};
+				angles[]={0.013999403,0,6.2791886};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=707;
+			type="gm_ge_civ_typ1200";
+		};
+		class Item270
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14308.929,74.241226,18995.771};
+				angles[]={0.015998369,0,6.2731848};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=708;
+			type="gm_gc_bgs_p601";
+		};
+		class Item271
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14300.792,74.391022,19285.797};
+				angles[]={6.2751846,5.2747812,6.2731905};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=709;
+			type="gm_gc_pol_p601";
+		};
+		class Item272
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14303.959,72.770126,19290.045};
+				angles[]={6.2751846,5.2747812,6.2731905};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=710;
+			type="gm_xx_civ_bicycle_01";
+			atlOffset=1.5258789e-005;
+		};
+		class Item273
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14303.329,72.764923,19288.607};
+				angles[]={6.2751846,5.2747812,6.2731905};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=711;
+			type="gm_ge_pol_bicycle_01_grn";
+			atlOffset=1.5258789e-005;
 		};
 	};
 	class Connections
