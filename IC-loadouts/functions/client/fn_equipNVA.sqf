@@ -1,3 +1,3 @@
 params ["_unit"];
 
-_unit setUnitLoadout "gc_bgs_rifleman_mpikm72_80_str";
+_unit setUnitLoadout (configfile >> "CfgVehicles" >> "gm_gc_bgs_rifleman_mpikm72_80_str");

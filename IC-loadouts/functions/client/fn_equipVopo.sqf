@@ -22,7 +22,7 @@ private _loadout =
         [],
         [],
         [_handGun,"","","",[_handGunAmmo,8],[],""],
-        [_uniform,[["gm_gc_army_gauzeBandage",1],["gm_gc_army_medkit",1],["gm_8Rnd_9x18mm_B_pst_pm_blk",12,8]],
+        [_uniform,[["gm_gc_army_gauzeBandage",1],["gm_gc_army_medkit",1],["gm_8Rnd_9x18mm_B_pst_pm_blk",12,8]]],
         [],
         [],_headGear,_glasses,[_bino,"","","",[],[],""],
         ["","","",_compass,_watch,""]

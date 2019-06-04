@@ -1,5 +1,12 @@
 enableDebugConsole = 1;
 
+respawn = 3;
+respawnDelay = 9999;
+respawnTemplates[] = {"Base"};
+respawnOnStart = -1;//Dont respawn on start.
+respawnDialog = 0;
+respawnButton = 0;
+
 #define MODULES_DIRECTORY node_modules
 
 // dialogs
@@ -14,6 +21,7 @@ class cfgFunctions {
     #include "grad-stasi\cfgFunctions.hpp"
     #include "grad-landline\cfgFunctions.hpp"
     #include "IC-missionFlow\cfgFunctions.hpp"
+    #include "IC-loadouts\cfgFunctions.hpp"
 };
 
 class cfgSounds {

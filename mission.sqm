@@ -8,18 +8,18 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=699;
+		nextID=703;
 	};
 	class MarkerIDProvider
 	{
-		nextID=35;
+		nextID=36;
 	};
 	class Camera
 	{
-		pos[]={10633.915,172.38832,17375.945};
-		dir[]={-0.64857626,-0.41517901,-0.63810998};
-		up[]={-0.2959989,0.90970075,-0.29121971};
-		aside[]={-0.70139444,-5.7154102e-007,0.71290529};
+		pos[]={10633.915,154.55453,17375.945};
+		dir[]={-0.8027848,-0.45620424,-0.38421693};
+		up[]={-0.41155207,0.88983607,-0.19696897};
+		aside[]={-0.43174478,-2.9036892e-007,0.90209997};
 	};
 };
 binarizationWanted=0;
@@ -249,7 +249,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=264;
+		items=268;
 		class Item0
 		{
 			dataType="Group";
@@ -5672,6 +5672,45 @@ class Mission
 			};
 			id=698;
 			type="land_gm_fence_railing_02_200";
+		};
+		class Item264
+		{
+			dataType="Marker";
+			position[]={13982.121,81.142769,19562.445};
+			name="respawn_west";
+			type="respawn_unknown";
+			colorName="ColorWEST";
+			id=699;
+			atlOffset=7.6872177;
+		};
+		class Item265
+		{
+			dataType="Marker";
+			position[]={14199.923,79.708626,19481.176};
+			name="respawn_east";
+			type="respawn_unknown";
+			colorName="ColorEAST";
+			id=700;
+			atlOffset=7.6872177;
+		};
+		class Item266
+		{
+			dataType="Marker";
+			position[]={13952.861,81.64682,19278};
+			name="respawn_independent";
+			type="respawn_unknown";
+			colorName="ColorGUER";
+			id=701;
+			atlOffset=7.6872177;
+		};
+		class Item267
+		{
+			dataType="Marker";
+			position[]={14147.907,73.490021,19281.252};
+			name="respawn_civilian";
+			type="respawn_unknown";
+			colorName="ColorCIV";
+			id=702;
 		};
 	};
 	class Connections
