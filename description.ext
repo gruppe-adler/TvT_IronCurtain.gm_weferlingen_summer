@@ -13,6 +13,7 @@ class cfgFunctions {
     #include "node_modules\grad-gpsTracker\cfgFunctions.hpp"
     #include "grad-stasi\cfgFunctions.hpp"
     #include "grad-landline\cfgFunctions.hpp"
+    #include "IC-missionFlow\cfgFunctions.hpp"
 };
 
 class cfgSounds {
