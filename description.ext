@@ -34,3 +34,23 @@ class rscTitles {
     // displays
     #include "grad-nvacommand\cfgDisplays.hpp"
 };
+
+
+class CfgSFX
+{
+    class pressTon7512
+    {
+        // {soundPath, soundVolume, soundPitch, maxDistance, probability, loopminDelay, loopmidDelay, loopmaxDelay}
+        sound0[] = {"grad-vopo\sounds\presston7512_loop.ogg", db+5, 1.0, 1000, 1, 0, 0, 0};  // path to addon sound
+        sounds[] = {sound0};
+        empty[] = {"", 0, 0, 0, 0, 0, 0, 0};
+    };
+};
+
+class CfgVehicles
+{
+    class pressTon7512Sound // class name to be used with createSoundSource
+    {
+        sound = "pressTon7512"; // reference to CfgSFX class
+    };
+};
