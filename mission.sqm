@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=948;
+		nextID=974;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={15588.999,86.793121,18691.223};
-		dir[]={0.85086447,-0.52439666,-0.03380755};
-		up[]={0.52401078,0.85145837,-0.020819856};
-		aside[]={-0.039703991,-8.2293991e-007,-0.99926615};
+		pos[]={22993.395,66.677574,21516.766};
+		dir[]={0.015574865,-0.42915675,0.90322357};
+		up[]={0.0074018999,0.90316111,0.42918608};
+		aside[]={0.99993962,-8.2999759e-007,-0.017244717};
 	};
 };
 binarizationWanted=0;
@@ -54,7 +54,8 @@ addons[]=
 	"A3_Structures_F_Naval_Piers",
 	"A3_Structures_F_Exp_Infrastructure_Pavements",
 	"CUP_Editor_A1_Roads_Config",
-	"A3_Structures_F_Enoch_VR_Helpers"
+	"A3_Structures_F_Enoch_VR_Helpers",
+	"A3_Modules_F_Effects"
 };
 class AddonsMetaData
 {
@@ -274,7 +275,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=281;
+		items=297;
 		class Item0
 		{
 			dataType="Group";
@@ -6512,6 +6513,531 @@ class Mission
 					};
 				};
 				nAttributes=11;
+			};
+		};
+		class Item281
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={22990.24,63.189545,21519.258};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=949;
+			type="land_gm_euro_shed_03";
+		};
+		class Item282
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={22993.746,64.294121,21518.338};
+				angles[]={-0,3.1650784,-0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=950;
+			type="land_gm_euro_furniture_chair_04";
+		};
+		class Item283
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={22993.9,64.294121,21521.629};
+				angles[]={-0,0.0042552939,-0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=951;
+			type="land_gm_euro_furniture_chair_04";
+		};
+		class Item284
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={22993.844,64.288086,21520.576};
+				angles[]={-0,3.1415927,-0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=953;
+			type="land_gm_euro_furniture_desk_01";
+		};
+		class Item285
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={22994.359,65.147758,21520.625};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=954;
+			type="land_gm_euro_furniture_lampfixture_03";
+		};
+		class Item286
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={22993.742,67.225677,21519.473};
+				angles[]={0,1.5774896,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+			};
+			id=956;
+			type="land_gm_euro_furniture_lampfixture_02";
+			atlOffset=2.8634949;
+		};
+		class Item287
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={22993.859,65.147522,21520.701};
+				angles[]={0,3.5543292,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=957;
+			type="land_gm_euro_furniture_newspaper_01";
+		};
+		class Item288
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={22995.338,64.288254,21522.281};
+				angles[]={-0,3.1024561,-0};
+			};
+			side="Empty";
+			class Attributes
+			{
+			};
+			id=960;
+			type="land_gm_euro_furniture_shelf_10";
+			atlOffset=1.0038567;
+		};
+		class Item289
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={22993.297,65.147758,21520.48};
+				angles[]={0,3.8714924,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=961;
+			type="land_gm_euro_furniture_telephone_01";
+		};
+		class Item290
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={22991.928,65.161568,21520.193};
+				angles[]={0,4.7111931,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+			};
+			id=962;
+			type="land_gm_euro_furniture_calendar_01";
+			atlOffset=1.9391022;
+		};
+		class Item291
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={22994.498,64.289528,21521.99};
+						angles[]={0,3.1241729,0};
+					};
+					side="East";
+					flags=7;
+					class Attributes
+					{
+					};
+					id=966;
+					type="gm_gc_army_officer_80_gry";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=965;
+		};
+		class Item292
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={22993.799,64.289528,21519.211};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+					};
+					id=968;
+					type="gm_gc_civ_man_01_80_blk";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=967;
+		};
+		class Item293
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={22993.486,65.147758,21520.75};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=969;
+			type="land_gm_euro_furniture_ashtray_01";
+		};
+		class Item294
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={22994.332,65.422928,21520.605};
+				angles[]={4.7132859,3.1417882,1.5690358};
+			};
+			side="Empty";
+			flags=1;
+			class Attributes
+			{
+			};
+			id=970;
+			type="Reflector_Cone_01_Long_white_F";
+			atlOffset=0.2511673;
+		};
+		class Item295
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={22993.898,66.179955,21522.535};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="call{this setObjectTextureGlobal [0, ""grad-stasi\data\honni2.paa""];}";
+			};
+			id=972;
+			type="land_gm_euro_furniture_picture_06";
+			atlOffset=1.545578;
+		};
+		class Item296
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={22993.492,65.148132,21520.744};
+			};
+			id=973;
+			type="ModuleEffectsSmoke_F";
+			atlOffset=0.00037384033;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleEffectsSmoke_F_ParticleLifeTime";
+					expression="_this setVariable ['ParticleLifeTime',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=50;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleEffectsSmoke_F_ParticleLifting";
+					expression="_this setVariable ['ParticleLifting',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0.0099999998;
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ModuleEffectsSmoke_F_ColorAlpha";
+					expression="_this setVariable ['ColorAlpha',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0.2;
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ModuleEffectsSmoke_F_ColorBlue";
+					expression="_this setVariable ['ColorBlue',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0.5;
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="ModuleEffectsSmoke_F_Timeout";
+					expression="_this setVariable ['Timeout',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute5
+				{
+					property="ModuleEffectsSmoke_F_Expansion";
+					expression="_this setVariable ['Expansion',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute6
+				{
+					property="ModuleEffectsSmoke_F_ColorRed";
+					expression="_this setVariable ['ColorRed',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0.2;
+						};
+					};
+				};
+				class Attribute7
+				{
+					property="ModuleEffectsSmoke_F_ParticleDensity";
+					expression="_this setVariable ['ParticleDensity',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=10;
+						};
+					};
+				};
+				class Attribute8
+				{
+					property="ModuleEffectsSmoke_F_ColorGreen";
+					expression="_this setVariable ['ColorGreen',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0.2;
+						};
+					};
+				};
+				class Attribute9
+				{
+					property="ModuleEffectsSmoke_F_EffectSize";
+					expression="_this setVariable ['EffectSize',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0.0099999998;
+						};
+					};
+				};
+				class Attribute10
+				{
+					property="ModuleEffectsSmoke_F_ParticleSpeed";
+					expression="_this setVariable ['ParticleSpeed',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0.001;
+						};
+					};
+				};
+				class Attribute11
+				{
+					property="ModuleEffectsSmoke_F_ParticleSize";
+					expression="_this setVariable ['ParticleSize',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0.0099999998;
+						};
+					};
+				};
+				class Attribute12
+				{
+					property="ModuleEffectsSmoke_F_WindEffect";
+					expression="_this setVariable ['WindEffect',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				nAttributes=13;
 			};
 		};
 	};

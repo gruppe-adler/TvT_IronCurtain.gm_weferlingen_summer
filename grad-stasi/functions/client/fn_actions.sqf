@@ -5,5 +5,7 @@
 player setVariable ['GRAD_stasi_trackerCount', 1];
 // todo handle vehicles spawned at runtime
 {
-    [_x] call GRAD_stasi_fnc_actionTrackingDevice;
+    if (_x isKindOf "Car_F") then {
+        [_x] call GRAD_stasi_fnc_actionTrackingDevice;
+    };
 } forEach vehicles;
