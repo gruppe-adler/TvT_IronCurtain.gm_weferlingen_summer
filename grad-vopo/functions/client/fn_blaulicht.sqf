@@ -52,27 +52,29 @@ private _positionRight = [-0.6,-0.2,0.15];
 
 
 
-private _reflectorLeftBlue = "Reflector_Cone_01_narrow_blue_F" createVehicle [0,0,0];
+private _reflectorLeftBlue = "Reflector_Cone_01_narrow_blue_F" createVehicleLocal [0,0,0];
 _reflectorLeftBlue attachTo [_car, _positionLeft];
 
-private _reflectorRightBlue = "Reflector_Cone_01_narrow_blue_F" createVehicle [0,0,0];
+private _reflectorRightBlue = "Reflector_Cone_01_narrow_blue_F" createVehicleLocal [0,0,0];
 _reflectorRightBlue attachTo [_car, _positionRight];
 
-private _reflectorLeftBlue2 = "Reflector_Cone_01_wide_blue_F" createVehicle [0,0,0];
+private _reflectorLeftBlue2 = "Reflector_Cone_01_wide_blue_F" createVehicleLocal [0,0,0];
 _reflectorLeftBlue attachTo [_car, _positionLeft];
 
-private _reflectorRightBlue2 = "Reflector_Cone_01_wide_blue_F" createVehicle [0,0,0];
+private _reflectorRightBlue2 = "Reflector_Cone_01_wide_blue_F" createVehicleLocal [0,0,0];
 _reflectorRightBlue attachTo [_car, _positionRight];
 
 
-private _reflectorLeftWhite = "Reflector_Cone_01_wide_blue_F" createVehicle [0,0,0];
+private _reflectorLeftWhite = "Reflector_Cone_01_wide_blue_F" createVehicleLocal [0,0,0];
 _reflectorLeftWhite attachTo [_car, _positionLeft];
 
-private _reflectorRightWhite = "Reflector_Cone_01_wide_blue_F" createVehicle [0,0,0];
+private _reflectorRightWhite = "Reflector_Cone_01_wide_blue_F" createVehicleLocal [0,0,0];
 _reflectorRightWhite attachTo [_car, _positionRight];
+
 
 private _positionLeft = [0.385,-0.255,0.14];
 private _positionRight = [-0.585,-0.255,0.14];
+
 
 private _lightLeft = "#lightpoint" createVehicleLocal _positionLeft;
 _lightLeft setLightFlareSize 0.5;
@@ -92,15 +94,47 @@ _lightRight setLightIntensity 400;
 _lightRight setLightColor [1,1,1];
 _lightRight attachTo [_car, _positionRight];
 
+
 private _lightIntensityLeft = 900;
 private _lightIntensityRight = 30;
+
+
 
 private _soundSource = createSoundSource ["pressTon7512Sound", position _car, [], 0]; 
 _soundSource attachTo [_car];
 
 [{
     params ["_args", "_handle"];
-    _args params ["_car", "_reflectorLeftBlue", "_reflectorRightBlue", "_reflectorRightWhite", "_reflectorLeftWhite", "_reflectorLeftBlue2", "_reflectorRightBlue2", "_lightLeft", "_lightRight"];
+    _args params [
+        "_car",
+        "_reflectorLeftBlue",
+        "_reflectorRightBlue",
+        "_reflectorRightWhite",
+        "_reflectorLeftWhite",
+        "_reflectorLeftBlue2",
+        "_reflectorRightBlue2", 
+        "_lightLeft", 
+        "_lightRight"
+    ];
+
+
+    if (!(_car getVariable ["IC_vopo_blaulicht", false])) exitWith {
+    
+        {
+          deleteVehicle _x;
+        } forEach [
+            _reflectorLeftBlue,
+            _reflectorRightBlue,
+            _reflectorRightWhite,
+            _reflectorLeftWhite,
+            _reflectorLeftBlue2,
+            _reflectorRightBlue2,
+            _lightLeft,
+            _lightRight
+        ];
+        
+        [_handle] call CBA_fnc_removePerFrameHandler;
+    };
 
     private _rotationLeft = _car getVariable ["rotationLeft", 0];
     private _rotationRight = _car getVariable ["rotationRight", 90];
@@ -109,11 +143,13 @@ _soundSource attachTo [_car];
     _car setVariable ["rotationLeft", _rotationLeft];
     _car setVariable ["rotationRight", _rotationRight];
 
+    
     _lightIntensityLeft = sin _rotationLeft * 400;
     _lightIntensityRight = sin _rotationRight * 400;
 
     _lightLeft setLightIntensity _lightIntensityLeft; 
     _lightRight setLightIntensity _lightIntensityRight; 
+    
 
    
     [_reflectorLeftBlue,[0,0,_rotationLeft+270]] call fnc_SetPitchBankYaw;
@@ -125,4 +161,14 @@ _soundSource attachTo [_car];
     [_reflectorLeftWhite,[0,0,_rotationLeft]] call fnc_SetPitchBankYaw;
     [_reflectorRightWhite,[0,0,_rotationRight]] call fnc_SetPitchBankYaw;
 
-}, 0, [_car, _reflectorLeftBlue, _reflectorRightBlue, _reflectorRightWhite, _reflectorLeftWhite, _reflectorLeftBlue2, _reflectorRightBlue2, _lightLeft, _lightRight]] call CBA_fnc_addPerFrameHandler;
+}, 0, [
+    _car, 
+    _reflectorLeftBlue, 
+    _reflectorRightBlue, 
+    _reflectorRightWhite, 
+    _reflectorLeftWhite, 
+    _reflectorLeftBlue2, 
+    _reflectorRightBlue2, 
+    _lightLeft, 
+    _lightRight]
+] call CBA_fnc_addPerFrameHandler;

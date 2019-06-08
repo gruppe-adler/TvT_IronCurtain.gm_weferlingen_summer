@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=947;
+		nextID=948;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={15075.583,148.1713,18876.309};
-		dir[]={-0.20635621,-0.65504277,0.72688901};
-		up[]={-0.17889522,0.75557876,0.63015622};
-		aside[]={0.96200454,-4.1740714e-007,0.27310207};
+		pos[]={15588.999,86.793121,18691.223};
+		dir[]={0.85086447,-0.52439666,-0.03380755};
+		up[]={0.52401078,0.85145837,-0.020819856};
+		aside[]={-0.039703991,-8.2293991e-007,-0.99926615};
 	};
 };
 binarizationWanted=0;
@@ -274,7 +274,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=283;
+		items=281;
 		class Item0
 		{
 			dataType="Group";
@@ -287,7 +287,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={15009.686,73.83268,18953.957};
+						position[]={15010.868,73.84848,18952.527};
 						angles[]={0,2.0453436,0};
 					};
 					side="Civilian";
@@ -5890,7 +5890,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={15564.682,74.261444,18709.49};
+						position[]={15564.672,74.261444,18709.494};
 						angles[]={0,5.1117029,0};
 					};
 					side="Civilian";
@@ -5906,7 +5906,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={15564.682,74.261444,18709.49};
+						position[]={15564.672,74.261444,18709.494};
 						angles[]={0,5.1117029,0};
 					};
 					side="Civilian";
@@ -5965,25 +5965,23 @@ class Mission
 				};
 			};
 			id=921;
-			atlOffset=-3.0517578e-005;
 		};
 		class Item278
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15564.672,75.882545,18709.443};
+				position[]={15564.672,75.882576,18709.443};
 				angles[]={0,5.1117029,0};
 			};
 			side="Civilian";
 			flags=6;
 			class Attributes
 			{
-				init="call{[this] execVM ""grad-vopo\functions\client\fn_siren.sqf"";}";
+				init="call{this setVariable [""IC_vopo_motorsirene"", true, true];         " \n "        [this] spawn GRAD_vopo_fnc_motorsirene; this setVariable [""IC_vopo_blaulicht"", true, true];         " \n "        [this] spawn GRAD_vopo_fnc_blaulicht;}";
 			};
 			id=922;
 			type="gm_gc_pol_p601";
-			atlOffset=-3.0517578e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -6210,7 +6208,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={15623.342,74.31144,18682.703};
+						position[]={15623.335,74.31144,18682.709};
 						angles[]={0,5.1117029,0};
 					};
 					side="Civilian";
@@ -6226,7 +6224,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={15623.342,74.31144,18682.703};
+						position[]={15623.335,74.31144,18682.709};
 						angles[]={0,5.1117029,0};
 					};
 					side="Civilian";
@@ -6285,334 +6283,23 @@ class Mission
 				};
 			};
 			id=925;
-			atlOffset=-2.2888184e-005;
 		};
 		class Item280
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15623.335,75.932549,18682.658};
+				position[]={15623.335,75.932571,18682.658};
 				angles[]={0,5.1117029,0};
 			};
 			side="Civilian";
 			flags=6;
 			class Attributes
 			{
-				init="call{[this] execVM ""grad-vopo\functions\client\fn_siren.sqf"";}";
+				init="call{this setVariable [""IC_vopo_presston"", true, true];         " \n "        [this] spawn GRAD_vopo_fnc_presston; this setVariable [""IC_vopo_blaulicht"", true, true];         " \n "        [this] spawn GRAD_vopo_fnc_blaulicht;}";
 			};
 			id=928;
 			type="gm_gc_pol_p601";
-			atlOffset=-2.2888184e-005;
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="gm_vehicleMarkings_Insignias_MissionLarge_attribute";
-					expression="[_this,_value,3,1] call gm_core_vehicles_fnc_vehicleMarkingsUpdateAttributes;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="-1";
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="gm_vehicleMarkings_Insignias_nation_attribute";
-					expression="[_this,_value,5,0] call gm_core_vehicles_fnc_vehicleMarkingsUpdateAttributes;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="-1";
-						};
-					};
-				};
-				class Attribute2
-				{
-					property="gm_vehicleMarkings_tacticalNumber_Number_attribute";
-					expression="[_this,_value,2,0] spawn gm_core_vehicles_fnc_vehicleMarkingsUpdateAttributes;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="-1";
-						};
-					};
-				};
-				class Attribute3
-				{
-					property="gm_vehicleMarkings_LicensePlates_Numbers_attribute";
-					expression="[_this,_value,0,1] spawn gm_core_vehicles_fnc_vehicleMarkingsUpdateAttributes;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="-1";
-						};
-					};
-				};
-				class Attribute4
-				{
-					property="gm_vehicleMarkings_Insignias_Company_attribute";
-					expression="[_this,_value,3,4] call gm_core_vehicles_fnc_vehicleMarkingsUpdateAttributes;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="-1";
-						};
-					};
-				};
-				class Attribute5
-				{
-					property="gm_vehicleMarkings_Insignias_Battalion_attribute";
-					expression="[_this,_value,3,3] call gm_core_vehicles_fnc_vehicleMarkingsUpdateAttributes;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="-1";
-						};
-					};
-				};
-				class Attribute6
-				{
-					property="ammoBox";
-					expression="[_this,_value] call bis_fnc_initAmmoBox;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="[[[[""FirstAidKit""],[1]],[[],[]],[[],[]],[[],[]]],false]";
-						};
-					};
-				};
-				class Attribute7
-				{
-					property="gm_vehicleMarkings_Insignias_Platoon_attribute";
-					expression="[_this,_value,3,5] call gm_core_vehicles_fnc_vehicleMarkingsUpdateAttributes;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="-1";
-						};
-					};
-				};
-				class Attribute8
-				{
-					property="gm_vehicleMarkings_Insignias_MissionSmall_attribute";
-					expression="[_this,_value,3,0] call gm_core_vehicles_fnc_vehicleMarkingsUpdateAttributes;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="-1";
-						};
-					};
-				};
-				class Attribute9
-				{
-					property="gm_vehicleMarkings_Insignias_Marking_attribute";
-					expression="[_this,_value,3,2] call gm_core_vehicles_fnc_vehicleMarkingsUpdateAttributes;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="-1";
-						};
-					};
-				};
-				class Attribute10
-				{
-					property="gm_vehicleMarkings_tacticalNumber_Numberfont_attribute";
-					expression="[_this,_value,2,1] spawn gm_core_vehicles_fnc_vehicleMarkingsUpdateAttributes;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="-1";
-						};
-					};
-				};
-				nAttributes=11;
-			};
-		};
-		class Item281
-		{
-			dataType="Group";
-			side="Civilian";
-			class Entities
-			{
-				items=2;
-				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={15042.806,72.253494,18985.547};
-						angles[]={0.015998369,5.1117029,0};
-					};
-					side="Civilian";
-					flags=4;
-					class Attributes
-					{
-					};
-					id=944;
-					type="gm_gc_pol_officer_80_blu";
-				};
-				class Item1
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={15042.806,72.253494,18985.547};
-						angles[]={0.015998369,5.1117029,0};
-					};
-					side="Civilian";
-					flags=6;
-					class Attributes
-					{
-					};
-					id=945;
-					type="gm_gc_pol_officer_80_blu";
-				};
-			};
-			class Attributes
-			{
-			};
-			class CrewLinks
-			{
-				class LinkIDProvider
-				{
-					nextID=2;
-				};
-				class Links
-				{
-					items=2;
-					class Item0
-					{
-						linkID=0;
-						item0=944;
-						item1=946;
-						class CustomData
-						{
-							role=1;
-						};
-					};
-					class Item1
-					{
-						linkID=1;
-						item0=945;
-						item1=946;
-						class CustomData
-						{
-							role=2;
-							turretPath[]={0};
-						};
-					};
-				};
-			};
-			id=943;
-			atlOffset=-0.00073242188;
-		};
-		class Item282
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={15042.809,73.87291,18985.57};
-				angles[]={0.015998369,5.1117029,0};
-			};
-			side="Civilian";
-			flags=6;
-			class Attributes
-			{
-				init="call{[this] execVM ""grad-vopo\functions\client\fn_siren.sqf"";}";
-			};
-			id=946;
-			type="gm_gc_pol_p601";
-			atlOffset=-0.00073242188;
 			class CustomAttributes
 			{
 				class Attribute0
