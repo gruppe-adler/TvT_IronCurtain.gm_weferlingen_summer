@@ -1,4 +1,4 @@
-#include "node_modules\grad-passport\dialog\dialog.hpp"
+#include "..\node_modules\grad-passport\dialog\dialog.hpp"
 
 class DDR_Reisepass: grad_passport_defaultPassport {
     class ControlsBackground: ControlsBackground {
