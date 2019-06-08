@@ -1,0 +1,10 @@
+{
+  "name": "tvt-ironcurtain",
+  "description": "Asymmetric TvT scenario for Arma3",
+  "version": "0.0.1",
+  "dependencies": {
+    "grad-advancedlockpicking": "0.0.1",
+    "grad-gpstracker": "^0.2.0",
+    "grad-passport": "0.0.3"
+  }
+}
