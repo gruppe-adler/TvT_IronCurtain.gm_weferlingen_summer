@@ -54,21 +54,21 @@ class CfgGradAdvancedLockpicking {
 
     canUseWantedListCondition = "true";             // condition for ability to use the wantedList; passed params are [unit]; condition and sides are logically connected by OR
     canUseWantedListSides[] = {};                   // sides that can use the wanted list by default; e.g. {"WEST","EAST","INDEPENDENT","CIVILIAN"}; condition and sides are logically connected by OR
-    wantedListTitle = "GRAD-advancedLockpicking";   // title of wantedList dialog; e.g. "Tanoa Police Theft Tracker"
+    wantedListTitle = "KfZ Fahndungsliste";   // title of wantedList dialog; e.g. "Tanoa Police Theft Tracker"
 
     baseLockpickTimeDefault = 10;                   // base time in seconds for picking locks; time factors are applied to this; -1 to make locks unpickable
     baseSuccessProbabilityDefault = 75;             // base probability in percent for successfully picking locks; success factors are applied to this
 
-    alarmOnSuccessProbabilityDefault = 10;          // probability in percent for vehicle alarm to trigger even when lockpicking was successful; -1 to disable
-    wantedListOnSuccessProbabilityDefault = 50;     // probability in percent for theft to be added to wanted list even when lockpicking was successful; -1 to disable
+    alarmOnSuccessProbabilityDefault = -1;          // probability in percent for vehicle alarm to trigger even when lockpicking was successful; -1 to disable
+    wantedListOnSuccessProbabilityDefault = -1;     // probability in percent for theft to be added to wanted list even when lockpicking was successful; -1 to disable
 
     wantedListDelayOnFailure[] = {0,0};             // min and max delay in seconds for failed thefts to be added to wanted list
     wantedListDelayOnSuccess[] = {10,60};           // min and max delay in seconds for successful thefts to be added to wanted list
 
-    suspectNameProbabilityOnAlarm = 10;             // probability in percent for thief's name to be added to wanted list if vehicle alarm was triggered
+    suspectNameProbabilityOnAlarm = 0;             // probability in percent for thief's name to be added to wanted list if vehicle alarm was triggered
     suspectNameProbabilityOnNoAlarm = 1;            // probability in percent for thief's name to be added to wanted list if vehicle alarm was not triggered
 
-    plateNumberProbability = 90;                    // probability for plate number to be added to wanted list
+    plateNumberProbability = 100;                    // probability for plate number to be added to wanted list
 
     alarmDurationMinMax[] = {10,30};                // min and max duration in seconds for alarm
 
@@ -77,7 +77,7 @@ class CfgGradAdvancedLockpicking {
 
     canPickCar = 1;                                 // make car locks pickable; 0/1
     carTimeFactor = 1;                              // time factor for picking car locks, higher means lockpicking takes longer
-    carSuccessFactor = 1;                           // probability factor for successfully picking car locks, higher means more likely to succeed
+    carSuccessFactor = 0.7;                           // probability factor for successfully picking car locks, higher means more likely to succeed
 
     canPickMotorcycle = 1;
     motorcycleTimeFactor = 0.7;
@@ -87,17 +87,17 @@ class CfgGradAdvancedLockpicking {
     boatTimeFactor = 1;
     boatSuccessFactor = 1;
 
-    canPickTank = 0;
+    canPickTank = 1;
     tankTimeFactor = 5;
-    tankSuccessFactor = 0.5;
+    tankSuccessFactor = 0.1;
 
     canPickHelicopter = 0;
     helicopterTimeFactor = 2;
     helicopterSuccessFactor = 0.9;
 
     canPickPlane = 0;
-    planeTimeFactor = 3;
-    planeSuccessFactor = 0.7;
+    planeTimeFactor = 4;
+    planeSuccessFactor = 0.1;
 };
 
 
