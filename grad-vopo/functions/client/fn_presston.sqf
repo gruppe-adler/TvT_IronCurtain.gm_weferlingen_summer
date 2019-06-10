@@ -25,11 +25,31 @@ sleep 1;
 } forEach crew _car;
 
 
+
+private _sirenEH = [{
+    params ["_args", "_handle"];
+    _args params ["_car"];
+
+    private _nearEntities =  _car nearEntities ["Man", 200];
+
+    {
+        private _cansee = [_car, "VIEW"] checkVisibility [_car, visiblePositionASL _car];
+        
+        if (_cansee) then {
+            ["GRAD_VOPO_SIGNAL", [_car, "motorsirene"], _x] call CBA_fnc_targetEvent;
+        };
+    } forEach _nearEntities;
+    
+}, 2, [_car]] call CBA_fnc_addPerFrameHandler;
+
+
+
 [{
     params ["_car", "_soundSource"];
     !(_car getVariable ["IC_vopo_presston", false])
 
 },{
-    params ["_car", "_soundSource"];
+    params ["_car", "_soundSource", "_sirenEH"];
     deleteVehicle _soundSource;
-}, [_car, _soundSource]] call CBA_fnc_waitUntilAndExecute;
+    [_sirenEH] call CBA_fnc_removePerFrameHandler;
+}, [_car, _soundSource, _sirenEH]] call CBA_fnc_waitUntilAndExecute;

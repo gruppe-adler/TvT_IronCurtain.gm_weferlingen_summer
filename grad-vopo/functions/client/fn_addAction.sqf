@@ -5,7 +5,7 @@ _car addAction [
     "<t color='#333399'>Blaulicht AN</t>", {
         params ["_target", "_caller", "_actionId", "_arguments"];
         _target setVariable ["IC_vopo_blaulicht", true, true];
-        [_target] call GRAD_vopo_fnc_blaulicht;
+        [_target] remoteExec ["GRAD_vopo_fnc_blaulicht", 0];
     },
     [],
     1.5, 
@@ -23,7 +23,6 @@ _car addAction [
     "<t color='#333399'>Blaulicht AUS</t>", {
         params ["_target", "_caller", "_actionId", "_arguments"];
         _target setVariable ["IC_vopo_blaulicht", false, true];
-        [_target] call GRAD_vopo_fnc_blaulicht;
     },
     [],
     1.5, 

@@ -4,6 +4,30 @@
 
 params ["_car"];
 
+// handle CBA events
+if (isServer) then {
+
+    private _sirenEH = [{
+        params ["_args", "_handle"];
+        _args params ["_car"];
+
+        if (!(_car getVariable ["IC_vopo_blaulicht", false])) exitWith {
+            [_handle] call CBA_fnc_removePerFrameHandler;
+        };
+
+        private _nearEntities =  _car nearEntities ["Car", "Motorcycle", 400];
+
+        {
+            private _cansee = [_car, "VIEW"] checkVisibility [_car, visiblePositionASL _car];
+            
+            if (_cansee) then {
+                ["GRAD_VOPO_SIGNAL", [_car, "blaulicht"], _x] call CBA_fnc_targetEvent;
+            };
+        } forEach _nearEntities;
+        
+    }, 2, [_car]] call CBA_fnc_addPerFrameHandler;
+
+};
 
 fnc_SetPitchBankYaw = { 
     private ["_object","_rotations","_aroundX","_aroundY","_aroundZ","_dirX","_dirY",
@@ -83,7 +107,7 @@ _lightLeft setLightUseFlare true;
 _lightLeft setLightAmbient [0, 0, 0];
 _lightLeft setLightIntensity 400; 
 _lightLeft setLightColor [1,1,1];
-_lightLeft attachTo [_car, _positionLeft];
+_lightLeft lightAttachObject [_car, _positionLeft];
 
 private _lightRight = "#lightpoint" createVehicleLocal _positionRight;
 _lightRight setLightFlareSize 0.5;
@@ -92,7 +116,7 @@ _lightRight setLightUseFlare true;
 _lightRight setLightAmbient [0, 0, 0];
 _lightRight setLightIntensity 400; 
 _lightRight setLightColor [1,1,1];
-_lightRight attachTo [_car, _positionRight];
+_lightRight lightAttachObject [_car, _positionRight];
 
 
 private _lightIntensityLeft = 900;
