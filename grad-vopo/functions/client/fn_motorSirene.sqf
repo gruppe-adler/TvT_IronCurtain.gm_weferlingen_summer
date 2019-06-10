@@ -32,7 +32,7 @@ private _sirenEH = [{
     private _nearEntities =  _car nearEntities ["Car", "Motorcycle", 200];
 
     {
-        private _cansee = [_car, "VIEW"] checkVisibility [_car, visiblePositionASL _car];
+        private _cansee = [_car, "VIEW"] checkVisibility [_car, visiblePositionASL _car] > 0.5;
         
         if (_cansee) then {
             ["GRAD_VOPO_SIGNAL", [_car, "presston"], _x] call CBA_fnc_targetEvent;

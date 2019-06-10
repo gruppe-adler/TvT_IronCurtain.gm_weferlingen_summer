@@ -18,7 +18,7 @@ if (isServer) then {
         private _nearEntities =  _car nearEntities ["Car", "Motorcycle", 400];
 
         {
-            private _cansee = [_car, "VIEW"] checkVisibility [_car, visiblePositionASL _car];
+            private _cansee = [_car, "VIEW"] checkVisibility [_car, visiblePositionASL _car] > 0.5;
             
             if (_cansee) then {
                 ["GRAD_VOPO_SIGNAL", [_car, "blaulicht"], _x] call CBA_fnc_targetEvent;
