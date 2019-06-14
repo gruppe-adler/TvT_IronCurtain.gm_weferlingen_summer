@@ -27,7 +27,7 @@ switch (_nextState) do {
 
 private _veh = createVehicle [_vehicleType, position player, [], 2, "NONE"];
 
-// remove sirens on trabant
+// remove sirens on regular trabant
 if (_vehicleType isEqualTo "gm_gc_bgs_p601") then {
     [
         _veh,
@@ -43,6 +43,8 @@ if (_vehicleType isEqualTo "gm_gc_pol_p601") then {
         ["gm_gc_oli",1], 
         ["sirenLights_01_unhide",0]
     ] call BIS_fnc_initVehicle;
+
+    [_veh] call GRAD_vopo_fnc_addAction;
 };
 
 // randomize bike

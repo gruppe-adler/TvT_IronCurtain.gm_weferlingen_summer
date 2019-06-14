@@ -1,3 +1,7 @@
+/*
+    [_car] call GRAD_vopo_fnc_addAction;
+*/
+
 params ["_car"];
 
 // blaulicht
