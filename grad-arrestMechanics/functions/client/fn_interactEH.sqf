@@ -13,8 +13,8 @@ systemChat "interactEH 1";
 //only do stuff if unit is handcuffed
 //(if they somehow get one durring keydown they'll just have to reopen)
 if  (
-        (ACE_player getVariable ["ace_captives_isHandcuffed", false]) ||
-        (ACE_player getVariable ["GRAD_arrestMechanics_removingHandcuffs", false])
+        (ACE_player getVariable ["GRAD_arrestMechanics_removingHandcuffs", false]) ||
+        !(_unit getVariable ["grad_arrestMechanics_isHandCuffed", false])
     ) exitWith {};
 
 systemChat "interactEH 2";
@@ -41,8 +41,8 @@ systemChat "interactEH 2";
 
             private _fncCondition = {
                 params ["_helper", "_player", "_attachedTree"];
-
-                if (!([_player, _attachedTree, ["isNotSwimming"]] call ace_common_fnc_canInteractWith)) exitWith {false};
+                // "isNotHandcuffed"
+                if (!([_player, _attachedTree, ["isNotSwimming", "isNotHandcuffed"]] call ace_common_fnc_canInteractWith)) exitWith {false};
 
                 ((!isNull _attachedTree) && {ace_player getVariable ["ace_captives_isHandcuffed", false]} && {
                     //Custom LOS check for tree
@@ -56,7 +56,18 @@ systemChat "interactEH 2";
                 if (!(_x in _treesHelped)) then {
                     _treesHelped pushBack _x;
                     private _helper = "ACE_LogicDummy" createVehicleLocal [0,0,0];
-                    private _action = ["grad_arrestMechanics_rubFree","Kabelbinder am Baum aufreiben","x\ace\addons\captives\ui\handcuff_ca.paa", _fncStatement, _fncCondition, {}, _x, {[0,0,0]}, 5.5, [false, false, false, false, true]] call ace_interact_menu_fnc_createAction;
+                    private _action = [
+                        "grad_arrestMechanics_rubFree",
+                        "Kabelbinder am Baum aufreiben",
+                        "x\ace\addons\captives\ui\handcuff_ca.paa", 
+                        _fncStatement, 
+                        _fncCondition, 
+                        {}, 
+                        _x, 
+                        {[0,0,0]},
+                        5.5,
+                        [false, false, false, false, true]
+                    ] call ace_interact_menu_fnc_createAction;
                     [_helper, 0, [],_action] call ace_interact_menu_fnc_addActionToObject;
                     _addedHelpers pushBack _helper;
                     _helperQueue pushBack [_helper,_x];

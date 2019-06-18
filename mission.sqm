@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14058.917,79.440506,19547.586};
-		dir[]={0.31286263,-0.44935957,0.83678621};
-		up[]={0.15737109,0.89334726,0.42090645};
-		aside[]={0.93667912,2.4650944e-008,-0.35021096};
+		pos[]={13399.106,93.165222,19567.535};
+		dir[]={-0.75342953,-0.65743554,0.011263217};
+		up[]={-0.65736407,0.75351012,0.0098270057};
+		aside[]={0.014947309,2.5604095e-008,0.99989146};
 	};
 };
 binarizationWanted=0;
@@ -544,7 +544,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=301;
+		items=297;
 		class Item0
 		{
 			dataType="Group";
@@ -557,7 +557,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14061.827,74.129456,19554.324};
+						position[]={13385.035,74.675323,19571.824};
 						angles[]={0,2.0453436,0};
 					};
 					side="Civilian";
@@ -7313,70 +7313,6 @@ class Mission
 				};
 				nAttributes=13;
 			};
-		};
-		class Item297
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={14069.022,75.751892,19558.396};
-				angles[]={0.0019834081,0,0.0039967569};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=983;
-			type="gm_gc_pol_p601";
-		};
-		class Item298
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={14065.883,75.715622,19565.572};
-				angles[]={0.0039967569,0,0.0060001095};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=984;
-			type="gm_gc_dp_p601";
-		};
-		class Item299
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={14061.234,75.704491,19565.098};
-				angles[]={0.0060001095,0,0.0019834081};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=985;
-			type="gm_gc_ff_p601";
-		};
-		class Item300
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={14056.372,75.685699,19563.789};
-				angles[]={0.0039967569,0,0.0060001095};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=986;
-			type="gm_gc_civ_p601";
 		};
 	};
 	class Connections
