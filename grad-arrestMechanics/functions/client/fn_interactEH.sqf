@@ -42,9 +42,18 @@ systemChat "interactEH 2";
             private _fncCondition = {
                 params ["_helper", "_player", "_attachedTree"];
                 // "isNotHandcuffed"
-                if (!([_player, _attachedTree, ["isNotSwimming", "isNotHandcuffed"]] call ace_common_fnc_canInteractWith)) exitWith {false};
+                if (!([_player, _attachedTree, ["isNotSwimming"]] call ace_common_fnc_canInteractWith)) exitWith {
 
-                ((!isNull _attachedTree) && {ace_player getVariable ["ace_captives_isHandcuffed", false]} && {
+                    systemChat "cant interact with";
+
+                    false
+                };
+
+                ((!isNull _attachedTree) && 
+                    {
+                        !(ACE_player getVariable ["GRAD_arrestMechanics_removingHandcuffs", false])
+                    } && 
+                    {
                     //Custom LOS check for tree
                     private _headPos = ACE_player modelToWorldVisual (ACE_player selectionPosition "pilot");
                     ((!(lineIntersects [AGLtoASL _headPos, AGLtoASL (_helper modelToWorldVisual [0,0,1.25]), _attachedTree, ACE_player])) ||
@@ -59,7 +68,7 @@ systemChat "interactEH 2";
                     private _action = [
                         "grad_arrestMechanics_rubFree",
                         "Kabelbinder am Baum aufreiben",
-                        "x\ace\addons\captives\ui\handcuff_ca.paa", 
+                        "\z\ace\addons\captives\ui\handcuff_ca.paa", 
                         _fncStatement, 
                         _fncCondition, 
                         {}, 

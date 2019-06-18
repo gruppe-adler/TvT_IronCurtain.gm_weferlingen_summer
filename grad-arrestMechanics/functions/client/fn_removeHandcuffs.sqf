@@ -15,7 +15,6 @@ _unit setVariable ["GRAD_arrestMechanics_removingHandcuffs", true, true];
     } else {
         hint "aborted rubbing";
         _unit setVariable ["GRAD_arrestMechanics_removingHandcuffs", false, true];
-        [_handle] call CBA_fnc_removePerFrameHandler;
     };
 
-}, 1, [_unit, _tree]] call CBA_fnc_addPerFrameHandler;
+}, 2, [_unit, _tree]] call CBA_fnc_addPerFrameHandler;
