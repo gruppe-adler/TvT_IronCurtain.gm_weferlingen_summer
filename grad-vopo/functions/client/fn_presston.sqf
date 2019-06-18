@@ -46,7 +46,7 @@ private _sirenEH = [{
 
 [{
     params ["_car", "_soundSource"];
-    !(_car getVariable ["IC_vopo_presston", false])
+    !(_car getVariable ["IC_vopo_presston", false]) || isNull _car || !alive _car
 
 },{
     params ["_car", "_soundSource", "_sirenEH"];

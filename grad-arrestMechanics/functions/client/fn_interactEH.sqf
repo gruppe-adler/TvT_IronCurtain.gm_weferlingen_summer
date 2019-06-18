@@ -10,10 +10,12 @@ if ((_interactionType != 0) || {(vehicle ACE_player) != ACE_player}) exitWith {}
 
 systemChat "interactEH 1";
 
-//only do stuff it unit is handcuffed
+//only do stuff if unit is handcuffed
 //(if they somehow get one durring keydown they'll just have to reopen)
-if (!ace_player getVariable ["ace_captives_isHandcuffed", true] &&
-    !ace_player getVariable ["GRAD_arrestMechanics_removingHandcuffs", false]) exitWith {};
+if  (
+        (ACE_player getVariable ["ace_captives_isHandcuffed", false]) ||
+        (ACE_player getVariable ["GRAD_arrestMechanics_removingHandcuffs", false])
+    ) exitWith {};
 
 systemChat "interactEH 2";
 
@@ -42,7 +44,7 @@ systemChat "interactEH 2";
 
                 if (!([_player, _attachedTree, ["isNotSwimming"]] call ace_common_fnc_canInteractWith)) exitWith {false};
 
-                ((!isNull _attachedTree) && {ace_player getVariable ["ace_captives_isHandcuffed", true]} && {
+                ((!isNull _attachedTree) && {ace_player getVariable ["ace_captives_isHandcuffed", false]} && {
                     //Custom LOS check for tree
                     private _headPos = ACE_player modelToWorldVisual (ACE_player selectionPosition "pilot");
                     ((!(lineIntersects [AGLtoASL _headPos, AGLtoASL (_helper modelToWorldVisual [0,0,1.25]), _attachedTree, ACE_player])) ||
@@ -60,7 +62,7 @@ systemChat "interactEH 2";
                     _helperQueue pushBack [_helper,_x];
                 };
                 nil
-            } count (nearestTerrainObjects [ace_player, ["TREE","SMALL TREE","BUSH"], 15]);
+            } count (nearestTerrainObjects [ace_player, ["TREE","SMALL TREE"], 15]);
 
             [{
                 params ["_helperQueue","_PFHID"];

@@ -44,7 +44,7 @@ private _sirenEH = [{
 
 [{
     params ["_car", "_soundSource"];
-    !(_car getVariable ["IC_vopo_motorSirene", false]) || !(isEngineOn _car)
+    !(_car getVariable ["IC_vopo_motorSirene", false]) || !(isEngineOn _car) || isNull _car || !alive _car
 
 },{
     params ["_car", "_soundSource", "_sirenEH"];

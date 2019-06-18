@@ -142,7 +142,7 @@ _soundSource attachTo [_car];
     ];
 
 
-    if (!(_car getVariable ["IC_vopo_blaulicht", false])) exitWith {
+    if (!(_car getVariable ["IC_vopo_blaulicht", false]) || isNull _car || !alive _car) exitWith {
     
         {
           deleteVehicle _x;

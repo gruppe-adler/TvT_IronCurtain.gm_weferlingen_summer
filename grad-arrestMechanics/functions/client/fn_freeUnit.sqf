@@ -15,6 +15,8 @@ _unit say3D (selectRandom [
     "GRAD_arrestMechanics_rub3"
 ]);
 
+addCamShake [1, 0.8, random 25];
+
 _strengthLeft = _strengthLeft - (floor (random 3));
  _unit setVariable ["GRAD_arrestMechanics_handCuffStrength", _strengthLeft];
 systemChat ("strength: " + str _strengthLeft);
