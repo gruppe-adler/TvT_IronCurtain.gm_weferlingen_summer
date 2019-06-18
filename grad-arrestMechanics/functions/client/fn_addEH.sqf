@@ -1,0 +1,1 @@
+["ace_interactMenuOpened", {_this call grad_arrestMechanics_fnc_interactEH}] call CBA_fnc_addEventHandler;

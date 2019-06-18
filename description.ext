@@ -26,6 +26,7 @@ class cfgFunctions {
     #include "grad-stasi\cfgFunctions.hpp"
     #include "grad-vopo\cfgFunctions.hpp"
 
+    #include "grad-arrestMechanics\cfgFunctions.hpp"
     #include "grad-landline\cfgFunctions.hpp"
     
     #include "IC-missionFlow\cfgFunctions.hpp"
@@ -37,6 +38,7 @@ class cfgSounds {
     #include "grad-nvacommand\cfgSounds.hpp"
     #include "grad-stasi\cfgSounds.hpp"
     #include "grad-landline\cfgSounds.hpp"
+    #include "grad-arrestMechanics\cfgSounds.hpp"
 };
 
 class rscTitles {

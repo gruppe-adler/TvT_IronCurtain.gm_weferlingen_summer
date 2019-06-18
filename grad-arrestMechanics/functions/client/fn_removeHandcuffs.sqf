@@ -1,12 +1,12 @@
-params ["_unit"];
+params ["_unit", "_tree"];
+
+_unit setVariable ["GRAD_arrestMechanics_removingHandcuffs", true, true];
 
 [{
     params ["_args", "_handle"];
-    _args params ["_unit"];
+    _args params ["_unit", "_tree"];
 
-    if (captive _unit && {_unit getVariable ["GRAD_arrestMechanics_idle", true]}) then { 
+    if ([_unit, _tree] call GRAD_arrestMechanics_fnc_canFree) then { 
         [_unit] call GRAD_arrestMechanics_fnc_freeUnit;
     };
-
-
-}, 1, [_unit]] call CBA_fnc_perFrameHandler;
+}, 1, [_unit, _tree]] call CBA_fnc_perFrameHandler;
