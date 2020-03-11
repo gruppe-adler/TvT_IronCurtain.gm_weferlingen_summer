@@ -62,7 +62,7 @@ _map ctrlAddEventHandler ["Draw",
         {
           private _identifier = _x select 0;
           private _sector = _x select 1;
-          private _color = [1,0,0,0.5 + abs(((sin(time * 100))/2))];
+          private _color = [1,0,0,0.25 + abs(((sin(time * 100))/2))];
 
           if (_mouseToWorld inPolygon _sector) then {
               _mouseOver ctrlSetText format ["Sector %1 - ALARM", _identifier];
