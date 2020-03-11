@@ -104,9 +104,8 @@ _map ctrlAddEventHandler ["Draw",
 	};
 }];
 
-_display displayAddEventHandler ["Draw", {
-    params ["_display"];
-    if (!visibleMap)  then {
+_map ctrlAddEventHandler ["Destroy", {
+    params ["_map"];
         private _towerLabels = missionNamespace getVariable ["GRAD_nvacommand_towerLabelList", []];
         private _towers = missionNamespace getVariable ["GRAD_nvaCommand_towerList", []];
 
@@ -117,8 +116,8 @@ _display displayAddEventHandler ["Draw", {
                 _label ctrlCommit 0;
           } forEach _towers;
 
-        private _mouseOver = _display displayCtrl 1234; //
+        private _mouseOver = (ctrlparent _map) displayCtrl 1234; //
         _mouseOver ctrlSetText "";
         _mouseOver ctrlSetBackgroundColor [0,0,0,0];
-    };
+   
 }];

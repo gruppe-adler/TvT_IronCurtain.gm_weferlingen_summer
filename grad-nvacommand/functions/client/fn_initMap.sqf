@@ -18,16 +18,12 @@ _map ctrlAddEventHandler ["MouseButtonClick", {
     if (_button > 1) exitWith {};
 
     if (_button == 0) then {
-        private _position = _mapCtrl ctrlMapScreenToWorld [_xPos, _yPos];
-        private _tower = [_position] call GRAD_nvacommand_fnc_selectTower;
-
-        if (isNull _tower) then {
-            // [_position] call GRAD_nvacommand_fnc_alarmDismissAction;
-            // [] call GRAD_nvacommand_fnc_deselectAllTowers;
-        } else {
-            // [] call GRAD_nvacommand_fnc_deselectAllTowers;
-            // [_mapCtrl, _tower] call GRAD_nvacommand_fnc_towerShowOptions;
-        };
+        private _mouseToWorld = _mapCtrl ctrlMapScreenToWorld getMousePosition;
+        _mouseToWorld set [2,0];
+        private _towerNearest = [_mouseToWorld] call GRAD_nvaCommand_fnc_towerGetNearest;
+        private _sector = [getPos _towerNearest] call GRAD_nvaCommand_fnc_alarmGetSector;
+        [_sector, false] call GRAD_nvaCommand_fnc_alarmSetSector;
+        [_towerNearest] remoteExec ["GRAD_nvacommand_fnc_towerAlarmDismiss",2];
     } else {
         systemChat "rightclick";
     };
