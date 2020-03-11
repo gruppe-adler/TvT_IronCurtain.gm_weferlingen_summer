@@ -23,11 +23,11 @@ _map ctrlAddEventHandler ["MouseButtonClick", {
         private _tower = [_position] call GRAD_nvacommand_fnc_selectTower;
 
         if (isNull _tower) then {
-            [_position] call GRAD_nvacommand_fnc_alarmDismissAction;
-            [] call GRAD_nvacommand_fnc_deselectAllTowers;
+            // [_position] call GRAD_nvacommand_fnc_alarmDismissAction;
+            // [] call GRAD_nvacommand_fnc_deselectAllTowers;
         } else {
-            [] call GRAD_nvacommand_fnc_deselectAllTowers;
-            [_mapCtrl, _tower] call GRAD_nvacommand_fnc_towerShowOptions;
+            // [] call GRAD_nvacommand_fnc_deselectAllTowers;
+            // [_mapCtrl, _tower] call GRAD_nvacommand_fnc_towerShowOptions;
         };
     } else {
         systemChat "rightclick";

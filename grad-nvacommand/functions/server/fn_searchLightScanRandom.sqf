@@ -4,7 +4,7 @@ private _fakeRunner = [_searchLight] call GRAD_nvaCommand_fnc_addFakeCivilian;
 private _dummyTarget = _newTower getVariable ["GRAD_nvaCommand_towerDummyTarget", objNull];
 
 private _fakeRunners = missionNamespace getVariable ["GRAD_nvaCommand_fakeRunners", []];
-_fakeRunners pushBackUnique [_fakeRunner];
+_fakeRunners pushBackUnique _fakeRunner;
 missionNamespace setVariable ["GRAD_nvaCommand_fakeRunners", _fakeRunners, true];
 
 [{

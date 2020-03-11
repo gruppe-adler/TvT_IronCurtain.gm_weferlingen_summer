@@ -237,8 +237,9 @@ private _allGUISelects = [];
 
     _towerSelect ctrlAddEventHandler ["MouseEnter", {
         params ["_control"];
-        _control ctrlSetBackgroundColor [0,0,0,0.8];
-
+        private _colorFormer = _control getVariable ["IC_GUI_BGCOLOR", [0,0,0,0.5]];
+        _colorFormer params ["_r", "_g", "_b", "_a"];
+        _control ctrlSetBackgroundColor [_r, _g, _b, _a-0.5];
     }];
     _towerSelect ctrlAddEventHandler ["MouseExit", {
         params ["_control"];

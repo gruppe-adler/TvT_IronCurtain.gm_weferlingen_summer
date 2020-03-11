@@ -9,22 +9,25 @@ class GRAD_nvacommand {
         class alarmSetSector;
         class alarmSetTower;
         class curatorInterfaceDetection;
+        class curatorInterfaceInfantryCreate;
+        class curatorInterfaceTowerCreate;
+
         class curatorOnSelect;
         class curatorOnSelectEH;
         class curatorSetCamera;
-        class curatorInterfaceInfantryCreate;
-        class curatorInterfaceTowerCreate;
+        
         class deselectAllTowers;
         class forceDefaultMap { postInit = 1; };    
         class GUI_dismiss;
         class GUI_refreshSelects;	
     	class initMap;
+        class initTowersLocal;
         class raiseAlarm;
         class repairFence;
         class towerCenterSelected;
-        class towerSelectTarget;
         class towerGetNearest;
         class towerIsAlarmed;
+        class towerSelectTarget;
         class zeusSelectDestination;
   	};
 
@@ -36,14 +39,16 @@ class GRAD_nvacommand {
          class addSectorPoint;
          class fenceDamageHandling;
          class generateSectors;
-         class initTowers { postInit = 1; };
-         class searchLightScanRandom;
          class getTrianglesForSector;
          class handleTripFlare;
+         class hideFakeRunners;
+         class initTowers { postInit = 1; };
+         class searchLightScanRandom;         
          class serverLoop { postInit = 1; };
          class towerAlarmDismiss;
          class towerAlarmRaise;
          class towerGetIn;
+         class towerShowOptions;
 
     };
 };

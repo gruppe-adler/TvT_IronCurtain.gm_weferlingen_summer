@@ -1,12 +1,15 @@
 // todo: remove after dev
 params ["_unit", "_player", "_display", "_map"];
 
+systemChat "adding map eh";
+
 private _mouseOver = _display ctrlCreate ["RscText", 1234]; 
 _mouseOver ctrlsetText "BLABLA"; 
 _mouseOver ctrlSetPosition [0,0]; 
 _mouseOver ctrlSetBackgroundColor [0,0,0,1]; 
 _mouseOver ctrlCommit 0;
 
+((findDisplay 12) displayCtrl 51) mapCenterOnCamera true;
 
 private _towerLabels = [];
 // towers
@@ -29,6 +32,8 @@ _map ctrlAddEventHandler ["Draw",
     params ["_map"];
 
     if (player getVariable ["GRAD_nvacommand_isCommander", false]) then {
+
+      systemChat "drawing";
 
         private _towerLabels = missionNamespace getVariable ["GRAD_nvacommand_towerLabelList", []];
         private _towers = missionNamespace getVariable ["GRAD_nvaCommand_towerList", []];
