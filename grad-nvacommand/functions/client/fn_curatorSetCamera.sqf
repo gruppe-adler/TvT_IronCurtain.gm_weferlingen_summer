@@ -16,6 +16,8 @@
 
 if (isnull curatorcamera) exitwith {false};
 
+missionNamespace setVariable ["GRAD_nvaCommand_zeusCameraRunning", true];
+
 _pos = _this param [0,getposatl curatorcamera];
 _pos = _pos call bis_fnc_position;
 _vectordir = (_this param [1,vectordir curatorcamera,[[],objnull],3]);
@@ -82,5 +84,7 @@ _cam cameraeffect ["terminate","back"];
 camdestroy _cam;
 curatorcamera cameraeffect ["internal","back"];
 cameraEffectEnableHUD true;
+
+missionNamespace setVariable ["GRAD_nvaCommand_zeusCameraRunning", false];
 
 true

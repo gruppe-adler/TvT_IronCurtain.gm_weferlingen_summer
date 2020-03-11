@@ -5,5 +5,8 @@ if (!isNull _tower) then {
 
 	private _positionAboveBehind = _tower getPos [75, 220];
 	_positionAboveBehind set [2,50];
-	[_positionAboveBehind, _tower, 3] spawn GRAD_nvacommand_fnc_curatorSetCamera;
+
+    if (!(missionNamespace getVariable ["GRAD_nvaCommand_zeusCameraRunning", false])) then {
+	   [_positionAboveBehind, _tower, 3] spawn GRAD_nvacommand_fnc_curatorSetCamera;
+    };
 };

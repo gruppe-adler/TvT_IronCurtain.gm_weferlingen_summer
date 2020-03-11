@@ -2,6 +2,10 @@
 
 // private _objIndex = lbValue [ _control, _selectedIndex ];
 private _allNumbers = missionNamespace getVariable ["GRAD_LANDLINE_ALLNUMBERS", []];
+
+if (count _allNumbers < 1) exitWith { hint "no numbers"; };
+if (_selectedIndex > _allNumbers) exitWith { hint "not selectable"; };
+    
 private _objReceiver = (_allNumbers select _selectedIndex) select 0;
 
 // systemChat format ["%1 - %2", _objReceiver, _selectedIndex];

@@ -1,5 +1,7 @@
 player setVariable ["GRAD_nvacommand_isCommander", true];
 
+[player, player, (findDisplay 12), (findDisplay 12 displayCtrl 51)] call GRAD_nvaCommand_fnc_initMap;
+
 /*
 addMissionEventHandler ["Map", {
     params ["_mapIsOpened", "_mapIsForced"];

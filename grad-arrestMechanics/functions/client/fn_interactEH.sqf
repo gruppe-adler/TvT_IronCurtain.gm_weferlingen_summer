@@ -8,7 +8,7 @@ params ["_interactionType"];
 //Ignore self-interaction menu or mounted vehicle interaction
 if ((_interactionType != 0) || {(vehicle ACE_player) != ACE_player}) exitWith {};
 
-systemChat "interactEH 1";
+// systemChat "interactEH 1";
 
 //only do stuff if unit is handcuffed
 //(if they somehow get one durring keydown they'll just have to reopen)
@@ -17,7 +17,7 @@ if  (
         !(_unit getVariable ["grad_arrestMechanics_isHandCuffed", false])
     ) exitWith {};
 
-systemChat "interactEH 2";
+// systemChat "interactEH 2";
 
 [{
     params ["_args", "_pfID"];

@@ -113,15 +113,25 @@ _towerButtonAlarm ctrlEnable true;
 _towerButtonAlarm ctrlsetText "Alarm"; 
 _towerButtonAlarm ctrlSetPosition [0.85, 1.15, 0.1, 0.1];
 _towerButtonAlarm ctrlSetBackgroundColor [0,0,0,0.5];
-_towerButtonAlarm setVariable ["IC_GUI_BGCOLOR", [0,0,0,0.5]];
 // _towerButtonAlarm ctrlSetForegroundColor [0,0,0,0];
- 
 _towerButtonAlarm ctrlSetFade 1;
 _towerButtonAlarm ctrlCommit 0;
-
 _towerButtonAlarm ctrlSetPosition [0.85, 1.05, 0.1, 0.1];
 _towerButtonAlarm ctrlSetFade 0;
 _towerButtonAlarm ctrlCommit 0.1;
+
+
+if ([_entity] call GRAD_nvacommand_fnc_towerIsAlarmed) then {
+    _towerButtonAlarm ctrlSetBackgroundColor [1,1,1,1];
+    _towerButtonAlarm ctrlSetTextColor [1,.1,.1,1];
+    _towerButtonAlarm setVariable ["IC_GUI_BGCOLOR", [1,1,1,1]];
+    _towerButtonAlarm setVariable ["IC_GUI_TEXTCOLOR", [1,.1,.1,1]];
+} else {
+    _towerButtonAlarm ctrlSetBackgroundColor [0,0,0,1];
+    _towerButtonAlarm ctrlSetTextColor [1,1,1,1];
+    _towerButtonAlarm setVariable ["IC_GUI_BGCOLOR", [0,0,0,1]];
+    _towerButtonAlarm setVariable ["IC_GUI_TEXTCOLOR", [1,1,1,1]];
+};
 
 _towerButtonAlarm ctrlAddEventHandler ["MouseEnter", {
     params ["_control"];
@@ -196,8 +206,6 @@ _towerButtonDoWatch ctrlAddEventHandler ["MouseButtonClick", {
     [_tower] call GRAD_nvacommand_fnc_towerSelectTarget;
 }];
 
-
-
 private _allTowers = missionNamespace getVariable ["GRAD_nvaCommand_towerList", []];
 private _allCount = count _allTowers;
 private _maxCount = 10;
@@ -211,7 +219,7 @@ private _allGUISelects = [];
     private _towerSelect = _display ctrlCreate ["RscText", -1];
     _towerSelect ctrlEnable true;
     _towerSelect ctrlsetText (str _forEachIndex);
-    _towerSelect ctrlSetPosition [(_forEachIndex * _width), 0.1, _width, 0.03];
+    _towerSelect ctrlSetPosition [(_forEachIndex * _width), 0.97, _width, 0.03];
     _towerSelect ctrlSetBackgroundColor [0,0,0,0.5];
     _towerSelect setVariable ["IC_GUI_BGCOLOR", [0,0,0,0.5]];
     _towerSelect setVariable ["IC_GUI_TEXTCOLOR", [1,1,1,0.7]];
@@ -250,7 +258,6 @@ private _allGUISelects = [];
     }]; 
 } forEach _allTowers;
 
-
 uiNamespace setVariable ["GRAD_nvaCommand_allGUISelects",_allGUISelects];
 uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIELEMENTS", 
         [
@@ -272,3 +279,5 @@ uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UISELECTS",
 ];
 
 missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_SELECTED", _entity];
+
+[] call GRAD_nvacommand_fnc_GUI_refreshSelects;

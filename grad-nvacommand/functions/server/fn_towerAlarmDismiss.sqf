@@ -2,6 +2,12 @@ params ["_tower"];
 _tower setVariable ["GRAD_nvaCommand_towerAlarm", false, true];
 _tower setVariable ["GRAD_nvaCommand_towerWatchMode", "auto", true];
 
+private _sound = _tower getVariable ["GRAD_nvacommand_soundDummy", objNull];
+
+if (!isNull _sound) then {
+    deleteVehicle _sound;
+};
+
 private _towerGroup = _tower getVariable ["GRAD_nvaCommand_towerGroup", grpNull];
 
 if (!isNull _towerGroup) then {
