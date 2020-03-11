@@ -8,7 +8,6 @@ private _sectors = [_dummies] call GRAD_nvacommand_fnc_generateSectors;
 // normalize _sectors into individual arrays for easier management into active/inactive
 private _normalizedSectors = [];
 {
-
     _normalizedSectors pushBack ([_x] call GRAD_nvacommand_fnc_getTrianglesForSector);
 } forEach _sectors;
 

@@ -10,13 +10,6 @@ diag_log str (str _display + " " + str _map);
 
 [_unit, _player, _display, _map] call GRAD_nvacommand_fnc_addMapEventhandler;
 
-addMissionEventHandler ["Map", {
-    params ["_mapIsOpened", "_mapIsForced"];
-
-    if (_mapIsOpened) then {
-        systemChat "opens map";
-    };
-}];
 
 _map ctrlAddEventHandler ["MouseButtonClick", {
     params ["_mapCtrl","_button","_xPos","_yPos","_shift","_alt","_ctrl"];

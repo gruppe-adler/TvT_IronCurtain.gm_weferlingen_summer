@@ -22,6 +22,10 @@ class GRAD_nvacommand {
         class GUI_refreshSelects;	
     	class initMap;
         class initTowersLocal;
+
+        class markerFade;
+        class markerFenceCut;
+        
         class raiseAlarm;
         class repairFence;
         class towerCenterSelected;

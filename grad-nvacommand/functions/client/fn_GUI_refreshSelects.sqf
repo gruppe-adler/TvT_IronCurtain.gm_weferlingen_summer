@@ -1,10 +1,23 @@
 private _allGUISelects = uiNamespace getVariable ["GRAD_nvaCommand_allGUISelects",[]];
+private _allUIGroup = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIGROUP",[]];
 private _allTowers =  missionNamespace getVariable ["GRAD_nvaCommand_towerList", []];
 
 {
     private _control = _x;
     private _towerID = _control getVariable ["IC_GUI_TOWERASSIGNED", -1];
     private _tower = _allTowers select _towerID;
+
+    private _manCount = _tower getVariable ["GRAD_nvaCommand_towerIsManned", 0];
+
+    {
+        {
+            if (_manCount >= _forEachIndex) then {
+                _x ctrlsetText "grad-nvacommand\displays\alarmgroup.jpg"; 
+            } else {
+                _x ctrlSetText "";
+            };
+        } forEach [_towerAlarmGroup1, _towerAlarmGroup2, _towerAlarmGroup3, _towerAlarmGroup4];
+    } forEach _allUIGroup;
 
     // set all controls to default state
     _control ctrlSetBackgroundColor (_control getVariable ["IC_GUI_BGCOLOR", [0,0,0,0.5]]);

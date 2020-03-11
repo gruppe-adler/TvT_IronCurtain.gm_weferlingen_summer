@@ -3,10 +3,10 @@ params ["_position"];
 private _towerNearest = [_position] call GRAD_nvaCommand_fnc_towerGetNearest;
 
 private _warnLamp = _towerNearest getVariable ["GRAD_nvaCommand_towerWarnLamp", objNull];
-systemChat ("warn Lamp: " + str _warnLamp);
+// systemChat ("warn Lamp: " + str _warnLamp);
 
 private _warnLight = "Reflector_Cone_01_wide_red_F" createVehicle [0,0,0];
-systemChat ("warn Lamp: " + str _warnLight);
+// systemChat ("warn Lamp: " + str _warnLight);
 
 _warnLight setPos getPosVisual _warnLamp;
 _warnLight attachTo [_towerNearest];

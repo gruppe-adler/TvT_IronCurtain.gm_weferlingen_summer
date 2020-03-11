@@ -11,6 +11,10 @@ switch (_type) do {
             [controlNull,controlNull,controlNull,controlNull, controlNull, controlNull, controlNull, controlNull, controlNull, controlNull]
         ];
 
+        private _ctrlsGroup = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIGROUP", 
+            [controlNull,controlNull,controlNull,controlNull]
+        ];
+
         private _allGUISelects = uiNamespace getVariable ["GRAD_nvaCommand_allGUISelects", []];
         uiNamespace setVariable ["GRAD_nvaCommand_allGUISelects", []];
         missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_SELECTED", objNull];
@@ -21,12 +25,12 @@ switch (_type) do {
                 _x ctrlSetPosition [_xPos, _yPos + 0.2, _width, _height];
                 _x ctrlSetFade 1;
                 _x ctrlCommit 0.2;
-            } forEach (_ctrls + _allGUISelects);
+            } forEach (_ctrls + _allGUISelects + _ctrlsGroup);
 
-            [_ctrls, _allGUISelects] spawn {
-                params ["_ctrls", "_allGUISelects"];
+            [_ctrls, _allGUISelects, _ctrlsGroup] spawn {
+                params ["_ctrls", "_allGUISelects", "_ctrlsGroup"];
                 uiSleep 0.2;
-                { ctrlDelete _x } forEach (_ctrls + _allGUISelects);
+                { ctrlDelete _x } forEach (_ctrls + _allGUISelects + _ctrlsGroup);
             };  
         };
     }; 

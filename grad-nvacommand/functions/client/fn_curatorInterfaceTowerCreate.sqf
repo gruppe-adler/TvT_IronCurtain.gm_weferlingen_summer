@@ -60,8 +60,8 @@ _towerPicLabel ctrlSetPosition [0.02, 1, 0.18, 0.05];
 _towerPicLabel ctrlSetFade 0;
 _towerPicLabel ctrlCommit 0.1;
 
+
 private _towerAlarmGroup1 = _display ctrlCreate ["RscPictureKeepAspect", -1];
-_towerAlarmGroup1 ctrlsetText "grad-nvacommand\displays\alarmgroup.jpg"; 
 _towerAlarmGroup1 ctrlSetPosition [0.2, 1.1, 0.10, 0.10];
 _towerAlarmGroup1 ctrlSetBackgroundColor [1,1,1,0.5]; 
 _towerAlarmGroup1 ctrlSetFade 1;
@@ -72,7 +72,6 @@ _towerAlarmGroup1 ctrlSetFade 0;
 _towerAlarmGroup1 ctrlCommit 0.1;
 
 private _towerAlarmGroup2 = _display ctrlCreate ["RscPictureKeepAspect", -1];
-_towerAlarmGroup2 ctrlsetText "grad-nvacommand\displays\alarmgroup.jpg"; 
 _towerAlarmGroup2 ctrlSetPosition [0.3, 1.1, 0.10, 0.10];
 _towerAlarmGroup2 ctrlSetBackgroundColor [1,1,1,0.5]; 
 _towerAlarmGroup2 ctrlSetFade 1;
@@ -82,8 +81,7 @@ _towerAlarmGroup2 ctrlSetPosition [0.3, 1.05, 0.10, 0.10];
 _towerAlarmGroup2 ctrlSetFade 0;
 _towerAlarmGroup2 ctrlCommit 0.1;
 
-private _towerAlarmGroup3 = _display ctrlCreate ["RscPictureKeepAspect", -1];
-_towerAlarmGroup3 ctrlsetText "grad-nvacommand\displays\alarmgroup.jpg"; 
+private _towerAlarmGroup3 = _display ctrlCreate ["RscPictureKeepAspect", -1]; 
 _towerAlarmGroup3 ctrlSetPosition [0.4, 1.1, 0.10, 0.10];
 _towerAlarmGroup3 ctrlSetBackgroundColor [1,1,1,0.5]; 
 _towerAlarmGroup3 ctrlSetFade 1;
@@ -94,7 +92,6 @@ _towerAlarmGroup3 ctrlSetFade 0;
 _towerAlarmGroup3 ctrlCommit 0.1;
 
 private _towerAlarmGroup4 = _display ctrlCreate ["RscPictureKeepAspect", -1];
-_towerAlarmGroup4 ctrlsetText "grad-nvacommand\displays\alarmgroup.jpg"; 
 _towerAlarmGroup4 ctrlSetPosition [0.5, 1.1, 0.10, 0.10];
 _towerAlarmGroup4 ctrlSetBackgroundColor [1,1,1,0.5]; 
 _towerAlarmGroup4 ctrlSetFade 1;
@@ -104,7 +101,15 @@ _towerAlarmGroup4 ctrlSetPosition [0.5, 1.05, 0.10, 0.10];
 _towerAlarmGroup4 ctrlSetFade 0;
 _towerAlarmGroup4 ctrlCommit 0.1;
 
+private _manCount = _entity getVariable ["GRAD_nvaCommand_towerIsManned", 0];
 
+{
+    if (_manCount >= _forEachIndex) then {
+        _x ctrlsetText "grad-nvacommand\displays\alarmgroup.jpg"; 
+    } else {
+        _x ctrlSetText "";
+    };
+} forEach [_towerAlarmGroup1, _towerAlarmGroup2, _towerAlarmGroup3, _towerAlarmGroup4];
 
 
 
@@ -266,12 +271,16 @@ uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIELEMENTS",
         _towerPic,
         _towerPicLabel,
         _towerButtonCenter,
+        _towerButtonAlarm,
+        _towerButtonDoWatch
+        ]
+];
+
+uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIGROUP", [
         _towerAlarmGroup1,
         _towerAlarmGroup2,
         _towerAlarmGroup3,
-        _towerAlarmGroup4,
-        _towerButtonAlarm,
-        _towerButtonDoWatch
+        _towerAlarmGroup4
         ]
 ];
 

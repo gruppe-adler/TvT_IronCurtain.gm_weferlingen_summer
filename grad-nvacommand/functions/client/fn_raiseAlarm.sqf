@@ -1,7 +1,9 @@
 params ["_position", "_type", ["_unit", objNull]];
 
-private _sector = [_position, _type, _unit] call GRAD_nvaCommand_fnc_alarmGetSector;
+private _sector = [_position] call GRAD_nvaCommand_fnc_alarmGetSector;
 [_sector, true] call GRAD_nvacommand_fnc_alarmSetSector;
+
+
 
 [_position] call GRAD_nvacommand_fnc_alarmSetTower;
 
@@ -11,6 +13,8 @@ private _sector = [_position, _type, _unit] call GRAD_nvaCommand_fnc_alarmGetSec
 switch (_type) do { 
 	case "fence" : { 
 		systemChat localize ("str_nvacommand_fenceCut");
+
+        [_position] remoteExec ["GRAD_nvacommand_fnc_markerFenceCut", [0,-2] select isDedicated];
 	}; 
 	case "flare" : {
 		systemChat localize ("str_nvacommand_tripflareTriggered");

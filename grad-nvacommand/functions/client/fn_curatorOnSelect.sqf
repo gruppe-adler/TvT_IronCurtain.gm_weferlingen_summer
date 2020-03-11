@@ -20,6 +20,7 @@ if (_isTower) then {
     private _ctrls = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIELEMENTS", 
         [controlNull,controlNull,controlNull,controlNull, controlNull, controlNull, controlNull, controlNull, controlNull, controlNull]
     ];
+    // check only one to know interface is missing
     if (isNull (_ctrls select 0)) then {
         [_entity] call GRAD_nvaCommand_fnc_curatorInterfaceTowerCreate;
     };
