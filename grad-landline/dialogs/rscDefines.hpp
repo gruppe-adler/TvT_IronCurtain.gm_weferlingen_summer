@@ -28,7 +28,6 @@ class GRAD_landline_RscPicture
 
 class GRAD_landline_RscButton
 {
-  access = 0;
   type = CT_BUTTON;
   text = "";
   colorText[] = {1,1,1,.9};
@@ -111,7 +110,6 @@ class GRAD_landline_RscListBox
 
 class GRAD_landline_RscMapControl
 {
-   access = 0;
   idc = -1;
   type = CT_MAP_MAIN;
   style = ST_PICTURE;
