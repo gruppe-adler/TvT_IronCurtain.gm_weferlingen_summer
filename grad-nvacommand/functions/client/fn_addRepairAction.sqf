@@ -1,3 +1,5 @@
+if (!hasInterface) exitWith {};
+
 private _types = [
     "Land_IndFnc_9_F",
     "Land_IndFnc_3_F",

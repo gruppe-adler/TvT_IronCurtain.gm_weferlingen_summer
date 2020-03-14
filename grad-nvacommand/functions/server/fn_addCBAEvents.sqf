@@ -1,7 +1,5 @@
 if (!isServer) exitWith {};
 
-
-
 ["ace_tripflareTriggered", {
         
         params ["_flare", "_position"];

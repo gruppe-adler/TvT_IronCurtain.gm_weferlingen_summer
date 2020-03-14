@@ -1,3 +1,5 @@
+if (!hasInterface) exitWith {};
+
 player setVariable ["GRAD_nvacommand_isCommander", true];
 
 [] remoteExec ["GRAD_nvaCommand_fnc_hideFakeRunners", 2];

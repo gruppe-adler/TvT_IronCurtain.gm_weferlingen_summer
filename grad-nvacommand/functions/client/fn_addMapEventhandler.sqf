@@ -104,8 +104,52 @@ _map ctrlAddEventHandler ["Draw",
 	};
 }];
 
-_map ctrlAddEventHandler ["Destroy", {
+
+// self made eh
+[{
+        params ["_args"];
+        _args params ["_visible"];
+
+        if (_visible isEqualTo visibleMap) exitWith {};
+
+        _visible = visibleMap;
+
+        _args set [0, _visible];
+
+        if (!_visible) then {
+            private _towerLabels = missionNamespace getVariable ["GRAD_nvacommand_towerLabelList", []];
+            private _towers = missionNamespace getVariable ["GRAD_nvaCommand_towerList", []];
+
+              {
+                    private _index = _forEachIndex;
+                    private _label = _towerLabels select _index;
+                    _label ctrlShow false;
+                    _label ctrlCommit 0;
+              } forEach _towers;
+
+            private _mouseOver = (ctrlparent _map) displayCtrl 1234; //
+            _mouseOver ctrlSetText "";
+            _mouseOver ctrlSetBackgroundColor [0,0,0,0];
+        };
+}, 0, [visibleMap]] call CBA_fnc_addPerFrameHandler;
+/*
+
+IDD_RSCDISPLAYCURATOR = 312; 
+    IDC_RSCDISPLAYCURATOR_MAINMAP = 50; 
+    private _display = finddisplay IDD_RSCDISPLAYCURATOR; 
+     
+private _ctrlMap = _display displayCtrl IDC_RSCDISPLAYCURATOR_MAINMAP; 
+_ctrlMap ctrlAddEventHandler ["KillFocus", {
     params ["_map"];
+      hint "bla";
+        
+}];
+
+        */
+
+
+        /*
+
         private _towerLabels = missionNamespace getVariable ["GRAD_nvacommand_towerLabelList", []];
         private _towers = missionNamespace getVariable ["GRAD_nvaCommand_towerList", []];
 
@@ -116,8 +160,7 @@ _map ctrlAddEventHandler ["Destroy", {
                 _label ctrlCommit 0;
           } forEach _towers;
 
-        private _mouseOver = (ctrlparent _map) displayCtrl 1234; //
+        private _mouseOver = (ctrlparent _map) displayCtrl 1234; 
         _mouseOver ctrlSetText "";
         _mouseOver ctrlSetBackgroundColor [0,0,0,0];
-   
-}];
+   */

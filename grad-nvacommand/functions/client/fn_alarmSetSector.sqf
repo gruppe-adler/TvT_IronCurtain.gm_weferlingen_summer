@@ -21,5 +21,5 @@ if (_setAlarm) then {
     systemChat localize ("str_nvacommand_alarmDismissed");
 };
 
-missionNamespace setVariable ["GRAD_nvacommand_triggeredSectors", _triggeredSectors];
-missionNamespace setVariable ["GRAD_nvacommand_untriggeredSectors", _untriggeredSectorsTemp];
+missionNamespace setVariable ["GRAD_nvacommand_triggeredSectors", _triggeredSectors, true];
+missionNamespace setVariable ["GRAD_nvacommand_untriggeredSectors", _untriggeredSectorsTemp, true];

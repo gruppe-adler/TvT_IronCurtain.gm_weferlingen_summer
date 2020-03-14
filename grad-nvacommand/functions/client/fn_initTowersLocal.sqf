@@ -1,5 +1,8 @@
-private _towers = missionNamespace setVariable ["GRAD_nvaCommand_towerList", []];
+/*
+    not in use currently
+*/
 
+private _towers = missionNamespace getVariable ["GRAD_nvaCommand_towerList", []];
 
 {
 	private _marker = createMarkerLocal [format ["mrk_towerActive_%1", _x], position _x];

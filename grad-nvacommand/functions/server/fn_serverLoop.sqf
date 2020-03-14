@@ -1,4 +1,4 @@
-waitUntil { player == player };
+if (!isServer) exitWith {};
 
 private _dummies = missionNamespace getVariable ["GRAD_NVACOMMAND_SECTORRAWDATA", []];
 private _sectors = [_dummies] call GRAD_nvacommand_fnc_generateSectors;
