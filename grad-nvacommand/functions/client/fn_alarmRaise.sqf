@@ -1,9 +1,7 @@
 params ["_position", "_type", ["_unit", objNull]];
 
-private _sector = [_position] call GRAD_nvaCommand_fnc_alarmGetSector;
+private _sector = [_position] call GRAD_nvaCommand_fnc_getSectorForPosition;
 [_sector, true] call GRAD_nvacommand_fnc_alarmSetSector;
-
-
 
 [_position] call GRAD_nvacommand_fnc_alarmSetTower;
 

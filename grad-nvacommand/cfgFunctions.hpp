@@ -5,6 +5,10 @@ class GRAD_nvacommand {
 
         class addMapEventhandler;
         class addRepairAction { postInit = 1; };
+        
+        class alarmDismiss;
+        class alarmRaise;
+
         class alarmGetSector;
         class alarmSetSector;
         class alarmSetTower;
@@ -17,7 +21,8 @@ class GRAD_nvacommand {
         class curatorSetCamera;
         
         class deselectAllTowers;
-        class forceDefaultMap { postInit = 1; };    
+        class forceDefaultMap { postInit = 1; };  
+        class getSectorForPosition;  
         class GUI_dismiss;
         class GUI_refreshSelects;	
     	class initMap;
@@ -26,7 +31,7 @@ class GRAD_nvacommand {
         class markerFade;
         class markerFenceCut;
         
-        class raiseAlarm;
+       
         class repairFence;
         class towerCenterSelected;
         class towerGetNearest;

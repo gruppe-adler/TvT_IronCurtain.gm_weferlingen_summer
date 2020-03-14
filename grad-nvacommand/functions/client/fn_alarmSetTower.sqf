@@ -2,6 +2,8 @@ params ["_position"];
 
 private _towerNearest = [_position] call GRAD_nvaCommand_fnc_towerGetNearest;
 
+[_towerNearest] remoteExec ["GRAD_nvacommand_fnc_towerAlarmRaise",2];
+
 private _warnLamp = _towerNearest getVariable ["GRAD_nvaCommand_towerWarnLamp", objNull];
 // systemChat ("warn Lamp: " + str _warnLamp);
 
