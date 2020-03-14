@@ -4,7 +4,7 @@ if (!isServer) exitWith {};
         
         params ["_flare", "_position"];
 
-        [_position, "flare"] call GRAD_nvacommand_fnc_raiseAlarm;
+        [_position, "flare"] call GRAD_nvacommand_fnc_alarmRaise;
         deleteVehicle _flare;
 
 }] call CBA_fnc_addEventHandler;
@@ -16,6 +16,6 @@ if (!isServer) exitWith {};
 
         private _position = position _fence;
 
-        [_position, "fence", _unit] call GRAD_nvacommand_fnc_raiseAlarm;
+        [_position, "fence", _unit] call GRAD_nvacommand_fnc_alarmRaise;
 
 }] call CBA_fnc_addEventHandler;

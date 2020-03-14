@@ -20,12 +20,9 @@ _map ctrlAddEventHandler ["MouseButtonClick", {
     if (_button == 0) then {
         private _mouseToWorld = _mapCtrl ctrlMapScreenToWorld getMousePosition;
         _mouseToWorld set [2,0];
-        private _towerNearest = [_mouseToWorld] call GRAD_nvaCommand_fnc_towerGetNearest;
-        private _sector = [getPos _towerNearest] call GRAD_nvaCommand_fnc_alarmGetSector;
-        [_sector, false] call GRAD_nvaCommand_fnc_alarmSetSector;
-        [_towerNearest] remoteExec ["GRAD_nvacommand_fnc_towerAlarmDismiss",2];
-    } else {
-        systemChat "rightclick";
+        [_mouseToWorld] call GRAD_nvacommand_fnc_alarmDismiss;
+        } else {
+        // systemChat "rightclick";
     };
 
     false

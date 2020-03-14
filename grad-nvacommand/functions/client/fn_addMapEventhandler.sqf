@@ -52,9 +52,7 @@ _map ctrlAddEventHandler ["Draw",
             _label ctrlCommit 0;
         } forEach _towers;
 
-    	  private _triggeredSectors = missionNamespace getVariable ["GRAD_nvacommand_triggeredSectors", []];
-        private _untriggeredSectors = missionNamespace getVariable ["GRAD_nvacommand_untriggeredSectors", []];
-
+    	  private _sectors = missionNamespace getVariable ["GRAD_nvacommand_sectors", []];
         
         private _mouseToWorld = _map ctrlMapScreenToWorld getMousePosition;
         _mouseToWorld set [2,0];
@@ -65,42 +63,23 @@ _map ctrlAddEventHandler ["Draw",
        
         // _tooltipCtrl ctrlSetText format ["%1", _mouseToWorld]; 
         {
-          private _sector = _x;
-          private _color = [1,0,0, abs(((sin(time * 100))/2))];          
+          _x params ["_sector", "_isAlarmed"];
+          private _color = if (_isAlarmed) then { [1,0,0, abs(((sin(time * 100))/2))] } else { [0,0,0,1] };          
 
-          if (count _sector < 3) exitWith { diag_log format ["skipping empty sector %1", _sector]; };
+          if (count _sector < 3) exitWith { diag_log format ["NVACOMMAND-addMapEventhandler: skipping empty sector %1", _sector]; };
 
           if (_mouseToWorld inPolygon _sector) then {
-              _mouseOver ctrlSetText format ["Sector %1 - ALARM", _forEachIndex];
+              _mouseOver ctrlSetText format ["Sector %1", _forEachIndex];
               _mouseOver ctrlSetBackgroundColor [0,0,0,1];
               _color = [1,0,0, abs(((sin(time * 200))/1.5))];
           };
           
           _map drawTriangle [_sector, _color, "#(rgb,1,1,1)color(1,1,1,1)"];
-        } forEach _triggeredSectors;
-
-        {
-          private _sector = _x;
-          private _color = [0,0,0,0.2];
-
-          if (count _sector < 3) exitWith { diag_log format ["skipping empty sector %1", _sector]; };
-
-          // diag_log format ["_mouseToWorld %1 - _sector %2", _mouseToWorld, _sector];
-
-          if (_mouseToWorld inPolygon _sector) then {
-             _mouseOver ctrlSetText format ["Sector %1", _forEachIndex];
-             _mouseOver ctrlSetBackgroundColor [0,0,0,1];
-             _color = [0,0,0,0.5];
-          };
-          _map drawTriangle [_sector, _color, "#(rgb,1,1,1)color(1,1,1,1)"];
-
-          // diag_log format ["drawing triangle on %1", _map];
-        } forEach _untriggeredSectors;
+        } forEach _sectors;
 
         _mouseOver ctrlSetPosition getMousePosition;
         _mouseOver ctrlCommit 0;
         
-	   // copyToClipboard format ["_triggeredSectors: %1 --- _untriggeredSectors: %2", _triggeredSectors, _untriggeredSectors];
 	};
 }];
 
@@ -108,7 +87,7 @@ _map ctrlAddEventHandler ["Draw",
 // self made eh
 [{
         params ["_args"];
-        _args params ["_visible"];
+        _args params ["_visible", "_map"];
 
         if (_visible isEqualTo visibleMap) exitWith {};
 
@@ -131,7 +110,7 @@ _map ctrlAddEventHandler ["Draw",
             _mouseOver ctrlSetText "";
             _mouseOver ctrlSetBackgroundColor [0,0,0,0];
         };
-}, 0, [visibleMap]] call CBA_fnc_addPerFrameHandler;
+}, 0, [visibleMap, _map]] call CBA_fnc_addPerFrameHandler;
 /*
 
 IDD_RSCDISPLAYCURATOR = 312; 

@@ -24,12 +24,13 @@ private _searchLights = [];
 
     hideObjectGlobal _tower;
     _tower allowDamage false;
-   
 
     private _newTower = _type createVehicle [0,0,0];
     _newTower setPos _position;
     _newTower setDir _dir;
     _newTower animateSource ['searchlight_source',1,true];
+
+    [_newTower, _position] call GRAD_nvaCommand_fnc_addTowerToSector;
 
     private _warnLamp = "Misc_Wall_lamp" createVehicle [0,0,0];
     private _warnLampPosition = if (_type == "land_gm_tower_bt_11_60") then { 
@@ -49,8 +50,6 @@ private _searchLights = [];
             [ [ sin _r,-sin _p,cos _r * cos _p],-_y] call BIS_fnc_rotateVector2D 
         ];
     };
-
-    
 
     // searchlight pos
     private _searchLightPosition = if (_type == "land_gm_tower_bt_11_60") then { 

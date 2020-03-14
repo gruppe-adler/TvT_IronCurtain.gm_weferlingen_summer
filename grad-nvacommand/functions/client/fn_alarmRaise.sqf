@@ -21,6 +21,6 @@ switch (_type) do {
         systemChat "activated Alarm";
     };
 	default {
-		systemChat "error: raiseAlarm called without type.";
+		systemChat "NVACOMMAND-error: alarmRaise called without type.";
 	}; 
 };

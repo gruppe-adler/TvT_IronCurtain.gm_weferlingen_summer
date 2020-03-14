@@ -51,9 +51,9 @@ class GRAD_nvacommand {
          class getTrianglesForSector;
          class handleTripFlare;
          class hideFakeRunners;
-         class initTowers { postInit = 1; };
+         class initTowers;
          class searchLightScanRandom;         
-         class serverLoop { postInit = 1; };
+         class initSectors { postInit = 1; };
          class towerAlarmDismiss;
          class towerAlarmRaise;
          class towerGetIn;

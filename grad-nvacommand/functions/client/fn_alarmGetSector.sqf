@@ -1,22 +1,26 @@
+/*
+	gets triggered sector belonging to a position
+
+	[positionArray,alarmBoolean]
+*/
+
 params ["_position"];
 
-private _sectorTriggered = [];
+private _sectorTriggered = -1;
 
-// get sectors and already triggered sectors
-private _triggeredSectors = missionNamespace getVariable ["GRAD_nvacommand_triggeredSectors", []];
-private _untriggeredSectors = missionNamespace getVariable ["GRAD_nvacommand_untriggeredSectors", []];
-private _untriggeredSectorsTemp = + _untriggeredSectors;
+// get sectors
+private _sectors = missionNamespace getVariable ["GRAD_nvacommand_sectors", []];
 
 
 // check in which sector alarm did go off
 {
-    private _sector = _x;
+	_x params ["_sector", "_alarmed"];
 
     if (_position inPolygon _sector) exitWith {
 
-        _sectorTriggered = _sector;
+        _sectorTriggered = _forEachIndex;
     };
 
-} forEach _untriggeredSectors;
+} forEach _sectors;
 
 _sectorTriggered

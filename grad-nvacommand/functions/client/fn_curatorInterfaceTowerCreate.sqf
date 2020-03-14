@@ -157,14 +157,14 @@ _towerButtonAlarm ctrlAddEventHandler ["MouseButtonClick", {
         _control ctrlSetBackgroundColor [0,0,0,0.5];
         _control setVariable ["IC_GUI_BGCOLOR", [0,0,0,0.5]];
         // _control ctrlSetForegroundColor [0,0,0,0];
-        _control ctrlCommit 0.5;
-        [getPos _tower] call GRAD_nvaCommand_fnc_alarmDismiss;
+        _control ctrlCommit 0;
+        [getPos _tower, "manual"] call GRAD_nvaCommand_fnc_alarmToggle;
     } else {
         _control ctrlSetBackgroundColor [1,.1,.1,1];
         _control setVariable ["IC_GUI_BGCOLOR", [1,.1,.1,1]];
         // _control ctrlSetForegroundColor [1,.3,.3,1];
-        _control ctrlCommit 0.5;
-        [getPos _tower, "manual"] call GRAD_nvaCommand_fnc_alarmRaise;
+        _control ctrlCommit 0;
+        [getPos _tower, "manual"] call GRAD_nvaCommand_fnc_alarmToggle;
     };
 }];
 
