@@ -11,7 +11,6 @@ class GRAD_nvacommand {
 
         class alarmGetSector;
         class alarmSetSector;
-        class alarmSetTower;
         class curatorInterfaceDetection;
         class curatorInterfaceInfantryCreate;
         class curatorInterfaceTowerCreate;
@@ -46,6 +45,10 @@ class GRAD_nvacommand {
          class addCBAEvents { postInit = 1; };
          class addFakeCivilian;
          class addSectorPoint;
+         class addTowerToSector;
+         class alarmToggle;
+         class alarmRaise;
+         // class createTower;
          class fenceDamageHandling;
          class generateSectors;
          class getTrianglesForSector;
@@ -54,8 +57,12 @@ class GRAD_nvacommand {
          class initTowers;
          class searchLightScanRandom;         
          class initSectors { postInit = 1; };
-         class towerAlarmDismiss;
-         class towerAlarmRaise;
+         class towerAlarmDismissGroup;
+         class towerAlarmDismissLamp;
+         class towerAlarmDismissSound;
+         class towerAlarmRaiseGroup;
+         class towerAlarmRaiseLamp;
+         class towerAlarmRaiseSound;
          class towerGetIn;
          class towerShowOptions;
 

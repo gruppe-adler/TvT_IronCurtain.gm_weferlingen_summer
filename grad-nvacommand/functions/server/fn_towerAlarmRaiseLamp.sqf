@@ -1,8 +1,4 @@
-params ["_position"];
-
-private _towerNearest = [_position] call GRAD_nvaCommand_fnc_towerGetNearest;
-
-[_towerNearest] remoteExec ["GRAD_nvacommand_fnc_towerAlarmRaise",2];
+params ["_towerNearest"];
 
 private _warnLamp = _towerNearest getVariable ["GRAD_nvaCommand_towerWarnLamp", objNull];
 // systemChat ("warn Lamp: " + str _warnLamp);
@@ -24,6 +20,8 @@ private _p = 0; private _r = 00;
 _towerNearest setVariable ["GRAD_nvacommand_towerWarnLampLight", _warnLight, true];
 _towerNearest setVariable ["GRAD_nvacommand_towerAlarm", true, true];
 
+
+/*
 private _searchLight = _towerNearest getVariable ["GRAD_nvaCommand_towerSearchLight", objNull];
 
 private _unit = _towerNearest findNearestEnemy _towerNearest;
@@ -36,20 +34,4 @@ if (!isNull _towerNearest && !(_towerNearest getVariable ["GRAD_nvacommand_tower
     _searchLight doWatch _unit;
     _searchLight doTarget _unit;
 };
-
-private _soundDummy = "Sign_Sphere10cm_Geometry_F" createVehicle [0,0,0];
-_soundDummy attachTo [_towerNearest, [0,0,0]];
-_towerNearest setVariable ["GRAD_nvacommand_soundDummy", _soundDummy, true];
-
-[{
-    params ["_args", "_handle"];
-    _args params ["_towerNearest", "_soundDummy"];
-
-    private _isRunning = _towerNearest getVariable ["GRAD_nvacommand_towerAlarm", false];
-    if (!_isRunning) exitWith {
-        [_handle] call CBA_fnc_removePerFramehandler;
-    };
-    
-    [_soundDummy, ["GRAD_nvacommand_alarm", 500]] remoteExec ["say3D", [0,-2] select isDedicated];
-    
-}, 3.5, [_towerNearest, _soundDummy]] call CBA_fnc_addPerFramehandler;
+*/

@@ -1,9 +1,15 @@
 params ["_position", "_type", ["_unit", objNull]];
 
-private _sector = [_position] call GRAD_nvaCommand_fnc_getSectorForPosition;
-[_sector, true] call GRAD_nvacommand_fnc_alarmSetSector;
+private _sectorIndex = [_position] call GRAD_nvaCommand_fnc_alarmGetSector;
+private _sectors = missionNamespace getVariable ["GRAD_nvacommand_sectors", []];
 
-[_position] call GRAD_nvacommand_fnc_alarmSetTower;
+(_sectors select _sectorIndex) params ["_sector", "_isAlarmed", "_tower"];
+
+if (!_isAlarmed) then {
+	[_position] call GRAD_nvacommand_fnc_alarmToggle;
+} else {
+	systemChat "another alarm for already alerted sector " + str _sectorIndex;
+};
 
 [_sector, _position, _type] call GRAD_nvacommand_fnc_handleTripFlare;
 

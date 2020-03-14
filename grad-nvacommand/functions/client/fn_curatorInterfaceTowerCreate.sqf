@@ -1,6 +1,6 @@
-params ["_entity"];
+params ["_tower"];
 
-private _towerID = _entity getVariable ["GRAD_nvaCommand_towerID", -1];
+private _towerID = _tower getVariable ["GRAD_nvaCommand_towerID", -1];
 
 
 private _display = findDisplay 312;
@@ -60,7 +60,6 @@ _towerPicLabel ctrlSetPosition [0.02, 1, 0.18, 0.05];
 _towerPicLabel ctrlSetFade 0;
 _towerPicLabel ctrlCommit 0.1;
 
-
 private _towerAlarmGroup1 = _display ctrlCreate ["RscPictureKeepAspect", -1];
 _towerAlarmGroup1 ctrlSetPosition [0.2, 1.1, 0.10, 0.10];
 _towerAlarmGroup1 ctrlSetBackgroundColor [1,1,1,0.5]; 
@@ -101,10 +100,10 @@ _towerAlarmGroup4 ctrlSetPosition [0.5, 1.05, 0.10, 0.10];
 _towerAlarmGroup4 ctrlSetFade 0;
 _towerAlarmGroup4 ctrlCommit 0.1;
 
-private _manCount = _entity getVariable ["GRAD_nvaCommand_towerIsManned", 0];
+private _manCount = _tower getVariable ["GRAD_nvaCommand_towerIsManned", 0];
 
 {
-    if (_manCount >= _forEachIndex) then {
+    if (_manCount > _forEachIndex) then {
         _x ctrlsetText "grad-nvacommand\displays\alarmgroup.jpg"; 
     } else {
         _x ctrlSetText "";
@@ -126,7 +125,7 @@ _towerButtonAlarm ctrlSetFade 0;
 _towerButtonAlarm ctrlCommit 0.1;
 
 
-if ([_entity] call GRAD_nvacommand_fnc_towerIsAlarmed) then {
+if ([_tower] call GRAD_nvacommand_fnc_towerIsAlarmed) then {
     _towerButtonAlarm ctrlSetBackgroundColor [1,1,1,1];
     _towerButtonAlarm ctrlSetTextColor [1,.1,.1,1];
     _towerButtonAlarm setVariable ["IC_GUI_BGCOLOR", [1,1,1,1]];
@@ -140,9 +139,11 @@ if ([_entity] call GRAD_nvacommand_fnc_towerIsAlarmed) then {
 
 _towerButtonAlarm ctrlAddEventHandler ["MouseEnter", {
     params ["_control"];
-    _control ctrlSetBackgroundColor [0,0,0,0.7];
-
+    private _backGroundColor = _control getVariable ["IC_GUI_BGCOLOR", [0,0,0,0.5]];
+    _backGroundColor params ["_r", "_g", "_b", "_a"];
+    _control ctrlSetBackgroundColor [_r,_g,_b,1];
 }];
+
 _towerButtonAlarm ctrlAddEventHandler ["MouseExit", {
     params ["_control"];
     _control ctrlSetBackgroundColor (_control getVariable ["IC_GUI_BGCOLOR", [0,0,0,0.5]]);
@@ -156,15 +157,13 @@ _towerButtonAlarm ctrlAddEventHandler ["MouseButtonClick", {
     if (_tower getVariable ["GRAD_nvacommand_towerAlarm", false]) then {
         _control ctrlSetBackgroundColor [0,0,0,0.5];
         _control setVariable ["IC_GUI_BGCOLOR", [0,0,0,0.5]];
-        // _control ctrlSetForegroundColor [0,0,0,0];
         _control ctrlCommit 0;
-        [getPos _tower, "manual"] call GRAD_nvaCommand_fnc_alarmToggle;
+        [getPos _tower, "manual"] remoteExecCall ["GRAD_nvaCommand_fnc_alarmToggle", 2];
     } else {
         _control ctrlSetBackgroundColor [1,.1,.1,1];
         _control setVariable ["IC_GUI_BGCOLOR", [1,.1,.1,1]];
-        // _control ctrlSetForegroundColor [1,.3,.3,1];
         _control ctrlCommit 0;
-        [getPos _tower, "manual"] call GRAD_nvaCommand_fnc_alarmToggle;
+        [getPos _tower, "manual"] remoteExecCall ["GRAD_nvaCommand_fnc_alarmToggle", 2];
     };
 }];
 
@@ -261,6 +260,8 @@ private _allGUISelects = [];
     }]; 
 } forEach _allTowers;
 
+
+// store interface for later
 uiNamespace setVariable ["GRAD_nvaCommand_allGUISelects",_allGUISelects];
 uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIELEMENTS", 
         [
@@ -285,6 +286,6 @@ uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UISELECTS",
     _allGUISelects
 ];
 
-missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_SELECTED", _entity];
+missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_SELECTED", _tower];
 
 [] call GRAD_nvacommand_fnc_GUI_refreshSelects;

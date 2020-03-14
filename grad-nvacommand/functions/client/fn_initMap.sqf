@@ -20,7 +20,7 @@ _map ctrlAddEventHandler ["MouseButtonClick", {
     if (_button == 0) then {
         private _mouseToWorld = _mapCtrl ctrlMapScreenToWorld getMousePosition;
         _mouseToWorld set [2,0];
-        [_mouseToWorld] call GRAD_nvacommand_fnc_alarmDismiss;
+        [_mouseToWorld] remoteExecCall ["GRAD_nvacommand_fnc_alarmToggle", 2];
         } else {
         // systemChat "rightclick";
     };

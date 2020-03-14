@@ -10,13 +10,11 @@ private _allTowers =  missionNamespace getVariable ["GRAD_nvaCommand_towerList",
     private _manCount = _tower getVariable ["GRAD_nvaCommand_towerIsManned", 0];
 
     {
-        {
-            if (_manCount >= _forEachIndex) then {
-                _x ctrlsetText "grad-nvacommand\displays\alarmgroup.jpg"; 
-            } else {
-                _x ctrlSetText "";
-            };
-        } forEach [_towerAlarmGroup1, _towerAlarmGroup2, _towerAlarmGroup3, _towerAlarmGroup4];
+        if (_manCount > _forEachIndex) then {
+            _x ctrlsetText "grad-nvacommand\displays\alarmgroup.jpg"; 
+        } else {
+            _x ctrlSetText "";
+        };
     } forEach _allUIGroup;
 
     // set all controls to default state
