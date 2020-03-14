@@ -84,6 +84,25 @@ _map ctrlAddEventHandler ["Draw",
 }];
 
 
+// click eh
+_map ctrlAddEventHandler ["MouseButtonClick", {
+    params ["_mapCtrl","_button","_xPos","_yPos","_shift","_alt","_ctrl"];
+
+    // currently nothing but left- and rightclick
+    if (_button > 1) exitWith {};
+
+    if (_button == 0) then {
+        private _mouseToWorld = _mapCtrl ctrlMapScreenToWorld getMousePosition;
+        _mouseToWorld set [2,0];
+        [_mouseToWorld] remoteExecCall ["GRAD_nvacommand_fnc_alarmToggle", 2];
+        } else {
+        // systemChat "rightclick";
+    };
+
+    false
+}];
+
+
 // self made eh
 [{
         params ["_args"];

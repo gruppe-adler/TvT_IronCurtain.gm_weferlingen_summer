@@ -2,12 +2,6 @@ params ["_tower"];
 _tower setVariable ["GRAD_nvaCommand_towerAlarm", false, true];
 _tower setVariable ["GRAD_nvaCommand_towerWatchMode", "auto", true];
 
-private _sound = _tower getVariable ["GRAD_nvacommand_soundDummy", objNull];
-
-if (!isNull _sound) then {
-    deleteVehicle _sound;
-};
-
 private _towerGroup = _tower getVariable ["GRAD_nvaCommand_towerGroup", grpNull];
 
 if (!isNull _towerGroup) then {
@@ -22,5 +16,8 @@ if (!isNull _towerGroup) then {
         _count = _count + 1;
     } forEach thislist; 
     _tower setVariable ['GRAD_nvaCommand_towerIsManned', _count, true];
+    {
+        [] remoteExec ['GRAD_nvaCommand_fnc_GUI_refreshSelects', getAssignedCuratorUnit _x];
+    } forEach allCurators;
     deleteGroup _group;"];
 };

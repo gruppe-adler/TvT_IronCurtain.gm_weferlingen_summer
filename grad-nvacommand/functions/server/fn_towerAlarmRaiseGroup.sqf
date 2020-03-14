@@ -14,6 +14,10 @@ systemChat "towerAlarmRaise: spawning alarm group";
 for "_i" from 1 to (_towerCrewCount) do {
 	_group createUnit ["gm_gc_bgs_rifleman_mpikm72_80_str", _positionBehindDoor, [], 0, "NONE"];
     sleep 0.5;
+    
+    {
+      	[] remoteExec ["GRAD_nvaCommand_fnc_GUI_refreshSelects", getAssignedCuratorUnit _x];
+    } forEach allCurators;
 };
 
 // mark for auto deletion when necessary
