@@ -5,11 +5,7 @@ class GRAD_nvacommand {
 
         class addMapEventhandler;
         class addRepairAction { postInit = 1; };
-        
-        class alarmDismiss;
-        class alarmRaise;
 
-        class alarmGetSector;
         class alarmSetSector;
         class curatorInterfaceDetection;
         class curatorInterfaceInfantryCreate;
@@ -46,17 +42,17 @@ class GRAD_nvacommand {
          class addFakeCivilian;
          class addSectorPoint;
          class addTowerToSector;
-         class alarmToggle;
          class alarmRaise;
+         class alarmToggle;
          // class createTower;
          class fenceDamageHandling;
          class generateSectors;
          class getTrianglesForSector;
          class handleTripFlare;
          class hideFakeRunners;
-         class initTowers;
          class searchLightScanRandom;         
          class initSectors { postInit = 1; };
+         class initTowers;
          class towerAlarmDismissGroup;
          class towerAlarmDismissLamp;
          class towerAlarmDismissSound;

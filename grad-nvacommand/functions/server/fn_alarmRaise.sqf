@@ -1,6 +1,6 @@
 params ["_position", "_type", ["_unit", objNull]];
 
-private _sectorIndex = [_position] call GRAD_nvaCommand_fnc_alarmGetSector;
+private _sectorIndex = [_position] call GRAD_nvaCommand_fnc_getSectorForPosition;
 private _sectors = missionNamespace getVariable ["GRAD_nvacommand_sectors", []];
 
 (_sectors select _sectorIndex) params ["_sector", "_isAlarmed", "_tower"];
