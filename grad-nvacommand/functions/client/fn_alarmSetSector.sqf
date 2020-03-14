@@ -5,7 +5,7 @@ if (_sectorTriggered < 0) exitWith { diag_log format ["alarmsetsector: no fittin
 // get sectors and already triggered sectors
 private _sectors = missionNamespace getVariable ["GRAD_nvacommand_sectors", []];
 
-(_sectors select _sectorTriggered) set [1,_setAlarm];
+(_sectors select _sectorTriggered) set [2,_setAlarm];
 
 if (_setAlarm) then {
     systemChat localize ("str_nvacommand_alarmRaised");

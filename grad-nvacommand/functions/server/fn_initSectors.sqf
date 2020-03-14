@@ -9,7 +9,7 @@ private _sectors = [_dummies] call GRAD_nvacommand_fnc_generateSectors;
 private _normalizedSectors = [];
 {
 	// [sectorData, isAlarmed, tower]
-    _normalizedSectors pushBack [([_x] call GRAD_nvacommand_fnc_getTrianglesForSector), false];
+    _normalizedSectors pushBack [_x, ([_x] call GRAD_nvacommand_fnc_getTrianglesForSector), false];
 } forEach _sectors;
 
 // copyToClipboard str _normalizedSectors;

@@ -16,7 +16,7 @@ private _sectors = missionNamespace getVariable ["GRAD_nvacommand_sectors", []];
 
 diag_log format ["adding tower to sectors %1", (_sectors select _sectorIndex)];
 
-(_sectors select _sectorIndex) set [2,_tower];
+(_sectors select _sectorIndex) set [3,_tower];
 
 missionNamespace setVariable ["GRAD_nvacommand_sectors", _sectors, true];
 

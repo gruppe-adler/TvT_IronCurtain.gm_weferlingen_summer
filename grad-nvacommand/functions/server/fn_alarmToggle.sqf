@@ -16,7 +16,7 @@ systemChat ("sector index : " + str _sectorIndex);
 if (_sectorIndex < 0) exitWith { diag_log format ["alarmtoggle sector index below 0"]; };
 
 (_sectors select _sectorIndex) params ["_sector", "_isAlarmed", "_tower"];
-(_sectors select _sectorIndex) set [1, !_isAlarmed];
+(_sectors select _sectorIndex) set [2, !_isAlarmed];
 
 // toggle sector alarm
 missionNamespace setVariable ["GRAD_nvacommand_sectors", _sectors, true];

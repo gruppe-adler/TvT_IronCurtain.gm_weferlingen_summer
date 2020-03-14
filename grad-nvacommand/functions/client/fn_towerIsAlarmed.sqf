@@ -5,7 +5,7 @@ private _towerIsAlarmed = false;
 
 // check in which sector alarm did go off
 {
-    _x params ["_sector", "_isAlarmed", "_tower"];
+    _x params ["_sector", "_triangles", "_isAlarmed", "_tower"];
 
     if (_tower == _tower) exitWith {
 

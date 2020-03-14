@@ -63,7 +63,7 @@ _map ctrlAddEventHandler ["Draw",
        
         // _tooltipCtrl ctrlSetText format ["%1", _mouseToWorld]; 
         {
-          _x params ["_sector", "_isAlarmed"];
+          _x params ["_sector", "_triangles", "_isAlarmed", "_tower"];
           private _color = if (_isAlarmed) then { [1,0,0, abs(((sin(time * 100))/2))] } else { [0,0,0,1] };          
 
           if (count _sector < 3) exitWith { diag_log format ["NVACOMMAND-addMapEventhandler: skipping empty sector %1", _sector]; };
@@ -74,7 +74,7 @@ _map ctrlAddEventHandler ["Draw",
               _color = [1,0,0, abs(((sin(time * 200))/1.5))];
           };
           
-          _map drawTriangle [_sector, _color, "#(rgb,1,1,1)color(1,1,1,1)"];
+          _map drawTriangle [_triangles, _color, "#(rgb,1,1,1)color(1,1,1,1)"];
         } forEach _sectors;
 
         _mouseOver ctrlSetPosition getMousePosition;
