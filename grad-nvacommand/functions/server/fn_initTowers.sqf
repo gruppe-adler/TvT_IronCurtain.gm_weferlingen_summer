@@ -2,6 +2,8 @@
 
 // (allMissionObjects "Land_Hlaska")
 
+if (!isServer) exitWith {};
+
 private _towers = 
     ([0, worldSize/2] nearObjects ["land_gm_tower_bt_11_60", worldsize]) +
     ([0, worldSize/2] nearObjects ["land_gm_tower_bt_6_fuest_80", worldsize]);
