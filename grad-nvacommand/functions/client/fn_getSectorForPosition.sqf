@@ -14,6 +14,8 @@ private _sectors = missionNamespace getVariable ["GRAD_nvacommand_sectors", []];
         _relatedSector = _forEachIndex;
     };
 
+    diag_log format ["_position %1 not in %2", _sector];
+
 } forEach _sectors;
 
 _relatedSector

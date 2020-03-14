@@ -30,8 +30,6 @@ private _searchLights = [];
     _newTower setDir _dir;
     _newTower animateSource ['searchlight_source',1,true];
 
-    [_newTower, _position] call GRAD_nvaCommand_fnc_addTowerToSector;
-
     private _warnLamp = "Misc_Wall_lamp" createVehicle [0,0,0];
     private _warnLampPosition = if (_type == "land_gm_tower_bt_11_60") then { 
         [0.742188,0.0195313,-4.7576]
@@ -91,6 +89,10 @@ private _searchLights = [];
 
 } forEach _towers;
 
+
+{
+    [_x, position _x] call GRAD_nvaCommand_fnc_addTowerToSector;
+} forEach _newTowers;
 
 
 // add towers to all curators to edit/access
