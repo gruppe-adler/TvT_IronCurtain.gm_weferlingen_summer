@@ -1,3 +1,5 @@
+if (!(player getVariable ["GRAD_nvacommand_isCommander", false])) exitWith {};
+
 private _allGUISelects = uiNamespace getVariable ["GRAD_nvaCommand_allGUISelects",[]];
 private _allUIGroup = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIGROUP",[]];
 private _allTowers =  missionNamespace getVariable ["GRAD_nvaCommand_towerList", []];
@@ -21,7 +23,7 @@ private _uiElements = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTT
         _uiElements params ["_towerLabel", "_towerPic", "_towerPicLabel", "_towerButtonCenter", "_towerButtonAlarm", "_towerButtonDoWatch"];
 
         private _manCountTower = _tower getVariable ["GRAD_nvaCommand_towerIsManned", 0];
-        private _manCountGroup = count units (_tower getVariable ["GRAD_nvaCommand_towerGroup", []]);
+        private _manCountGroup = count (units (_tower getVariable ["GRAD_nvaCommand_towerGroup", grpNull]));
         {
             if (_manCountTower > _forEachIndex) then {
                 _x ctrlsetText "grad-nvacommand\displays\alarmgroup.jpg"; 
