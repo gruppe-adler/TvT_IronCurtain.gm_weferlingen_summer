@@ -28,8 +28,8 @@ private _uiElements = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTT
             if (_manCountTower > _forEachIndex) then {
                 _x ctrlsetText "grad-nvacommand\displays\alarmgroup.jpg";
             } else {
-                // out of bounds error
-                if (count _manUnits < (_forEachIndex - 1)) exitWith {
+                // catch out of bounds error – 
+                if (count _manUnits < (_forEachIndex + 1)) exitWith {
                     _x ctrlSetText "grad-nvacommand\displays\alarmgroup_away.jpg";
                 };
 
