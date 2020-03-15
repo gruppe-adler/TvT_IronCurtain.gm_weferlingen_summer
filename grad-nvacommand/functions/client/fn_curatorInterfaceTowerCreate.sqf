@@ -116,14 +116,9 @@ private _towerButtonAlarm = _display ctrlCreate ["RscText", -1];
 _towerButtonAlarm ctrlEnable true;
 _towerButtonAlarm ctrlsetText "Alarm"; 
 _towerButtonAlarm ctrlSetPosition [0.85, 1.15, 0.1, 0.1];
-_towerButtonAlarm ctrlSetBackgroundColor [0,0,0,0.5];
 // _towerButtonAlarm ctrlSetForegroundColor [0,0,0,0];
 _towerButtonAlarm ctrlSetFade 1;
 _towerButtonAlarm ctrlCommit 0;
-_towerButtonAlarm ctrlSetPosition [0.85, 1.05, 0.1, 0.1];
-_towerButtonAlarm ctrlSetFade 0;
-_towerButtonAlarm ctrlCommit 0.1;
-
 
 if ([_tower] call GRAD_nvacommand_fnc_towerIsAlarmed) then {
     _towerButtonAlarm ctrlSetBackgroundColor [1,1,1,1];
@@ -136,6 +131,13 @@ if ([_tower] call GRAD_nvacommand_fnc_towerIsAlarmed) then {
     _towerButtonAlarm setVariable ["IC_GUI_BGCOLOR", [0,0,0,1]];
     _towerButtonAlarm setVariable ["IC_GUI_TEXTCOLOR", [1,1,1,1]];
 };
+
+_towerButtonAlarm ctrlSetPosition [0.85, 1.05, 0.1, 0.1];
+_towerButtonAlarm ctrlSetFade 0;
+_towerButtonAlarm ctrlCommit 0.1;
+
+
+
 
 _towerButtonAlarm ctrlAddEventHandler ["MouseEnter", {
     params ["_control"];
@@ -274,7 +276,8 @@ uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIELEMENTS",
         ]
 ];
 
-uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIGROUP", [
+uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIGROUP", 
+        [
         _towerAlarmGroup1,
         _towerAlarmGroup2,
         _towerAlarmGroup3,

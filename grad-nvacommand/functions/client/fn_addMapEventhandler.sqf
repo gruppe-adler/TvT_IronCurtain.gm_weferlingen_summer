@@ -64,15 +64,20 @@ _map ctrlAddEventHandler ["Draw",
         // _tooltipCtrl ctrlSetText format ["%1", _mouseToWorld]; 
         {
           _x params ["_sector", "_triangles", "_isAlarmed", "_tower"];
-          private _color = if (_isAlarmed) then { [1,0,0, abs(((sin(time * 100))/2))] } else { [0,0,0,1] };          
-          private _texture = if (_isAlarmed) then { "\A3\ui_f\data\map\markerbrushes\diaggrid_ca.paa" } else { "\A3\ui_f\data\map\markerbrushes\fdiagonal_ca.paa" };
+          private _color = if (_isAlarmed) then { [1,0,0, 0.5 + abs(((sin(time * 100))/2))] } else { [0,0,0,1] };          
+          private _texture = if (_isAlarmed) then { "\A3\ui_f\data\map\markerbrushes\diaggrid_ca.paa" } else { "\A3\ui_f\data\map\markerbrushes\horizontal_ca.paa" };
+          private _text = if (_isAlarmed) then { "Alarm beenden" } else { "Alarm auslösen" };
           if (count _sector < 3) exitWith { diag_log format ["NVACOMMAND-addMapEventhandler: skipping empty sector %1", _sector]; };
 
           if (_mouseToWorld inPolygon _sector) then {
-              _mouseOver ctrlSetText format ["Sector %1", _forEachIndex];
+              // _map ctrlSetTooltip _text;
+              _mouseOver ctrlSetText _text;
               _mouseOver ctrlSetBackgroundColor [0,0,0,1];
-              _color = [1,0,0, abs(((sin(time * 200))/1.5))];
-          };
+              _texture = "\A3\ui_f\data\map\markerbrushes\cross_ca.paa";
+              _map drawPolygon [_sector, _color];
+          } else {
+              _map ctrlSetTooltip "";
+          }; 
           
           _map drawTriangle [_triangles, _color, _texture];
         } forEach _sectors;

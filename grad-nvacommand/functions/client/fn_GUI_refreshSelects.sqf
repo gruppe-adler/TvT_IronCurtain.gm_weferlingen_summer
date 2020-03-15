@@ -1,21 +1,15 @@
 private _allGUISelects = uiNamespace getVariable ["GRAD_nvaCommand_allGUISelects",[]];
 private _allUIGroup = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIGROUP",[]];
 private _allTowers =  missionNamespace getVariable ["GRAD_nvaCommand_towerList", []];
+private _uiElements = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIELEMENTS",[]];
+
+
 
 {
     private _control = _x;
     private _towerID = _control getVariable ["IC_GUI_TOWERASSIGNED", -1];
     private _tower = _allTowers select _towerID;
 
-    private _manCount = _tower getVariable ["GRAD_nvaCommand_towerIsManned", 0];
-
-    {
-        if (_manCount > _forEachIndex) then {
-            _x ctrlsetText "grad-nvacommand\displays\alarmgroup.jpg"; 
-        } else {
-            _x ctrlSetText "";
-        };
-    } forEach _allUIGroup;
 
     // set all controls to default state
     _control ctrlSetBackgroundColor (_control getVariable ["IC_GUI_BGCOLOR", [0,0,0,0.5]]);
@@ -23,6 +17,35 @@ private _allTowers =  missionNamespace getVariable ["GRAD_nvaCommand_towerList",
     
     // set colors control for selected and alarmed
     if (missionNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_SELECTED", objNull] == _tower) then {
+
+        _uiElements params ["_towerLabel", "_towerPic", "_towerPicLabel", "_towerButtonCenter", "_towerButtonAlarm", "_towerButtonDoWatch"];
+
+        private _manCountTower = _tower getVariable ["GRAD_nvaCommand_towerIsManned", 0];
+        private _manCountGroup = count units (_tower getVariable ["GRAD_nvaCommand_towerGroup", []]);
+        {
+            if (_manCountTower > _forEachIndex) then {
+                _x ctrlsetText "grad-nvacommand\displays\alarmgroup.jpg"; 
+            } else {
+                if (_manCountGroup > _forEachIndex) then {
+                    _x ctrlSetText "grad-nvacommand\displays\alarmgroup_away.jpg";
+                } else {
+                    _x ctrlSetText "grad-nvacommand\displays\alarmgroup_dead.jpg";
+                };
+            };
+        } forEach _allUIGroup;
+
+        if ([_tower] call GRAD_nvacommand_fnc_towerIsAlarmed) then {
+            _towerButtonAlarm ctrlSetBackgroundColor [1,1,1,1];
+            _towerButtonAlarm ctrlSetTextColor [1,.1,.1,1];
+            _towerButtonAlarm setVariable ["IC_GUI_BGCOLOR", [1,1,1,1]];
+            _towerButtonAlarm setVariable ["IC_GUI_TEXTCOLOR", [1,.1,.1,1]];
+        } else {
+            _towerButtonAlarm ctrlSetBackgroundColor [0,0,0,1];
+            _towerButtonAlarm ctrlSetTextColor [1,1,1,1];
+            _towerButtonAlarm setVariable ["IC_GUI_BGCOLOR", [0,0,0,1]];
+            _towerButtonAlarm setVariable ["IC_GUI_TEXTCOLOR", [1,1,1,1]];
+        };
+        _towerButtonAlarm ctrlCommit 0;
 
          // active control is white with black/red text
         if ([_tower] call GRAD_nvacommand_fnc_towerIsAlarmed) then {

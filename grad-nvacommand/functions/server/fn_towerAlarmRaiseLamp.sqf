@@ -18,7 +18,6 @@ private _p = 0; private _r = 00;
 // systemChat str _warnLight;
 
 _towerNearest setVariable ["GRAD_nvacommand_towerWarnLampLight", _warnLight, true];
-_towerNearest setVariable ["GRAD_nvacommand_towerAlarm", true, true];
 
 
 /*
