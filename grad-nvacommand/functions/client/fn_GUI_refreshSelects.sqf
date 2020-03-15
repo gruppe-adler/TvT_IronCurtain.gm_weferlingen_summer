@@ -23,15 +23,20 @@ private _uiElements = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTT
         _uiElements params ["_towerLabel", "_towerPic", "_towerPicLabel", "_towerButtonCenter", "_towerButtonAlarm", "_towerButtonDoWatch"];
 
         private _manCountTower = _tower getVariable ["GRAD_nvaCommand_towerIsManned", 0];
-        private _manCountGroup = count (units (_tower getVariable ["GRAD_nvaCommand_towerGroup", grpNull]));
+        private _manUnits = _tower getVariable ["GRAD_nvaCommand_towerUnits", []];
         {
             if (_manCountTower > _forEachIndex) then {
-                _x ctrlsetText "grad-nvacommand\displays\alarmgroup.jpg"; 
+                _x ctrlsetText "grad-nvacommand\displays\alarmgroup.jpg";
             } else {
-                if (_manCountGroup > _forEachIndex) then {
+                // out of bounds error
+                if (count _manUnits < (_forEachIndex - 1)) exitWith {
                     _x ctrlSetText "grad-nvacommand\displays\alarmgroup_away.jpg";
-                } else {
+                };
+
+                if (!alive (_manUnits select _forEachIndex)) then {
                     _x ctrlSetText "grad-nvacommand\displays\alarmgroup_dead.jpg";
+                } else {
+                    _x ctrlSetText "grad-nvacommand\displays\alarmgroup_away.jpg";
                 };
             };
         } forEach _allUIGroup;
