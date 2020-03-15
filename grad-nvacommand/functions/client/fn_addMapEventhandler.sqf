@@ -65,7 +65,7 @@ _map ctrlAddEventHandler ["Draw",
         {
           _x params ["_sector", "_triangles", "_isAlarmed", "_tower"];
           private _color = if (_isAlarmed) then { [1,0,0, abs(((sin(time * 100))/2))] } else { [0,0,0,1] };          
-
+          private _texture = if (_isAlarmed) then { "\A3\ui_f\data\map\markerbrushes\diaggrid_ca.paa" } else { "\A3\ui_f\data\map\markerbrushes\fdiagonal_ca.paa" };
           if (count _sector < 3) exitWith { diag_log format ["NVACOMMAND-addMapEventhandler: skipping empty sector %1", _sector]; };
 
           if (_mouseToWorld inPolygon _sector) then {
@@ -74,7 +74,7 @@ _map ctrlAddEventHandler ["Draw",
               _color = [1,0,0, abs(((sin(time * 200))/1.5))];
           };
           
-          _map drawTriangle [_triangles, _color, "#(rgb,1,1,1)color(1,1,1,1)"];
+          _map drawTriangle [_triangles, _color, _texture];
         } forEach _sectors;
 
         _mouseOver ctrlSetPosition getMousePosition;
