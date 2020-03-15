@@ -18,4 +18,8 @@ private _sectors = missionNamespace getVariable ["GRAD_nvacommand_sectors", []];
 
 } forEach _sectors;
 
+if (_relatedSector < 0) then {
+    diag_log format ["no sector found for %1", _position];
+};
+
 _relatedSector
