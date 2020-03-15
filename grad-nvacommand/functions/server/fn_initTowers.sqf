@@ -95,21 +95,7 @@ private _searchLights = [];
 } forEach _newTowers;
 
 
-// add towers to all curators to edit/access
-{
-	private _curator = _x;
-	_curator addCuratorEditableObjects [_newTowers, true];
-	
-	{ 
-        private _towerID = _x getVariable ["GRAD_nvaCommand_towerID", -1];
-	   [ _curator, ["", [1,1,1,1], position _x, 1, 1, 45, format ["BT-11 - %1", _towerID], 1, 0.05, "TahomaB"], false ] call BIS_fnc_addCuratorIcon;
-	} forEach _newTowers;
-
-     // make curator selectable
-    [_x] call GRAD_nvaCommand_fnc_curatorOnSelectEH;
-    [] call GRAD_nvaCommand_fnc_curatorInterfaceDetection;
-
-} forEach allCurators;
+[_newTowers] remoteExecCall ["GRAD_nvaCommand_fnc_initTowersLocal", [0,-2] select isDedicated];
 
 missionNamespace setVariable ["GRAD_nvaCommand_towerList", _newTowers, true];
 missionNamespace setVariable ["GRAD_nvaCommand_searchLightList", _searchLights, true];

@@ -14,7 +14,7 @@ _infantryBackground ctrlCommit 0.1;
 
 
 private _infantryPic = _display ctrlCreate ["RscPictureKeepAspect", -1];
-_infantryPic ctrlsetText "grad-nvacommand\displays\bt11.jpg"; 
+_infantryPic ctrlsetText "grad-nvacommand\displays\alarmgroup.jpg"; 
 _infantryPic ctrlSetPosition [0.01, 1.1, 0.18, 0.18];
 _infantryPic ctrlSetBackgroundColor [0,0,0,0];
 _infantryPic setVariable ["IC_GUI_BGCOLOR", [0,0,0,0]];

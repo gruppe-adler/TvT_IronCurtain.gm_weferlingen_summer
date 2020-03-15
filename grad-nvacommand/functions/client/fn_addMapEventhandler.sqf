@@ -82,7 +82,8 @@ _map ctrlAddEventHandler ["Draw",
           _map drawTriangle [_triangles, _color, _texture];
         } forEach _sectors;
 
-        _mouseOver ctrlSetPosition getMousePosition;
+        getMousePosition params ["_mouseX", "_mouseY"];
+        _mouseOver ctrlSetPosition [_mouseX, _mouseY, ctrlTextWidth _mouseOver, ctrlTextHeight _mouseOver];
         _mouseOver ctrlCommit 0;
         
 	};

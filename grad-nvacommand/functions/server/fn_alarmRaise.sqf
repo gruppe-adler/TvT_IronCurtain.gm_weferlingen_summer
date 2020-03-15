@@ -3,7 +3,7 @@ params ["_position", "_type", ["_unit", objNull]];
 private _sectorIndex = [_position] call GRAD_nvaCommand_fnc_getSectorForPosition;
 private _sectors = missionNamespace getVariable ["GRAD_nvacommand_sectors", []];
 
-(_sectors select _sectorIndex) params ["_sector", "_isAlarmed", "_tower"];
+(_sectors select _sectorIndex) params ["_sector", "_triangles", "_isAlarmed", "_tower"];
 
 if (!_isAlarmed) then {
 	[_position] call GRAD_nvacommand_fnc_alarmToggle;

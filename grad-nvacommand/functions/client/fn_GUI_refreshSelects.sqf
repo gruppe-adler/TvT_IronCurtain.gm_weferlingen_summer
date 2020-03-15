@@ -20,7 +20,7 @@ private _uiElements = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTT
     // set colors control for selected and alarmed
     if (missionNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_SELECTED", objNull] == _tower) then {
 
-        _uiElements params ["_towerLabel", "_towerPic", "_towerPicLabel", "_towerButtonCenter", "_towerButtonAlarm", "_towerButtonDoWatch"];
+        _uiElements params ["_towerLabel", "_towerPic", "_towerPicLabel", "_towerPicNumber", "_towerButtonCenter", "_towerButtonAlarm", "_towerButtonDoWatch"];
 
         private _manCountTower = _tower getVariable ["GRAD_nvaCommand_towerIsManned", 0];
         private _manUnits = _tower getVariable ["GRAD_nvaCommand_towerUnits", []];
@@ -30,17 +30,18 @@ private _uiElements = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTT
             } else {
                 // catch out of bounds error – 
                 if (count _manUnits < (_forEachIndex + 1)) exitWith {
-                    _x ctrlSetText "grad-nvacommand\displays\alarmgroup_away.jpg";
+                    _x ctrlSetText "grad-nvacommand\displays\alarmgroup_away2.jpg";
                 };
 
                 if (!alive (_manUnits select _forEachIndex)) then {
                     _x ctrlSetText "grad-nvacommand\displays\alarmgroup_dead.jpg";
                 } else {
-                    _x ctrlSetText "grad-nvacommand\displays\alarmgroup_away.jpg";
+                    _x ctrlSetText "grad-nvacommand\displays\alarmgroup_away2.jpg";
                 };
             };
         } forEach _allUIGroup;
 
+        // alarmbutton
         if ([_tower] call GRAD_nvacommand_fnc_towerIsAlarmed) then {
             _towerButtonAlarm ctrlSetBackgroundColor [1,1,1,1];
             _towerButtonAlarm ctrlSetTextColor [1,.1,.1,1];

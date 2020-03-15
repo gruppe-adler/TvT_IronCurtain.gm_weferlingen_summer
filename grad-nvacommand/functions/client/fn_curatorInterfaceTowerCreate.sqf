@@ -50,15 +50,29 @@ _towerButtonCenter ctrlSetFade 0;
 _towerButtonCenter ctrlCommit 0.1;
 
 private _towerPicLabel = _display ctrlCreate ["RscText", -1];
-_towerPicLabel ctrlsetText (format ["BT-11 - %1", _towerID]);
-_towerPicLabel ctrlSetPosition [0.02, 1, 0.18, 0.18];
-_towerPicLabel ctrlSetBackgroundColor [0,0,0,0]; 
+_towerPicLabel ctrlsetText (format ["BT-11"]);
+_towerPicLabel ctrlSetPosition [0.03, 1, ctrlTextWidth _towerPicLabel, 0.18];
+_towerPicLabel ctrlSetBackgroundColor [0,0,0,1]; 
 _towerPicLabel ctrlSetFade 1;
 _towerPicLabel ctrlCommit 0;
 
-_towerPicLabel ctrlSetPosition [0.02, 1, 0.18, 0.05];
+_towerPicLabel ctrlSetPosition [0.03, 1, ctrlTextWidth _towerPicLabel, 0.05];
 _towerPicLabel ctrlSetFade 0;
 _towerPicLabel ctrlCommit 0.1;
+
+private _towerPicNumber = _display ctrlCreate ["RscText", -1];
+_towerPicNumber ctrlsetText (format ["%1", _towerID]);
+_towerPicNumber ctrlSetFont "RobotoCondensedBold";
+_towerPicNumber ctrlSetScale 4;
+_towerPicNumber ctrlSetPosition [0.02, 1, ctrlTextWidth _towerPicNumber, 0.18];
+_towerPicNumber ctrlSetBackgroundColor [0,0,0,0]; 
+_towerPicNumber ctrlSetFade 1;
+_towerPicNumber ctrlCommit 0;
+
+_towerPicNumber ctrlSetPosition [0.02, 1, ctrlTextWidth _towerPicNumber, 0.05];
+_towerPicNumber ctrlSetFade 0;
+_towerPicNumber ctrlCommit 0.1;
+
 
 private _towerAlarmGroup1 = _display ctrlCreate ["RscPictureKeepAspect", -1];
 _towerAlarmGroup1 ctrlSetPosition [0.2, 1.1, 0.10, 0.10];
@@ -270,6 +284,7 @@ uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER_UIELEMENTS",
         _towerLabel,
         _towerPic,
         _towerPicLabel,
+        _towerPicNumber,
         _towerButtonCenter,
         _towerButtonAlarm,
         _towerButtonDoWatch

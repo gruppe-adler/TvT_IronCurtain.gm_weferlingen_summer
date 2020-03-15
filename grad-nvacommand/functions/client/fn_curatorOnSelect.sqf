@@ -29,7 +29,7 @@ if (_isTower) then {
 if (_isInfantry) then {
     missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTINFANTRY_SELECTED", _entity];
 
-    [_entity] call GRAD_nvaCommand_fnc_curatorInfantryInterfaceCreate;
+    [_entity] call GRAD_nvaCommand_fnc_curatorInterfaceInfantryCreate;
 };
 
 if (!_isInfantry && !_isTower) then {
