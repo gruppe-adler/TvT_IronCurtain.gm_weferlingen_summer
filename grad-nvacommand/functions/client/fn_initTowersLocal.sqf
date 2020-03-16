@@ -5,10 +5,9 @@
 
 // add towers to all curators to edit/access
 
-params ["_towers"];
-
 if (!(player getVariable ["GRAD_nvacommand_isCommander", false])) exitWith {};
 
+private _towers = missionNamespace getVariable ["GRAD_nvaCommand_towerList", []];
 {
     private _curator = _x;
     _curator addCuratorEditableObjects [_towers, true];

@@ -95,7 +95,7 @@ private _searchLights = [];
 } forEach _newTowers;
 
 
-[_newTowers] remoteExecCall ["GRAD_nvaCommand_fnc_initTowersLocal", [0,-2] select isDedicated];
-
 missionNamespace setVariable ["GRAD_nvaCommand_towerList", _newTowers, true];
 missionNamespace setVariable ["GRAD_nvaCommand_searchLightList", _searchLights, true];
+
+[] remoteExecCall ["GRAD_nvaCommand_fnc_initTowersLocal", [0,-2] select isDedicated, true];

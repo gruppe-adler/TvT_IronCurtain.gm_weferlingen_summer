@@ -4,6 +4,10 @@ if (!isNull (missionNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTTOWER
     _type = "tower";
 };
 
+if (!isNull (missionNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTINFANTRY_SELECTED", objNull])) then {
+    _type = "infantry";
+};
+
 switch (_type) do {
 
     case "tower" : {
