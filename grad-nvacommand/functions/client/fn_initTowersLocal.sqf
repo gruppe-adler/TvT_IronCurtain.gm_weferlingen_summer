@@ -13,15 +13,27 @@ if (!(player getVariable ["GRAD_nvacommand_isCommander", false])) exitWith {};
     private _towers = missionNamespace getVariable ["GRAD_nvaCommand_towerList", []];
     count _towers > 0
 },{
-    // make curator selectable
-    [_x] call GRAD_nvaCommand_fnc_curatorOnSelectEH;
-    [] call GRAD_nvaCommand_fnc_curatorInterfaceDetection;
-
+    
     {
+        _curator = _x;
+        // make curator selectable
+        [_curator] call GRAD_nvaCommand_fnc_curatorOnSelectEH;
+        [] call GRAD_nvaCommand_fnc_curatorInterfaceDetection;
+
+    
         { 
             private _towerID = _x getVariable ["GRAD_nvaCommand_towerID", -1];
            [ _curator, ["", [1,1,1,1], position _x, 1, 1, 45, format ["BT-11 - %1", _towerID], 1, 0.05, "TahomaB"], false ] call BIS_fnc_addCuratorIcon;
         } forEach _towers;
+
+        _curator addEventHandler ["CuratorObjectRegistered", {
+            params ["_curator", "_input"];
+            private _output = [];
+            {
+                _output pushBack [false,0,0];
+            } forEach _input;
+            _output
+        }];
     } forEach allCurators;
 }] call CBA_fnc_waitUntilAndExecute;
 
