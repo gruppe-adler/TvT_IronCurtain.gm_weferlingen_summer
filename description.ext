@@ -6,6 +6,7 @@ respawnTemplates[] = {"Base"};
 respawnOnStart = -1;//Dont respawn on start.
 respawnDialog = 0;
 respawnButton = 0;
+loadScreen = "data\loading.jpg";
 
 #define MODULES_DIRECTORY node_modules
 

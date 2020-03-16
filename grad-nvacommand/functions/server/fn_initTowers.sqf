@@ -64,17 +64,16 @@ private _searchLights = [];
     _searchLight addWeaponTurret ["fakeweapon", [0]];
     _searchLights pushBackUnique _searchLight;
 
-    private _groupSearchLight = createGroup east;
-    private _searchLightGuy = _groupSearchLight createUnit ["gm_gc_bgs_rifleman_mpikm72_80_str", [0,0,0], [], 0, "CAN_COLLIDE"];
-    _searchLightGuy moveInAny _searchLight;
+
+    private _groupSearchLight = createVehicleCrew _searchLight;
+    _groupSearchLight setCombatMode "BLUE";
+    _groupSearchLight setBehaviourStrong "CARELESS";
+
+    private _searchLightGuy = (units _groupSearchLight) select 0;
     _searchLightGuy action ["SearchLightOn", _searchLight];
     
-    _searchLightGuy disableAI "TARGET";
-    _searchLightGuy disableAI "AUTOTARGET";
-    _searchLightGuy disableAI "FSM";
-    _searchLightGuy disableAI "CHECKVISIBLE";
-    _searchLightGuy disableAI "COVER";
-    _searchLightGuy disableAI "AUTOCOMBAT";
+    _searchLightGuy disableAI "ALL";
+    _searchLightGuy enableAI "WeaponAim";
 
     private _searchLightTarget = "Sign_Sphere25cm_F" createVehicle _position;
     _newTower setVariable ["GRAD_nvaCommand_towerDummyTarget", _searchLightTarget, true];
@@ -98,4 +97,11 @@ private _searchLights = [];
 missionNamespace setVariable ["GRAD_nvaCommand_towerList", _newTowers, true];
 missionNamespace setVariable ["GRAD_nvaCommand_searchLightList", _searchLights, true];
 
-[] remoteExecCall ["GRAD_nvaCommand_fnc_initTowersLocal", [0,-2] select isDedicated, true];
+// make towers editable
+{
+    private _curator = _x;
+    _curator addCuratorEditableObjects [_newTowers, true];
+
+} forEach allCurators;
+
+[] remoteExec ["GRAD_nvaCommand_fnc_initTowersLocal", [0,-2] select isDedicated, true];

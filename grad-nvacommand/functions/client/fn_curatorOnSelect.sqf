@@ -29,7 +29,13 @@ if (_isTower) then {
 if (_isInfantry) then {
     missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTINFANTRY_SELECTED", _entity];
 
-    [_entity] call GRAD_nvaCommand_fnc_curatorInterfaceInfantryCreate;
+    private _ctrls = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTINFANTRY_UIELEMENTS", 
+        [controlNull,controlNull,controlNull,controlNull]
+    ];
+    // check only one to know interface is missing
+    if (isNull (_ctrls select 0)) then {
+        [_entity] call GRAD_nvaCommand_fnc_curatorInterfaceInfantryCreate;
+    };
 };
 
 if (!_isInfantry && !_isTower) then {
