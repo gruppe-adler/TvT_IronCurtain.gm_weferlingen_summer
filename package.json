@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "dependencies": {
     "grad-advancedlockpicking": "0.0.1",
+    "grad-civs": "^2.0.0",
     "grad-gpstracker": "^0.2.0",
     "grad-passport": "0.0.3"
   }

@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=993;
+		nextID=1020;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={10075.737,103.07077,18258.756};
-		dir[]={0.23444414,-0.42281887,0.87541997};
-		up[]={0.10938335,0.90620518,0.40843967};
-		aside[]={0.96599936,-6.2718755e-009,-0.25869969};
+		pos[]={15020.779,99.40593,14863.786};
+		dir[]={-0.059008151,-0.39264593,-0.91779995};
+		up[]={-0.025192603,0.91968864,-0.39183879};
+		aside[]={-0.99794382,6.9150701e-008,0.064161018};
 	};
 };
 binarizationWanted=0;
@@ -543,7 +543,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=296;
+		items=298;
 		class Item0
 		{
 			dataType="Group";
@@ -5188,6 +5188,7 @@ class Mission
 			flags=1;
 			id=594;
 			type="ModuleCuratorAddCameraArea_F";
+			atlOffset=-7.6293945e-006;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -7218,16 +7219,41 @@ class Mission
 				nAttributes=13;
 			};
 		};
+		class Item296
+		{
+			dataType="Trigger";
+			position[]={17201.168,59.807674,19078.441};
+			angle=2.4036326;
+			class Attributes
+			{
+				sizeA=3000;
+				sizeB=4000;
+				isRectangle=1;
+			};
+			id=1003;
+			type="EmptyDetector";
+		};
+		class Item297
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={19218.182,55.861252,18675.086};
+			};
+			init="call{[this,30,true,true,30] call grad_civs_fnc_populateArea;}";
+			id=1004;
+			type="Logic";
+		};
 	};
 	class Connections
 	{
 		class LinkIDProvider
 		{
-			nextID=67;
+			nextID=68;
 		};
 		class Links
 		{
-			items=67;
+			items=68;
 			class Item0
 			{
 				linkID=0;
@@ -7893,6 +7919,16 @@ class Mission
 				linkID=66;
 				item0=128;
 				item1=129;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item67
+			{
+				linkID=67;
+				item0=1004;
+				item1=1003;
 				class CustomData
 				{
 					type="Sync";
