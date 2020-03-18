@@ -121,13 +121,13 @@ class DDR_Reisepass: grad_passport_defaultPassport {
             idc = GRAD_IDC_SERIAL;
 
             x = GRAD_PASSPORT_DEFAULT_RIGHTCOLUMN_X*1.20;
-            y = GRAD_PASSPORT_DEFAULT_LINE_Y(7) * 0.9;
+            y = GRAD_PASSPORT_DEFAULT_LINE_Y(5) * 0.9;
             w = GRAD_PASSPORT_CONTENT_W;
             h = GRAD_PASSPORT_LINE_H;
 
             font = "EtelkaMonospacePro";
             sizeEx = 0.03 * TEXT_SCALE;
-            colorText[] = {0.05,0.15,0.24,1};
+            colorText[] = {0.025,0.08,0.12,1};
         };
     };
 };

@@ -8,18 +8,18 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1020;
+		nextID=1047;
 	};
 	class MarkerIDProvider
 	{
-		nextID=37;
+		nextID=38;
 	};
 	class Camera
 	{
-		pos[]={15020.779,99.40593,14863.786};
-		dir[]={-0.059008151,-0.39264593,-0.91779995};
-		up[]={-0.025192603,0.91968864,-0.39183879};
-		aside[]={-0.99794382,6.9150701e-008,0.064161018};
+		pos[]={10136.434,71.307663,18111.857};
+		dir[]={0.56340659,-0.23540713,-0.79204649};
+		up[]={0.13658738,0.97183645,-0.19201912};
+		aside[]={-0.81494039,-1.4318503e-006,-0.5796966};
 	};
 };
 binarizationWanted=0;
@@ -299,7 +299,7 @@ class CustomAttributes
 								};
 								class value
 								{
-									items=3;
+									items=13;
 									class Item0
 									{
 										class data
@@ -342,6 +342,146 @@ class CustomAttributes
 											value="ace_interaction_disablenegativerating";
 										};
 									};
+									class Item3
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="ace_medical_treatment_advanceddiagnose";
+										};
+									};
+									class Item4
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="ace_medical_treatment_advancedmedication";
+										};
+									};
+									class Item5
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="ace_medical_treatment_advancedbandages";
+										};
+									};
+									class Item6
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="ace_medical_treatment_cleartraumaafterbandage";
+										};
+									};
+									class Item7
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="ace_medical_treatment_allowselfstitch";
+										};
+									};
+									class Item8
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="em_maxweight_climb2";
+										};
+									};
+									class Item9
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="em_maxweight_climb3";
+										};
+									};
+									class Item10
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="em_maxheight";
+										};
+									};
+									class Item11
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="em_allow_air_climb";
+										};
+									};
+									class Item12
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"STRING"
+												};
+											};
+											value="em_cooldown";
+										};
+									};
 								};
 							};
 						};
@@ -358,7 +498,7 @@ class CustomAttributes
 								};
 								class value
 								{
-									items=3;
+									items=13;
 									class Item0
 									{
 										class data
@@ -475,6 +615,456 @@ class CustomAttributes
 															};
 														};
 														value=1;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item3
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"ARRAY"
+												};
+											};
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"BOOL"
+															};
+														};
+														value=0;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item4
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"ARRAY"
+												};
+											};
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"BOOL"
+															};
+														};
+														value=0;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item5
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"ARRAY"
+												};
+											};
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=0;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item6
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"ARRAY"
+												};
+											};
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"BOOL"
+															};
+														};
+														value=1;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item7
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"ARRAY"
+												};
+											};
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item8
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"ARRAY"
+												};
+											};
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=10;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item9
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"ARRAY"
+												};
+											};
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=10;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item10
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"ARRAY"
+												};
+											};
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1.383517;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item11
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"ARRAY"
+												};
+											};
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"BOOL"
+															};
+														};
+														value=0;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item12
+									{
+										class data
+										{
+											class type
+											{
+												type[]=
+												{
+													"ARRAY"
+												};
+											};
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														class type
+														{
+															type[]=
+															{
+																"SCALAR"
+															};
+														};
+														value=2.9879732;
 													};
 												};
 												class Item1
@@ -522,6 +1112,7 @@ class Mission
 {
 	class Intel
 	{
+		resistanceWest=0;
 		timeOfChanges=1800.0002;
 		startWeather=0.34999999;
 		startWind=0.1;
@@ -543,7 +1134,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=298;
+		items=306;
 		class Item0
 		{
 			dataType="Group";
@@ -556,7 +1147,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={10296.19,66.963005,17981.711};
+						position[]={8951.5205,65.171577,19628.023};
 						angles[]={0,2.0453513,0};
 					};
 					side="Civilian";
@@ -7244,16 +7835,103 @@ class Mission
 			id=1004;
 			type="Logic";
 		};
+		class Item298
+		{
+			dataType="Marker";
+			position[]={6074.0942,66.561653,20054.566};
+			name="mrk_barrier_nw";
+			type="Empty";
+			id=1021;
+		};
+		class Item299
+		{
+			dataType="Marker";
+			position[]={21222.842,56.380901,21378.287};
+			name="mrk_barrier_ne";
+			type="Empty";
+			id=1022;
+		};
+		class Item300
+		{
+			dataType="Marker";
+			position[]={20761.76,85.511719,15022.774};
+			name="mrk_barrier_se";
+			type="Empty";
+			id=1023;
+			atlOffset=-4.7171402;
+		};
+		class Item301
+		{
+			dataType="Marker";
+			position[]={6127.019,97.57251,15143.59};
+			name="mrk_barrier_sw";
+			type="Empty";
+			id=1024;
+			atlOffset=-2.4461441;
+		};
+		class Item302
+		{
+			dataType="Trigger";
+			position[]={14983.837,70.153763,21840.061};
+			angle=3.052597;
+			class Attributes
+			{
+				name="trg_barrier_north";
+				sizeA=8000;
+				sizeB=1000;
+				isRectangle=1;
+			};
+			id=1028;
+			type="EmptyDetector";
+		};
+		class Item303
+		{
+			dataType="Trigger";
+			position[]={22038.928,77.162079,17633.279};
+			angle=1.6546943;
+			class Attributes
+			{
+				name="trg_barrier_east";
+				sizeA=4000;
+				sizeB=1000;
+				isRectangle=1;
+			};
+			id=1029;
+			type="EmptyDetector";
+		};
+		class Item304
+		{
+			dataType="Trigger";
+			position[]={16913.406,79.262634,14027.639};
+			angle=3.1442447;
+			class Attributes
+			{
+				name="trg_barrier_south";
+				sizeA=4000;
+				sizeB=1000;
+				isRectangle=1;
+			};
+			id=1030;
+			type="EmptyDetector";
+		};
+		class Item305
+		{
+			dataType="Marker";
+			position[]={11199.937,68.89814,16711.357};
+			name="mrk_borderCenter";
+			type="Empty";
+			id=1041;
+		};
 	};
 	class Connections
 	{
 		class LinkIDProvider
 		{
-			nextID=68;
+			nextID=67;
 		};
 		class Links
 		{
-			items=68;
+			items=67;
 			class Item0
 			{
 				linkID=0;
@@ -7547,8 +8225,8 @@ class Mission
 			class Item29
 			{
 				linkID=29;
-				item0=122;
-				item1=121;
+				item0=121;
+				item1=120;
 				class CustomData
 				{
 					type="Sync";
@@ -7557,8 +8235,8 @@ class Mission
 			class Item30
 			{
 				linkID=30;
-				item0=121;
-				item1=120;
+				item0=120;
+				item1=119;
 				class CustomData
 				{
 					type="Sync";
@@ -7567,8 +8245,8 @@ class Mission
 			class Item31
 			{
 				linkID=31;
-				item0=120;
-				item1=119;
+				item0=119;
+				item1=118;
 				class CustomData
 				{
 					type="Sync";
@@ -7577,8 +8255,8 @@ class Mission
 			class Item32
 			{
 				linkID=32;
-				item0=119;
-				item1=118;
+				item0=118;
+				item1=117;
 				class CustomData
 				{
 					type="Sync";
@@ -7587,8 +8265,8 @@ class Mission
 			class Item33
 			{
 				linkID=33;
-				item0=118;
-				item1=117;
+				item0=117;
+				item1=116;
 				class CustomData
 				{
 					type="Sync";
@@ -7597,8 +8275,8 @@ class Mission
 			class Item34
 			{
 				linkID=34;
-				item0=117;
-				item1=116;
+				item0=116;
+				item1=115;
 				class CustomData
 				{
 					type="Sync";
@@ -7607,8 +8285,8 @@ class Mission
 			class Item35
 			{
 				linkID=35;
-				item0=116;
-				item1=115;
+				item0=115;
+				item1=114;
 				class CustomData
 				{
 					type="Sync";
@@ -7617,8 +8295,8 @@ class Mission
 			class Item36
 			{
 				linkID=36;
-				item0=115;
-				item1=114;
+				item0=114;
+				item1=113;
 				class CustomData
 				{
 					type="Sync";
@@ -7627,8 +8305,8 @@ class Mission
 			class Item37
 			{
 				linkID=37;
-				item0=114;
-				item1=113;
+				item0=113;
+				item1=112;
 				class CustomData
 				{
 					type="Sync";
@@ -7637,8 +8315,8 @@ class Mission
 			class Item38
 			{
 				linkID=38;
-				item0=113;
-				item1=112;
+				item0=112;
+				item1=111;
 				class CustomData
 				{
 					type="Sync";
@@ -7647,8 +8325,8 @@ class Mission
 			class Item39
 			{
 				linkID=39;
-				item0=112;
-				item1=111;
+				item0=111;
+				item1=110;
 				class CustomData
 				{
 					type="Sync";
@@ -7657,8 +8335,8 @@ class Mission
 			class Item40
 			{
 				linkID=40;
-				item0=111;
-				item1=110;
+				item0=110;
+				item1=109;
 				class CustomData
 				{
 					type="Sync";
@@ -7667,8 +8345,8 @@ class Mission
 			class Item41
 			{
 				linkID=41;
-				item0=110;
-				item1=109;
+				item0=109;
+				item1=108;
 				class CustomData
 				{
 					type="Sync";
@@ -7677,8 +8355,8 @@ class Mission
 			class Item42
 			{
 				linkID=42;
-				item0=109;
-				item1=108;
+				item0=146;
+				item1=100;
 				class CustomData
 				{
 					type="Sync";
@@ -7687,8 +8365,8 @@ class Mission
 			class Item43
 			{
 				linkID=43;
-				item0=146;
-				item1=100;
+				item0=596;
+				item1=168;
 				class CustomData
 				{
 					type="Sync";
@@ -7697,8 +8375,8 @@ class Mission
 			class Item44
 			{
 				linkID=44;
-				item0=596;
-				item1=168;
+				item0=100;
+				item1=692;
 				class CustomData
 				{
 					type="Sync";
@@ -7707,7 +8385,7 @@ class Mission
 			class Item45
 			{
 				linkID=45;
-				item0=100;
+				item0=152;
 				item1=692;
 				class CustomData
 				{
@@ -7718,7 +8396,7 @@ class Mission
 			{
 				linkID=46;
 				item0=152;
-				item1=692;
+				item1=151;
 				class CustomData
 				{
 					type="Sync";
@@ -7727,8 +8405,8 @@ class Mission
 			class Item47
 			{
 				linkID=47;
-				item0=152;
-				item1=151;
+				item0=692;
+				item1=147;
 				class CustomData
 				{
 					type="Sync";
@@ -7737,8 +8415,8 @@ class Mission
 			class Item48
 			{
 				linkID=48;
-				item0=692;
-				item1=147;
+				item0=101;
+				item1=142;
 				class CustomData
 				{
 					type="Sync";
@@ -7747,8 +8425,8 @@ class Mission
 			class Item49
 			{
 				linkID=49;
-				item0=101;
-				item1=142;
+				item0=693;
+				item1=138;
 				class CustomData
 				{
 					type="Sync";
@@ -7757,8 +8435,8 @@ class Mission
 			class Item50
 			{
 				linkID=50;
-				item0=693;
-				item1=138;
+				item0=100;
+				item1=101;
 				class CustomData
 				{
 					type="Sync";
@@ -7767,8 +8445,8 @@ class Mission
 			class Item51
 			{
 				linkID=51;
-				item0=100;
-				item1=101;
+				item0=101;
+				item1=693;
 				class CustomData
 				{
 					type="Sync";
@@ -7777,7 +8455,7 @@ class Mission
 			class Item52
 			{
 				linkID=52;
-				item0=101;
+				item0=694;
 				item1=693;
 				class CustomData
 				{
@@ -7788,7 +8466,7 @@ class Mission
 			{
 				linkID=53;
 				item0=694;
-				item1=693;
+				item1=127;
 				class CustomData
 				{
 					type="Sync";
@@ -7797,8 +8475,8 @@ class Mission
 			class Item54
 			{
 				linkID=54;
-				item0=694;
-				item1=127;
+				item0=103;
+				item1=695;
 				class CustomData
 				{
 					type="Sync";
@@ -7808,7 +8486,7 @@ class Mission
 			{
 				linkID=55;
 				item0=103;
-				item1=695;
+				item1=117;
 				class CustomData
 				{
 					type="Sync";
@@ -7817,8 +8495,8 @@ class Mission
 			class Item56
 			{
 				linkID=56;
-				item0=103;
-				item1=117;
+				item0=694;
+				item1=102;
 				class CustomData
 				{
 					type="Sync";
@@ -7827,8 +8505,8 @@ class Mission
 			class Item57
 			{
 				linkID=57;
-				item0=694;
-				item1=102;
+				item0=102;
+				item1=103;
 				class CustomData
 				{
 					type="Sync";
@@ -7838,7 +8516,7 @@ class Mission
 			{
 				linkID=58;
 				item0=102;
-				item1=103;
+				item1=122;
 				class CustomData
 				{
 					type="Sync";
@@ -7847,8 +8525,8 @@ class Mission
 			class Item59
 			{
 				linkID=59;
-				item0=102;
-				item1=122;
+				item0=695;
+				item1=115;
 				class CustomData
 				{
 					type="Sync";
@@ -7857,8 +8535,8 @@ class Mission
 			class Item60
 			{
 				linkID=60;
-				item0=695;
-				item1=115;
+				item0=104;
+				item1=695;
 				class CustomData
 				{
 					type="Sync";
@@ -7867,8 +8545,8 @@ class Mission
 			class Item61
 			{
 				linkID=61;
-				item0=104;
-				item1=695;
+				item0=168;
+				item1=594;
 				class CustomData
 				{
 					type="Sync";
@@ -7877,8 +8555,8 @@ class Mission
 			class Item62
 			{
 				linkID=62;
-				item0=168;
-				item1=594;
+				item0=124;
+				item1=123;
 				class CustomData
 				{
 					type="Sync";
@@ -7887,8 +8565,8 @@ class Mission
 			class Item63
 			{
 				linkID=63;
-				item0=124;
-				item1=123;
+				item0=123;
+				item1=122;
 				class CustomData
 				{
 					type="Sync";
@@ -7897,8 +8575,8 @@ class Mission
 			class Item64
 			{
 				linkID=64;
-				item0=123;
-				item1=122;
+				item0=127;
+				item1=128;
 				class CustomData
 				{
 					type="Sync";
@@ -7907,8 +8585,8 @@ class Mission
 			class Item65
 			{
 				linkID=65;
-				item0=127;
-				item1=128;
+				item0=128;
+				item1=129;
 				class CustomData
 				{
 					type="Sync";
@@ -7917,16 +8595,6 @@ class Mission
 			class Item66
 			{
 				linkID=66;
-				item0=128;
-				item1=129;
-				class CustomData
-				{
-					type="Sync";
-				};
-			};
-			class Item67
-			{
-				linkID=67;
 				item0=1004;
 				item1=1003;
 				class CustomData

@@ -27,6 +27,8 @@ class cfgFunctions {
     #include "node_modules\grad-advancedLockpicking\cfgFunctions.hpp"
     #include "node_modules\grad-civs\cfgFunctions.hpp"
 
+    #include "IC-setup\cfgFunctions.hpp"
+
     #include "grad-nvacommand\cfgFunctions.hpp"
     #include "grad-stasi\cfgFunctions.hpp"
     #include "grad-vopo\cfgFunctions.hpp"
