@@ -4,8 +4,19 @@
 
 */
 
+private _fences = [];
 
-private _fences = (getMarkerPos "mrk_borderCenter") nearObjects ["land_gm_fence_border_gz1_600", 500];
+{
+    _fences pushBack ((getMarkerPos _x) nearObjects ["land_gm_fence_border_gz1_600", 100]);
+} forEach [
+    "mrk_SAM70_1",
+    "mrk_SAM70_2",
+    "mrk_SAM70_3",
+    "mrk_SAM70_4",
+    "mrk_SAM70_5",
+    "mrk_SAM70_6"
+];
+
 
 // sort to build a line
 // _fences = [_fences, [], { [worldSize/2, 0] distance _x }, "DESCEND"] call BIS_fnc_sortBy;

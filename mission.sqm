@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1047;
+		nextID=1052;
 	};
 	class MarkerIDProvider
 	{
@@ -1134,7 +1134,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=306;
+		items=311;
 		class Item0
 		{
 			dataType="Group";
@@ -7917,10 +7917,51 @@ class Mission
 		class Item305
 		{
 			dataType="Marker";
-			position[]={11199.937,68.89814,16711.357};
-			name="mrk_borderCenter";
+			position[]={13421.254,66.23999,15620.604};
+			name="mrk_sam70_1";
 			type="Empty";
 			id=1041;
+			atlOffset=-3.4842148;
+		};
+		class Item306
+		{
+			dataType="Marker";
+			position[]={12478.271,69.604622,16409.176};
+			name="mrk_sam70_2";
+			type="Empty";
+			id=1047;
+		};
+		class Item307
+		{
+			dataType="Marker";
+			position[]={11231.177,68.837646,16700.1};
+			name="mrk_sam70_3";
+			type="Empty";
+			id=1048;
+		};
+		class Item308
+		{
+			dataType="Marker";
+			position[]={10300.265,65.729317,17824.41};
+			name="mrk_sam70_4";
+			type="Empty";
+			id=1049;
+		};
+		class Item309
+		{
+			dataType="Marker";
+			position[]={9304.4043,64.324814,19029.547};
+			name="mrk_sam70_5";
+			type="Empty";
+			id=1050;
+		};
+		class Item310
+		{
+			dataType="Marker";
+			position[]={8753.0742,63.842613,19684.793};
+			name="mrk_sam70_6";
+			type="Empty";
+			id=1051;
 		};
 	};
 	class Connections
