@@ -15,7 +15,7 @@ if (isServer) then {
             [_handle] call CBA_fnc_removePerFrameHandler;
         };
 
-        private _nearEntities =  _car nearEntities [["Car", "Motorcycle"], 400];
+        private _nearEntities =  _car nearEntities [["Man", "Car", "Motorcycle"], 400];
 
         {
             private _cansee = [_car, "VIEW"] checkVisibility [visiblePositionASL _x, visiblePositionASL _car] > 0.5;
@@ -23,6 +23,8 @@ if (isServer) then {
             if (_cansee) then {
                 ["GRAD_VOPO_SIGNAL", [_car, "blaulicht"], _x] call CBA_fnc_targetEvent;
             };
+
+
         } forEach _nearEntities;
         
     }, 2, [_car]] call CBA_fnc_addPerFrameHandler;

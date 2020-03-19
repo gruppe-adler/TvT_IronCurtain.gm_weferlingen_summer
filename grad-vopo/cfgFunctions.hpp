@@ -4,8 +4,10 @@ class GRAD_vopo {
         file = grad-vopo\functions\client;
 
         class addAction;
+        class addGetInHandler;
         class blaulicht;
         class presston;
         class motorSirene;
+        class revealNearbyUnits;
     };
 };
