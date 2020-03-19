@@ -15,11 +15,13 @@ _unit addEventHandler ["GetInMan", {
 
          diag_log format ["GRAD-vopo adding GetIn Handler to %1", _unit];
 
-        private _handler = [_vehicle] call GRAD_vopo_fnc_revealNearbyUnits;
+        private _handlers = [_vehicle] call GRAD_vopo_fnc_revealNearbyUnits;
 
-        // array to make sure 2 handlers can be added whyever and deleted anyway
-        private _existingHandlers = player getVariable ["GRAD_vopo_revealHandler", []];
-        player setVariable ["GRAD_vopo_revealHandler", (_existingHandlers pushBackUnique _handler)];
+        inGameUISetEventHandler ["Action", "_this params ['_target', '_caller', '_index', '_usertype', '_name']; private _car = vehicle _caller; if (_name == 'Beacon On') then { _car setVariable ['IC_vopo_presston', true, true]; [_car] spawn GRAD_vopo_fnc_presston; }; if (_name == 'Beacon Off') then { _car setVariable ['IC_vopo_presston', false, true]; }; false"];
+
+        // [C Alpha 1-1:1 (nomisum),C Alpha 1-1:1 (nomisum),11,""UserType"",""Beacon On"",1.4,false,true,"""",true,""Action""]
+
+        player setVariable ["GRAD_vopo_revealHandler", _handlers];
     };
 }];
 
@@ -28,9 +30,9 @@ _unit addEventHandler ["GetOutMan", {
 
     private _existingHandlers = player getVariable ["GRAD_vopo_revealHandler", []];
 
-    {
-        _x params ["_revealEH", "_missionEH"]
-        [_revealEH] call CBA_fnc_removePerFrameHandlers;
-        removeMissionEventHandler ["Draw3D", _missionEH];
-    } forEach _existingHandlers;
+    inGameUISetEventHandler ["Action", ""];
+   
+    _existingHandlers params ["_pfh", "_missionEH"];
+    [_revealEH] call CBA_fnc_removePerFrameHandler;
+    removeMissionEventHandler ["Draw3D", _missionEH];
 }];
