@@ -44,23 +44,6 @@ _car addAction [
 
 */
 
-
-/*
-_car addEventHandler ["AnimStateChanged", {
-    params ["_unit", "_anim"];
-
-    if (_anim == "beacon_01_org_on") then {
-            _unit setVariable ["IC_vopo_presston", true, true];
-            [_unit] spawn GRAD_vopo_fnc_presston;
-    };
-
-    if (_anim == "beacon_01_org_off") then {
-            _unit setVariable ["IC_vopo_presston", false, true];
-    };
-}];
-*/
-
-
 /*
 // presston
 _car addAction [
@@ -98,6 +81,8 @@ _car addAction [
     ""
 ];
 */
+
+[_car] call GRAD_vopo_fnc_createSpeaker;
 
 // motorsirene
 _car addAction [

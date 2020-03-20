@@ -6,8 +6,12 @@ class GRAD_vopo {
         class addAction;
         class addGetInHandler;
         class blaulicht;
+        class callPluginActivate;
+        class callPluginDeactivate;
+        class createSpeaker;
         class presston;
         class motorSirene;
         class revealNearbyUnits;
+        class setTFARFakeRadio;
     };
 };

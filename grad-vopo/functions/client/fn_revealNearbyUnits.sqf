@@ -26,7 +26,12 @@ private _drawEH = addMissionEventHandler ["Draw3D", {
     {   
         private _position = ASLToAGL getPosASL _x;
         _position params ["_xPos", "_yPos", "_zPos"];
-        drawIcon3D [getMissionPath "grad-vopo\data\flare.paa", [1,1,1,1], [_xPos, _yPos, _zPos + 1] , 2, 2, 0, "", 0, 0.05, "TahomaB", "center", true];
+
+        private _color = 1;
+        private _alpha = 0;
+        private _distance = _position distance player;
+
+        drawIcon3D [getMissionPath "grad-vopo\data\flare.paa", [_color, _color, _color, linearConversion [0, 100, _distance, 1, 0, true]], [_xPos, _yPos, _zPos + 1] , 2, 2, 0, "", 0, 0.05, "TahomaB", "center", true];
     } forEach _nearEntities;
     
 }];
