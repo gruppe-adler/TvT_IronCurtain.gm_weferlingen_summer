@@ -5,7 +5,7 @@ class CfgGradCivs {
     maxCivsInVehicles = 10;
     spawnDistancesOnFoot[] = {1000,4500};
     spawnDistancesInVehicles[] = {1000,4500};
-    debugCivState = 0;
+    debugCivState = 1;
     debugFps = 0;
     minCivUpdateTime = 3;
     minFps = 40;

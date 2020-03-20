@@ -1,1 +1,0 @@
-_this params ["_target", "_caller", "_index", "_usertype", "_name"]; private _car = vehicle _caller; if (_name == 'Beacon On') then { _car setVariable ['IC_vopo_presston', true, true]; [_car] spawn GRAD_vopo_fnc_presston; }; }; if (_name == 'Beacon Off') then { _car setVariable ['IC_vopo_presston', false]; };}; false

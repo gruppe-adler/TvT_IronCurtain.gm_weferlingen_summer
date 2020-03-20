@@ -1,7 +1,10 @@
 /*
     optimized for GM trabant
+
+    not used
 */
 
+/*
 params ["_car"];
 
 // handle CBA events
@@ -11,7 +14,7 @@ if (isServer) then {
         params ["_args", "_handle"];
         _args params ["_car"];
 
-        if (!(_car getVariable ["IC_vopo_blaulicht", false])) exitWith {
+        if (!(_car getVariable ["IC_vopo_motorsirene", false])) exitWith {
             [_handle] call CBA_fnc_removePerFrameHandler;
         };
 
@@ -20,10 +23,16 @@ if (isServer) then {
         {
             private _cansee = [_car, "VIEW"] checkVisibility [visiblePositionASL _x, visiblePositionASL _car] > 0.5;
             
-            if (_cansee) then {
-                ["GRAD_VOPO_SIGNAL", [_car, "blaulicht"], _x] call CBA_fnc_targetEvent;
+            if (_cansee && !(_x getVariable ["GRAD_vopo_blaulichtAffected", false])) then {
+                // ["GRAD_civs_customActivity_start", [_x], _x] call CBA_fnc_targetEvent;
+                ["grad_civs_panicking", [_x], [_x]] call CBA_fnc_targetEvent;
+                _x setVariable ["GRAD_vopo_blaulichtAffected", true];
+                // [_x] call GRAD_vopo_fnc_blaulichtReaction;
+            } else {
+                // ["GRAD_civs_customActivity_end", [_x], _x] call CBA_fnc_targetEvent;
+                ["grad_civs_panicking_end", [_x], [_x]] call CBA_fnc_targetEvent;
+                _x setVariable ["GRAD_vopo_blaulichtAffected", false];
             };
-
 
         } forEach _nearEntities;
         
@@ -198,3 +207,5 @@ _soundSource attachTo [_car];
     _lightLeft, 
     _lightRight]
 ] call CBA_fnc_addPerFrameHandler;
+
+*/
