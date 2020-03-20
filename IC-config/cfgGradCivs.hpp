@@ -1,14 +1,14 @@
 class CfgGradCivs {
     autoInit = 1;
-    maxCivsOnFoot = 0;
-    maxCivsResidents = 0;
-    maxCivsInVehicles = 0;
+    maxCivsOnFoot = 30;
+    maxCivsResidents = 20;
+    maxCivsInVehicles = 10;
     spawnDistancesOnFoot[] = {1000,4500};
     spawnDistancesInVehicles[] = {1000,4500};
-    debugCivState = 0;
+    debugCivState = 1;
     debugFps = 0;
     minCivUpdateTime = 3;
-    minFps = 35;
+    minFps = 40;
     automaticVehicleGroupSize = 1;
     exitOn = "";
     onSpawn = "diag_log format ['%1 spawned', typeOf (_this select 0)];";
