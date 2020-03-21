@@ -6,9 +6,7 @@
 
 */
 
-params ["_unit"];
-
-_unit addEventHandler ["GetInMan", {
+player addEventHandler ["GetInMan", {
     params ["_unit", "_role", "_vehicle", "_turret"];
 
     if (typeOf _vehicle == "gm_gc_pol_p601") then {
@@ -25,14 +23,19 @@ _unit addEventHandler ["GetInMan", {
     };
 }];
 
-_unit addEventHandler ["GetOutMan", {
+player addEventHandler ["GetOutMan", {
     params ["_unit", "_role", "_vehicle", "_turret"];
 
-    private _existingHandlers = player getVariable ["GRAD_vopo_revealHandler", []];
+    if (typeOf _vehicle == "gm_gc_pol_p601") then {
 
-    inGameUISetEventHandler ["Action", ""];
-   
-    _existingHandlers params ["_pfh", "_missionEH"];
-    [_revealEH] call CBA_fnc_removePerFrameHandler;
-    removeMissionEventHandler ["Draw3D", _missionEH];
+        private _existingHandlers = player getVariable ["GRAD_vopo_revealHandler", []];
+
+        if (count _existingHandlers < 1) exitWith {};
+
+        inGameUISetEventHandler ["Action", ""];
+       
+        _existingHandlers params ["_pfh", "_missionEH"];
+        [_revealEH] call CBA_fnc_removePerFrameHandler;
+        removeMissionEventHandler ["Draw3D", _missionEH];
+    };
 }];

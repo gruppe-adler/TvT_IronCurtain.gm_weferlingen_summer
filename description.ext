@@ -7,6 +7,7 @@ respawnOnStart = -1;//Dont respawn on start.
 respawnDialog = 0;
 respawnButton = 0;
 loadScreen = "data\loading.jpg";
+onLoadMission = "Den Sozialismus in seinem Lauf, hält weder Ochs noch Esel auf. - Erich Honecker";
 
 #define MODULES_DIRECTORY node_modules
 

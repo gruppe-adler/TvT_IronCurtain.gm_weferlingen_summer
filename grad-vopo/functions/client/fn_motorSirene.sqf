@@ -28,20 +28,21 @@ private _sirenEH = [{
     params ["_args", "_handle"];
     _args params ["_car"];
 
-    private _nearEntities =  _car nearEntities [["Man", "Car", "Motorcycle"], 400];
+    private _nearEntities =  (entities [["Man", "Car"], [], true, true]) inAreaArray [position _car, 200, 200, 360, false, -1];
 
     {
-        private _cansee = [_car, "VIEW"] checkVisibility [visiblePositionASL _x, visiblePositionASL _car] > 0.5;
+        (crew _x) params [["_driver", objNull]];
+        if (!isNull _driver) then {
         
-        if (_cansee && !(_x getVariable ["GRAD_vopo_blaulichtAffected", false])) then {
-            // ["GRAD_civs_customActivity_start", [_x], _x] call CBA_fnc_targetEvent;
-            ["grad_civs_panicking", [_x], [_x]] call CBA_fnc_targetEvent;
-            _x setVariable ["GRAD_vopo_blaulichtAffected", true];
-            // [_x] call GRAD_vopo_fnc_blaulichtReaction;
-        } else {
-            // ["GRAD_civs_customActivity_end", [_x], _x] call CBA_fnc_targetEvent;
-            ["grad_civs_panicking_end", [_x], [_x]] call CBA_fnc_targetEvent;
-            _x setVariable ["GRAD_vopo_blaulichtAffected", false];
+            if (_x getVariable ["GRAD_vopo_blaulichtAffected", false]) then {
+                // ["GRAD_civs_customActivity_start", [_x], _x] call CBA_fnc_targetEvent;
+                ["fired_near", [_driver], [_driver]] call CBA_fnc_targetEvent;
+                _x setVariable ["GRAD_vopo_blaulichtAffected", true];
+                // [_x] call GRAD_vopo_fnc_blaulichtReaction;
+            } else {
+                // ["GRAD_civs_customActivity_end", [_x], _x] call CBA_fnc_targetEvent;
+                _x setVariable ["GRAD_vopo_blaulichtAffected", false];
+            };
         };
 
     } forEach _nearEntities;

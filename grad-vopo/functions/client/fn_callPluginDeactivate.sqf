@@ -15,12 +15,12 @@ private _hintText = format[
                         ];
 
 private _pluginCommand = format[
-                                "TANGENT_LR RELEASED    %1%2    %3  %4",
-                                _lineNumber,
-                                _encryptionKey,
-                                100000,
-                                "phone"
-                            ];
+                                "TANGENT_LR	RELEASED	%1%2	%3	%4",
+								_lineNumber,
+								_encryptionKey,
+								100000,
+								"phone"
+							];
 
 [_hintText,_pluginCommand, [0,nil] select TFAR_showTransmittingHint] call TFAR_fnc_processTangent;
 

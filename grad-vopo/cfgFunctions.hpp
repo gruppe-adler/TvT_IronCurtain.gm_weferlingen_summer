@@ -4,7 +4,7 @@ class GRAD_vopo {
         file = grad-vopo\functions\client;
 
         class addAction;
-        class addGetInHandler;
+        class addGetInHandler { postInit = 1; };
         class blaulicht;
         class callPluginActivate;
         class callPluginDeactivate;
