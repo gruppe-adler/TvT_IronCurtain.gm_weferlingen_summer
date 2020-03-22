@@ -34,7 +34,7 @@ private _sirenEH = [{
         (crew _x) params [["_driver", objNull]];
         if (!isNull _driver) then {
         
-            if (_x getVariable ["GRAD_vopo_blaulichtAffected", false]) then {
+            if (!(_x getVariable ["GRAD_vopo_blaulichtAffected", false])) then {
                 // ["GRAD_civs_customActivity_start", [_x], _x] call CBA_fnc_targetEvent;
                 ["fired_near", [_driver], [_driver]] call CBA_fnc_targetEvent;
                 _x setVariable ["GRAD_vopo_blaulichtAffected", true];

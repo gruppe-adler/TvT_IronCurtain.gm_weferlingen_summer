@@ -7,6 +7,9 @@ class GRAD_nvacommand {
         class addRepairAction { postInit = 1; };
 
         class alarmSetSector;
+
+        class curatorDisableZENactions { postInit = 1; }; 
+
         class curatorInterfaceDetection;
         class curatorInterfaceInfantryCreate;
         class curatorInterfaceTowerCreate;
@@ -17,6 +20,7 @@ class GRAD_nvacommand {
         
         class deselectAllTowers;
         class forceDefaultMap { postInit = 1; };  
+
         class getSectorForPosition;  
         class GUI_dismiss;
         class GUI_refreshSelects;	
@@ -44,6 +48,7 @@ class GRAD_nvacommand {
          class addTowerToSector;
          class alarmRaise;
          class alarmToggle;
+         class curatorDisableVisionModes { postInit = 1; };
          // class createTower;
          class fenceDamageHandling;
          class generateSectors;
