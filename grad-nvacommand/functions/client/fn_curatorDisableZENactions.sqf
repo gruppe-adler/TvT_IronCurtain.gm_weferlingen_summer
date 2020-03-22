@@ -1,17 +1,24 @@
+/*
+    
+    reference: https://github.com/zen-mod/ZEN/blob/master/addons/context_actions/CfgContext.hpp#L181
+
+*/
+
 if (!(player getVariable ["GRAD_nvacommand_isCommander", false])) exitWith {};
 
 {
     [_x] call zen_context_menu_fnc_removeAction;
 } forEach 
 [
-    "Heal",
+    "HealUnits",
     "Stance",
     "Loadout",
-    "Editable Objects",
-    "Remote Control",
+    "EditableObjects",
+    "RemoteControl",
     "Inventory",
-    "Vehicle Appearance",
-    "Teleport Zeus",
-    "Remote Control",
-    "Captives"
+    "VehicleAppearance",
+    "TeleportZeus",
+    "TeleportPlayers",
+    "Captives",
+    "VehicleLogistics"
 ];

@@ -9,6 +9,7 @@ class GRAD_nvacommand {
         class alarmSetSector;
 
         class curatorDisableZENactions { postInit = 1; }; 
+        class curatorZENAddCustomActions { postInit = 1; }; 
 
         class curatorInterfaceDetection;
         class curatorInterfaceInfantryCreate;
