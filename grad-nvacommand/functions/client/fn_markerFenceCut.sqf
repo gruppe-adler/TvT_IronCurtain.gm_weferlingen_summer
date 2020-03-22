@@ -14,4 +14,4 @@ _areaMarker setMarkerColor "COLORRED";
 _areaMarker setMarkerSize [100,100];
 _areaMarker setMarkerBrush "Border";
 
-[[_centerMarker,_areaMarker],60] call GRAD_nvaCommand_fnc_fadeMarker;
+[[_centerMarker,_areaMarker],60] call GRAD_nvaCommand_fnc_markerFade;

@@ -5,6 +5,26 @@
 
 // add towers to all curators to edit/access
 
+private _towers = missionNamespace getVariable ["GRAD_nvaCommand_towerList", []];
+
+{
+    private _tower = _x;
+    private _searchLight = _tower getVariable ["GRAD_nvaCommand_towerSearchLight", objNull];
+    private _light = "#lightpoint" createVehicleLocal position _searchLight;
+    _light setLightBrightness 1.0;
+    _light setLightAmbient [0.0, 0.0, 0.0];
+    _light setLightColor [1.0, 1.0, 1.0];
+    _light attachTo [_searchLight, [0,0.5,0],"Gun_Dir"];
+    _light setLightUseFlare true;
+    _light setLightFlareSize 10;
+    _light setLightFlareMaxDistance 700;
+
+    /*private _dummy = "Sign_Sphere25cm_Geometry_F" createVehicleLocal position _searchLight;
+    _dummy attachTo [_searchLight, [1,0,0], "Gun_Dir"];*/
+
+} forEach _towers;
+
+
 if (!(player getVariable ["GRAD_nvacommand_isCommander", false])) exitWith {};
 
 

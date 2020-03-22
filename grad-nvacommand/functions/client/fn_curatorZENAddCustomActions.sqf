@@ -15,8 +15,8 @@ private _repairFence = [
     "RepairFence",
     "Repair Fence",
     "\a3\ui_f\data\igui\cfg\actions\repair_ca.paa",
-    {hint "bla";},
-    {call compile "_objects findIf {alive _x && {_x isKindOf 'CAManBase'}} != -1"}
+    {call compile "[_objects] call GRAD_nvacommand_fnc_repairFence;"},
+    {call compile "_objects findIf {alive _x && side _x == east && {_x isKindOf 'CAManBase'}} != -1"}
 ] call zen_context_menu_fnc_createAction;
 
 [_repairFence, [], 0] call zen_context_menu_fnc_addAction;

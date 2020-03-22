@@ -1,6 +1,5 @@
 [{
     params ["_args", "_handle"];
-    _args params ["_fences"];
 
     private _fences = nearestObjects [player, ["land_gm_fence_border_gz1_600"], 3];
     if (count _fences < 1) exitWith {};
@@ -11,11 +10,12 @@
             _nearestFence setVariable ["IC_nvaCommand_SAM70_loaded", false, true];
             private _SAM70 = _nearestFence getVariable ["IC_nvaCommand_SAM70_object", objNull];
             
-            if (!isNull _SAM70) then { deleteVehicle _SAM70 };
+            // if (!isNull _SAM70) then { deleteVehicle _SAM70 };
+            // not necessary due to EH at fence in GM
             
             private _charge = "DemoCharge_Remote_Ammo_Scripted" createVehicle getPos _nearestFence;
             _charge setDamage 1;
         };
     };
 
-}, 1, [_fences]] call CBA_fnc_addPerFrameHandler;
+}, 1, []] call CBA_fnc_addPerFrameHandler;

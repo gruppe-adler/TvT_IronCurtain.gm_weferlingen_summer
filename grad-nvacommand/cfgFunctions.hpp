@@ -49,7 +49,7 @@ class GRAD_nvacommand {
          class addTowerToSector;
          class alarmRaise;
          class alarmToggle;
-         class curatorDisableVisionModes { postInit = 1; };
+         class curatorNerf { postInit = 1; };
          // class createTower;
          class fenceDamageHandling;
          class generateSectors;
