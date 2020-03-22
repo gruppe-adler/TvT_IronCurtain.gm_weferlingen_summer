@@ -44,7 +44,10 @@ if (_vehicleType isEqualTo "gm_gc_pol_p601") then {
         ["sirenLights_01_unhide",0]
     ] call BIS_fnc_initVehicle;
 
-    [_veh] call GRAD_vopo_fnc_addAction;
+    [_veh] remoteExec ["GRAD_vopo_fnc_addAction", [0,-2] select isDedicated, true];
+
+    _veh setVariable ["tf_hasRadio", true, true];
+    _veh setVariable ["TF_RadioType", "tf_mr6000l", true];
 };
 
 // randomize bike

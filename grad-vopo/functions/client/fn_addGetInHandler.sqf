@@ -20,6 +20,10 @@ player addEventHandler ["GetInMan", {
         // [C Alpha 1-1:1 (nomisum),C Alpha 1-1:1 (nomisum),11,""UserType"",""Beacon On"",1.4,false,true,"""",true,""Action""]
 
         player setVariable ["GRAD_vopo_revealHandler", _handlers];
+
+        if (driver _vehicle == player) then {
+            [] call GRAD_vopo_fnc_reprogramRadio;
+        };
     };
 }];
 
@@ -37,5 +41,15 @@ player addEventHandler ["GetOutMan", {
         _existingHandlers params ["_pfh", "_missionEH"];
         [_revealEH] call CBA_fnc_removePerFrameHandler;
         removeMissionEventHandler ["Draw3D", _missionEH];
+    };
+}];
+
+player addEventHandler ["SeatSwitchedMan", {
+    params ["_unit1", "_unit2", "_vehicle"];
+
+    if (typeOf _vehicle == "gm_gc_pol_p601") then {
+        if (driver _vehicle == player) then {
+                [] call GRAD_vopo_fnc_reprogramRadio;
+        };
     };
 }];

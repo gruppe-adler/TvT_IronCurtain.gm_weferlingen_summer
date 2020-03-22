@@ -8953,11 +8953,11 @@ class Mission
 	{
 		class LinkIDProvider
 		{
-			nextID=66;
+			nextID=67;
 		};
 		class Links
 		{
-			items=66;
+			items=67;
 			class Item0
 			{
 				linkID=0;
@@ -9613,6 +9613,16 @@ class Mission
 				linkID=65;
 				item0=128;
 				item1=129;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item66
+			{
+				linkID=66;
+				item0=121;
+				item1=122;
 				class CustomData
 				{
 					type="Sync";

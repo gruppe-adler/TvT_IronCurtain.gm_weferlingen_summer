@@ -10,6 +10,7 @@ class GRAD_vopo {
         class callPluginDeactivate;
         class createSpeaker;
         class presston;
+        class reprogramRadio;
         class motorSirene;
         class revealNearbyUnits;
         class setTFARFakeRadio;
