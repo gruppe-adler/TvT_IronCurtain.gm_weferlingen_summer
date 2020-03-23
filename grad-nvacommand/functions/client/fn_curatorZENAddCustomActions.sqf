@@ -20,3 +20,26 @@ private _repairFence = [
 ] call zen_context_menu_fnc_createAction;
 
 [_repairFence, [], 0] call zen_context_menu_fnc_addAction;
+
+
+
+private _unlockGate = [
+    "UnlockGate",
+    "Unlock Gate",
+    "\z\ace\addons\vehiclelock\ui\key_menuIcon_ca.paa",
+    {call compile "[_objects, false] call GRAD_nvacommand_fnc_gateLock;"},
+    {call compile "_objects findIf {_x isKindOf 'Land_HelipadEmpty_F'} != -1"}
+] call zen_context_menu_fnc_createAction;
+
+[_unlockGate, [], 0] call zen_context_menu_fnc_addAction;
+
+
+private _lock = [
+    "lockGate",
+    "Lock Gate",
+    "\z\ace\addons\vehiclelock\ui\key_menuIcon_ca.paa",
+    {call compile "[_objects, true] call GRAD_nvacommand_fnc_gateLock;"},
+    {call compile "_objects findIf {_x isKindOf 'Land_HelipadEmpty_F'} != -1"}
+] call zen_context_menu_fnc_createAction;
+
+[_lock, [], 0] call zen_context_menu_fnc_addAction;

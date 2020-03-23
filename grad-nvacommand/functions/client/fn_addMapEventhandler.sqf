@@ -109,10 +109,22 @@ _map ctrlAddEventHandler ["MouseButtonClick", {
 }];
 
 
+
 // self made eh
 [{
         params ["_args"];
         _args params ["_visible", "_map"];
+
+        if (!visibleMap) then {
+            private _gateControls = missionNamespace getVariable ["GRAD_nvaCommand_gateControlList", []];
+            { 
+                if (_x getVariable ["locked", false]) then {
+                    drawIcon3D ["\a3\ui_f\data\igui\cfg\actions\ICO_off_ca.paa", [1,1,1,1], ASLToAGL getPosASL _x, 1.5, 1.5, 0, "Gate (locked)", 1, 0.05, "TahomaB"];
+                } else {
+                    drawIcon3D ["\a3\ui_f\data\igui\cfg\actions\ICO_on_ca.paa", [1,1,1,1], ASLToAGL getPosASL _x, 1.5, 1.5, 0, "Gate", 1, 0.05, "TahomaB"];
+                };
+            } forEach _gateControls;
+        };
 
         if (_visible isEqualTo visibleMap) exitWith {};
 

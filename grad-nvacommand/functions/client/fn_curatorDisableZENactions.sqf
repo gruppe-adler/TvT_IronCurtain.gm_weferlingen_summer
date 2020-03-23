@@ -20,5 +20,6 @@ if (!(player getVariable ["GRAD_nvacommand_isCommander", false])) exitWith {};
     "TeleportZeus",
     "TeleportPlayers",
     "Captives",
-    "VehicleLogistics"
+    "VehicleLogistics",
+    "zen_area_markers"
 ];

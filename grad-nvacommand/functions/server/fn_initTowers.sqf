@@ -12,14 +12,42 @@ private _towers =
 _towers = [_towers, [], { [worldSize/2, 0] distance _x }, "DESCEND"] call BIS_fnc_sortBy;
 _towers resize 10;
 
+private _possibleGates = ([0, worldSize/2] nearObjects ["land_gm_fence_border_gssz_70_gate_350_w", worldsize]) +
+                         ([0, worldSize/2] nearObjects ["land_gm_fence_border_gz1_gate_350_w", worldsize]);
+
+_possibleGates = [_possibleGates, [], { [worldSize/2, 0] distance _x }, "DESCEND"] call BIS_fnc_sortBy;
+_possibleGates resize 22;
+
+private _gateControls = [];
+{
+    private _gate = _x;
+    private _position = getPos _gate;
+
+    private _nearestGates =  +
+    (_position nearObjects ["land_gm_fence_border_gssz_70_gate_350_r", 20]) +
+    (_position nearObjects ["land_gm_fence_border_gz1_gate_350_r", 20]);
+
+    if (count _nearestGates < 1) exitWith {};
+
+    private _newGateControl = "Land_HelipadEmpty_F" createVehicle [0,0,0];
+    _newGateControl setPos _position;
+
+    _newGateControl setVariable ["GRAD_nvaCommand_gateControlGates", _nearestGates, true];
+
+    _gateControls pushBackUnique _newGateControl;
+
+} forEach _possibleGates;
+
+missionNamespace setVariable ["GRAD_nvaCommand_gateControlList", _gateControls, true];
+
 private _newTowers = [];
 private _searchLights = [];
 
 {
 	private _tower = _x;
 
-    private _dir = getDir _x;
-    private _position = getPos _x;
+    private _dir = getDir _tower;
+    private _position = getPos _tower;
     private _type = typeOf _tower;
 
     hideObjectGlobal _tower;
@@ -101,6 +129,7 @@ missionNamespace setVariable ["GRAD_nvaCommand_searchLightList", _searchLights, 
 {
     private _curator = _x;
     _curator addCuratorEditableObjects [_newTowers, true];
+    _curator addCuratorEditableObjects [_gateControls, true];
 
 } forEach allCurators;
 

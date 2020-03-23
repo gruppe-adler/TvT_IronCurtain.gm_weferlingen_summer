@@ -23,6 +23,8 @@ class GRAD_nvacommand {
         class forceDefaultMap { postInit = 1; };  
 
         class getSectorForPosition;  
+        class gateLock;
+        
         class GUI_dismiss;
         class GUI_refreshSelects;	
     	class initMap;
