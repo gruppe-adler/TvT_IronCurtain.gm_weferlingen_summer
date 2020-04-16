@@ -14,3 +14,11 @@ GRAD_LANDLINE_PHONENUMBERS_HASH = [] call CBA_fnc_hashCreate;
 
 
 [] remoteExec ["GRAD_landline_fnc_addSelfAction", [0,-2] select isDedicated, true];
+
+
+// special treatment for curator
+{
+  if (_x getVariable ["GRAD_nvacommand_isCommander", false]) then {
+        [_x, "1337", false, "none"] call GRAD_landline_fnc_addPhone;
+  };
+} forEach allPlayers;
