@@ -26,6 +26,7 @@ missionNamespace setVariable ["GRAD_landline_phoneCount", _id, true];
 _object setVariable ["GRAD_landline_isPhone", true, true];
 _object setVariable ["GRAD_landline_phoneID", _id, true];
 _object setVariable ["GRAD_landline_isRotary", _isRotary, true];
+_object setVariable ["GRAD_landline_skipDialing", _canOnlyCallNumber != "all", true];
 
 // zeus & direct call
 if (_canOnlyCallNumber != "all") then {
@@ -36,7 +37,7 @@ if (_canOnlyCallNumber != "all") then {
 [_object, "idle"] call GRAD_landline_fnc_callSetStatus;
 
 
-// zeus will get extra action
+// zeus phone will receive extra action, not here
 if (_canOnlyCallNumber != "none") then {
     [_object] remoteExec ["GRAD_landline_fnc_addAction", [0,-2] select isDedicated, true];
 };

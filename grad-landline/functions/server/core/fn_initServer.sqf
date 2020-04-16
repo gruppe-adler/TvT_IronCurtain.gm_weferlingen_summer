@@ -17,8 +17,12 @@ GRAD_LANDLINE_PHONENUMBERS_HASH = [] call CBA_fnc_hashCreate;
 
 
 // special treatment for curator
+[{
+    
+
 {
-  if (_x getVariable ["GRAD_nvacommand_isCommander", false]) then {
-        [_x, "1337", false, "none"] call GRAD_landline_fnc_addPhone;
-  };
-} forEach allPlayers;
+      if (_x getVariable ["GRAD_nvacommand_isCommander", false]) then {
+            [_x, "1337", false, "none"] call GRAD_landline_fnc_addPhone;
+      };
+    } forEach allPlayers;
+}, [], 10] call CBA_fnc_waitAndExecute;

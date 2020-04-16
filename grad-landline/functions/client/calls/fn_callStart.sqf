@@ -10,13 +10,15 @@ private _isRotary = _callerPhoneObject getVariable ["GRAD_landline_isRotary", fa
 
 private ["_dialing"];
 
-
-if (_isRotary) then {
-    _dialing = [_receiverNumber] spawn GRAD_landline_fnc_rotaryDialNumber;
+if (_callerPhoneObject getVariable ["GRAD_landline_skipDialing", false]) then {
+    _dialing = [] spawn {};
 } else {
-    _dialing = [_receiverNumber] spawn GRAD_landline_fnc_keypadDialNumber;
+    if (_isRotary) then {
+        _dialing = [_receiverNumber] spawn GRAD_landline_fnc_rotaryDialNumber;
+    } else {
+        _dialing = [_receiverNumber] spawn GRAD_landline_fnc_keypadDialNumber;
+    };
 };
-
 
 
 player setVariable ['GRAD_landline_isCalling', true];

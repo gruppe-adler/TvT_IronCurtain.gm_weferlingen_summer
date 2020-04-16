@@ -15,7 +15,7 @@ if (isNull _object) exitWith { diag_log format ["GRAD_landline: cant add action 
 
 // todo make ace interact instead of mousewheel menu
 _object addAction [
-    "Call Number",
+    "Nummer wählen",
     {
         params ["_target", "_caller", "_actionId", "_arguments"];
 
@@ -27,7 +27,7 @@ _object addAction [
 
 // later implementation for grenzmeldenetz
 _object addAction [
-    "Call nearest Commandpost",
+    "Kommandozentrale anrufen",
     {
         params ["_target", "_caller", "_actionId", "_arguments"];
 
@@ -49,7 +49,7 @@ _object addAction [
 
 
 _object addAction [
-    "Accept Call",
+    "Anruf annehmen",
     {
         params ["_target", "_caller", "_actionId", "_arguments"];
 
@@ -60,7 +60,7 @@ _object addAction [
 ];
 
 _object addAction [
-    "End Call",
+    "Anruf beenden",
     {
         params ["_target", "_caller", "_actionId", "_arguments"];
         diag_log ("end call: " + str [_target, _caller, _actionId, _arguments]);
@@ -73,12 +73,12 @@ _object addAction [
 ];
 
 _object addAction [
-    "Show Number",
+    "Nummer des Apparats anzeigen",
     {
         params ["_target", "_caller", "_actionId", "_arguments"];
 
             hint format ["%1", _target getVariable ["GRAD_LANDLINE_NUMBER_ASSIGNED","no Number"]];
     },
     [],1.5,true,true,"",
-    "_this distance _target < 2"
+    "_this distance _target < 2 && !(_target getVariable ['GRAD_landline_skipDialing', false])"
 ];
