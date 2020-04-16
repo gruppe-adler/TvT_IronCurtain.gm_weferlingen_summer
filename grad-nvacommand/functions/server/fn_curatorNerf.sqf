@@ -7,7 +7,11 @@ if (isServer) then {
         // todo disable
         // _x setCuratorCoef ["edit", -1e10];
 
-        [getAssignedCuratorUnit _x, "1337", false, "false"] call GRAD_landline_fnc_addPhone;
-
     } forEach allCurators;
 };
+
+{
+  if (_x getVariable ["GRAD_nvacommand_isCommander", false]) then {
+        [_x, "1337", false, "none"] call GRAD_landline_fnc_addPhone;
+  };
+} forEach allPlayers;

@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1170;
+		nextID=1171;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={10228.307,74.036293,18054.504};
-		dir[]={-0.70318371,-0.69839931,0.13339771};
-		up[]={-0.68616664,0.71570641,0.13016981};
-		aside[]={0.18638436,7.9424353e-008,0.98249036};
+		pos[]={14062.546,103.97359,15516.178};
+		dir[]={0.49995196,-0.58035094,-0.64284778};
+		up[]={0.35628468,0.81436586,-0.45811746};
+		aside[]={-0.78938198,2.9802322e-008,-0.61391515};
 	};
 };
 binarizationWanted=0;
@@ -2373,7 +2373,6 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{[this, ""1337"", false, ""none""] call GRAD_landline_fnc_addPhone;}";
 			};
 			id=186;
 			type="land_gm_euro_furniture_table_03";
