@@ -1,13 +1,21 @@
 params ["_car"];
 
-private _carID = _car getVariable ["GRAD_vopo_carID", -1];
 
-if (_carID < 0) then {
+/*
+    todo id should be done by server, test
+*/
+
+/*
+private _carID = _car getVariable ["GRAD_vopo_carID", "none"];
+
+if (_carID != "none") then {
     _carID = format ["vopo_lautsprecher_%1", position _car];
     _car setVariable ["GRAD_vopo_carID", _carID, true];
 };
 
 [_car, _carID, "", true] call GRAD_vopo_fnc_setTFARFakeRadio;
+
+*/
 
 _car addAction [
     "<t color='#993333'>Lautsprecher AN</t>", {

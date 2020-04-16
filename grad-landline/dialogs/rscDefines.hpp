@@ -11,6 +11,21 @@
 
 #define ST_KEEP_ASPECT_RATIO  0x800
 
+#define CT_STRUCTURED_TEXT          13
+#define ST_LEFT                     0x00
+
+#define GRAD_LANDLINE_100H             safeZoneH
+#define GRAD_LANDLINE_100W             safeZoneX + safeZoneW
+#define GRAD_COLUMN_COUNT              10
+#define GRAD_COLUMN_W                  GRAD_LANDLINE_100W/GRAD_COLUMN_COUNT
+#define GRAD_ROW_COUNT                 20
+#define GRAD_ROW_H                     (safeZoneY + GRAD_LANDLINE_100H)/GRAD_ROW_COUNT
+
+#define GRAD_LANDLINE_PHONEBOOK_X      GRAD_COLUMN_W // single column padding
+#define GRAD_LANDLINE_PHONEBOOK_Y      GRAD_ROW_H*2 + safeZoneY
+#define GRAD_LANDLINE_PHONEBOOK_W      GRAD_COLUMN_W*4
+#define GRAD_LANDLINE_PHONEBOOK_H      GRAD_ROW_H*16
+
 class GRAD_landline_RscPicture
 {
  type = CT_STATIC;
@@ -56,6 +71,28 @@ class GRAD_landline_RscButton
   offsetPressedY = 0.002;
   borderSize = 0;
   period = 0;
+};
+
+class GRAD_landline_RscStructuredText {
+    idc = -1;
+    access = 0;
+    type = CT_STRUCTURED_TEXT;
+    style = 0;
+    x = 0;
+    y = 0;
+    w = 0.055589;
+    h = 0.039216;
+    colorText[] = { 1 , 1 , 1 , 1 };
+    colorBackground[] = {0,0,0,0.4};
+    class Attributes {
+        font = "RobotoCondensed";
+        color = "#e0d8a6";
+        align = "left";
+        shadow = 0;
+    };
+    text = "";
+    size = 0.03921;
+    shadow = 2;
 };
 
 

@@ -1,21 +1,5 @@
 #include "rscDefines.hpp"
 
-#define CT_STRUCTURED_TEXT          13
-#define ST_LEFT                     0x00
-
-#define GRAD_LANDLINE_100H             safeZoneH
-#define GRAD_LANDLINE_100W             safeZoneX + safeZoneW
-#define GRAD_COLUMN_COUNT              10
-#define GRAD_COLUMN_W                  GRAD_LANDLINE_100W/GRAD_COLUMN_COUNT
-#define GRAD_ROW_COUNT                 20
-#define GRAD_ROW_H                     (safeZoneY + GRAD_LANDLINE_100H)/GRAD_ROW_COUNT
-
-#define GRAD_LANDLINE_PHONEBOOK_X      GRAD_COLUMN_W // single column padding
-#define GRAD_LANDLINE_PHONEBOOK_Y      GRAD_ROW_H*2 + safeZoneY
-#define GRAD_LANDLINE_PHONEBOOK_W      GRAD_COLUMN_W*4
-#define GRAD_LANDLINE_PHONEBOOK_H      GRAD_ROW_H*16
-
-
 class grad_landline_rscPhoneBook {
     idd = -1;
     fadein = 0.25;

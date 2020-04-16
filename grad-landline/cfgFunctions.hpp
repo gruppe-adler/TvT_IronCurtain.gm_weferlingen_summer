@@ -11,6 +11,7 @@ class GRAD_landline {
         class conditionDirectCall;
         class conditionEnd;
         class createPhoneList;
+        class curatorTogglePhone;
         class onPhoneBookEntrySelect;
         class onPhoneBookMapClick;
     };

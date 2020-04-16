@@ -48,6 +48,51 @@
             (findDisplay IDD_RSCDISPLAYCURATOR displayCtrl IDC_RSCDISPLAYCURATOR_MISSIONBAR) ctrlShow false;
             (findDisplay IDD_RSCDISPLAYCURATOR displayCtrl IDC_RSCDISPLAYCURATOR_POINTSBACKGROUND) ctrlShow false;
             (findDisplay IDD_RSCDISPLAYCURATOR displayCtrl IDC_RSCDISPLAYCURATOR_LOGO) ctrlShow false;
+
+            IDD_RSCDISPLAYCURATOR = 312; 
+            private _display = findDisplay IDD_RSCDISPLAYCURATOR; 
+            private _controlsGroup = _display ctrlCreate ["RscControlsGroup", -1]; 
+            private _button = _display ctrlCreate ["GRAD_landline_RscButton", 3002, _controlsGroup]; 
+
+             _controlsGroup ctrlSetPosition [safeZoneX, safeZoneY, safezoneW, safeZoneH]; 
+             _controlsGroup ctrlSetBackgroundColor [1,0,0,0.5]; 
+             _controlsGroup ctrlCommit 0;
+
+            _button ctrlSetText "Anruf annehmen";
+            _button ctrlSetPosition [ 
+                safeZoneW - 0.2, 
+                safeZoneH - 0.2, 
+                0.15, 
+                0.1 
+            ]; 
+            _button ctrlCommit 0;
+
+            _button ctrlSetEventHandler ["ButtonClick", "[_this select 0] call GRAD_landline_fnc_curatorTogglePhone;"];
+
+            _button ctrlCommit 0;
+
+            [{
+                params ["_args", "_handle"];
+                _args params ["_button"];
+
+                if (isNull _button) exitWith { [_handle] call CBA_fnc_removePerFrameHandler; };
+
+                _button ctrlSetText "...";
+                _button ctrlEnable false;
+
+                if (player getVariable ["GRAD_landline_phoneStatus", "idle"] == "ringing") then {
+                    _button ctrlSetText "Anruf annehmen";
+                    _button ctrlEnable true;
+                };
+
+                if ([player, player] call GRAD_landline_fnc_conditionEnd) then {
+                    _button ctrlSetText "Anruf beenden";
+                    _button ctrlEnable true;
+                };
+
+            }, 1, [_button]] call CBA_fnc_addPerFrameHandler;
+
+
         }, []] call CBA_fnc_execNextFrame;
     
 }] call CBA_fnc_addEventhandler;

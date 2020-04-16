@@ -65,22 +65,8 @@ _object addAction [
         params ["_target", "_caller", "_actionId", "_arguments"];
         diag_log ("end call: " + str [_target, _caller, _actionId, _arguments]);
 
-
-            if ([_target, 'calling'] call GRAD_landline_fnc_callGetStatus) exitWith {
-                [_target, 'calling'] call GRAD_landline_fnc_callEnd;
-            };
-
-            if ([_target, 'waiting'] call GRAD_landline_fnc_callGetStatus) exitWith {
-                [_target, 'waiting'] call GRAD_landline_fnc_callEnd;
-            };
-
-            if ([_target, 'busy'] call GRAD_landline_fnc_callGetStatus) exitWith {
-                [_target, 'busy'] call GRAD_landline_fnc_callEnd;
-            };
-
-            if ([_target, 'ending'] call GRAD_landline_fnc_callGetStatus) exitWith {
-                [_target, 'ending'] call GRAD_landline_fnc_callEnd;
-            };
+        private _state = _target getVariable ["GRAD_landline_phoneStatus", "idle"];
+        [_target, _state] call GRAD_landline_fnc_callEnd;
     },
     [],11,true,true,"",
     "[_this, _target] call GRAD_landline_fnc_conditionEnd"

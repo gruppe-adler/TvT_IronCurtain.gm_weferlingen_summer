@@ -38,6 +38,6 @@ if (GRAD_LANDLINE_DEBUG_MODE) then { diag_log format ["generatePhoneNumber: %1",
   _endResult = _endResult + str _x;
 } forEach _result;
 
-systemChat format ["endresult is %1 ", _endResult];
+// systemChat format ["endresult is %1 ", _endResult];
 
 _endResult
