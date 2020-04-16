@@ -29,10 +29,14 @@ private _gateControls = [];
 
     if (count _nearestGates < 1) exitWith {};
 
+    
+
     private _newGateControl = "Land_HelipadEmpty_F" createVehicle [0,0,0];
     _newGateControl setPos _position;
 
     _newGateControl setVariable ["GRAD_nvaCommand_gateControlGates", _nearestGates, true];
+
+    _newGateControl setVariable ['locked', true, true];
 
     _gateControls pushBackUnique _newGateControl;
 

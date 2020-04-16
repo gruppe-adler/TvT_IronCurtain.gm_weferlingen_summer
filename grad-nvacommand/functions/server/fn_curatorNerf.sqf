@@ -7,5 +7,7 @@ if (isServer) then {
         // todo disable
         // _x setCuratorCoef ["edit", -1e10];
 
-    } forEach allCurators; 
+        [getAssignedCuratorUnit _x, "1337", false, "false"] call GRAD_landline_fnc_addPhone;
+
+    } forEach allCurators;
 };

@@ -31,11 +31,11 @@ _object addAction [
     {
         params ["_target", "_caller", "_actionId", "_arguments"];
 
-            private _targetNumber = _target getVariable ["GRAD_landline_directConnect", "none"];
+            private _targetNumber = _target getVariable ["GRAD_landline_directConnect", "all"];
             private _allPhones = missionNamespace getVariable ["GRAD_LANDLINE_ALLPHONES", []];
             private _targetPhone = objNull;
             {
-                private _phoneNumber = _x getVariable ["GRAD_LANDLINE_NUMBER_ASSIGNED", "none"];
+                private _phoneNumber = _x getVariable ["GRAD_LANDLINE_NUMBER_ASSIGNED", "all"];
                 if (_targetNumber == _phoneNumber) exitWith {
                     _targetPhone = _x;
                 };

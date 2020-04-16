@@ -13,7 +13,7 @@
 */
 
 
-params ["_object", ["_number", "none"], ["_isRotary", false], ["_canOnlyCallNumber", "none"]];
+params ["_object", ["_number", "none"], ["_isRotary", false], ["_canOnlyCallNumber", "all"]];
 
 
 if (!isServer) exitWith {};
@@ -27,12 +27,16 @@ _object setVariable ["GRAD_landline_isPhone", true, true];
 _object setVariable ["GRAD_landline_phoneID", _id, true];
 _object setVariable ["GRAD_landline_isRotary", _isRotary, true];
 
-if (_canOnlyCallNumber != "none") then {
+// zeus & direct call
+if (_canOnlyCallNumber != "all") then {
     _object setVariable ["GRAD_landline_directConnect", _canOnlyCallNumber, true];
 };
-
 
 [_object, _number] call GRAD_landline_fnc_assignPhoneNumber;
 [_object, "idle"] call GRAD_landline_fnc_callSetStatus;
 
-[_object] remoteExec ["GRAD_landline_fnc_addAction", [0,-2] select isDedicated, true];
+
+// zeus will get extra action
+if (_canOnlyCallNumber != "none") then {
+    [_object] remoteExec ["GRAD_landline_fnc_addAction", [0,-2] select isDedicated, true];
+};
