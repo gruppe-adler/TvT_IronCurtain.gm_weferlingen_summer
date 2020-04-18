@@ -41,7 +41,7 @@ _object addAction [
                 };
             } forEach _allPhones;
 
-            [_target, _targetPhone] call GRAD_landline_fnc_callStart;
+            [_target, [_targetPhone]] call GRAD_landline_fnc_callStart;
     },
     [],9,true,true,"",
     "[_this, _target] call GRAD_landline_fnc_conditionDirectCall"

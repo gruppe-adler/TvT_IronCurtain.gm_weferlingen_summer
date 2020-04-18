@@ -64,8 +64,8 @@ _button ctrlAddEventHandler ["ButtonClick", {
         private _objReceiver = _allPhones select _objIndex;
 
         private _objCaller = player getVariable ["GRAD_landline_objCaller", objNull];
-        
-        [_objCaller, _objReceiver] call GRAD_landline_fnc_callStart;
+
+        [_objCaller, [_objReceiver]] call GRAD_landline_fnc_callStart;
 
         // debug
         private _selectionMarker = createMarkerLocal ["mrk_grad_landlinePhoneCaller", position _objCaller];

@@ -100,10 +100,10 @@ class GRAD_landline {
     class server_number {
        file = grad-landline\functions\server\number;
 
-       class assignPhoneNumber;
+       class assignNumber;
        class extractNumberFromPrefix;
        class generateBaseNumber;
        class generatePhoneNumber;
     };
-    
+
 };

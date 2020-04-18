@@ -6,17 +6,22 @@ private _nearestPhone = objNull;
 private _nearestPhoneIndex = 0;
 private _allNumbers = missionNamespace getVariable ["GRAD_LANDLINE_ALLNUMBERS", []];
 {
-    private _phoneObject = _x select 0;
-    private _positionPhoneObject = position _phoneObject;
+    private _phoneObjects = _x select 1;
+    private _numberIndex = _forEachIndex;
 
-    if (isNull _nearestPhone) then {
-        _nearestPhone = _phoneObject;
-    };
+    {
+        private _phoneObject = _x;
+        private _positionPhoneObject = position _x;
 
-    if (_positionPhoneObject distance2D _position < (position _nearestPhone) distance2D _position) then {
-        _nearestPhone = _phoneObject;
-        _nearestPhoneIndex = _forEachIndex;
-    };
+        if (isNull _nearestPhone) then {
+            _nearestPhone = _phoneObject;
+        };
+
+        if (_positionPhoneObject distance2D _position < (position _nearestPhone) distance2D _position) then {
+            _nearestPhone = _phoneObject;
+            _nearestPhoneIndex = _numberIndex;
+        };
+    } forEach _phoneObjects;
 } forEach _allNumbers;
 
 private _dialog = uiNamespace getVariable ['grad_landline_rscPhoneBook',controlNull];

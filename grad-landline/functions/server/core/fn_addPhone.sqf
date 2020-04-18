@@ -33,7 +33,7 @@ if (_canOnlyCallNumber != "all") then {
     _object setVariable ["GRAD_landline_directConnect", _canOnlyCallNumber, true];
 };
 
-[_object, _number] call GRAD_landline_fnc_assignPhoneNumber;
+[_object, _number] call GRAD_landline_fnc_assignNumber;
 [_object, "idle"] call GRAD_landline_fnc_callSetStatus;
 
 

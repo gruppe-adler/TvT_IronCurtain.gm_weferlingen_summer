@@ -1,5 +1,6 @@
-params ["_callerPhoneObject", "_receiverPhoneObject"];
+params ["_callerPhoneObject", ["_receiverPhoneObjects", []]];
 
+private _receiverPhoneObject = _receiverPhoneObjects select 0;
 // if no number is assigned
 // if (count _callerNumber isEqualTo 0) exitWith { diag_log "error, no number"; };
 
@@ -37,7 +38,7 @@ player setVariable ['GRAD_landline_isCalling', true];
             hint "cant call yourself, dumbass";
 
             [_callerPhoneObject, "busy"] call GRAD_landline_fnc_callSetStatus;
-            
+
             [_callerPhoneObject] call GRAD_landline_fnc_soundBusy;
 
             systemChat "callStart - busy";
@@ -71,11 +72,11 @@ player setVariable ['GRAD_landline_isCalling', true];
                     private _storedData = [_callerPhoneObject] call GRAD_landline_fnc_callGetInfo;
 
                     _storedData params [
-                        ["_phone1", objNull], 
-                        ["_phone2", _callerPhoneObject], 
-                        ["_number1", "undefined"], 
-                        ["_number2", "undefined"], 
-                        ["_player1", objNull], 
+                        ["_phone1", objNull],
+                        ["_phone2", _callerPhoneObject],
+                        ["_number1", "undefined"],
+                        ["_number2", "undefined"],
+                        ["_player1", objNull],
                         ["_player2", player]
                     ];
                     systemChat format ["callStart - waiting %1 from %2", _number2, _number1];
@@ -83,7 +84,7 @@ player setVariable ['GRAD_landline_isCalling', true];
                     // activate tfar stuff
                     [_callerPhoneObject, _callerNumber + _receiverNumber] call GRAD_landline_fnc_callPluginActivate;
             }, [_callerPhoneObject, _receiverPhoneObject, _callerNumber, _receiverNumber]] call CBA_fnc_waitUntilAndExecute;
-           
+
         } else {
             [_callerPhoneObject, "busy"] call GRAD_landline_fnc_callSetStatus;
             // todo check if this fix helps busy beep when calling busy lines - should beep now

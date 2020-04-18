@@ -1,3 +1,8 @@
+/*
+ deprecated
+*/
+
+/*
 params ["_object", "_number"];
 
 private _newNumber = [GRAD_LANDLINE_ALLNUMBERS] call GRAD_landline_fnc_generatePhoneNumber;
@@ -21,3 +26,5 @@ missionNamespace setVariable ["GRAD_LANDLINE_ALLPHONES", _currentPhones, true];
 diag_log format ["GRAD-LANDLINE: assigning %1 to %2", _newNumber, _object];
 
 _object setVariable ["GRAD_LANDLINE_NUMBER_ASSIGNED", _newNumber, true];
+
+*/
