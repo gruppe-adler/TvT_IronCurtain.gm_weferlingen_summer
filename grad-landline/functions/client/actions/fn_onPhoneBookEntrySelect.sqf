@@ -1,21 +1,18 @@
  params ["_control", "_selectedIndex"];
 
-// private _objIndex = lbValue [ _control, _selectedIndex ];
-private _allNumbers = missionNamespace getVariable ["GRAD_LANDLINE_ALLNUMBERS", []];
+private _currentEntry = _control getVariable [str _selectedIndex, []];
+private _position = (_currentEntry select 0) getVariable ["GRAD_landline_phonePosition", [0,0,0]];
 
-if (count _allNumbers < 1) exitWith { hint "no numbers"; };
-if (_selectedIndex > _allNumbers) exitWith { hint "not selectable"; };
-
-private _objReceiverArray = (_allNumbers select _selectedIndex) select 1;
-private _objectReceiver = selectRandom _objReceiverArray;
+diag_log format ["selection _currentEntry %1", _currentEntry];
+diag_log format ["_position _currentEntry %1", _position];
 
 // systemChat format ["%1 - %2", _objReceiver, _selectedIndex];
 
-"mrk_grad_landlinePhoneSelect" setMarkerPosLocal (getPos _objectReceiver);
+"mrk_grad_landlinePhoneSelect" setMarkerPosLocal _position;
 
 private _dialog = uiNamespace getVariable ['grad_landline_rscPhoneBook',controlNull];
 private _map = _dialog displayCtrl 2000;
-_map ctrlMapAnimAdd [0.1, 0.05, getPos _objectReceiver];
+_map ctrlMapAnimAdd [0.1, 0.05, _position];
 ctrlMapAnimCommit _map;
 
 if (count _objReceiverArray > 1) then {

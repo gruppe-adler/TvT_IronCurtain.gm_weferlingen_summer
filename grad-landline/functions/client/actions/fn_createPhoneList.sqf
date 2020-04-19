@@ -13,30 +13,41 @@ if (isNull _dialog) exitWith { hint "something went wrong"; };
 
 // fill phonelist
 private _phoneList = _dialog displayCtrl 1000;
-private _allPhones = missionNamespace getVariable ["GRAD_LANDLINE_ALLPHONES", []];
+private _allNumbers = missionNamespace getVariable ["GRAD_LANDLINE_ALLNUMBERS", []];
+
 private _allMarkers = [];
 {
-    private _phoneNumber = _x getVariable ["GRAD_LANDLINE_NUMBER_ASSIGNED", "none"];
+    _x params ["_number", "_objectsArray"];
 
-    private _identifier = _phoneList lbAdd _phoneNumber;
-    // _phoneList lbSetValue [_forEachIndex, _identifier];
-    _phoneList lbSetTooltip [_forEachIndex, str _identifier]; // more debug than anything else currently
+    private _hasPublicPhoneBookEntry = (_objectsArray select 0) getVariable ["GRAD_landline_hasPublicPhoneBookEntry", false];
+    private _position = (_objectsArray select 0) getVariable ["GRAD_landline_phonePosition", [0,0,0]];
 
+    if (_hasPublicPhoneBookEntry) then {
+        
+        private _identifier = _phoneList lbAdd _number;
+        _phoneList setVariable [str _identifier, _objectsArray];
+        // lbSetTooltip [1000, _identifier, str _objectsArray]; // more debug than anything else currently
 
-    (getPos _x) params ["_xPos", "_yPos"];
-    private _marker = createMarkerLocal [format ["mrk_grad_landlinePhone_%1", [_xPos,_yPos]],[_xPos,_yPos]];
-    _marker setMarkerShapeLocal "ICON";
-    _marker setMarkerTypeLocal "loc_CivilDefense";
+        _position params ["_xPos", "_yPos"];
+        private _marker = createMarkerLocal [format ["mrk_grad_landlinePhone_%1", [_xPos,_yPos]],[_xPos,_yPos]];
+        _marker setMarkerShapeLocal "ICON";
+        _marker setMarkerTypeLocal "mil_marker";
+        _marker setMarkerColorLocal "ColorYellow";
+        _marker setMarkerDirLocal 180;
 
-    _allMarkers pushBack _marker;
+        _allMarkers pushBack _marker;
+    };
 
-} forEach _allPhones;
+} forEach _allNumbers;
 
-private _listBox = _dialog displayCtrl 1000;
-lbSetCurSel [_listBox, 0];
+lbSetCurSel [_phoneList, 0];
 
 // set initial position of selection marker
-(getPos (_allPhones select 0)) params ["_xPos", "_yPos"];
+_allNumbers params ["_firstNumber"];
+_firstNumber params ["_number", "_objectsArray"];
+_objectsArray params ["_firstObject"];
+_firstObject getVariable ["GRAD_landline_phonePosition", [0,0,0]] params ["_xPos", "_yPos"];
+
 private _selectionMarker = createMarkerLocal ["mrk_grad_landlinePhoneSelect",[_xPos,_yPos]];
 _selectionMarker setMarkerShapeLocal "ICON";
 _selectionMarker setMarkerTypeLocal "Select";
@@ -55,17 +66,18 @@ _button ctrlAddEventHandler ["ButtonClick", {
         params ["_ctrl"];
 
         private _dialog = uiNamespace getVariable ['grad_landline_rscPhoneBook',controlNull];
-        private _listBox = _dialog displayCtrl 1000;
+        private _phoneList = _dialog displayCtrl 1000;
 
-        private _objIndex = lbCurSel _listBox;
-        systemChat format ["%1", _objIndex];
+        private _selectionIndex = lbCurSel _phoneList;
+        systemChat format ["%1", _selectionIndex];
 
-        private _allPhones = missionNamespace getVariable ["GRAD_LANDLINE_ALLPHONES", []];
-        private _objReceiver = _allPhones select _objIndex;
+        private _receiverObjects = _phoneList getVariable [str _selectionIndex, []];
+
+        diag_log format ["button _receiverObjects %1", _receiverObjects];
 
         private _objCaller = player getVariable ["GRAD_landline_objCaller", objNull];
 
-        [_objCaller, [_objReceiver]] call GRAD_landline_fnc_callStart;
+        [_objCaller, _receiverObjects] call GRAD_landline_fnc_callStart;
 
         // debug
         private _selectionMarker = createMarkerLocal ["mrk_grad_landlinePhoneCaller", position _objCaller];
@@ -73,13 +85,10 @@ _button ctrlAddEventHandler ["ButtonClick", {
         _selectionMarker setMarkerTypeLocal "mil_dot";
         _selectionMarker setMarkerColorLocal "ColorGreen";
 
-        private _selectionMarker = createMarkerLocal ["mrk_grad_landlinePhoneReceiver", position _objReceiver];
+        private _selectionMarker = createMarkerLocal ["mrk_grad_landlinePhoneReceiver", position (_receiverObjects select 0)];
         _selectionMarker setMarkerShapeLocal "ICON";
         _selectionMarker setMarkerTypeLocal "mil_dot";
         _selectionMarker setMarkerColorLocal "ColorRed";
-
-
-
 
         player setVariable ["GRAD_landline_objCaller", objNull];
 

@@ -2,9 +2,11 @@
 private _allPhones = [];
 {
     private _phoneBooths = ([worldSize/2, worldSize/2] nearObjects [_x, worldsize/2]);
+
+    private _phoneBoothsInArea = _phoneBooths inAreaArray trg_phoneZone;
     {
-        _allPhones pushBackUnique _x;
-    } forEach _phoneBooths;
+       _allPhones pushBackUnique _x;
+    } forEach _phoneBoothsInArea;
 } forEach GRAD_LANDLINE_CLASSNAMES_PHONE;
 
 
@@ -14,5 +16,5 @@ private _allPhones = [];
     diag_log format ["GRAD-LANDLINE: type detected is %1", _type];
     private _isRotary = if (_type == "land_gm_euro_misc_feh_62_e") then { true } else { false };
 
-	  [_x, "none", _isRotary] call GRAD_landline_fnc_addPhone;
+	[_x, "none", _isRotary, "all", true] call GRAD_landline_fnc_addPhone;
 } forEach _allPhones;

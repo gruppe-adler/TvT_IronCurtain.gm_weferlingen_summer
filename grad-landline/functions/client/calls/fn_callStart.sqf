@@ -24,73 +24,79 @@ if (_callerPhoneObject getVariable ["GRAD_landline_skipDialing", false]) then {
 
 player setVariable ['GRAD_landline_isCalling', true];
 
-[{
-    params ["_dialing"];
-    scriptDone _dialing
-}, {
-    params ["_dialing", "_callerPhoneObject", "_receiverPhoneObject", "_callerNumber", "_receiverNumber"];
+{   
+    private _receiverPhoneObject = _x;
+    
+    [{
+        params ["_dialing"];
+        scriptDone _dialing
+    }, {
+        params ["_dialing", "_callerPhoneObject", "_receiverPhoneObject", "_callerNumber", "_receiverNumber"];
 
-        [player, _callerPhoneObject] call GRAD_landline_fnc_callSetOwner; // set self to owner of current phone
+            [player, _callerPhoneObject] call GRAD_landline_fnc_callSetOwner; // set self to owner of current phone
 
-        // prevent calling yourself
-        // [WORKS]
-        if (_callerPhoneObject isEqualTo _receiverPhoneObject) exitWith {
-            hint "cant call yourself, dumbass";
+            // prevent calling yourself
+            // [WORKS]
+            if (_callerPhoneObject isEqualTo _receiverPhoneObject) exitWith {
+                hint "cant call yourself, dumbass";
 
-            [_callerPhoneObject, "busy"] call GRAD_landline_fnc_callSetStatus;
+                [_callerPhoneObject, "busy"] call GRAD_landline_fnc_callSetStatus;
 
-            [_callerPhoneObject] call GRAD_landline_fnc_soundBusy;
+                [_callerPhoneObject] call GRAD_landline_fnc_soundBusy;
 
-            systemChat "callStart - busy";
-        };
+                systemChat "callStart - busy";
+            };
 
-        systemChat format ["callStart - saveInfo %1 %2", _callerPhoneObject, _receiverPhoneObject];
+            systemChat format ["callStart - saveInfo %1 %2", _callerPhoneObject, _receiverPhoneObject];
 
-        [
-            _callerPhoneObject, _receiverPhoneObject,
-            player, objNull
-        ] call GRAD_landline_fnc_callSaveInfo;
+            [
+                _callerPhoneObject, _receiverPhoneObject,
+                player, objNull
+            ] call GRAD_landline_fnc_callSaveInfo;
 
 
-        // go to calling, if receiver can receive
-        if ([_receiverPhoneObject, "idle"] call GRAD_landline_fnc_callGetStatus) then {
-            // self assign status
-            [_callerPhoneObject, "waiting"] call GRAD_landline_fnc_callSetStatus;
+            // go to calling, if receiver can receive
+            if ([_receiverPhoneObject, "idle"] call GRAD_landline_fnc_callGetStatus) then {
+                // self assign status
+                [_callerPhoneObject, "waiting"] call GRAD_landline_fnc_callSetStatus;
 
-            // let server handle receiver status
-            [_receiverPhoneObject] remoteExec ["GRAD_landline_fnc_callRinging", 2];
+                // let server handle receiver status
+                [_receiverPhoneObject] remoteExec ["GRAD_landline_fnc_callRinging", 2];
 
-            [_callerPhoneObject] call GRAD_landline_fnc_callWaiting;
+                [_callerPhoneObject] call GRAD_landline_fnc_callWaiting;
 
-            [{
-                    params ["_callerPhoneObject", "_receiverPhoneObject", "_callerNumber", "_receiverNumber"];
-                    ([_receiverPhoneObject, "calling"] call GRAD_landline_fnc_callGetStatus)
-            }, {
+                [{
+                        params ["_callerPhoneObject", "_receiverPhoneObject", "_callerNumber", "_receiverNumber"];
+                        ([_receiverPhoneObject, "calling"] call GRAD_landline_fnc_callGetStatus)
+                }, {
 
-                    params ["_callerPhoneObject", "_receiverPhoneObject", "_callerNumber", "_receiverNumber"];
-                    systemChat format ["callStart - waiting %1 from %2", _receiverNumber, _callerNumber];
-                    private _storedData = [_callerPhoneObject] call GRAD_landline_fnc_callGetInfo;
+                        params ["_callerPhoneObject", "_receiverPhoneObject", "_callerNumber", "_receiverNumber"];
+                        systemChat format ["callStart - waiting %1 from %2", _receiverNumber, _callerNumber];
+                        private _storedData = [_callerPhoneObject] call GRAD_landline_fnc_callGetInfo;
 
-                    _storedData params [
-                        ["_phone1", objNull],
-                        ["_phone2", _callerPhoneObject],
-                        ["_number1", "undefined"],
-                        ["_number2", "undefined"],
-                        ["_player1", objNull],
-                        ["_player2", player]
-                    ];
-                    systemChat format ["callStart - waiting %1 from %2", _number2, _number1];
+                        _storedData params [
+                            ["_phone1", objNull],
+                            ["_phone2", _callerPhoneObject],
+                            ["_number1", "undefined"],
+                            ["_number2", "undefined"],
+                            ["_player1", objNull],
+                            ["_player2", player]
+                        ];
+                        systemChat format ["callStart - waiting %1 from %2", _number2, _number1];
 
-                    // activate tfar stuff
-                    [_callerPhoneObject, _callerNumber + _receiverNumber] call GRAD_landline_fnc_callPluginActivate;
-            }, [_callerPhoneObject, _receiverPhoneObject, _callerNumber, _receiverNumber]] call CBA_fnc_waitUntilAndExecute;
+                        // activate tfar stuff
+                        [_callerPhoneObject, _callerNumber + _receiverNumber] call GRAD_landline_fnc_callPluginActivate;
+                }, [_callerPhoneObject, _receiverPhoneObject, _callerNumber, _receiverNumber]] call CBA_fnc_waitUntilAndExecute;
 
-        } else {
-            [_callerPhoneObject, "busy"] call GRAD_landline_fnc_callSetStatus;
-            // todo check if this fix helps busy beep when calling busy lines - should beep now
-            [_callerPhoneObject] call GRAD_landline_fnc_soundBusy;
+            } else {
+                [_callerPhoneObject, "busy"] call GRAD_landline_fnc_callSetStatus;
+                // todo check if this fix helps busy beep when calling busy lines - should beep now
+                [_callerPhoneObject] call GRAD_landline_fnc_soundBusy;
 
-            systemChat "callStart - busy";
-        };
+                systemChat "callStart - busy";
+            };
 
-}, [_dialing, _callerPhoneObject, _receiverPhoneObject, _callerNumber, _receiverNumber]] call CBA_fnc_waitUntilAndExecute;
+    }, [_dialing, _callerPhoneObject, _receiverPhoneObject, _callerNumber, _receiverNumber]] call CBA_fnc_waitUntilAndExecute;
+
+
+} forEach _receiverPhoneObjects;

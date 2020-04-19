@@ -13,8 +13,7 @@
 */
 
 
-params ["_object", ["_number", "none"], ["_isRotary", false], ["_canOnlyCallNumber", "all"]];
-
+params ["_object", ["_number", "none"], ["_isRotary", false], ["_canOnlyCallNumber", "all"], ["_hasPublicPhoneBookEntry", false], ["_position", position _object]];
 
 if (!isServer) exitWith {};
 
@@ -27,6 +26,8 @@ _object setVariable ["GRAD_landline_isPhone", true, true];
 _object setVariable ["GRAD_landline_phoneID", _id, true];
 _object setVariable ["GRAD_landline_isRotary", _isRotary, true];
 _object setVariable ["GRAD_landline_skipDialing", _canOnlyCallNumber != "all", true];
+_object setVariable ["GRAD_landline_hasPublicPhoneBookEntry", _hasPublicPhoneBookEntry, true];
+_object setVariable ["GRAD_landline_phonePosition", _position];
 
 // zeus & direct call
 if (_canOnlyCallNumber != "all") then {

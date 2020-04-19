@@ -1,24 +1,27 @@
 params ["_object", "_number"];
 
-if (_number == "none") then {
-    _number = [GRAD_LANDLINE_ALLNUMBERS] call GRAD_landline_fnc_generatePhoneNumber;
-};
-
 // get all existing numbers
 private _currentNumbers = missionNamespace getVariable ["GRAD_LANDLINE_ALLNUMBERS", []];
 
-// find possible duplicate - numbers can have multiple assigned objects (first pick up takes the call)
-private _indexInNumbers = _currentNumbers find _number;
-
-// add new entry or edit existing number entry
-if (_indexInNumbers == -1) then {
-    _currentNumbers pushback [_newNumber, [_object]];
-} else {
-    private _existingObjects = _currentNumbers select _indexInNumbers select 1;
-    _existingObjects pushBackUnique _object;
-    _currentNumbers set [_indexInNumbers, [_number, _existingObjects]];
+if (_number == "none") then {
+    _number = [_currentNumbers] call GRAD_landline_fnc_generatePhoneNumber;
 };
 
+// find possible duplicate - numbers can have multiple assigned objects (first pick up takes the call)
+private _path = [_currentNumbers, _number] call BIS_fnc_findNestedElement;
+_path params ["_selector"];
+
+// add new entry or edit existing number entry
+if (count _path < 1) then {
+    _currentNumbers pushback [_number, [_object]];
+    diag_log format ["adding %1 to phonebook", _number];
+
+} else {
+    private _existingObjects = _currentNumbers select _selector select 1;
+    _existingObjects pushBackUnique _object;
+    _currentNumbers set [_selector, [_number, _existingObjects]];
+};
+// only one entry in phonebook for each number
 missionNamespace setVariable ["GRAD_LANDLINE_ALLNUMBERS", _currentNumbers, true];
 
 
@@ -27,7 +30,7 @@ _currentPhones pushback _object;
 missionNamespace setVariable ["GRAD_LANDLINE_ALLPHONES", _currentPhones, true];
 
 
-// [GRAD_LANDLINE_PHONENUMBERS_HASH, _object, _newNumber] call CBA_fnc_hashSet;
-diag_log format ["GRAD-LANDLINE: assigning %1 to %2", _newNumber, _object];
+// [GRAD_LANDLINE_PHONENUMBERS_HASH, _object, _number] call CBA_fnc_hashSet;
+diag_log format ["GRAD-LANDLINE: assigning %1 to %2", _number, _object];
 
-_object setVariable ["GRAD_LANDLINE_NUMBER_ASSIGNED", _newNumber, true];
+_object setVariable ["GRAD_LANDLINE_NUMBER_ASSIGNED", _number, true];
