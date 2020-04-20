@@ -39,6 +39,6 @@ if (_canOnlyCallNumber != "all") then {
 
 
 // zeus phone will receive extra action, not here
-if (_canOnlyCallNumber != "none") then {
+if (_canOnlyCallNumber != "none" || _hasPublicPhoneBookEntry) then {
     [_object] remoteExec ["GRAD_landline_fnc_addAction", [0,-2] select isDedicated, true];
 };

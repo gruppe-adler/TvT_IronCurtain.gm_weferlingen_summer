@@ -2,7 +2,7 @@ class GRAD_landline {
 
     class client_actions {
         file = grad-landline\functions\client\actions;
-
+        
         class addAction;
         class addSelfAction;
         class cleanPhoneBookMap;
