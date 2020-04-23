@@ -98,7 +98,7 @@ GRAD_nvaCommand_zeusSelectDestination_mapDrawEH = [((findDisplay 312) displayCtr
 [{
     (_this select 0) params ["_object", "_code", "_text", "_icon", "_color", "_angle"];
     if ((isNull _object) || {isNull findDisplay 312} || {!isNull findDisplay 49}) then {
-        diag_log format ["null-exit %1 + %2 + %3",isNull _object,isNull findDisplay 312,isNull findDisplay 49];
+        // diag_log format ["null-exit %1 + %2 + %3",isNull _object,isNull findDisplay 312,isNull findDisplay 49];
         GRAD_nvaCommand_zeusSelectDestinationRunning = false;
         [false, _object, [0,0,0], false, false, false] call _code;
     };
@@ -108,11 +108,19 @@ GRAD_nvaCommand_zeusSelectDestination_mapDrawEH = [((findDisplay 312) displayCtr
         drawIcon3D [_icon, _color, _mousePosAGL, 1.5, 1.5, _angle, _text];
         drawLine3D [_mousePosAGL, ASLtoAGL (getPosASL _object), _color];
     } else {
-        diag_log format ["cleaning up %1 + %2 + %3",_this select 1,GRAD_nvaCommand_zeusSelectDestination_MouseButtonEH,GRAD_nvaCommand_zeusSelectDestination_keyDownEH,GRAD_nvaCommand_zeusSelectDestination_mapDrawEH];
+        // diag_log format ["cleaning up %1 + %2 + %3",_this select 1,GRAD_nvaCommand_zeusSelectDestination_MouseButtonEH,GRAD_nvaCommand_zeusSelectDestination_keyDownEH,GRAD_nvaCommand_zeusSelectDestination_mapDrawEH];
         (_this select 1) call CBA_fnc_removePerFrameHandler;
-        (findDisplay 312) displayRemoveEventHandler ["mouseButtonDown", GRAD_nvaCommand_zeusSelectDestination_MouseButtonEH];
-        (findDisplay 312) displayRemoveEventHandler ["KeyDown", GRAD_nvaCommand_zeusSelectDestination_keyDownEH];
-        ((findDisplay 312) displayCtrl 50) ctrlRemoveEventHandler ["draw", GRAD_nvaCommand_zeusSelectDestination_mapDrawEH];
+
+        // in some occasions ehs have been nil
+        if (!isNil "GRAD_nvaCommand_zeusSelectDestination_MouseButtonEH") then {
+            (findDisplay 312) displayRemoveEventHandler ["mouseButtonDown", GRAD_nvaCommand_zeusSelectDestination_MouseButtonEH];
+        };
+        if (!isNil "GRAD_nvaCommand_zeusSelectDestination_keyDownEH") then {
+            (findDisplay 312) displayRemoveEventHandler ["KeyDown", GRAD_nvaCommand_zeusSelectDestination_keyDownEH];
+        };
+        if (!isNil "GRAD_nvaCommand_zeusSelectDestination_mapDrawEH") then {
+            ((findDisplay 312) displayCtrl 50) ctrlRemoveEventHandler ["draw", GRAD_nvaCommand_zeusSelectDestination_mapDrawEH];
+        };
         GRAD_nvaCommand_zeusSelectDestination_MouseButtonEH = nil;
         GRAD_nvaCommand_zeusSelectDestination_keyDownEH = nil;
         GRAD_nvaCommand_zeusSelectDestination_mapDrawEH = nil;

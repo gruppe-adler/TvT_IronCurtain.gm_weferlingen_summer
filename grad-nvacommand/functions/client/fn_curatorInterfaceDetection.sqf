@@ -54,14 +54,18 @@
             private _controlsGroup = _display ctrlCreate ["RscControlsGroup", -1]; 
             private _button = _display ctrlCreate ["GRAD_landline_RscButton", 3002, _controlsGroup]; 
 
-             _controlsGroup ctrlSetPosition [safeZoneX, safeZoneY, safezoneW, safeZoneH]; 
+             _controlsGroup ctrlSetPosition [
+                safeZoneW - 0.2, 
+                safeZoneH - 0.2, 
+                0.15, 
+                0.1];
              _controlsGroup ctrlSetBackgroundColor [1,0,0,0.5]; 
              _controlsGroup ctrlCommit 0;
 
             _button ctrlSetText "Anruf annehmen";
             _button ctrlSetPosition [ 
-                safeZoneW - 0.2, 
-                safeZoneH - 0.2, 
+                0, 
+                0, 
                 0.15, 
                 0.1 
             ]; 

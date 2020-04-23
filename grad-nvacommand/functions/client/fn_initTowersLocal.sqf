@@ -5,6 +5,8 @@
 
 // add towers to all curators to edit/access
 
+// fucking flare does not rotate :(
+/*
 private _towers = missionNamespace getVariable ["GRAD_nvaCommand_towerList", []];
 
 {
@@ -14,20 +16,18 @@ private _towers = missionNamespace getVariable ["GRAD_nvaCommand_towerList", []]
     _light setLightBrightness 1.0;
     _light setLightAmbient [0.0, 0.0, 0.0];
     _light setLightColor [1.0, 1.0, 1.0];
-    _light lightAttachObject [_searchLight, [0,1,0.7]];
+    _light lightAttachObject [_searchLight, [0,1.2,0.7]];
     // _light attachTo [_searchLight, [0,0.5,0],"MainTurret_Coax"];
     // memoryPointGun = "MainTurret_Coax";
     // memoryPointGunnerOutOptics = "OpticOut_MainTurret_pos";
     // memoryPointsGetInGunnerDir = "MainTurret_getin_dir";
     // memoryPointMissile[] = {"MainTurret_Gun_dir","MainTurret_Missile_dir"};
     _light setLightUseFlare true;
-    _light setLightFlareSize 10;
+    _light setLightFlareSize 7;
     _light setLightFlareMaxDistance 700;
 
-    /*private _dummy = "Sign_Sphere25cm_Geometry_F" createVehicleLocal position _searchLight;
-    _dummy attachTo [_searchLight, [1,0,0], "Gun_Dir"];*/
-
 } forEach _towers;
+*/
 
 
 if (!(player getVariable ["GRAD_nvacommand_isCommander", false])) exitWith {};
