@@ -14,7 +14,12 @@ private _towers = missionNamespace getVariable ["GRAD_nvaCommand_towerList", []]
     _light setLightBrightness 1.0;
     _light setLightAmbient [0.0, 0.0, 0.0];
     _light setLightColor [1.0, 1.0, 1.0];
-    _light attachTo [_searchLight, [0,0.5,0],"Gun_Dir"];
+    _light lightAttachObject [_searchLight, [0,1,0.7]];
+    // _light attachTo [_searchLight, [0,0.5,0],"MainTurret_Coax"];
+    // memoryPointGun = "MainTurret_Coax";
+    // memoryPointGunnerOutOptics = "OpticOut_MainTurret_pos";
+    // memoryPointsGetInGunnerDir = "MainTurret_getin_dir";
+    // memoryPointMissile[] = {"MainTurret_Gun_dir","MainTurret_Missile_dir"};
     _light setLightUseFlare true;
     _light setLightFlareSize 10;
     _light setLightFlareMaxDistance 700;

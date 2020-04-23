@@ -17,14 +17,12 @@ missionNamespace setVariable ["GRAD_nvaCommand_fakeRunners", _fakeRunners, true]
     if (_watchModeAuto) then {
         private _randomPos = [[[position _searchLight, 200]],[[position _searchLight, 30]]] call BIS_fnc_randomPos;
         _randomPos set [2,0];
-        _fakeRunner moveTo _randomPos;
-        _fakeRunner setFatigue 0;
+        _fakeRunner setPos _randomPos;
         _searchLight doWatch _fakeRunner;
     } else {
-        doStop _fakeRunner;
         _searchLight doWatch _dummyTarget;
     };
 
 
     
-}, 1, [_newTower, _dummyTarget, _searchLight, _fakeRunner]] call CBA_fnc_addPerFrameHandler;
+}, 10, [_newTower, _dummyTarget, _searchLight, _fakeRunner]] call CBA_fnc_addPerFrameHandler;

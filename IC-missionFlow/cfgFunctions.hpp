@@ -11,9 +11,15 @@ class IC_missionFlow {
         class setRespawnPosition;
     };
 
+    class defines {
+        file = IC-missionFlow\functions\defines;
+        class roles { preInit = 1; };
+    };
+
     class server {
         file = IC-missionFlow\functions\server;
 
         class addRespawnEH { postInit = 1; };
+        class assignUnitRolesInit;
     }; 
 };

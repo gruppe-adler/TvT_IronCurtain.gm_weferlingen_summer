@@ -2,7 +2,7 @@
 ////////////////////////////////////////////////////////
 // GUI EDITOR OUTPUT START (by nomisum, v1.063, #Fydafy)
 ////////////////////////////////////////////////////////
-class gui_spawn_waitplease
+class unitIcon
 {
         idd = 8020;
         movingenable = 0;
