@@ -55,8 +55,8 @@
             private _button = _display ctrlCreate ["GRAD_landline_RscButton", 3002, _controlsGroup]; 
 
              _controlsGroup ctrlSetPosition [
-                safeZoneW - 0.2, 
-                safeZoneH - 0.2, 
+                safeZoneX + safeZoneW - 0.2, 
+                safeZoneY + safeZoneH - 0.2, 
                 0.15, 
                 0.1];
              _controlsGroup ctrlSetBackgroundColor [1,0,0,0.5]; 
@@ -81,17 +81,20 @@
 
                 if (isNull _button) exitWith { [_handle] call CBA_fnc_removePerFrameHandler; };
 
-                _button ctrlSetText "...";
+                _button ctrlSetText "keine Anrufe";
+                _button ctrlSetTextColor [1,1,1,0.4];
                 _button ctrlEnable false;
 
                 if (player getVariable ["GRAD_landline_phoneStatus", "idle"] == "ringing") then {
                     _button ctrlSetText "Anruf annehmen";
                     _button ctrlEnable true;
+                    _button ctrlSetTextColor [1,1,1,1];
                 };
 
                 if ([player, player] call GRAD_landline_fnc_conditionEnd) then {
                     _button ctrlSetText "Anruf beenden";
                     _button ctrlEnable true;
+                    _button ctrlSetTextColor [1,1,1,1];
                 };
 
             }, 1, [_button]] call CBA_fnc_addPerFrameHandler;
