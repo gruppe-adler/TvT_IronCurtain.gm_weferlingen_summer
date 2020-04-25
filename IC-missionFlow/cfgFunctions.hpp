@@ -4,12 +4,8 @@ class IC_missionFlow {
         file = IC-missionFlow\functions\client;
         
         class createRespawnInfo;
-        class createRespawnVehicle;
         class onKilledEH;
-        class onRespawnEquip;
-        class onRespawnEH {};
-        class setRespawnPosition;
-        class setSideRelation;
+        class onRespawnEH;
     };
 
     class defines {
@@ -23,6 +19,11 @@ class IC_missionFlow {
         class addRespawnEH { preInit = 1; };
         class assignIdentity;
         class assignUnitRolesInit { postInit = 1; };
-        class identityInitConfig { preInit = 1; };
+        class createRespawnVehicle;
+        class detectSpawnPositions;
+        class identityInitConfig { preInit = 1; };        
+        class onRespawnEquip;
+        class setRespawnPosition;
+        class setSideRelation;
     }; 
 };

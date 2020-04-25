@@ -14,12 +14,12 @@ class DDR_Reisepass: grad_passport_defaultPassport {
 
     class Controls: Controls {
         class LastNameTitle: LastNameTitle {
-            x = GRAD_PASSPORT_DEFAULT_RIGHTCOLUMN_X*1.20;
-            y = GRAD_PASSPORT_DEFAULT_LINETITLE_Y(0);
+            x = GRAD_PASSPORT_DEFAULT_RIGHTCOLUMN_X*1.20 + GRAD_PASSPORT_DEFAULT_INDENT_X*10;
+            y = GRAD_PASSPORT_DEFAULT_LINETITLE_Y(1) * 0.75;
             w = (0.1000 * X_SCALE);
             h = GRAD_PASSPORT_LINE_H;
 
-            text = "";
+            text = "Nachname";
             sizeEx = GRAD_PASSPORT_DEFAULT_TITLETEXTSIZE;
 
             colorText[] = {0.1,0.31,0.48,1};
@@ -27,10 +27,12 @@ class DDR_Reisepass: grad_passport_defaultPassport {
         class LastName: LastName {
             idc = GRAD_IDC_LASTNAME;
 
-            x = GRAD_PASSPORT_DEFAULT_RIGHTCOLUMN_X*1.20 + GRAD_PASSPORT_DEFAULT_INDENT_X;
-            y = GRAD_PASSPORT_DEFAULT_LINE_Y(0) * 0.75;
+            x = GRAD_PASSPORT_DEFAULT_RIGHTCOLUMN_X*1.20 + GRAD_PASSPORT_DEFAULT_INDENT_X*10;
+            y = GRAD_PASSPORT_DEFAULT_LINE_Y(1) * 0.75;
             w = GRAD_PASSPORT_CONTENT_W;
             h = GRAD_PASSPORT_LINE_H;
+
+            text = "";
 
             colorText[] = {0.05,0.15,0.24,1};
         };
@@ -40,7 +42,7 @@ class DDR_Reisepass: grad_passport_defaultPassport {
             w = (0.1000 * X_SCALE);
             h = GRAD_PASSPORT_LINE_H;
 
-            text = "Name";
+            text = "Vorname";
             sizeEx = GRAD_PASSPORT_DEFAULT_TITLETEXTSIZE;
 
             colorText[] = {0.1,0.31,0.48,1};

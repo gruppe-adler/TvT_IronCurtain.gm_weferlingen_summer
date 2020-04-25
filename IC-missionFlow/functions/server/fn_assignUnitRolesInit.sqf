@@ -4,6 +4,8 @@
 
 */
 
+call IC_missionFlow_fnc_detectSpawnPositions;
+
 {
     private _unit = _x;
 

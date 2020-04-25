@@ -13,6 +13,5 @@ class IC_setup {
         file = IC-setup\functions\server;
 
         class createSAM70 { postInit = 1; };
-        class detectSpawnPositions { postInit = 1; };
     };
 };

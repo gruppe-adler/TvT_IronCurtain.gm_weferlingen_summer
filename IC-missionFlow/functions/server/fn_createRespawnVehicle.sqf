@@ -86,4 +86,9 @@ if (_vehicleType isEqualTo VEHICLE_EAST_DEFAULT) then {
         "bag_03_unhide",selectRandom [0,1]
         ]
     ] call BIS_fnc_initVehicle;
+
+    [{
+        params ["_veh"];
+        ["ace_vehiclelock_setVehicleLock",[_veh,false],[_veh]] call CBA_fnc_targetEvent;
+    }, [_veh], 5] call CBA_fnc_waitAndExecute;
 };
