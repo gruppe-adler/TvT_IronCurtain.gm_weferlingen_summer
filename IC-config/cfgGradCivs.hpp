@@ -12,7 +12,7 @@ class CfgGradCivs {
     automaticVehicleGroupSize = 1;
     exitOn = "";
     onSpawn = "diag_log format ['%1 spawned', typeOf (_this select 0)];";
-    onHeldUp = "";    
+    onHeldUp = "";
     backpackProbability = 0.1;
 
     vehicles[] = {

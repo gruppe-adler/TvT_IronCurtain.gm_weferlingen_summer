@@ -18,6 +18,6 @@ class CfgReinforcements {
     };
 
     class infantry {
-        
+
     };
 };

@@ -20,7 +20,7 @@ onLoadMission = "Den Sozialismus in seinem Lauf, hält weder Ochs noch Esel auf.
 #include "grad-vopo\grad_passport.hpp"
 
 #include "IC-config\cfgGradCivs.hpp"
-
+#include "IC-config\cfgCustomIdentities.hpp"
 
 class cfgFunctions {
     #include "node_modules\grad-gpsTracker\cfgFunctions.hpp"
@@ -36,7 +36,7 @@ class cfgFunctions {
 
     #include "grad-arrestMechanics\cfgFunctions.hpp"
     #include "grad-landline\cfgFunctions.hpp"
-    
+
     #include "IC-missionFlow\cfgFunctions.hpp"
     #include "IC-loadouts\cfgFunctions.hpp"
 
