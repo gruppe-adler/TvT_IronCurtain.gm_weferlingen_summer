@@ -13,11 +13,15 @@
 */
 
 
-params [["_object", objNull], ["_number", "none"], ["_isRotary", false], ["_canOnlyCallNumber", "all"], ["_hasPublicPhoneBookEntry", false], ["_position", position _object]];
+params [["_object", objNull], ["_number", "none"], ["_isRotary", false], ["_canOnlyCallNumber", "all"], ["_hasPublicPhoneBookEntry", false], ["_position", [0,0,0]]];
 
 if (!isServer) exitWith {};
 
 if (isNull _object) exitWith { diag_log format ["addPhone error: no object"]; };
+
+if (_position isEqualTo [0,0,0]) then {
+   _position = position _object;
+};
 
 private _id = missionNamespace getVariable ["GRAD_landline_phoneCount", 0];
 _id = _id + 1;

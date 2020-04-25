@@ -47,7 +47,17 @@ missionNameSpace setVariable ["IC_facesAssigned", _facesAssigned];
 missionNameSpace setVariable ["IC_firstNamesAssigned", _firstNamesAssigned];
 missionNameSpace setVariable ["IC_lastNamesAssigned", _lastNamesAssigned];
 
-[_unit, _face, "Male01ENGB", 1.0, (_firstName + " " + _lastName), (_firstName + " " + _lastName)] remoteExec ["BIS_fnc_setIdentity", 0, true];
+
+
+[{
+    params ["_unit", "_firstName", "_lastName"];
+
+    _unit setVariable ["ACE_Name", (_firstName + " " + _lastName), true];
+    _unit setVariable ["ACE_NameRaw", (_firstName + " " + _lastName), true];
+    [_unit, _face, "Male01ENGB", 1.0, (_firstName + " " + _lastName), (_firstName + " " + _lastName)] remoteExec ["BIS_fnc_setIdentity", 0, true];
+
+    systemChat format ["assigning %1 %2", _firstName, _lastName];
+}, [_unit, _firstName, _lastName], 5] call CBA_fnc_waitAndExecute;
 
 
 if (_unit getVariable ["IC_role", "none"] == "doctor") then {

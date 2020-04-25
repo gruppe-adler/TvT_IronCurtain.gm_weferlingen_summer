@@ -44,8 +44,10 @@ switch (_side) do {
     case "vopo" : {
         _engineSide = civilian; // friendly to nva and friendly to civs
     };
-    
+
     default {
         diag_log format ["IC onRespawnEquip: Error - no respawn setting found"];
     }; 
+
+    [_unit] joinSilent (createGroup _engineSide);
 };

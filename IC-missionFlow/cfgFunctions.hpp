@@ -9,6 +9,7 @@ class IC_missionFlow {
         class onRespawnEquip;
         class onRespawnEH {};
         class setRespawnPosition;
+        class setSideRelation;
     };
 
     class defines {
@@ -19,7 +20,7 @@ class IC_missionFlow {
     class server {
         file = IC-missionFlow\functions\server;
 
-        class addRespawnEH { postInit = 1; };
+        class addRespawnEH { preInit = 1; };
         class assignIdentity;
         class assignUnitRolesInit { postInit = 1; };
         class identityInitConfig { preInit = 1; };

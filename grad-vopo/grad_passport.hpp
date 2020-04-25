@@ -27,7 +27,7 @@ class DDR_Reisepass: grad_passport_defaultPassport {
         class LastName: LastName {
             idc = GRAD_IDC_LASTNAME;
 
-            x = GRAD_PASSPORT_DEFAULT_RIGHTCOLUMN_X + GRAD_PASSPORT_DEFAULT_INDENT_X*1.20;
+            x = GRAD_PASSPORT_DEFAULT_RIGHTCOLUMN_X*1.20 + GRAD_PASSPORT_DEFAULT_INDENT_X;
             y = GRAD_PASSPORT_DEFAULT_LINE_Y(0) * 0.75;
             w = GRAD_PASSPORT_CONTENT_W;
             h = GRAD_PASSPORT_LINE_H;
