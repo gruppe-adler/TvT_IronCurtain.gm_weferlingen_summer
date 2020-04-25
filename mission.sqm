@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1205;
+		nextID=1209;
 	};
 	class MarkerIDProvider
 	{
@@ -1154,7 +1154,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=328;
+		items=332;
 		class Item0
 		{
 			dataType="Group";
@@ -6032,37 +6032,37 @@ class Mission
 		class Item230
 		{
 			dataType="Marker";
-			position[]={13982.121,81.142769,19562.445};
+			position[]={13619.502,75.278404,22204.875};
 			name="respawn_west";
 			type="respawn_unknown";
 			colorName="ColorWEST";
 			id=699;
-			atlOffset=7.6872177;
+			atlOffset=3.6818771;
 		};
 		class Item231
 		{
 			dataType="Marker";
-			position[]={14199.923,79.708626,19481.176};
+			position[]={13837.304,68.772018,22123.605};
 			name="respawn_east";
 			type="respawn_unknown";
 			colorName="ColorEAST";
 			id=700;
-			atlOffset=7.6872177;
+			atlOffset=3.6818771;
 		};
 		class Item232
 		{
 			dataType="Marker";
-			position[]={13952.861,81.64682,19278};
+			position[]={13590.242,76.829247,21920.43};
 			name="respawn_independent";
 			type="respawn_unknown";
 			colorName="ColorGUER";
 			id=701;
-			atlOffset=7.6872177;
+			atlOffset=3.6818848;
 		};
 		class Item233
 		{
 			dataType="Marker";
-			position[]={14147.907,73.490021,19281.252};
+			position[]={13785.288,65.408813,21923.682};
 			name="respawn_civilian";
 			type="respawn_unknown";
 			colorName="ColorCIV";
@@ -8874,6 +8874,46 @@ class Mission
 			title="NVA Nachschub";
 			id=1203;
 			atlOffset=-0.00032806396;
+		};
+		class Item328
+		{
+			dataType="Marker";
+			position[]={13649.708,70.264114,21668.037};
+			name="mrk_respawn_nva";
+			type="respawn_unknown";
+			colorName="ColorEAST";
+			id=1205;
+			atlOffset=-7.6293945e-006;
+		};
+		class Item329
+		{
+			dataType="Marker";
+			position[]={13864.171,66.457848,21670.449};
+			name="mrk_respawn_stasi";
+			type="respawn_unknown";
+			colorName="ColorEAST";
+			id=1206;
+		};
+		class Item330
+		{
+			dataType="Marker";
+			position[]={14037.669,58.281982,21663.217};
+			name="mrk_respawn_vopo";
+			type="respawn_unknown";
+			colorName="ColorEAST";
+			id=1207;
+			atlOffset=-4.0053406;
+		};
+		class Item331
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={18260.654,77.146667,17735.178};
+				angles[]={0.013999403,0,0.013999403};
+			};
+			id=1208;
+			type="Logic";
 		};
 	};
 	class Connections

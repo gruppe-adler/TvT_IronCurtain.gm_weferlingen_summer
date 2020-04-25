@@ -20,6 +20,8 @@ class IC_missionFlow {
         file = IC-missionFlow\functions\server;
 
         class addRespawnEH { postInit = 1; };
-        class assignUnitRolesInit;
+        class assignIdentity;
+        class assignUnitRolesInit { postInit = 1; };
+        class identityInitConfig { preInit = 1; };
     }; 
 };

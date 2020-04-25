@@ -7,3 +7,6 @@ if (isNil "IC_lastNamesAvailable") then {missionNamespace setVariable ["IC_lastN
 if (isNil "IC_customFaceAllowSame") then {missionNamespace setVariable ["IC_customFaceAllowSame",([missionConfigFile >> "cfgGradCivs","customFaceAllowSame",0] call BIS_fnc_returnConfigEntry) == 1]};
 if (isNil "IC_firstNameAllowSame") then {missionNamespace setVariable ["IC_firstNameAllowSame",([missionConfigFile >> "cfgGradCivs","firstNameAllowSame",0] call BIS_fnc_returnConfigEntry) == 1]};
 if (isNil "IC_lastNameAllowSame") then {missionNamespace setVariable ["IC_lastNameAllowSame",([missionConfigFile >> "cfgGradCivs","lastNameAllowSame",0] call BIS_fnc_returnConfigEntry) == 1]};
+
+if (isNil "IC_villagesOnMap") then {missionNamespace setVariable ["IC_villagesOnMap",[missionConfigFile >> "cfgCustomIdentities","villagesOnMap",[]] call BIS_fnc_returnConfigEntry]};
+if (isNil "IC_villagesGDR") then {missionNamespace setVariable ["IC_villagesGDR",[missionConfigFile >> "cfgCustomIdentities","villagesGDR",[]] call BIS_fnc_returnConfigEntry]};

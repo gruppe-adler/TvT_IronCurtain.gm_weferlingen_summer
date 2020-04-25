@@ -2,6 +2,7 @@
 
 class DDR_Reisepass: grad_passport_defaultPassport {
     class ControlsBackground: ControlsBackground {
+
         class BGPic: BGPic {
             text = "grad-vopo\data\ddr-reisepass.paa";
             x = GRAD_PASSPORT_DEFAULT_X/4;
@@ -81,7 +82,7 @@ class DDR_Reisepass: grad_passport_defaultPassport {
             w = (0.1000 * X_SCALE);
             h = GRAD_PASSPORT_LINE_H;
 
-            text = "Geburtsort";
+            text = "Wohnort";
             sizeEx = GRAD_PASSPORT_DEFAULT_TITLETEXTSIZE;
 
             colorText[] = {0.1,0.31,0.48,1};
@@ -132,3 +133,15 @@ class DDR_Reisepass: grad_passport_defaultPassport {
     };
 };
 
+class DDR_Reisepass_Passierschein: DDR_Reisepass {
+    class ControlsBackground: ControlsBackground {
+
+        class BGPic: BGPic {
+            text = "grad-vopo\data\ddr-reisepass-ps.paa";
+            x = GRAD_PASSPORT_DEFAULT_X/4;
+            y = GRAD_PASSPORT_DEFAULT_Y/4;
+            w = GRAD_PASSPORT_DEFAULT_W*2;
+            h = GRAD_PASSPORT_DEFAULT_H*2;
+        };
+    };
+};

@@ -142,3 +142,16 @@ class CfgVehicles
         sound = "motorSirene"; // reference to CfgSFX class
     };
 };
+
+class CfgIdentities
+{
+    class SomeGuy
+    {
+        face = "WhiteHead_10";
+        glasses = "G_Tactical_Clear";
+        name = "Adams";
+        nameSound = "Adams";
+        pitch = 1.0;
+        speaker = "Male01ENG";
+    };
+};
