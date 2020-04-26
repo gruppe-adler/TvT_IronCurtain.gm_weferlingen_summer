@@ -12,7 +12,8 @@ class GRAD_vopo {
         class presston;
         class reprogramRadio;
         class motorSirene;
-        class revealNearbyUnits;
+        class revealNearbyUnitsCar;
+        class revealNearbyUnitsHeli;
         class setTFARFakeRadio;
     };
 };

@@ -13,7 +13,7 @@ player addEventHandler ["GetInMan", {
 
          diag_log format ["GRAD-vopo adding GetIn Handler to %1", _unit];
 
-        private _handlers = [_vehicle] call GRAD_vopo_fnc_revealNearbyUnits;
+        private _handlers = [_vehicle] call GRAD_vopo_fnc_revealNearbyUnitsCar;
 
         inGameUISetEventHandler ["Action", "_this params ['_target', '_caller', '_index', '_usertype', '_name']; private _car = vehicle _caller; if (_name == 'Beacon On') then { _car setVariable ['IC_vopo_presston', true, true]; [_car] spawn GRAD_vopo_fnc_presston; }; if (_name == 'Beacon Off') then { _car setVariable ['IC_vopo_presston', false, true]; }; false"];
 
@@ -24,6 +24,12 @@ player addEventHandler ["GetInMan", {
         if (driver _vehicle == player) then {
             [] call GRAD_vopo_fnc_reprogramRadio;
         };
+    };
+
+
+    if (_vehicle isKindOf "Air") then {
+        private _handlers = [_vehicle] call GRAD_vopo_fnc_revealNearbyUnitsHeli;
+        player setVariable ["GRAD_vopo_revealHandler", _handlers];
     };
 }];
 
@@ -37,6 +43,18 @@ player addEventHandler ["GetOutMan", {
         if (count _existingHandlers < 1) exitWith {};
 
         inGameUISetEventHandler ["Action", ""];
+       
+        _existingHandlers params ["_pfh", "_missionEH"];
+        [_revealEH] call CBA_fnc_removePerFrameHandler;
+        removeMissionEventHandler ["Draw3D", _missionEH];
+    };
+
+
+    if (_vehicle isKindOf "Air") then {
+
+        private _existingHandlers = player getVariable ["GRAD_vopo_revealHandler", []];
+
+        if (count _existingHandlers < 1) exitWith {};
        
         _existingHandlers params ["_pfh", "_missionEH"];
         [_revealEH] call CBA_fnc_removePerFrameHandler;
