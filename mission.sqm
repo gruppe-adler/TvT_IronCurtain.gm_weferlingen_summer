@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1270;
+		nextID=1272;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={18130.891,121.11092,16463.75};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		pos[]={18106.607,85.655327,16472.656};
+		dir[]={0.19076101,-0.33260557,0.9236117};
+		up[]={0.067280389,0.94305849,0.3257516};
+		aside[]={0.97936726,3.8708095e-009,-0.2022779};
 	};
 };
 binarizationWanted=0;
@@ -9425,17 +9425,40 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={18127.961,80.655754,16510.473};
-				angles[]={6.2711902,0,0.0039967569};
+				position[]={18127.961,80.655548,16510.473};
+				angles[]={6.2711945,0,0.0039968039};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
+				textures="LOP_SLA";
 			};
 			id=1263;
 			type="LOP_PMC_Mi8AMT";
-			atlOffset=0.00020599365;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="rhs_decalNumber_type";
+					expression="if(_value != 'NoChange')then{ _this setVariable ['rhs_decalNumber_type', _value];[_this,[['Number', cRHSAIRMI8NumberPlaces, _value]]] call rhs_fnc_decalsInit}";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="NoChange";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item374
 		{
