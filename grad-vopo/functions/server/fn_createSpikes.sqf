@@ -5,7 +5,7 @@
 
 */
 
-params ["_pos", "_dir"];
+params ["_pos", "_dir", ["_wallZOffset",-0.8]];
 
 private _spikes = [];
 
@@ -28,7 +28,7 @@ for "_i" from 0 to _visualCount do {
 };
 
 private _positionMiddle = _pos getPos [1.1*_visualCount/2, _dir];
-_positionMiddle set [2,-0.8];
+_positionMiddle set [2,_wallZOffset];
 private _detectionHelper = createVehicle [_detectionHelperType, _positionMiddle, [], 0, "CAN_COLLIDE"];
 _detectionHelper setDir _dir+90;
 

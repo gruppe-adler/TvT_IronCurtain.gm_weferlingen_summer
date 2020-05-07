@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1280;
+		nextID=1282;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={18103.359,88.907883,16461.697};
-		dir[]={0.38047656,-0.2693238,0.884781};
-		up[]={0.10641165,0.96303797,0.24745676};
-		aside[]={0.9187206,-5.2488758e-007,-0.39507368};
+		pos[]={18028.166,161.52477,16564.578};
+		dir[]={0.77945185,-0.59455204,-0.19776592};
+		up[]={0.57630491,0.80404693,-0.14622171};
+		aside[]={-0.24595158,2.6408816e-007,-0.96935403};
 	};
 };
 binarizationWanted=0;
@@ -1169,7 +1169,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=380;
+		items=382;
 		class Item0
 		{
 			dataType="Group";
@@ -8329,7 +8329,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={18112.211,78.385391,16557.445};
+						position[]={18095.471,78.354599,16554.48};
 						angles[]={0,2.0453513,0};
 					};
 					side="Civilian";
@@ -8408,7 +8408,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={18106.652,78.360764,16555.553};
+						position[]={18089.912,78.331902,16552.588};
 						angles[]={0,2.0453513,0};
 					};
 					side="Civilian";
@@ -8487,7 +8487,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={18102.807,78.345772,16554.045};
+						position[]={18086.066,78.307983,16551.08};
 						angles[]={0,2.0453513,0};
 					};
 					side="Civilian";
@@ -8566,7 +8566,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={18109.842,78.37619,16556.525};
+						position[]={18093.102,78.343559,16553.561};
 						angles[]={0,2.0453513,0};
 					};
 					side="Civilian";
@@ -10254,15 +10254,47 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={18111.4,77.887932,16512.793};
+				position[]={18111.654,78.371315,16556.131};
 				angles[]={0,1.6498073,0};
 			};
 			side="Empty";
 			class Attributes
 			{
-				init="call{[getpos this, getdir this] execVM ""grad-vopo\functions\server\fn_createSpikes.sqf"";}";
+				init="call{[getpos this, getdir this, -0.9] execVM ""grad-vopo\functions\server\fn_createSpikes.sqf"";}";
 			};
 			id=1278;
+			type="Land_HelipadEmpty_F";
+		};
+		class Item380
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={18111.217,77.827728,16507.311};
+				angles[]={0,1.6498073,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="call{[getpos this, getdir this, -0.8] execVM ""grad-vopo\functions\server\fn_createSpikes.sqf"";}";
+			};
+			id=1280;
+			type="Land_HelipadEmpty_F";
+		};
+		class Item381
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={18112.566,78.852341,16599.361};
+				angles[]={6.2711945,1.6498073,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="call{[getpos this, getdir this, -0.95] execVM ""grad-vopo\functions\server\fn_createSpikes.sqf"";}";
+			};
+			id=1281;
 			type="Land_HelipadEmpty_F";
 		};
 	};
