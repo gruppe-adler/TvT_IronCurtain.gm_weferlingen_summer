@@ -11,7 +11,7 @@ private _spikes = [];
 
 private _visualSpikesType = "Land_TankTracks_01_short_F";
 private _detectionHelperType = "Land_InvisibleBarrier_F";
-private _visualCount = 4;
+private _visualCount = 3;
 
 for "_i" from 0 to _visualCount do {
     _pos params ["_xPos", "_yPos", "_zPos"];
@@ -28,20 +28,22 @@ for "_i" from 0 to _visualCount do {
 };
 
 private _positionMiddle = _pos getPos [1.1*_visualCount/2, _dir];
-_positionMiddle set [2,-0.85];
+_positionMiddle set [2,-0.8];
 private _detectionHelper = createVehicle [_detectionHelperType, _positionMiddle, [], 0, "CAN_COLLIDE"];
-_detectionHelper setDir _dir;
+_detectionHelper setDir _dir+90;
+
+[_detectionHelper,0,[0,0,0],[1, 0, 0, 1]] execVM "grad-vopo\functions\server\fn_drawBoundingBox.sqf";
 
 _detectionHelper addEventHandler ["EpeContactStart", {
     params ["_object1", "_object2", "_selection1", "_selection2", "_force"];
 
-    systemChat "hitStart";
+    // systemChat "hitStart";
 
     if (_object2 isKindOf "Car_F") then {
 
-        systemChat "isCar";
+        // systemChat "isCar";
 
-        private _boundingBox = boundingBoxReal _object1;
+        private _boundingBox = boundingBox _object1;
         _boundingBox params ["_p1", "_p2"];
         _p1 params ["_x1","_y1", "_z1"];
         _p2 params ["_x2","_y2", "_z2"];
@@ -49,44 +51,48 @@ _detectionHelper addEventHandler ["EpeContactStart", {
         private _maxLength = abs (_y1 - _y2);
         private _maxHeight = abs (_z1 - _z2);
 
-        private _triggerArea = [getPos _object1, _maxLength/2, _maxHeight/2, getDir _object1, true];
+        private _triggerArea = [getPos _object1, _maxLength/2, _maxWidth/2, getDir _object1, true];
 
         private _wheelPositions = [_object2] call ace_repair_fnc_getWheelHitPointsWithSelections;
         _wheelPositions params ["_hitpoints", "_hitpointSelections"];
 
+        // [["hitlfwheel","hitrfwheel","hitlf2wheel","hitrf2wheel"],
+        // ["hitpoint_wheel_1_1","hitpoint_wheel_1_2","hitpoint_wheel_2_1","hitpoint_wheel_2_2"]]
+        private _hits = [];
         {   
-            private _hits = [];
-            private _parts = ["lfwheel","lf2wheel","lmwheel","lbwheel","rfwheel","rf2wheel","rmwheel","rbwheel"]; // ripped from ace3
-            {
-                private _selectionPart = "hit" + _x;
-                if (isText(configFile >> "CfgVehicles" >> typeOf _object2 >> "hitpoints" >> _selectionPart >> "name")) then {
-
-                    // systemChat str "isText";
-                    private _selection = getText(configFile >> "CfgVehicles" >> typeOf _object2  >> "hitpoints" >> _selectionPart >> "name");
-
-                    systemChat str _selection;
-                    private _position = _object2 modelToWorld (_object2 selectionPosition _selection);
-                    // if (_position inArea _triggerArea) then {
-
-                    systemChat format ["_selection hit: %1", _selection];
-
-                    (getAllHitPointsDamage _object2) params ["_hitPoints", "_selectionNames"];
-                    private _index = _selectionNames find _selection;
-
-                    if (_index > -1) then {
-                        _object2 setHitPointDamage [_hitPoints select _index, 1, false];
-                        // _object2 setHitIndex [_index, 1, false];
-                        // _object2 setHit [_selection, 1];
-                        ["GRAD_vopo_sparkSmall", [_position]] call CBA_fnc_globalEvent;
-                    };
-                        
-                    // };
-                };
-            } forEach _parts;
+            private _selectionPart = _x;
+            private _position = _object2 modelToWorld (_object2 selectionPosition _selectionPart);
+            
+            if (_position inArea _triggerArea) then {
+                systemChat format ["_selection hit: %1", _x];
+                _hits pushBackUnique [_forEachIndex, _position, _selectionPart];
+            };
           
         } forEach _hitpointSelections;
+
+        {   
+            _x params ["_index", "_position", "_selectionPart"];
+              _object2 setHitPointDamage [_hitPoints select _index, 1, false];
+            // _object2 setHitIndex [_index, 1, false];
+            // _object2 setHit [_selection, 1];
+            ["GRAD_vopo_sparkSmall", [_position]] call CBA_fnc_globalEvent;
+
+            for "_i" from 0 to 30 do {
+                [{
+                    params ["_object2", "_selectionPart"];
+                    private _position = _object2 modelToWorld (_object2 selectionPosition _selectionPart);
+                    ["GRAD_vopo_sparkSmall", [asltoagl _position]] call CBA_fnc_globalEvent;
+                }, [_object2, _selectionPart], random 3] call CBA_fnc_waitAndExecute; 
+            };
+        } forEach _hits;
+
+        
+        
     };
 }];
+
+
+
 
 /*
 {
