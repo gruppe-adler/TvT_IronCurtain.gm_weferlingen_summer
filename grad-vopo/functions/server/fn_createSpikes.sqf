@@ -9,15 +9,84 @@ params ["_pos", "_dir"];
 
 private _spikes = [];
 
-for "_i" from 0 to 3 do {
+private _visualSpikesType = "Land_TankTracks_01_short_F";
+private _detectionHelperType = "Land_InvisibleBarrier_F";
+private _visualCount = 4;
+
+for "_i" from 0 to _visualCount do {
     _pos params ["_xPos", "_yPos", "_zPos"];
 
     private _newPos = _pos getPos [1.1*_i, _dir];
-    private _track = createVehicle ["Land_TankTracks_01_short_F", _newPos, [], 0, "CAN_COLLIDE"];
+    _newPos set [2,-0.1];
+
+    private _track = createVehicle [_visualSpikesType, _newPos, [], 0, "CAN_COLLIDE"];
     _track setDir _dir;
+    _track enableSimulationGlobal false;
+    _track enableSimulation false;
 
     _spikes pushBackUnique _track;
 };
+
+private _positionMiddle = _pos getPos [1.1*_visualCount/2, _dir];
+_positionMiddle set [2,-0.85];
+private _detectionHelper = createVehicle [_detectionHelperType, _positionMiddle, [], 0, "CAN_COLLIDE"];
+_detectionHelper setDir _dir;
+
+_detectionHelper addEventHandler ["EpeContactStart", {
+    params ["_object1", "_object2", "_selection1", "_selection2", "_force"];
+
+    systemChat "hitStart";
+
+    if (_object2 isKindOf "Car_F") then {
+
+        systemChat "isCar";
+
+        private _boundingBox = boundingBoxReal _object1;
+        _boundingBox params ["_p1", "_p2"];
+        _p1 params ["_x1","_y1", "_z1"];
+        _p2 params ["_x2","_y2", "_z2"];
+        private _maxWidth = abs (_x2 - _x1);
+        private _maxLength = abs (_y1 - _y2);
+        private _maxHeight = abs (_z1 - _z2);
+
+        private _triggerArea = [getPos _object1, _maxLength/2, _maxHeight/2, getDir _object1, true];
+
+        private _wheelPositions = [_object2] call ace_repair_fnc_getWheelHitPointsWithSelections;
+        _wheelPositions params ["_hitpoints", "_hitpointSelections"];
+
+        {   
+            private _hits = [];
+            private _parts = ["lfwheel","lf2wheel","lmwheel","lbwheel","rfwheel","rf2wheel","rmwheel","rbwheel"]; // ripped from ace3
+            {
+                private _selectionPart = "hit" + _x;
+                if (isText(configFile >> "CfgVehicles" >> typeOf _object2 >> "hitpoints" >> _selectionPart >> "name")) then {
+
+                    // systemChat str "isText";
+                    private _selection = getText(configFile >> "CfgVehicles" >> typeOf _object2  >> "hitpoints" >> _selectionPart >> "name");
+
+                    systemChat str _selection;
+                    private _position = _object2 modelToWorld (_object2 selectionPosition _selection);
+                    // if (_position inArea _triggerArea) then {
+
+                    systemChat format ["_selection hit: %1", _selection];
+
+                    (getAllHitPointsDamage _object2) params ["_hitPoints", "_selectionNames"];
+                    private _index = _selectionNames find _selection;
+
+                    if (_index > -1) then {
+                        _object2 setHitPointDamage [_hitPoints select _index, 1, false];
+                        // _object2 setHitIndex [_index, 1, false];
+                        // _object2 setHit [_selection, 1];
+                        ["GRAD_vopo_sparkSmall", [_position]] call CBA_fnc_globalEvent;
+                    };
+                        
+                    // };
+                };
+            } forEach _parts;
+          
+        } forEach _hitpointSelections;
+    };
+}];
 
 /*
 {
@@ -52,7 +121,7 @@ _spikes
         private _endPositionLeft = [__wheelLeftPositionX,__wheelLeftPositionY,__wheelLeftPositionZ-1];
         private _endPositionRight = [__wheelRightPositionX,__wheelRightPositionY,__wheelRightPositionZ-1];
 
-        private _leftWheelObjects = (lineIntersectsWith [_wheelLeftPosition, _endPositionLeft, vehicle player, player]);
+        private _leftWheelObjects = (lineIntersectsObjs [_wheelLeftPosition, _endPositionLeft, vehicle player, player]);
         if (count _leftWheelObjects > 0) then {
             systemChat str _leftWheelObjects;
         };

@@ -1,3 +1,5 @@
+if (isNull (call TFAR_fnc_activeLrRadio)) exitWith {};
+
 [(call TFAR_fnc_activeLrRadio), 1, "66"] call TFAR_fnc_SetChannelFrequency;
 [(call TFAR_fnc_activeLrRadio), 2, "66"] call TFAR_fnc_SetChannelFrequency;
 [(call TFAR_fnc_activeLrRadio), 3, "66"] call TFAR_fnc_SetChannelFrequency;

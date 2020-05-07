@@ -9,11 +9,13 @@ class GRAD_vopo {
         class callPluginActivate;
         class callPluginDeactivate;
         class createSpeaker;
+        class localEventSparks { postInit = 1; };
         class presston;
         class reprogramRadio;
         class motorSirene;
         class revealNearbyUnitsCar;
         class revealNearbyUnitsHeli;
         class setTFARFakeRadio;
+        class sparkSmall;
     };
 };

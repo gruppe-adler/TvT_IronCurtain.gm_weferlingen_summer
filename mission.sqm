@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1272;
+		nextID=1280;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={18106.607,85.655327,16472.656};
-		dir[]={0.19076101,-0.33260557,0.9236117};
-		up[]={0.067280389,0.94305849,0.3257516};
-		aside[]={0.97936726,3.8708095e-009,-0.2022779};
+		pos[]={18097.045,88.907883,16516.123};
+		dir[]={0.84096622,-0.47543049,-0.25858927};
+		up[]={0.45445302,0.87974256,-0.13974038};
+		aside[]={-0.29393044,8.9632522e-008,-0.95589066};
 	};
 };
 binarizationWanted=0;
@@ -58,13 +58,14 @@ addons[]=
 	"rds_A2_Civilians",
 	"Desert",
 	"CUP_CASigns2",
-	"po_factions_me"
+	"po_factions_me",
+	"A3_Structures_F_Mil_Helipads"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=31;
+		items=32;
 		class Item0
 		{
 			className="gm_characters_gc_civilians";
@@ -268,6 +269,13 @@ class AddonsMetaData
 			className="po_factions_me";
 			name="po_factions_me";
 			author="Leight, Keeway";
+		};
+		class Item31
+		{
+			className="A3_Structures_F_Mil";
+			name="Arma 3 - Military Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
 		};
 	};
 };
@@ -1161,7 +1169,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=377;
+		items=381;
 		class Item0
 		{
 			dataType="Group";
@@ -1174,7 +1182,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={18114.697,77.869942,16510.9};
+						position[]={18108.316,77.081238,16449.322};
 						angles[]={0,2.0453513,0};
 					};
 					side="Civilian";
@@ -7571,8 +7579,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={18111.055,79.491692,16510.904};
-				angles[]={6.2731848,0,0};
+				position[]={18110.109,78.697044,16448.879};
+				angles[]={6.269186,0,0};
 			};
 			side="Empty";
 			flags=4;
@@ -10208,6 +10216,71 @@ class Mission
 				};
 				nAttributes=12;
 			};
+		};
+		class Item377
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={18112.402,78.67942,16448.773};
+				angles[]={6.269186,0,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=1275;
+			type="RDS_JAWA353_Civ_01";
+		};
+		class Item378
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={18114.971,78.586037,16448.811};
+				angles[]={6.269186,0,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=1276;
+			type="RDS_Lada_Civ_01";
+		};
+		class Item379
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={18111.4,77.887932,16512.793};
+				angles[]={0,1.6498073,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="call{[getpos this, getdir this] execVM ""grad-vopo\functions\server\fn_createSpikes.sqf"";}";
+			};
+			id=1278;
+			type="Land_HelipadEmpty_F";
+		};
+		class Item380
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={18111.463,78.014374,16523.697};
+				angles[]={0,6.2465525,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="call{[getpos this, getdir this] execVM ""grad-vopo\functions\server\fn_createSpikes.sqf"";}";
+			};
+			id=1279;
+			type="Land_HelipadEmpty_F";
+			atlOffset=7.6293945e-006;
 		};
 	};
 	class Connections

@@ -4,6 +4,9 @@
 
 */
 
+/*
+// DEBUG COMMENTED
+
 call IC_missionFlow_fnc_detectSpawnPositions;
 
 {
@@ -23,3 +26,4 @@ call IC_missionFlow_fnc_detectSpawnPositions;
     };
 
 } forEach playableUnits + switchableUnits;
+*/
