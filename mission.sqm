@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1286;
+		nextID=1288;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={22995.324,66.710495,21517.867};
-		dir[]={-0.37289608,-0.55745608,0.74185985};
-		up[]={-0.25037709,0.83017445,0.49811214};
-		aside[]={0.89355469,5.0268136e-007,0.44914484};
+		pos[]={22993.16,66.005211,21520.617};
+		dir[]={0.53297162,-0.81697696,-0.22061816};
+		up[]={0.75485611,0.57666969,-0.31246364};
+		aside[]={-0.38250268,3.2151002e-007,-0.92405373};
 	};
 };
 binarizationWanted=0;
@@ -59,14 +59,13 @@ addons[]=
 	"CUP_CASigns2",
 	"po_factions_me",
 	"A3_Structures_F_Mil_Helipads",
-	"A3_Structures_F_Items_Electronics",
-	"A3_Props_F_Enoch_Military_Camps"
+	"A3_Structures_F_Items_Electronics"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=33;
+		items=32;
 		class Item0
 		{
 			className="gm_characters_gc_civilians";
@@ -275,13 +274,6 @@ class AddonsMetaData
 		{
 			className="A3_Structures_F_Mil";
 			name="Arma 3 - Military Buildings and Structures";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item32
-		{
-			className="A3_Props_F_Enoch";
-			name="Arma 3 Enoch - Decorative and Mission Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -6942,7 +6934,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={22993.881,64.294121,21519.711};
+				position[]={22993.871,64.294121,21519.764};
 				angles[]={-0,3.1650846,-0};
 			};
 			side="Empty";
@@ -6959,8 +6951,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={22993.9,64.294121,21521.629};
-				angles[]={0,0.0042552939,0};
+				position[]={22993.447,64.294121,21521.66};
+				angles[]={-0,0.0042552939,-0};
 			};
 			side="Empty";
 			flags=4;
@@ -7095,7 +7087,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={22994.498,64.289757,21521.99};
+						position[]={22994.119,64.290024,21521.746};
 						angles[]={0,3.1241741,0};
 					};
 					side="East";
@@ -7103,10 +7095,12 @@ class Mission
 					class Attributes
 					{
 						name="stasi_cutscene_officer";
+						disableSimulation=1;
+						ignoreByDynSimulGrid=1;
 					};
 					id=966;
 					type="gm_gc_army_officer_80_gry";
-					atlOffset=0.00022888184;
+					atlOffset=0.00049591064;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -7174,7 +7168,7 @@ class Mission
 			{
 			};
 			id=965;
-			atlOffset=0.00022888184;
+			atlOffset=0.00049591064;
 		};
 		class Item261
 		{
@@ -7188,7 +7182,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={22993.865,64.289513,21519.814};
+						position[]={22993.865,64.178513,21519.814};
 					};
 					side="Civilian";
 					flags=3;
@@ -7200,7 +7194,7 @@ class Mission
 					};
 					id=968;
 					type="gm_gc_civ_man_01_80_blk";
-					atlOffset=1.0110054;
+					atlOffset=0.90000534;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -7230,7 +7224,7 @@ class Mission
 			{
 			};
 			id=967;
-			atlOffset=1.0110054;
+			atlOffset=0.90000534;
 		};
 		class Item262
 		{
@@ -10206,17 +10200,17 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={22993.326,65.435547,21520.764};
-				angles[]={0,5.8707752,0};
+				position[]={22993.453,65.430557,21520.68};
+				angles[]={0,1.3401279,0};
 			};
 			side="Empty";
 			flags=1;
 			class Attributes
 			{
 			};
-			id=1285;
-			type="Land_PortableLight_02_single_olive_F";
-			atlOffset=0.60670471;
+			id=1287;
+			type="Reflector_Cone_01_narrow_white_F";
+			atlOffset=0.25879669;
 		};
 	};
 	class Connections

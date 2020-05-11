@@ -22,13 +22,16 @@ _filmgrain ppEffectCommit 0;
 
 setAperture 15;
 
-stasi_cutscene_officer switchmove "AmovPercMstpSnonWnonDnon_Ease";
+stasi_cutscene_officer switchmove "InBaseMoves_table1";
 stasi_cutscene_victim switchmove "acex_sitting_HubSittingChairB_move1";
 
+stasi_cutscene_officer disableAI "ALL";
+stasi_cutscene_victim disableAI "ALL";
 {
     _x addEventHandler ["AnimDone", {
         params ["_unit", "_anim"];
 
         _unit switchmove _anim;
+
     }];
 } forEach [stasi_cutscene_officer, stasi_cutscene_victim];
