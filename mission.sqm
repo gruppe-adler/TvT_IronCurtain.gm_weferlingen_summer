@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1288;
+		nextID=1294;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={22993.16,66.005211,21520.617};
-		dir[]={0.53297162,-0.81697696,-0.22061816};
-		up[]={0.75485611,0.57666969,-0.31246364};
-		aside[]={-0.38250268,3.2151002e-007,-0.92405373};
+		pos[]={22996.094,66.984306,21519.629};
+		dir[]={-0.59050411,-0.678388,0.4373765};
+		up[]={-0.54515892,0.73466718,0.40379021};
+		aside[]={0.59526157,1.6345875e-006,0.80365825};
 	};
 };
 binarizationWanted=0;
@@ -59,13 +59,15 @@ addons[]=
 	"CUP_CASigns2",
 	"po_factions_me",
 	"A3_Structures_F_Mil_Helipads",
-	"A3_Structures_F_Items_Electronics"
+	"A3_Structures_F_Items_Electronics",
+	"A3_Props_F_Orange_Humanitarian_Camps",
+	"A3_Structures_F_Training"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=32;
+		items=33;
 		class Item0
 		{
 			className="gm_characters_gc_civilians";
@@ -274,6 +276,13 @@ class AddonsMetaData
 		{
 			className="A3_Structures_F_Mil";
 			name="Arma 3 - Military Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item32
+		{
+			className="A3_Props_F_Orange";
+			name="Arma 3 Orange - Decorative and Mission Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -1169,7 +1178,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=383;
+		items=385;
 		class Item0
 		{
 			dataType="Group";
@@ -6935,7 +6944,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={22993.871,64.294121,21519.764};
-				angles[]={-0,3.1650846,-0};
+				angles[]={0,3.1650846,0};
 			};
 			side="Empty";
 			flags=4;
@@ -6952,7 +6961,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={22993.447,64.294121,21521.66};
-				angles[]={-0,0.0042552939,-0};
+				angles[]={0,0.0042552939,0};
 			};
 			side="Empty";
 			flags=4;
@@ -6983,7 +6992,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={22994.359,65.147758,21520.625};
+				position[]={22994.414,65.147758,21520.531};
 			};
 			side="Empty";
 			flags=4;
@@ -7048,8 +7057,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={22993.297,65.147758,21520.48};
-				angles[]={0,3.8714924,0};
+				position[]={22994.531,65.147758,21520.781};
+				angles[]={0,2.732578,0};
 			};
 			side="Empty";
 			flags=4;
@@ -7231,17 +7240,16 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={22993.486,65.147881,21520.75};
+				position[]={22994.232,65.166656,21520.789};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				init="call{[this] execVM ""grad-stasi\functions\client\fn_cutsceneSmoke.sqf"";}";
 			};
 			id=969;
 			type="land_gm_euro_furniture_ashtray_01";
-			atlOffset=0.00012207031;
+			atlOffset=0.01889801;
 		};
 		class Item263
 		{
@@ -10200,17 +10208,77 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={22993.453,65.430557,21520.68};
-				angles[]={0,1.3401279,0};
+				position[]={22992.863,65.219482,21521.725};
+				angles[]={0,4.1745481,0};
 			};
 			side="Empty";
-			flags=1;
+			flags=4;
 			class Attributes
 			{
+				createAsSimpleObject=1;
+				disableSimulation=1;
 			};
-			id=1287;
-			type="Reflector_Cone_01_narrow_white_F";
-			atlOffset=0.25879669;
+			id=1290;
+			type="Land_IntravenStand_01_empty_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item383
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={22992.924,66.074318,21521.625};
+				angles[]={0,2.6639309,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="call{[this] execVM ""grad-stasi\functions\client\fn_cutsceneLight.sqf"";}";
+				disableSimulation=1;
+			};
+			id=1292;
+			type="Steel_Plate_S_Stand_F";
+			atlOffset=1.6567764;
+		};
+		class Item384
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={22994.008,64.417542,21521.492};
+				angles[]={-0,2.6639309,-0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="call{[this] execVM ""grad-stasi\functions\client\fn_cutsceneLight.sqf"";}";
+				disableSimulation=1;
+			};
+			id=1293;
+			type="Steel_Plate_S_Stand_F";
 		};
 	};
 	class Connections

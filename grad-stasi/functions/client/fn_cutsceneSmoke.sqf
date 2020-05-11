@@ -17,8 +17,8 @@ _fog setParticleParams ["\A3\data_f\cl_basic",
 10,
 [0, 0, 0],
 [0, 0.1, -0.1],
-1,
 1.1,
+1.27,
 1,
 0.0001,
 [0.1, 0.1, 0.1],
@@ -29,7 +29,7 @@ _fog setParticleParams ["\A3\data_f\cl_basic",
 "",
 "",
 _source];
-_fog setParticleRandom [2, [0, 0, 0], [0.25, 0.25, 0.25], 0, 0.5, [0, 0, 0, 0.1], 0, 0, 10];
+// _fog setParticleRandom [2, [0, 0, 0], [0.25, 0.25, 0.25], 0, 0.5, [0, 0, 0, 0.1], 0, 0, 10];
 _fog setDropInterval 0.1;
 
 _source attachTo [_source, [0, 0, 0]];
