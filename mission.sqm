@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1294;
+		nextID=1295;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={22996.094,66.984306,21519.629};
-		dir[]={-0.59050411,-0.678388,0.4373765};
-		up[]={-0.54515892,0.73466718,0.40379021};
-		aside[]={0.59526157,1.6345875e-006,0.80365825};
+		pos[]={22994.486,66.336899,21516.516};
+		dir[]={-0.23411608,-0.42042655,0.87673306};
+		up[]={-0.10848732,0.90727079,0.40627566};
+		aside[]={0.96625268,1.1061857e-006,0.25801376};
 	};
 };
 binarizationWanted=0;
@@ -1178,7 +1178,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=385;
+		items=386;
 		class Item0
 		{
 			dataType="Group";
@@ -7104,7 +7104,6 @@ class Mission
 					class Attributes
 					{
 						name="stasi_cutscene_officer";
-						disableSimulation=1;
 						ignoreByDynSimulGrid=1;
 					};
 					id=966;
@@ -10147,19 +10146,19 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={22995.293,66.292,21516.594};
+				position[]={22995.43,66.295006,21516.605};
 				angles[]={0,2.6952071,0};
 			};
 			side="Empty";
 			class Attributes
 			{
-				name="stasi_cutscene_cam";
+				name="stasi_cutscene_cam_1";
 				createAsSimpleObject=1;
 				disableSimulation=1;
 			};
 			id=1282;
 			type="Land_HandyCam_F";
-			atlOffset=1.9681473;
+			atlOffset=1.9711533;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -10261,6 +10260,29 @@ class Mission
 			id=1292;
 			type="Steel_Plate_S_Stand_F";
 			atlOffset=1.6567764;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item384
 		{
@@ -10268,7 +10290,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={22994.008,64.417542,21521.492};
-				angles[]={-0,2.6639309,-0};
+				angles[]={0,2.6639309,0};
 			};
 			side="Empty";
 			flags=4;
@@ -10279,6 +10301,67 @@ class Mission
 			};
 			id=1293;
 			type="Steel_Plate_S_Stand_F";
+		};
+		class Item385
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={22993.012,66.276787,21516.666};
+				angles[]={0,3.4097102,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="stasi_cutscene_cam_2";
+				createAsSimpleObject=1;
+				disableSimulation=1;
+			};
+			id=1294;
+			type="Land_HandyCam_F";
+			atlOffset=1.9529343;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="hideObject";
+					expression="if !(is3DEN) then {_this hideobjectglobal _value;};";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=1;
+						};
+					};
+				};
+				nAttributes=2;
+			};
 		};
 	};
 	class Connections
