@@ -22,7 +22,7 @@ onLoadMission = "Den Sozialismus in seinem Lauf, hält weder Ochs noch Esel auf.
 
 #include "IC-config\cfgGradCivs.hpp"
 #include "IC-config\cfgCustomIdentities.hpp"
-
+#include "IC-config\cfgReinforcements.hpp"
 
 
 class cfgFunctions {
@@ -52,10 +52,6 @@ class cfgSounds {
     #include "grad-arrestMechanics\cfgSounds.hpp"
 };
 
-class rscTitles {
-    // displays
-    #include "grad-nvacommand\cfgDisplays.hpp"
-};
 
 class CfgNotifications {
     #include "node_modules\grad-advancedLockpicking\cfgNotifications.hpp"

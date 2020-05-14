@@ -33,7 +33,9 @@ class GRAD_nvacommand {
 
         class markerFade;
         class markerFenceCut;
-        
+
+        class reinforcementsInit { postInit = 1; }; 
+        class reinforcementsGUI;
        
         class repairFence;
         class towerCenterSelected;
