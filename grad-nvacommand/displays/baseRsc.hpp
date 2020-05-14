@@ -116,11 +116,11 @@ class grad_nvaCommand_RscButtonSilent {
     text = "";
     colorText[] = {1,1,1,1};
     colorDisabled[] = {1,1,1,0.1};
-    colorBackground[] = {0,0,0,0.8};
-    colorFocused[] = {0,0,0,0.8};
+    colorBackground[] = {0,0,0,0};
+    colorFocused[] = {0,0,0,0};
     colorBackgroundActive[] = {1,1,1,0.8}; // hover
-    colorBackgroundDisabled[] = {0.3,0.3,0.3,0.3};
-    colorBackgroundFocused[] = {0,0,0,0.8};
+    colorBackgroundDisabled[] = {0,0,0,0};
+    colorBackgroundFocused[] = {0,0,0,0};
     colorShadow[] = {0,0,0,0};
     colorBorder[] = {0,0,0,1};
     soundEnter[] = {"\A3\ui_f\data\sound\RscButton\soundEnter", 0.09, 1};

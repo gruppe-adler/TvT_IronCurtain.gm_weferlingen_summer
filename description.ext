@@ -19,6 +19,7 @@ onLoadMission = "Den Sozialismus in seinem Lauf, hält weder Ochs noch Esel auf.
 #include "node_modules\grad-advancedLockpicking\grad_advancedLockpicking.hpp"
 #include "grad-vopo\grad_passport.hpp"
 #include "grad-stasi\dialogs\rscCutScene.hpp"
+#include "grad-nvacommand\displays\baseRsc.hpp"
 
 #include "IC-config\cfgGradCivs.hpp"
 #include "IC-config\cfgCustomIdentities.hpp"

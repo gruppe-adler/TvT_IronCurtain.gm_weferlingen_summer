@@ -34,7 +34,7 @@ _inArea = if (count _cameraArea > 0) then {
 } else {
     true //--- No area defined
 };
-if !(_inArea) exitwith {false};
+// if !(_inArea) exitwith {false};
 
 //--- Calculate the speed automatically
 if (typename _commit == typename true) then {
