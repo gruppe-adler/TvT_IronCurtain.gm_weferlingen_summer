@@ -21,7 +21,7 @@ class rscCutSceneCam {
 
         class DismissButton:CutSceneCam_RscButton
         {    
-            idc = -1;
+            idc = 1000;
             type = 0;
             style = 2;
             x = safeZoneX + (safeZoneW/2) - 0.3 * 3 / 4; 
@@ -34,7 +34,6 @@ class rscCutSceneCam {
             colorText[] = {1,1,1,1};
             text = "Als MfS-Spitzel unterschreiben";
             tooltip = "Einknicken und sofort als Stasi respawnen";
-            action = "hintC 'bla';";
         };
 
        

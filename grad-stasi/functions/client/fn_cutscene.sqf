@@ -34,7 +34,7 @@ _ppgrain ppEffectEnable TRUE;
 
 // chromatic abberation
 private _ppchrom = ppEffectCreate ["ChromAberration",2003];
-_ppchrom ppEffectAdjust [0.02, 0.02, true];
+_ppchrom ppEffectAdjust [0.01, 0.01, true];
 _ppchrom ppEffectCommit 0;
 _ppchrom ppEffectEnable TRUE;
 
@@ -80,6 +80,10 @@ diwako_dui_main_toggled_off = true;
 
 private _display = uinamespace getVariable "rscCutSceneCam";
 private _progressBar = _display displayCtrl 2301;
+
+private _button = _display displayCtrl 1000;
+_button buttonSetAction ["missionNameSpace setVariable ['cutsceneOver', true];"];
+
 private _begin = time;
 
 [{
@@ -89,7 +93,7 @@ private _begin = time;
     _progressBar progressSetPosition (linearConversion [_begin, _begin + _cutsceneDuration, time, 0, 1, true]);
 }, 0, [_progressBar, _cutsceneDuration, _begin]] call CBA_fnc_addPerFrameHandler;
 
-private _display = uinamespace getVariable "rscCutSceneCam";
+
 private _introTextHeadline_content = "Aus Jürgen Fuchs: Vernehmungsprotokolle.";
 private _introTextCopy_content = "Jürgen Fuchs saß 281 Tage in der Untersuchungshaftanstalt des Ministeriums für Staatssicherheit (MfS) in Berlin-Hohenschönhausen. Er sollte sich selbst belasten, er sollte seine Freunde verraten, er sollte sich von den zu Staatsfeinden abgestempelten Kritikern Wolf Biermann und Robert Havemann distanzieren. Trotz monatelanger Bemühungen konnte die für die Verfolgung des ,politischen Untergrundes' zuständige Hauptabteilung IX/2 des MfS keines dieser Ziele erreichen. Am Ende wurde Fuchs nach West-Berlin abgeschoben.";
 
@@ -138,3 +142,24 @@ _introTextCopy ctrlCommit 3;
 uiSleep 15;
 _introTextCopy ctrlsetFade 1;
 _introTextCopy ctrlCommit 3;
+
+
+waituntil {
+    missionNameSpace getVariable ['cutsceneOver', false]
+};
+
+
+_ppcolor ppEffectEnable false;
+ppEffectDestroy _ppcolor;
+
+_ppgrain ppEffectEnable false;
+ppEffectDestroy _ppgrain;
+
+_ppchrom ppEffectEnable false;
+ppEffectDestroy _ppchrom;
+
+_cam cameraEffect ["terminate","back"];
+camDestroy _cam;
+
+("BIS_layerStatic" call BIS_fnc_rscLayer) cutRsc ["RscStatic", "PLAIN"];
+("BIS_layerInterlacing" call BIS_fnc_rscLayer) cutRsc ["", "PLAIN"];
