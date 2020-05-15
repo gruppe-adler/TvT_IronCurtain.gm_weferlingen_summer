@@ -9,6 +9,7 @@ private _height = safeZoneH/20;
 private _gap = safeZoneH/60;
 private _fontSize = 0.01 / (getResolution select 5);
 
+
 {
     
     private _groupsOfAKind = _x;
@@ -17,6 +18,7 @@ private _fontSize = 0.01 / (getResolution select 5);
     {
         private _verticalIndex = _forEachIndex;
         private _name = _x getVariable ["displayName", ""];
+        private _picturePath = _x getVariable ["pic", ""];
 
         private _outline = _display ctrlCreate ["grad_nvaCommand_RscButtonSilent", -1];
         _outline ctrlSetPosition [
@@ -52,7 +54,7 @@ private _fontSize = 0.01 / (getResolution select 5);
             params ["_ctrl"];
             
             private _group = _ctrl getVariable ["ctrlAssignedGroup", grpNull];
-            
+
             private _positionAboveBehind = (leader _group) getPos [75, 220];
             _positionAboveBehind set [2,50];
             [_positionAboveBehind, (leader _group), 0.5] spawn GRAD_nvacommand_fnc_curatorSetCamera;
@@ -61,7 +63,7 @@ private _fontSize = 0.01 / (getResolution select 5);
 
 
         private _pic = _display ctrlCreate ["RscPicture", -1];
-        _pic ctrlsetText "grad-nvacommand\displays\bt11.jpg"; 
+        _pic ctrlsetText _picturePath; 
         _pic ctrlSetPosition [
             safezoneX + _width*_horizontalIndex + _gap*_horizontalIndex + _gap,
             safezoneY + _width*(4/3)*_verticalIndex + _gap*_verticalIndex + _gap, 
@@ -94,9 +96,25 @@ private _fontSize = 0.01 / (getResolution select 5);
         _label ctrlSetFade 0;
         _label ctrlCommit 0.1;
 
+
+        private _healthBar = _display ctrlCreate ["RscText", -1];
+        _healthBar ctrlSetBackgroundColor [0.3,0.8,0.3,1]; 
+        _healthBar ctrlSetFade 1;
+        _healthBar ctrlSetPosition [
+            safezoneX + _width*_horizontalIndex + _gap*_horizontalIndex + _gap, 
+            safezoneY + _width*(4/3)*_verticalIndex + _gap*_verticalIndex + _gap, 
+            _width, 
+            _width/16*(4/3)
+        ];
+        _healthBar ctrlCommit 0;
+
+        _healthBar ctrlSetFade 0;
+        _healthBar ctrlCommit 0.1;
+
         _controlsCreated pushBackUnique _outline;
         _controlsCreated pushBackUnique _pic;
         _controlsCreated pushBackUnique _label;
+        _controlsCreated pushBackUnique _healthBar;
 
     } forEach _groupsOfAKind;
     

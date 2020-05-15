@@ -40,6 +40,12 @@ GRAD_reinforcements_fnc_getDisplayName = {
     [(_x >> "displayName"), "string", configName _config] call CBA_fnc_getConfigEntry
 };
 
+GRAD_reinforcements_fnc_getPic = {
+    params ["_config"];
+    
+    [(_x >> "pic"), "string", ""] call CBA_fnc_getConfigEntry
+};
+
 
 // create and manage reinforcements
 
@@ -54,6 +60,7 @@ GRAD_reinforcements_fnc_getDisplayName = {
         private _cargo = [_x] call GRAD_reinforcements_fnc_getCargo;
         private _count = [_x] call GRAD_reinforcements_fnc_getMaxCount;
         private _name = [_x] call GRAD_reinforcements_fnc_getDisplayName;
+        private _pic = [_x] call GRAD_reinforcements_fnc_getPic;
 
         private _groupsOfAKind = [];
 
@@ -75,6 +82,7 @@ GRAD_reinforcements_fnc_getDisplayName = {
             } forEach _cargo;
 
             _group setVariable ["displayName", _name, true];
+            _group setVariable ["pic", _pic, true];
 
             _groupsOfAKind pushBackUnique _group;
 
