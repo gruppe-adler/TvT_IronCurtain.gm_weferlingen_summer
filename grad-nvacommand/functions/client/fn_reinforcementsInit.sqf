@@ -19,7 +19,7 @@ GRAD_reinforcements_fnc_getMaxCount = {
 GRAD_reinforcements_fnc_getClassName = {
     params ["_config"];
     
-    configName _x
+    configName _config
 };
 
 GRAD_reinforcements_fnc_getCrew = {
@@ -53,7 +53,6 @@ GRAD_reinforcements_fnc_spawnGroup = {
     private _className = [_config] call GRAD_reinforcements_fnc_getClassName;
     private _crew = [_config] call GRAD_reinforcements_fnc_getCrew;
     private _cargo = [_config] call GRAD_reinforcements_fnc_getCargo;
-    private _count = [_config] call GRAD_reinforcements_fnc_getMaxCount;
     private _name = [_config] call GRAD_reinforcements_fnc_getDisplayName;
     private _pic = [_config] call GRAD_reinforcements_fnc_getPic;
 
@@ -96,12 +95,15 @@ GRAD_reinforcements_fnc_spawnGroup = {
 
     {
         private _groupsOfAKind = [];
+        private _count = [_x] call GRAD_reinforcements_fnc_getMaxCount;
 
         for "_i" from 0 to _count do {
 
-            [_x] call GRAD_reinforcements_fnc_spawnGroup;
+            private _group = [_x] call GRAD_reinforcements_fnc_spawnGroup;
             
             _groupsOfAKind pushBackUnique _group;
+
+            systemChat str _group;
 
             sleep 1;
         };
@@ -110,24 +112,39 @@ GRAD_reinforcements_fnc_spawnGroup = {
         missionNamespace setVariable ["IC_reinforcements", IC_reinforcements, true];
 
     } forEach _reinforcements;
+
+    [{
+        params ["_args", "_handle"];
+
+        private _reinforcements = missionNamespace getVariable ["IC_reinforcements", []];
+
+        {
+            private _groupsOfAKind = _x;
+
+            {
+                private _vehicle = _x getVariable ["assignedVehicle", objNull];
+                private _completelyDead = {alive _x} count units _x < 1;
+
+                if (_completelyDead) then {
+                    private _path = [_reinforcements, _x] call BIS_fnc_findNestedElement;
+                    _path params ["_selector", "_index"];
+
+                    private _config = _x getVariable ["configCache", grpNull];
+                    private _group = [_config] call GRAD_reinforcements_fnc_spawnGroup;
+
+                    ["grad-nvacommand\functions\client\fn_reinforcementsGUI.sqf"] remoteExec ["execVM"]; // todo after debug: make call
+                    (_reinforcements select _selector) set [_index, _x]; // replace former unit with new one
+
+                    // broadcast after delay, so client can gracefully show unit died
+                    [{
+                        params ["_reinforcements"];
+                        missionNamespace setVariable ["IC_reinforcements", _reinforcements, true];
+
+                    }, [_reinforcements], 10] call CBA_fnc_waitAndExecute;
+                };
+            } forEach _groupsOfAKind;
+            
+        } forEach _reinforcements;
+
+    }, 1, []] call CBA_fnc_addPerFrameHandler;
 };
-
-[{
-    params ["_args", "_handle"];
-
-    private _reinforcements = missionNamespace getVariable ["IC_reinforcements", []];
-
-    {
-        private _vehicle = _x getVariable ["assignedVehicle", objNull];
-        private _completelyDead = {alive _x} count units _x < 1;
-
-        if (_completelyDead) exitWith {
-            _reinforcements deleteAt (_reinforcements find _x);
-            missionNamespace setVariable ["IC_reinforcements", _reinforcements, true];
-
-            private _config = _x getVariable ["configCache", grpNull];
-            [_config] call GRAD_reinforcements_fnc_spawnGroup;
-        };
-    } forEach _reinforcements;
-
-}, 1, []] call CBA_fnc_addPerFrameHandler;

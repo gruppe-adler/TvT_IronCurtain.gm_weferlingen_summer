@@ -1,5 +1,13 @@
 // #include "..\..\displays\baseRsc.hpp"
 
+// clean up before changing anything
+private _existingControls = missionNamespace getVariable ["GRAD_reinforcements_GUI", []];
+
+{
+    ctrlDelete _x;
+} forEach _existingControls;
+
+
 private _reinforcements = missionNamespace getVariable ["IC_reinforcements",[]];
 private _display = findDisplay 312;
 private _controlsCreated = [];
@@ -19,6 +27,7 @@ private _fontSize = 0.01 / (getResolution select 5);
         private _verticalIndex = _forEachIndex;
         private _name = _x getVariable ["displayName", ""];
         private _picturePath = _x getVariable ["pic", ""];
+        private _completelyDead = {alive _x} count units _x < 1;
 
         private _outline = _display ctrlCreate ["grad_nvaCommand_RscButtonSilent", -1];
         _outline ctrlSetPosition [
@@ -27,10 +36,10 @@ private _fontSize = 0.01 / (getResolution select 5);
             _width + _gap, 
             _width*(4/3) + _gap
         ];
+
         _outline ctrlSetBackgroundColor [0,0,0,0];
         _outline ctrlSetFade 0;
         _outline ctrlCommit 0;
-
 
 
         _outline ctrlEnable true;
@@ -116,11 +125,37 @@ private _fontSize = 0.01 / (getResolution select 5);
         _controlsCreated pushBackUnique _label;
         _controlsCreated pushBackUnique _healthBar;
 
+
+        // dead graceful
+        if (_completelyDead) then {
+            _bgColor = [1,0,0,1];
+            _outline ctrlCommit 3;
+        };
+
+        private _icon = if (_completelyDead) then {
+            "\A3\ui_f\data\map\respawn\respawn_dead_ca.paa"
+        } else {
+            ""
+        };
+        private _status = _display ctrlCreate ["RscPicture", -1];
+        _status ctrlsetText _icon; 
+        _status ctrlSetPosition [
+            safezoneX + _width*_horizontalIndex + _gap*_horizontalIndex + _gap,
+            safezoneY + _width*(4/3)*_verticalIndex + _gap*_verticalIndex + _gap, 
+            _width,
+            _width*(4/3)
+        ];
+        _status ctrlSetFade 1;
+        _status ctrlCommit 0;
+
+        _status ctrlSetFade 0;
+        _status ctrlCommit 0.1;
+
     } forEach _groupsOfAKind;
     
 } forEach _reinforcements;
 
-
+missionNamespace setVariable ["GRAD_reinforcements_GUI", _controlsCreated];
 
 sleep 10;
 
