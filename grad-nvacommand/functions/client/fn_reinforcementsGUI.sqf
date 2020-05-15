@@ -106,13 +106,15 @@ private _fontSize = 0.01 / (getResolution select 5);
         _label ctrlCommit 0.1;
 
 
+        private _percentAlive = ({alive _x} count (units _x)) / (count (units _x));
+        private _widthPercent = _width*_percentAlive;
         private _healthBar = _display ctrlCreate ["RscText", -1];
         _healthBar ctrlSetBackgroundColor [0.3,0.8,0.3,1]; 
         _healthBar ctrlSetFade 1;
         _healthBar ctrlSetPosition [
             safezoneX + _width*_horizontalIndex + _gap*_horizontalIndex + _gap, 
             safezoneY + _width*(4/3)*_verticalIndex + _gap*_verticalIndex + _gap, 
-            _width, 
+            _widthPercent, 
             _width/16*(4/3)
         ];
         _healthBar ctrlCommit 0;
