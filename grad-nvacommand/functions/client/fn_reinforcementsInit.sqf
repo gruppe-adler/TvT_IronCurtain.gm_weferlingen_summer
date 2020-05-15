@@ -15,9 +15,9 @@ GRAD_reinforcements_fnc_refreshGUI = {
 
 
 GRAD_reinforcements_fnc_getMaxCount = {
-    params ["_configName"];
+    params ["_config"];
     
-    [(_x >> "maxCount"), "number", 0] call CBA_fnc_getConfigEntry
+    [(_config >> "maxCount"), "number", 0] call CBA_fnc_getConfigEntry
 };
 
 GRAD_reinforcements_fnc_getClassName = {
@@ -29,25 +29,25 @@ GRAD_reinforcements_fnc_getClassName = {
 GRAD_reinforcements_fnc_getCrew = {
     params ["_config"];
     
-    [(_x >> "crew"), "array", []] call CBA_fnc_getConfigEntry
+    [(_config >> "crew"), "array", []] call CBA_fnc_getConfigEntry
 };
 
 GRAD_reinforcements_fnc_getCargo = {
     params ["_config"];
     
-    [(_x >> "cargo"), "array", []] call CBA_fnc_getConfigEntry
+    [(_config >> "cargo"), "array", []] call CBA_fnc_getConfigEntry
 };
 
 GRAD_reinforcements_fnc_getDisplayName = {
     params ["_config"];
     
-    [(_x >> "displayName"), "string", configName _config] call CBA_fnc_getConfigEntry
+    [(_config >> "displayName"), "string", configName _config] call CBA_fnc_getConfigEntry
 };
 
 GRAD_reinforcements_fnc_getPic = {
     params ["_config"];
     
-    [(_x >> "pic"), "string", ""] call CBA_fnc_getConfigEntry
+    [(_config >> "pic"), "string", ""] call CBA_fnc_getConfigEntry
 };
 
 

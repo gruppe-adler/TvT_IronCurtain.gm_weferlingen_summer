@@ -18,6 +18,21 @@ private _gap = safeZoneH/60;
 private _fontSize = 0.01 / (getResolution select 5);
 
 
+private _bgFlash = {
+    params ["_ctrl", "_color1", "_color2", "_duration", "_frequency"];
+
+    for "_i" from 0 to _duration do {
+
+        _ctrl ctrlSetBackgroundColor _color1;
+        _ctrl ctrlCommit _frequency;
+        sleep _frequency;
+        _ctrl ctrlSetBackgroundColor _color2;
+        _ctrl ctrlCommit _frequency;
+        sleep _frequency;
+    };
+};
+
+
 {
     
     private _groupsOfAKind = _x;
@@ -28,6 +43,8 @@ private _fontSize = 0.01 / (getResolution select 5);
         private _name = _x getVariable ["displayName", ""];
         private _picturePath = _x getVariable ["pic", ""];
         private _completelyDead = {alive _x} count units _x < 1;
+        private _isFiring = _x getVariable ["IC_isFiring", false];
+        private _isDamaged = _x getVariable ["IC_isDamaged", false];
 
         private _outline = _display ctrlCreate ["grad_nvaCommand_RscButtonSilent", -1];
         _outline ctrlSetPosition [
@@ -130,8 +147,15 @@ private _fontSize = 0.01 / (getResolution select 5);
 
         // dead graceful
         if (_completelyDead) then {
-            _bgColor = [1,0,0,1];
-            _outline ctrlCommit 3;
+            [_x, [0,0,0,0], [1,0,0,1], 4, 0.5] spawn _bgFlash;
+        };
+
+        if (_isFiring) then {
+            [_x, [0,0,0,0], [1,1,1,1], 2, 0.25] spawn _bgFlash;
+        };
+
+        if (_isDamaged) then {
+            [_x, [0,0,0,0], [1,0,0,1], 2, 0.25] spawn _bgFlash;
         };
 
         private _icon = if (_completelyDead) then {
