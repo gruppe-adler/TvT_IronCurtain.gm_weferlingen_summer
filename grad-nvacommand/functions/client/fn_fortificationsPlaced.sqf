@@ -13,8 +13,8 @@ private _dummyFort = "Land_ClutterCutter_medium_F" createVehicle [0,0,0];
 _dummyFort setPos getPos _fort;
 deleteVehicle _fort;
 
-[driver _buildTruck, _dummyFort, _spawnParams] spawn {
-    params ["_unit", "_dummyFort", "_spawnParams"];
+[driver _buildTruck, _buildTruck, _dummyFort, _spawnParams] spawn {
+    params ["_unit", "_buildTruck", "_dummyFort", "_spawnParams"];
 
     doGetOut _unit;
     unassignVehicle _unit;
@@ -39,7 +39,7 @@ deleteVehicle _fort;
     // loadingBar
     private _loadingBar = [{ 
         params ["_args", "_handle"];
-        _args params ["_actualFort", "_zPosBelowSurface", "_zPosATL"];
+        _args params ["_actualFort", "_dummyFort", "_zPosBelowSurface", "_zPosATL"];
 
         (getPosATLVisual _actualFort) params ["_xPosDummyFort", "_yPosDummyFort", "_zPosDummyFort"];
         
@@ -50,25 +50,25 @@ deleteVehicle _fort;
 
         drawIcon3D ["\A3\ui_f\data\IGUI\Cfg\HelicopterHUD\border_line_ca.paa", 
             [0,0,0,1], 
-            _actualFort , 
+            _dummyFort , 
             5,1,0,"",0, 
             0.1,"EtelkaMonospacePro","left",
             true
         ];      
         drawIcon3D ["\A3\ui_f\data\IGUI\Cfg\HelicopterHUD\border_line_ca.paa", 
             [0,1,0,1], 
-            _actualFort , 
+            _dummyFort , 
             _currentWidth,1,0,"",0, 
             0.1,"EtelkaMonospacePro","left",
             true
-        ];      
+        ];     
 
          
-    }, 0, [_actualFort, _zPosBelowSurface, _zPosATL]] call CBA_fnc_addPerFrameHandler;
+    }, 0, [_actualFort, _dummyFort, _zPosBelowSurface, _zPosATL]] call CBA_fnc_addPerFrameHandler;
 
     [{ 
         params ["_args", "_handle"];
-        _args params ["_actualFort", "_zPosATL", "_loadingBar", "_buildTruck", "_unit"];
+        _args params ["_actualFort", "_dummyFort", "_zPosATL", "_loadingBar", "_buildTruck", "_unit"];
 
         (getPosATLVisual _actualFort) params ["_xPosCurrent", "_yPosCurrent", "_zPosCurrent"];
         
@@ -82,7 +82,9 @@ deleteVehicle _fort;
             [_unit] allowGetIn true;
             _unit assignAsDriver _buildTruck;
             [_unit] orderGetIn true;
+
+            deleteVehicle _dummyFort;
         };
      
-    }, 0.1, [_actualFort, _zPosATL, _loadingBar, _buildTruck, _unit]] call CBA_fnc_addPerFrameHandler;
+    }, 0.1, [_actualFort, _dummyFort, _zPosATL, _loadingBar, _buildTruck, _unit]] call CBA_fnc_addPerFrameHandler;
 };
