@@ -23,6 +23,9 @@ class GRAD_nvacommand {
         class deselectAllTowers;
         class forceDefaultMap { postInit = 1; };  
 
+        class fortificationsMouseEH;
+        class fortificationsStartBuild;
+
         class getSectorForPosition;  
         class gateLock;
         

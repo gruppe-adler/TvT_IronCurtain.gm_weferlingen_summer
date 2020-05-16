@@ -1,8 +1,8 @@
 /*
-    Author: Karel Moricky
+    Author: revide, pimped by nomisum
 
     Description:
-    Move curator camera to a position and direction.
+    Move curator camera to a position and direction. But less buggy than BIS one.
     Has to be tun in scheduled environment. Finished when animation ends.
 
     Parameter(s):
@@ -18,72 +18,98 @@ if (isnull curatorcamera) exitwith {false};
 
 missionNamespace setVariable ["GRAD_nvaCommand_zeusCameraRunning", true];
 
-_pos = _this param [0,getposatl curatorcamera];
-_pos = _pos call bis_fnc_position;
-_vectordir = (_this param [1,vectordir curatorcamera,[[],objnull],3]);
-_commit = _this param [2,0,[0,true]];
+params ["_origin", "_targetPos", ["_targetObj", objNull], ["_duration", 1]];
 
-//--- Check if the position is in camera area
-_cameraArea = curatorcameraarea (getassignedcuratorlogic player);
-_inArea = if (count _cameraArea > 0) then {
-    {
-        _areaPos = _x select 1;
-        _areaRadius = _x select 2;
-        ([_areaPos,_pos] call bis_fnc_distance2D) < _areaRadius
-    } count _cameraArea > 0
-} else {
-    true //--- No area defined
-};
-// if !(_inArea) exitwith {false};
-
-//--- Calculate the speed automatically
-if (typename _commit == typename true) then {
-    _commit = if (_commit) then {(_pos distance (getposatl curatorcamera)) * 0.0024} else {0};
-};
-
-_curatorCameraPos = getposatl curatorcamera;
-
-_cam = "camera" camcreate getposatl curatorcamera;
+private _cam = "camera" camcreate getposatl curatorcamera;
 _cam cameraeffect ["internal","back"];
-cameraEffectEnableHUD true;
 _cam campreparefocus [-1,-1];
 _cam camCommand "inertia on";
-_cam campreparepos _curatorCameraPos;
+_cam campreparepos getposatl curatorcamera;
 _cam campreparetarget screentoworld [0.5,0.5];
 _cam camcommitprepared 0;
 
-//--- Use unit vector, or specific target?
-_target = if (_vectordir distance [0,0,0] < 10) then {
-    _vectordir = +([_vectordir,10000] call bis_fnc_vectormultiply);
-    [_pos,_vectordir] call bis_fnc_vectoradd;
-} else {
-    _vectordir
+if (!isNull _targetObj) then {
+    _cam campreparetarget _targetObj;
 };
+_cam campreparepos _targetPos;
+_cam camcommitprepared _duration;
 
-_cam campreparetarget _target;
-_cam campreparepos _pos;
-_cam camcommitprepared _commit;
+waituntil {camcommitted _cam};
 
-_time = time;
-waituntil {camcommitted _cam && time > _time};
-//if (_curatorCameraPos distance (getposatl curatorcamera) > 0) exitwith {};
-
-curatorcamera setpos _pos;
+curatorcamera setpos _targetPos;
 curatorcamera setvectordir vectordir _cam;
 curatorcamera setvectorup vectorup _cam;
 curatorcamera camcommitprepared 0;
 
-/*
-if (typename _target == typename objnull) then {
-    curatorcamera campreparetarget _target;
-    curatorcamera camcommitprepared 0;
-};
-*/
-
 _cam cameraeffect ["terminate","back"];
 camdestroy _cam;
 curatorcamera cameraeffect ["internal","back"];
-cameraEffectEnableHUD true;
+/*
+[{
+    params ["_args", "_handle"];
+    _args params ["_targetObj"];
+    
+    
+    private _distance = curatorCamera distance _targetObj;
+    private _fov = (10 / (_distance)) min 0.7 max 0.01;
+    curatorCamera camcommitprepared _duration;
+    _camera campreparetarget _cameraTarget;
+    _camera campreparefov _fov;
+
+    private ["_camera","_cameraTarget","_refresh"];
+    _camera =   _this param [0,objnull,[objnull]];
+    _cameraTarget = _this param [1,objnull,[objnull,[]],[2,3]];
+    _refresh =  _this param [2,1,[1]];
+
+    if (_refresh < 0) then {
+        _refresh = abs _refresh;
+        while {!isnull _camera} do {
+            CAMUPDATE
+            _camera camcommitprepared _refresh;
+            sleep _refresh;
+        };
+    } else {
+        CAMUPDATE
+        _camera camCommitPrepared _refresh;
+    };
+
+}, 0, [_targetObj]] call CBA_fnc_addPerFrameHandler;
+*/
+/*
+[{    
+    params ["_args", "_handle"];  
+    _args params ["_originPos", "_targetPos", "_time"];  
+  
+    private _position = [getPos curatorCamera, _targetPos, time - _time, 10] call BIS_fnc_interpolateVector;  
+      
+    systemChat str _position;  
+     
+    curatorCamera setPos _position;  
+  
+    if (time - _time > _duration) exitWith {  
+        [_handle] call CBA_fnc_removePerFrameHandler;  
+        systemChat "removing handler";  
+    };  
+  
+}, 0, [
+    getPos curatorCamera, 
+    getpos (curatorSelected select 0 select 0),  
+    10 
+]] call CBA_fnc_addPerFrameHandler;
+*/
+/*
+    _cam = "camera" camcreate getposatl curatorcamera;
+    _cam cameraeffect ["internal","back"];
+    curatorcamera setpos _pos;
+    curatorcamera setvectordir vectordir _cam;
+    curatorcamera setvectorup vectorup _cam;
+    curatorcamera camcommitprepared 0;
+    */
+
+/*_cam cameraeffect ["terminate","back"];
+camdestroy _cam;
+curatorcamera cameraeffect ["internal","back"];
+*/
 
 missionNamespace setVariable ["GRAD_nvaCommand_zeusCameraRunning", false];
 

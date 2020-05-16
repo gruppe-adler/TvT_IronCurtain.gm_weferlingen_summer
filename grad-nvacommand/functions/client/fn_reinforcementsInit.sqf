@@ -50,6 +50,12 @@ GRAD_reinforcements_fnc_getPic = {
     [(_config >> "pic"), "string", ""] call CBA_fnc_getConfigEntry
 };
 
+GRAD_reinforcements_fnc_getCrewControl = {
+    params ["_config"];
+    
+    [(_config >> "crewControl"), "number", 1] call CBA_fnc_getConfigEntry == 1
+};
+
 
 GRAD_reinforcements_fnc_spawnGroup = {
     params ["_config"];
@@ -59,6 +65,7 @@ GRAD_reinforcements_fnc_spawnGroup = {
     private _cargo = [_config] call GRAD_reinforcements_fnc_getCargo;
     private _name = [_config] call GRAD_reinforcements_fnc_getDisplayName;
     private _pic = [_config] call GRAD_reinforcements_fnc_getPic;
+    private _crewControl = [_config] call GRAD_reinforcements_fnc_getCrewControl;
 
     private _result = [
                 (getMarkerPos "mrk_reinforcements_spawn") findEmptyPosition [0,300], 
@@ -69,11 +76,13 @@ GRAD_reinforcements_fnc_spawnGroup = {
 
     _result params ["_vehicle", "_crew", "_group"];
 
+    private _unitsInCargo = [];
     {
         private _unit = _group createUnit [_x, [0,0,0], [], 0, "NONE"];
 
         _unit assignAsCargo _vehicle;
         _unit moveInCargo _vehicle;
+        _unitsInCargo pushBackUnique _unit;
     } forEach _cargo;
 
     _vehicle addEventHandler ["GetOut", {
@@ -158,11 +167,16 @@ GRAD_reinforcements_fnc_spawnGroup = {
     _group setVariable ["pic", _pic, true];
     _group setVariable ["assignedVehicle", _vehicle, true];
     _group setVariable ["configCache", _config, true];
+    _group setVariable ["crewControl", _crewControl, true];
 
     {
         private _curator = _x;
-        _curator addCuratorEditableObjects [units _group, true];
 
+        if (_crewControl) then {
+            _curator addCuratorEditableObjects [_crew, true];
+        };
+        _curator addCuratorEditableObjects [_unitsInCargo, false];
+        _curator addCuratorEditableObjects [[_vehicle], false];
     } forEach allCurators;
 
     _group

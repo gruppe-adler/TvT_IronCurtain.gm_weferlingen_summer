@@ -25,8 +25,14 @@ onLoadMission = "Den Sozialismus in seinem Lauf, hält weder Ochs noch Esel auf.
 #include "IC-config\cfgCustomIdentities.hpp"
 #include "IC-config\cfgReinforcements.hpp"
 
+#include "node_modules\grad-fortifications\grad_fortifications.hpp"
+
+class RscTitles {
+    #include "node_modules\grad-fortifications\dialog\hint\title.hpp"
+};
 
 class cfgFunctions {
+    #include "node_modules\grad-fortifications\cfgFunctions.hpp"
     #include "node_modules\grad-gpsTracker\cfgFunctions.hpp"
     #include "node_modules\grad-passport\cfgFunctions.hpp"
     #include "node_modules\grad-advancedLockpicking\cfgFunctions.hpp"

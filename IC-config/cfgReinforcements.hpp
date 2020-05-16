@@ -4,6 +4,7 @@ class CfgReinforcements {
         maxCount = 3;
         displayName = "Aufklärungs-Trabant";
         pic = "grad-nvacommand\vehicles\trabant.paa";
+        crewControl = 0;
 
         crew[] = {
             "gm_gc_bgs_rifleman_mpikm72_80_str"
@@ -20,6 +21,7 @@ class CfgReinforcements {
         maxCount = 3;
         displayName = "Mot. Infanterie";
         pic = "grad-nvacommand\vehicles\truck.paa";
+        crewControl = 1;
 
         crew[] = {
             "gm_gc_bgs_rifleman_mpikm72_80_str"
@@ -42,6 +44,7 @@ class CfgReinforcements {
         maxCount = 2;
         displayName = "Recon BRDM2";
         pic = "grad-nvacommand\vehicles\brdm.paa";
+        crewControl = 0;
 
         crew[] = {
             "gm_gc_army_crew_mpiaks74nk_80_blk",
@@ -54,6 +57,7 @@ class CfgReinforcements {
         maxCount = 2;
         displayName = "Recon PT76B";
         pic = "grad-nvacommand\vehicles\pt76.paa";
+        crewControl = 0;
 
         crew[] = {
             "gm_gc_army_crew_mpiaks74nk_80_blk",
@@ -66,6 +70,7 @@ class CfgReinforcements {
         displayName = "Logistik LKW";
         maxCount = 2;
         pic = "grad-nvacommand\vehicles\repair.paa";
+        crewControl = 0;
 
         crew[] = {
             "gm_gc_bgs_rifleman_mpikm72_80_str",
@@ -77,6 +82,7 @@ class CfgReinforcements {
         displayName = "Kpz T55-AM2B";
         maxCount = 1;
         pic = "grad-nvacommand\vehicles\tank.paa";
+        crewControl = 0;
 
         crew[] = {
             "gm_gc_army_crew_mpiaks74nk_80_blk",
