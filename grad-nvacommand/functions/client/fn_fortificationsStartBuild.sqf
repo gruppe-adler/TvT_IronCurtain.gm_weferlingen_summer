@@ -32,7 +32,7 @@ private _moduleRoot = [] call grad_fortifications_fnc_getModuleRoot;
 
 
 _builder setVariable ["GRAD_nvacommand_activeBuildTruck", _buildTruck];
-
+_builder setVariable ["grad_fortifications_currentFort", _fort];
 
 [
     _builder,
