@@ -11,6 +11,8 @@ if (isNull _entity) exitWith {
 private _isTower = ((_entity getVariable ["GRAD_nvaCommand_towerID", -1]) > -1);
 private _isInfantry = (_entity isKindOf "Man" && side _entity == east);
 
+private _reinforcements = missionNamespace getVariable ["IC_reinforcements",[]];
+private _isGroupFromGUI = count ([_reinforcements, group _entity] call BIS_fnc_findNestedElement) > 0;
 
 
 if (_isTower) then {
@@ -40,6 +42,13 @@ if (_isInfantry) then {
 
 if (!_isInfantry && !_isTower) then {
     [objNull] call GRAD_nvaCommand_fnc_curatorOnSelect;
+};
+
+if (_isGroupFromGUI) then {
+    [
+        "GRAD_reinforcements_GUIEvent", 
+        [group _entity,"selected"]
+    ] call CBA_fnc_globalEvent;
 };
 
 // detect if nothing is selected by curator, workaround for missing deselect EH

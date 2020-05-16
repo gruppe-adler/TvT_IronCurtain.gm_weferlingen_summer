@@ -70,5 +70,9 @@ switch (_type) do {
 
     default {  
         // no GUI found, doing nothing
-    }; 
+        [
+        "GRAD_reinforcements_GUIEvent", 
+            [grpNull,"deselected"]
+        ] call CBA_fnc_globalEvent;
+    };
 };

@@ -76,40 +76,67 @@ GRAD_reinforcements_fnc_spawnGroup = {
         _unit moveInCargo _vehicle;
     } forEach _cargo;
 
+    _vehicle addEventHandler ["GetOut", {
+        params ["_vehicle", "_role", "_unit", "_turret"];
+
+        if (_role == "cargo") then {
+            [
+                "GRAD_reinforcements_GUIEvent", 
+                [group _unit,"getOutCargo"]
+            ] call CBA_fnc_globalEvent;
+        } else {
+            [
+                "GRAD_reinforcements_GUIEvent", 
+                [group _unit,"getOutCrew"]
+            ] call CBA_fnc_globalEvent;
+        };
+    }];
+
+    _vehicle addEventHandler ["GetIn", {
+        params ["_vehicle", "_role", "_unit", "_turret"];
+
+        private _stillOutside = {vehicle _x != _vehicle} count units group _unit > 0;
+
+        if (!_stillOutside) then {
+            if (_role == "cargo") then {
+                
+                [
+                    "GRAD_reinforcements_GUIEvent", 
+                    [group _unit,"getOutCargo"]
+                ] call CBA_fnc_globalEvent;
+            } else {
+                [
+                    "GRAD_reinforcements_GUIEvent", 
+                    [group _unit,"getOutCrew"]
+                ] call CBA_fnc_globalEvent;
+            };
+        };
+    }];
 
     {   
         _x addEventHandler ["Fired", {
             params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", "_gunner"];
 
-            (group _unit) setVariable ["IC_isFiring", true, true];
-            call GRAD_reinforcements_fnc_refreshGUI;
-            
-            [{
-                params ["_unit"];
-                
-                (group _unit) setVariable ["IC_isFiring", false, true];
-                call GRAD_reinforcements_fnc_refreshGUI;
-
-            },5,[]] call CBA_fnc_waitAndExecute;
+            [
+                "GRAD_reinforcements_GUIEvent", 
+                [group _unit,"fired"]
+            ] call CBA_fnc_globalEvent;
         }];
 
         _x addEventHandler ["Dammaged", {
             params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
 
-            (group _unit) setVariable ["IC_isDamaged", true, true];
-            call GRAD_reinforcements_fnc_refreshGUI;
-            
-            [{
-                params ["_unit"];
-                
-                (group _unit) setVariable ["IC_isDamaged", false, true];
-                call GRAD_reinforcements_fnc_refreshGUI;
-
-            },5,[]] call CBA_fnc_waitAndExecute;
+            [
+                "GRAD_reinforcements_GUIEvent", 
+                [group _unit,"damaged"]
+            ] call CBA_fnc_globalEvent;
         }];
 
         _x addEventHandler ["Killed", {
-            call GRAD_reinforcements_fnc_refreshGUI;
+            [
+                "GRAD_reinforcements_GUIEvent", 
+                [group _unit,"killed"]
+            ] call CBA_fnc_globalEvent;
         }];
 
     } forEach units _group;
@@ -155,6 +182,7 @@ GRAD_reinforcements_fnc_spawnGroup = {
 
     } forEach _reinforcements;
 
+    /*
     [{
         params ["_args", "_handle"];
 
@@ -174,7 +202,6 @@ GRAD_reinforcements_fnc_spawnGroup = {
                     private _config = _x getVariable ["configCache", grpNull];
                     private _group = [_config] call GRAD_reinforcements_fnc_spawnGroup;
 
-                    call GRAD_reinforcements_fnc_refreshGUI;
                     (_reinforcements select _selector) set [_index, _x]; // replace former unit with new one
 
                     // broadcast after delay, so client can gracefully show unit died
@@ -189,4 +216,5 @@ GRAD_reinforcements_fnc_spawnGroup = {
         } forEach _reinforcements;
 
     }, 1, []] call CBA_fnc_addPerFrameHandler;
+    */
 };

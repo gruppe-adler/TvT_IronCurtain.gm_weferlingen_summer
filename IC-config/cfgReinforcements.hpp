@@ -1,6 +1,6 @@
 class CfgReinforcements {
 
-    class gm_gc_civ_p601 {
+    class gm_gc_bgs_p601 {
         maxCount = 3;
         displayName = "Aufklärungs-Trabant";
         pic = "grad-nvacommand\vehicles\trabant.paa";
