@@ -26,43 +26,65 @@
     private _statusTopRight = _group getVariable ["GRAD_reinforcements_GUI_ctrlStatusTopRight", controlNull];
     private _button = _group getVariable ["GRAD_reinforcements_GUI_ctrlButton", controlNull];
 
+    private _aliveCount = count units _group;
+    private _percentAlive = 0;
+
+    if (_aliveCount > 0) then {
+        _percentAlive = ({alive _x} count (units _group)) / (count (units _group));
+    };
+
+    private _width = safeZoneW/30;
+    private _widthPercent = _width*_percentAlive;
+    private _position = ctrlPosition _healthBar;
+    _position params ["_posX", "_posY", "_width", "_height"];
+
+    _healthBar ctrlSetPosition [
+        _posX, 
+        _posY, 
+        _widthPercent, 
+        _height
+    ];
+    _healthBar ctrlCommit 0;
+
     // systemChat str _outline;
 
     switch (_type) do {
         case "selected": {
-            _outline ctrlSetBackgroundColor [0,0,0,1];
+            _outline ctrlSetBackgroundColor [1,1,1,1];
             _outline ctrlCommit 0;
         };
         case "getInCrew": {
             _statusTopLeft ctrlSetText "";
             _statusTopLeft ctrlCommit 0;
-            [_outline, [0,0,0,0], [1,1,1,1], 2, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
+            [_outline, [1,1,1,0], [1,1,1,1], 2, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
         };
         case "getOutCrew": {
             _statusTopLeft ctrlSetText "\A3\ui_f\data\IGUI\Cfg\VehicleToggles\WheelBreakIconOn_ca.paa";
             _statusTopLeft ctrlCommit 0;
-            [_outline, [0,0,0,0], [1,1,1,1], 2, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
+            [_outline, [1,1,1,0], [1,1,1,1], 2, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
         };
         case "getInCargo": {
             _statusTopLeft ctrlSetText "";
             _statusTopLeft ctrlCommit 0;
-            [_outline, [0,0,0,0], [1,1,1,1], 2, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
+            [_outline, [1,1,1,0], [1,1,1,1], 2, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
         };
         case "getOutCargo": {
             _statusTopLeft ctrlSetText "\A3\ui_f\data\IGUI\Cfg\MPTable\infantry_ca.paa";
             _statusTopLeft ctrlCommit 0;
-            [_outline, [0,0,0,0], [1,1,1,1], 2, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
+            [_outline, [1,1,1,0], [1,1,1,1], 2, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
         };
         case "firing" : {  
-            [_outline, [0,0,0,0], [1,1,1,1], 2, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
+            [_outline, [1,1,1,0], [1,1,1,1], 2, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
         }; 
         case "damaged" : {
-            [_outline, [0,0,0,0], [1,0,0,1], 2, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
+            [_outline, [1,1,1,0], [1,0,0,1], 2, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
         }; 
         case "killed" : {
-            [_outline, [0,0,0,0], [1,0,0,1], 4, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
-            _statusTopRight ctrlSetText "\A3\ui_f\data\map\respawn\respawn_dead_ca.paa";
-            _statusTopRight ctrlCommit 0;
+            [_outline, [1,1,1,0], [1,0,0,1], 4, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
+            if ({alive _x} count units _group < 1) then {
+                _statusTopRight ctrlSetText "\A3\ui_f\data\map\respawn\respawn_dead_ca.paa";
+                _statusTopRight ctrlCommit 0;
+            };
         };
         default {}; 
     };  
@@ -90,16 +112,19 @@ GRAD_reinforcements_fnc_GUIflash = {
 
         _ctrl ctrlSetBackgroundColor _color1;
         _ctrl ctrlCommit 0;
-        sleep _frequency;
+        sleep 0;
         _ctrl ctrlSetBackgroundColor _color2;
         _ctrl ctrlCommit _frequency;
         sleep _frequency;
     };
+
+    _ctrl ctrlSetBackgroundColor [1,1,1,0];
+    _ctrl ctrlCommit 0.5;
 };
 
 
 GRAD_reinforcements_fnc_GUIcreate = {
-    params ["_group", "_index"];
+    params ["_group", "_horizontalIndex", "_verticalIndex"];
 
     private _display = findDisplay 312;
 
@@ -108,25 +133,20 @@ GRAD_reinforcements_fnc_GUIcreate = {
     private _gap = safeZoneH/60;
     private _fontSize = 0.01 / (getResolution select 5);
 
-    private _verticalIndex = _index;
     private _name = _group getVariable ["displayName", ""];
     private _picturePath = _group getVariable ["pic", ""];
     private _completelyDead = {alive _x} count units _group < 1;
-    private _isFiring = _group getVariable ["IC_isFiring", false];
-    private _isDamaged = _group getVariable ["IC_isDamaged", false];
 
 
     private _outline = _display ctrlCreate ["RscText", -1];
     _outline ctrlSetPosition [
-        safezoneX + _width*_horizontalIndex + _gap*_horizontalIndex + _gap,
-        safezoneY + _width*(4/3)*_verticalIndex + _gap*_verticalIndex + _gap, 
-        _width, 
-        _width*(4/3)
+        safezoneX + _width*_horizontalIndex + _gap*_horizontalIndex + _gap/2,
+        safezoneY + _width*(4/3)*_verticalIndex + _gap*_verticalIndex + _gap/2, 
+        _width + _gap, 
+        _width*(4/3) + _gap
     ];
     _outline ctrlSetText "";
-    _outline ctrlSetBackgroundColor [0,0,0,1];
-    _outline ctrlCommit 0;
-
+    _outline ctrlSetBackgroundColor [0,0,0,0];
     _outline ctrlCommit 0;
 
     private _pic = _display ctrlCreate ["RscPicture", -1];
@@ -142,9 +162,8 @@ GRAD_reinforcements_fnc_GUIcreate = {
 
 
     private _label = _display ctrlCreate ["RscText", -1];
-    _label ctrlSetBackgroundColor [0,0,0,0.7]; 
-    
-    _label ctrlSetText "";
+    _label ctrlSetBackgroundColor [0,0,0,0.7];
+    _label ctrlSetText _name;
     _label ctrlSetFontHeight _fontSize;
     _label ctrlSetPosition [
         safezoneX + _width*_horizontalIndex + _gap*_horizontalIndex + _gap, 
@@ -162,6 +181,8 @@ GRAD_reinforcements_fnc_GUIcreate = {
     };
 
     private _widthPercent = _width*_percentAlive;
+
+
     private _healthBar = _display ctrlCreate ["RscText", -1];
     _healthBar ctrlSetBackgroundColor [0.3,0.8,0.3,1]; 
     _healthBar ctrlSetPosition [
@@ -171,7 +192,6 @@ GRAD_reinforcements_fnc_GUIcreate = {
         _width/16*(4/3)
     ];
     _healthBar ctrlCommit 0;
-
 
 
     private _statusTopRight = _display ctrlCreate ["RscPicture", -1];
@@ -217,7 +237,7 @@ GRAD_reinforcements_fnc_GUIcreate = {
 
         private _positionAboveBehind = (leader _group) getPos [25, getDir leader _group-180];
         _positionAboveBehind set [2,25];
-        [_positionAboveBehind, (leader _group), 0.5] spawn GRAD_nvacommand_fnc_curatorSetCamera;
+        [_positionAboveBehind, (leader _group), 1] spawn GRAD_nvacommand_fnc_curatorSetCamera;
 
     }];
 
@@ -250,7 +270,8 @@ GRAD_reinforcements_fnc_GUIcreate = {
     private _horizontalIndex = _forEachIndex;
     
     {
-        [_x, _forEachIndex] call GRAD_reinforcements_fnc_GUIcreate;
+        private _verticalIndex = _forEachIndex;
+        [_x, _horizontalIndex, _verticalIndex] call GRAD_reinforcements_fnc_GUIcreate;
     } forEach _groupsOfAKind;
     
 } forEach _reinforcements;

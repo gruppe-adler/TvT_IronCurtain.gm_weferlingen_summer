@@ -123,6 +123,8 @@ GRAD_reinforcements_fnc_spawnGroup = {
             ] call CBA_fnc_globalEvent;
         }];
 
+        /*
+        // fires very often
         _x addEventHandler ["Dammaged", {
             params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
 
@@ -131,8 +133,19 @@ GRAD_reinforcements_fnc_spawnGroup = {
                 [group _unit,"damaged"]
             ] call CBA_fnc_globalEvent;
         }];
+        */
+
+        _x addEventHandler ["Explosion", {
+            params ["_vehicle", "_damage"];
+
+            [
+                "GRAD_reinforcements_GUIEvent", 
+                [group _unit,"damaged"]
+            ] call CBA_fnc_globalEvent;
+        }];
 
         _x addEventHandler ["Killed", {
+            params ["_unit", "_killer", "_instigator", "_useEffects"];
             [
                 "GRAD_reinforcements_GUIEvent", 
                 [group _unit,"killed"]
