@@ -1,4 +1,4 @@
-grad_fortifications_mousewheelEH = (findDisplay 46) displayAddEventHandler ["MouseZChanged", {
+grad_fortifications_mousewheelEH = (findDisplay 312) displayAddEventHandler ["MouseZChanged", {
     params ["_control","_wheelChange"];
 
     _builder = ACE_player;
@@ -30,13 +30,15 @@ grad_fortifications_mousewheelEH = (findDisplay 46) displayAddEventHandler ["Mou
     false
 }];
 
-grad_fortifications_mousebuttonEH = (findDisplay 46) displayAddEventHandler ["MouseButtonUp", {
+grad_fortifications_mousebuttonEH = (findDisplay 312) displayAddEventHandler ["MouseButtonUp", {
     params ["_control","_button"];
 
     if !(_button in [0,1]) exitWith {};
 
     if (_button == 0) then {
-        hint "place";
+        private _buildTruck = player getVariable ["GRAD_nvacommand_activeBuildTruck", objNull];
+
+        [_buildTruck] execVM "grad-nvacommand\functions\client\fn_fortificationsPlaced.sqf";
     };
 
     if (_button == 1) then {
