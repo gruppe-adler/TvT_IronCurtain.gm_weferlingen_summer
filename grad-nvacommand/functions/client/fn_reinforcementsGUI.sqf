@@ -56,31 +56,31 @@
         case "getInCrew": {
             _statusTopLeft ctrlSetText "";
             _statusTopLeft ctrlCommit 0;
-            [_outline, [1,1,1,0], [1,1,1,1], 2, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
+            [_outline, [1,1,1,0], [1,1,1,1], 2, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
         };
         case "getOutCrew": {
             _statusTopLeft ctrlSetText "\A3\ui_f\data\IGUI\Cfg\VehicleToggles\WheelBreakIconOn_ca.paa";
             _statusTopLeft ctrlCommit 0;
-            [_outline, [1,1,1,0], [1,1,1,1], 2, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
+            [_outline, [1,1,1,0], [1,1,1,1], 2, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
         };
         case "getInCargo": {
             _statusTopLeft ctrlSetText "";
             _statusTopLeft ctrlCommit 0;
-            [_outline, [1,1,1,0], [1,1,1,1], 2, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
+            [_outline, [1,1,1,0], [1,1,1,1], 2, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
         };
         case "getOutCargo": {
             _statusTopLeft ctrlSetText "\A3\ui_f\data\IGUI\Cfg\MPTable\infantry_ca.paa";
             _statusTopLeft ctrlCommit 0;
-            [_outline, [1,1,1,0], [1,1,1,1], 2, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
+            [_outline, [1,1,1,0], [1,1,1,1], 2, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
         };
         case "firing" : {  
-            [_outline, [1,1,1,0], [1,1,1,1], 2, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
+            [_outline, [1,1,1,0], [0,1,1,1], 2, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
         }; 
         case "damaged" : {
-            [_outline, [1,1,1,0], [1,0,0,1], 2, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
+            [_outline, [1,1,1,0], [1,0,0,1], 2, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
         }; 
         case "killed" : {
-            [_outline, [1,1,1,0], [1,0,0,1], 4, 0.5] spawn GRAD_reinforcements_fnc_GUIflash;
+            [_outline, [1,1,1,0], [1,0,0,1], 4, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
             if ({alive _x} count units _group < 1) then {
                 _statusTopRight ctrlSetText "\A3\ui_f\data\map\respawn\respawn_dead_ca.paa";
                 _statusTopRight ctrlCommit 0;
@@ -210,7 +210,7 @@ GRAD_reinforcements_fnc_GUIcreate = {
     _statusTopLeft ctrlSetPosition [
         safezoneX + _width*_horizontalIndex + _gap*_horizontalIndex + _gap,
         safezoneY + _width*(4/3)*_verticalIndex + _gap*_verticalIndex + _gap, 
-        _width/6,
+        _width/4,
         _width*(4/3)/4
     ];
     _statusTopLeft ctrlCommit 0;
