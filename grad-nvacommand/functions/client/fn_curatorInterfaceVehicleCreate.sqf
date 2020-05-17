@@ -113,7 +113,7 @@ private _count = count _fullCargo;
 
 
 {
-    _x params ["_xPos", "_yPos"];
+    _x params ["_xPos", "_yPos", "_color", "_path", "_code"];
 
     private _offset = 0.016;
 
@@ -122,31 +122,39 @@ private _count = count _fullCargo;
     _btn ctrlSetPosition [_xPos, _yPos+_offset, 0.05, 0.05*4/3];
     _btn ctrlSetFade 0;
     _btn ctrlCommit 0;
+    _btn buttonSetAction _code;
 
     _controlsCreated pushBackUnique _btn;
 
     private _btn = _display ctrlCreate ["RscPicture", -1];
     _btn ctrlSetPosition [_xPos, _yPos+_offset, 0.05, 0.05*4/3]; 
-    _btn ctrlSetText "\a3\ui_f\data\igui\cfg\actions\repair_ca.paa";
+    _btn ctrlSetText "grad-nvacommand\vehicles\empty.paa";
+    _btn ctrlSetFade 0;
+    _btn ctrlCommit 0;
+
+    _controlsCreated pushBackUnique _btn;
+
+    private _btn = _display ctrlCreate ["RscPicture", -1];
+    _btn ctrlSetPosition [_xPos, _yPos+_offset, 0.05, 0.05*4/3]; 
+    _btn ctrlSetText _path;
+    _btn ctrlSetTextColor _color;
     _btn ctrlSetFade 0;
     _btn ctrlCommit 0;
 
     _controlsCreated pushBackUnique _btn;
 } forEach [
-    [0.76, 1.0],
-    [0.82, 1.0],
-    [0.88, 1.0],
-    [0.94, 1.0],
-    [0.76, 1.08],
-    [0.82, 1.08],
-    [0.88, 1.08],
-    [0.94, 1.08],
-    [0.76, 1.16],
-    [0.82, 1.16],
-    [0.88, 1.16],
-    [0.94, 1.16]
+    [0.76, 1.0, [1, 1, 1, 1], "grad-nvacommand\vehicles\stop2.paa", "systemChat 'stop';"],
+    [0.82, 1.0, [235/255, 87/255, 87/255, 1], "\a3\ui_f\Data\GUI\Cfg\Notifications\tridentFriendly_ca.paa", "systemChat 'stop';"],
+    [0.88, 1.0, [235/255, 87/255, 87/255, 1], "\a3\ui_f_curator\Data\CfgWrapperUI\Cursors\curatorPlaceWaypointDestroyMulti_ca.paa", "systemChat 'stop';"],
+    [0.94, 1.0, [1, 1, 1, 1], "grad-nvacommand\vehicles\flee2.paa", "systemChat 'stop';"],
+    [0.76, 1.08, [196/255, 196/255, 196/255, 1], "\a3\ui_f_curator\Data\RscCommon\RscAttributeFormation\column_ca.paa", "systemChat 'stop';"],
+    [0.82, 1.08, [196/255, 196/255, 196/255, 1], "\a3\ui_f\Data\IGUI\RscIngameUI\RscUnitInfo\SI_crouch_ca.paa", "systemChat 'stop';"],
+    [0.88, 1.08, [196/255, 196/255, 196/255, 1], "grad-nvacommand\vehicles\speed2.paa", "systemChat 'stop';"],
+    [0.94, 1.08, [196/255, 196/255, 196/255, 1], "grad-nvacommand\vehicles\road2.paa", "systemChat 'stop';"],
+    [0.76, 1.16, [209/255, 141/255, 31/255, 1], "grad-nvacommand\vehicles\getout2.paa", "systemChat 'stop';"],
+    [0.82, 1.16, [209/255, 141/255, 31/255, 1], "grad-nvacommand\vehicles\heal2.paa", "systemChat 'stop';"],
+    [0.88, 1.16, [209/255, 141/255, 31/255, 1], "grad-nvacommand\vehicles\build2.paa", "systemChat 'stop';"]
 ];
-
 
 
 
