@@ -113,7 +113,7 @@ private _count = count _fullCargo;
 
 
 {
-    _x params ["_xPos", "_yPos", "_color", "_path", "_code"];
+    _x params ["_xPos", "_yPos", "_color", "_path", "_string"];
 
     private _offset = 0.016;
 
@@ -121,8 +121,14 @@ private _count = count _fullCargo;
     _btn ctrlEnable true;
     _btn ctrlSetPosition [_xPos, _yPos+_offset, 0.05, 0.05*4/3];
     _btn ctrlSetFade 0;
+
+    _btn ctrlSetEventHandler ["ButtonClick", "params ['_control']; private _group = _control getVariable ['GRAD_nvacommand_groupassigned', grpNull]; [_control, _group] execVM (_control getVariable ['GRAD_nvacommand_code', '']);"];
+    _btn setVariable ["GRAD_nvacommand_groupassigned", group _entity];
+    _btn setVariable ["GRAD_nvacommand_code", _string];
+
     _btn ctrlCommit 0;
-    _btn buttonSetAction _code;
+
+
 
     _controlsCreated pushBackUnique _btn;
 
@@ -143,17 +149,17 @@ private _count = count _fullCargo;
 
     _controlsCreated pushBackUnique _btn;
 } forEach [
-    [0.76, 1.0, [1, 1, 1, 1], "grad-nvacommand\vehicles\stop2.paa", "systemChat 'stop';"],
-    [0.82, 1.0, [235/255, 87/255, 87/255, 1], "\a3\ui_f\Data\GUI\Cfg\Notifications\tridentFriendly_ca.paa", "systemChat 'stop';"],
-    [0.88, 1.0, [235/255, 87/255, 87/255, 1], "\a3\ui_f_curator\Data\CfgWrapperUI\Cursors\curatorPlaceWaypointDestroyMulti_ca.paa", "systemChat 'stop';"],
-    [0.94, 1.0, [1, 1, 1, 1], "grad-nvacommand\vehicles\flee2.paa", "systemChat 'stop';"],
-    [0.76, 1.08, [196/255, 196/255, 196/255, 1], "\a3\ui_f_curator\Data\RscCommon\RscAttributeFormation\column_ca.paa", "systemChat 'stop';"],
-    [0.82, 1.08, [196/255, 196/255, 196/255, 1], "\a3\ui_f\Data\IGUI\RscIngameUI\RscUnitInfo\SI_crouch_ca.paa", "systemChat 'stop';"],
-    [0.88, 1.08, [196/255, 196/255, 196/255, 1], "grad-nvacommand\vehicles\speed2.paa", "systemChat 'stop';"],
-    [0.94, 1.08, [196/255, 196/255, 196/255, 1], "grad-nvacommand\vehicles\road2.paa", "systemChat 'stop';"],
-    [0.76, 1.16, [209/255, 141/255, 31/255, 1], "grad-nvacommand\vehicles\getout2.paa", "systemChat 'stop';"],
-    [0.82, 1.16, [209/255, 141/255, 31/255, 1], "grad-nvacommand\vehicles\heal2.paa", "systemChat 'stop';"],
-    [0.88, 1.16, [209/255, 141/255, 31/255, 1], "grad-nvacommand\vehicles\build2.paa", "systemChat 'stop';"]
+    [0.76, 1.0, [1, 1, 1, 1], "grad-nvacommand\vehicles\stop2.paa", "grad-nvacommand\functions\ui\fn_actionStop.sqf" ],
+    [0.82, 1.0, [235/255, 87/255, 87/255, 1], "\a3\ui_f\Data\GUI\Cfg\Notifications\tridentFriendly_ca.paa", "grad-nvacommand\functions\ui\fn_actionStop.sqf" ],
+    [0.88, 1.0, [235/255, 87/255, 87/255, 1], "\a3\ui_f_curator\Data\CfgWrapperUI\Cursors\curatorPlaceWaypointDestroyMulti_ca.paa", "grad-nvacommand\functions\ui\fn_actionStop.sqf" ],
+    [0.94, 1.0, [1, 1, 1, 1], "grad-nvacommand\vehicles\flee2.paa", "grad-nvacommand\functions\ui\fn_actionFlee.sqf" ],
+    [0.76, 1.08, [196/255, 196/255, 196/255, 1], "\a3\ui_f_curator\Data\RscCommon\RscAttributeFormation\column_ca.paa", "grad-nvacommand\functions\ui\fn_actionFormation.sqf"],
+    [0.82, 1.08, [196/255, 196/255, 196/255, 1], "\a3\ui_f\Data\IGUI\RscIngameUI\RscUnitInfo\SI_crouch_ca.paa", "grad-nvacommand\functions\ui\fn_actionStance.sqf"],
+    [0.88, 1.08, [1, 1, 1, 1], "grad-nvacommand\vehicles\speed2.paa", "grad-nvacommand\functions\ui\fn_actionSpeed.sqf"],
+    [0.94, 1.08, [1, 1, 1, 1], "grad-nvacommand\vehicles\road2.paa", "grad-nvacommand\functions\ui\fn_actionRoad.sqf"],
+    [0.76, 1.16, [1, 1, 1, 1], "grad-nvacommand\vehicles\getout2.paa", "grad-nvacommand\functions\ui\fn_actionGetOut.sqf"],
+    [0.82, 1.16, [1, 1, 1, 1], "grad-nvacommand\vehicles\heal2.paa", "grad-nvacommand\functions\ui\fn_actionHeal.sqf"],
+    [0.88, 1.16, [1, 1, 1, 1], "grad-nvacommand\vehicles\build2.paa", "grad-nvacommand\functions\ui\fn_actionBuild.sqf"]
 ];
 
 
