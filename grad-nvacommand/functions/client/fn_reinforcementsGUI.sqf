@@ -49,6 +49,9 @@
     // systemChat str _outline;
 
     switch (_type) do {
+        case "respawned": {
+            [_outline, [1,1,1,0], [0.3,1,0.3,1], 2, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
+        };
         case "selected": {
             _outline ctrlSetBackgroundColor [1,1,1,1];
             _outline ctrlCommit 0;

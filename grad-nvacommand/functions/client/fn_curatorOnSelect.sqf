@@ -45,6 +45,7 @@ if (!_isInfantry && !_isTower) then {
 };
 
 if (_isGroupFromGUI) then {
+    [_entity] call GRAD_nvaCommand_fnc_curatorInterfaceVehicleCreate;
     [
         "GRAD_reinforcements_GUIEvent", 
         [group _entity,"selected"]

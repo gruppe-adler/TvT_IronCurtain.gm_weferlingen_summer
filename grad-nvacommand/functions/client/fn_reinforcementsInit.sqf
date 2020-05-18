@@ -68,7 +68,7 @@ GRAD_reinforcements_fnc_spawnGroup = {
     private _crewControl = [_config] call GRAD_reinforcements_fnc_getCrewControl;
 
     private _result = [
-                (getMarkerPos "mrk_reinforcements_spawn") findEmptyPosition [0,300], 
+                (getMarkerPos "mrk_reinforcements_spawn") findEmptyPosition [50,300], 
                 markerDir "mrk_reinforcements_spawn", 
                 _className, 
                 east

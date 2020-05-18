@@ -8,6 +8,10 @@ if (!isNull (missionNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTINFAN
     _type = "infantry";
 };
 
+if (!isNull (missionNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLE_SELECTED", objNull])) then {
+    _type = "vehicle";
+};
+
 switch (_type) do {
 
     case "tower" : {
@@ -65,6 +69,35 @@ switch (_type) do {
 
         uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTINFANTRY_UIELEMENTS", []];
         missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTINFANTRY_SELECTED", objNull];
+
+    };
+
+    case "vehicle" : {
+
+        systemChat "dismissing veh";
+        
+        private _ctrlsGroup = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLE_UIELEMENTS", 
+            [controlNull,controlNull,controlNull,controlNull]
+        ];
+
+        if (!isNull (_ctrlsGroup select 0)) then {
+
+            {
+                (ctrlPosition _x) params ["_xPos", "_yPos", "_width", "_height"];
+                _x ctrlSetPosition [_xPos, _yPos + 0.2, _width, _height];
+                _x ctrlSetFade 1;
+                _x ctrlCommit 0.2;
+            } forEach (_ctrlsGroup);
+
+            [_ctrlsGroup] spawn {
+                params ["_ctrlsGroup"];
+                uiSleep 0.2;
+                { ctrlDelete _x } forEach (_ctrlsGroup);
+            };  
+        };
+
+        uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLE_UIELEMENTS", []];
+        missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLE_SELECTED", objNull];
 
     };
 
