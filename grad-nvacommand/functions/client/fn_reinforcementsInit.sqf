@@ -244,4 +244,6 @@ GRAD_reinforcements_fnc_spawnGroup = {
 
     }, 1, []] call CBA_fnc_addPerFrameHandler;
     */
+
+    GRAD_reinforcements_initDone = true; publicVariable "GRAD_reinforcements_initDone";
 };

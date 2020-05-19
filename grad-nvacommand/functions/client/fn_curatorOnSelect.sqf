@@ -40,16 +40,33 @@ if (_isInfantry) then {
     };
 };
 
-if (!_isInfantry && !_isTower) then {
-    [objNull] call GRAD_nvaCommand_fnc_curatorOnSelect;
-};
-
 if (_isGroupFromGUI) then {
+
+    // systemChat "_isGroupFromGUI";
+    private _previouslySelected = missionNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLE_SELECTED", objNull];
+    if (!isNull _previouslySelected) then {
+        [
+            "GRAD_reinforcements_GUIEvent", 
+            [group _previouslySelected,"deselected"]
+        ] call CBA_fnc_globalEvent;
+    };
+    
+    missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLE_SELECTED", _entity];
+
+    private _ctrls = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLE_UIELEMENTS", 
+        [controlNull,controlNull,controlNull,controlNull]
+    ];
+
     [_entity] call GRAD_nvaCommand_fnc_curatorInterfaceVehicleCreate;
+    
     [
         "GRAD_reinforcements_GUIEvent", 
         [group _entity,"selected"]
     ] call CBA_fnc_globalEvent;
+};
+
+if (!_isInfantry && !_isTower && !_isGroupFromGUI) then {
+    [objNull] call GRAD_nvaCommand_fnc_curatorOnSelect;
 };
 
 // detect if nothing is selected by curator, workaround for missing deselect EH

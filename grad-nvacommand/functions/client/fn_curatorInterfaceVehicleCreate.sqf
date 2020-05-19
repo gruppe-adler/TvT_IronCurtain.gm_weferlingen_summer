@@ -170,7 +170,7 @@ uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLE_UIELEMENTS",
 
 missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLE_SELECTED", _entity];
 
-
+/*
 [{
     private _uiElements = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLE_UIELEMENTS", 
         []
@@ -180,3 +180,4 @@ missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLE_SELECTED",
         ctrlDelete _x;
     } forEach _uiElements;
 }, [], 4] call CBA_fnc_waitAndExecute;
+*/

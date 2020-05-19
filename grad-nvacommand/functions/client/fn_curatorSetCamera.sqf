@@ -18,7 +18,7 @@ if (isnull curatorcamera) exitwith {false};
 
 missionNamespace setVariable ["GRAD_nvaCommand_zeusCameraRunning", true];
 
-params ["_origin", ["_targetObj", objNull], ["_duration", 1]];
+params ["_targetPos", ["_targetObj", objNull], ["_duration", 1]];
 
 private _cam = "camera" camcreate getposatl curatorcamera;
 _cam cameraeffect ["internal","back"];

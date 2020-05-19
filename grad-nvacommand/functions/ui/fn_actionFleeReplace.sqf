@@ -12,10 +12,11 @@ private _path = [_reinforcements, _oldGroup] call BIS_fnc_findNestedElement;
 _path params ["_selector", "_index"];
 
 private _config = _oldGroup getVariable ["configCache", grpNull];
+private _vehicle = _oldGroup getVariable ["assignedVehicle", objNull];
 
 {
     deleteVehicle _x;
-} forEach units _oldGroup;
+} forEach units _oldGroup + [_vehicle];
 
 deleteGroup _oldGroup;
 

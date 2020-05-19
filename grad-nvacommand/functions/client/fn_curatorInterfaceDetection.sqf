@@ -99,6 +99,8 @@
 
             }, 1, [_button]] call CBA_fnc_addPerFrameHandler;
 
+            // todo fnc
+            [] execVM "grad-nvacommand\functions\client\fn_reinforcementsGUI.sqf"; 
 
         }, []] call CBA_fnc_execNextFrame;
     

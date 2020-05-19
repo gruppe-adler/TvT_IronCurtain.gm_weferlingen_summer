@@ -52,7 +52,7 @@ _group setCurrentWaypoint _wp;
         [_handle] call CBA_fnc_removePerFrameHandler;
     };
     
-    private _iconPosition = getPos (leader _group);
+    private _iconPosition = getPos (vehicle (leader _group));
     _iconPosition params ["_iconPosX", "_iconPosY"];
 
     // drawIcon3D [getMissionPath "grad-nvacommand\vehicles\flee2.paa", [1,1,1,1], [_iconPosX, _iconPosY, 2], 0, 0, 0, "", 1, 0.05, "PuristaMedium"];    

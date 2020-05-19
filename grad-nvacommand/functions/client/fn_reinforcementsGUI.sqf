@@ -1,3 +1,5 @@
+waitUntil {!isNil "GRAD_reinforcements_initDone"};
+
 // temporary and/or permanent changes to thumbnail as event feedback
 ["GRAD_reinforcements_GUIEvent", {
     params ["_group", "_type"];
@@ -11,7 +13,7 @@
                 private _groupsOfAKind = _x;
                 {
                     private _outline = _x getVariable ["GRAD_reinforcements_GUI_ctrlOutline", controlNull];
-                    _outline ctrlSetBackgroundColor [0,0,0,0];
+                    _outline ctrlSetBackgroundColor [1,1,1,0];
                     _outline ctrlCommit 0;
                 } forEach _groupsOfAKind;
             } forEach _reinforcements;
@@ -51,6 +53,10 @@
     switch (_type) do {
         case "respawned": {
             [_outline, [1,1,1,0], [0.3,1,0.3,1], 2, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
+        };
+        case "deselected": {
+            _outline ctrlSetBackgroundColor [1,1,1,0];
+            _outline ctrlCommit 0;
         };
         case "selected": {
             _outline ctrlSetBackgroundColor [1,1,1,1];

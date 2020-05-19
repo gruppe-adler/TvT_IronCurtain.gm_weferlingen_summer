@@ -12,6 +12,12 @@ if (!isNull (missionNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHIC
     _type = "vehicle";
 };
 
+// no GUI found, doing nothing
+[
+"GRAD_reinforcements_GUIEvent", 
+    [grpNull,"deselected"]
+] call CBA_fnc_globalEvent;
+
 switch (_type) do {
 
     case "tower" : {
@@ -94,18 +100,12 @@ switch (_type) do {
                 uiSleep 0.2;
                 { ctrlDelete _x } forEach (_ctrlsGroup);
             };  
-        };
+        };        
 
         uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLE_UIELEMENTS", []];
         missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLE_SELECTED", objNull];
 
     };
 
-    default {  
-        // no GUI found, doing nothing
-        [
-        "GRAD_reinforcements_GUIEvent", 
-            [grpNull,"deselected"]
-        ] call CBA_fnc_globalEvent;
-    };
+    default {};
 };

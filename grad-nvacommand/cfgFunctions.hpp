@@ -14,6 +14,7 @@ class GRAD_nvacommand {
         class curatorInterfaceDetection;
         class curatorInterfaceInfantryCreate;
         class curatorInterfaceTowerCreate;
+        class curatorInterfaceVehicleCreate;
         class curatorMutePlayersVoices { postInit = 1; };
 
         class curatorOnSelect;
