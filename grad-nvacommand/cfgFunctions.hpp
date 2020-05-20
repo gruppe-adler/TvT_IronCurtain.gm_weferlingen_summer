@@ -18,7 +18,7 @@ class GRAD_nvacommand {
         class curatorMutePlayersVoices { postInit = 1; };
 
         class curatorOnSelect;
-        class curatorOnSelectEH;
+        class curatorOnSelectEHAdd;
         class curatorSetCamera;
         
         class deselectAllTowers;

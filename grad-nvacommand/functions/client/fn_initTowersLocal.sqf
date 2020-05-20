@@ -42,7 +42,7 @@ if (!(player getVariable ["GRAD_nvacommand_isCommander", false])) exitWith {};
     {
         _curator = _x;
         // make curator selectable
-        [_curator] call GRAD_nvaCommand_fnc_curatorOnSelectEH;
+        [_curator] call GRAD_nvaCommand_fnc_curatorOnSelectEHAdd; // add curator on select eh
         [] call GRAD_nvaCommand_fnc_curatorInterfaceDetection;
 
     

@@ -7,6 +7,6 @@ params ["_tower"];
     _tower setVariable ["GRAD_nvaCommand_towerWatchMode", "manual", true];
     _target setPos ASLtoAGL _mousePosASL;
     // systemChat format ["target is %1", typeOf _target];
-    [_tower] call GRAD_nvaCommand_fnc_curatorOnSelect;
+    [[_tower]] call GRAD_nvaCommand_fnc_curatorOnSelect;
 
 }] call GRAD_nvaCommand_fnc_zeusSelectDestination;

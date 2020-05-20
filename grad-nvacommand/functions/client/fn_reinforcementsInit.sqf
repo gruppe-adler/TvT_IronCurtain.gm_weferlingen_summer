@@ -111,12 +111,12 @@ GRAD_reinforcements_fnc_spawnGroup = {
                 
                 [
                     "GRAD_reinforcements_GUIEvent", 
-                    [group _unit,"getOutCargo"]
+                    [group _unit,"getInCargo"]
                 ] call CBA_fnc_globalEvent;
             } else {
                 [
                     "GRAD_reinforcements_GUIEvent", 
-                    [group _unit,"getOutCrew"]
+                    [group _unit,"getInCrew"]
                 ] call CBA_fnc_globalEvent;
             };
         };
@@ -163,6 +163,20 @@ GRAD_reinforcements_fnc_spawnGroup = {
 
     } forEach units _group;
 
+    _vehicle addEventHandler ["Killed", {
+        params ["_unit", "_killer", "_instigator", "_useEffects"];
+
+        private _group = group _unit;
+        // if vehicle is vital, mark whole group as not effective/dead
+        if (!(_group getVariable ["crewControl", false])) then {
+            [controlNull, _group] execVM "grad-nvacommand\functions\ui\fn_actionFlee.sqf";
+            [
+                "GRAD_reinforcements_GUIEvent", 
+                [group _unit,"killed"]
+            ] call CBA_fnc_globalEvent;
+        };
+    }];
+
     _group setVariable ["displayName", _name, true];
     _group setVariable ["pic", _pic, true];
     _group setVariable ["assignedVehicle", _vehicle, true];
@@ -172,10 +186,13 @@ GRAD_reinforcements_fnc_spawnGroup = {
     {
         private _curator = _x;
 
+        /*
+        // uncommented to prevent issues when selecting multiple groups + cargo
         if (_crewControl) then {
             _curator addCuratorEditableObjects [_crew, true];
         };
-        _curator addCuratorEditableObjects [_unitsInCargo, false];
+         _curator addCuratorEditableObjects [_unitsInCargo, false];
+        */
         _curator addCuratorEditableObjects [[_vehicle], false];
     } forEach allCurators;
 

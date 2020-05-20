@@ -8,7 +8,7 @@ if (!isNull (missionNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTINFAN
     _type = "infantry";
 };
 
-if (!isNull (missionNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLE_SELECTED", objNull])) then {
+if (count (missionNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLEGROUPS_SELECTED", []]) > 0) then {
     _type = "vehicle";
 };
 
@@ -82,7 +82,7 @@ switch (_type) do {
 
         systemChat "dismissing veh";
         
-        private _ctrlsGroup = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLE_UIELEMENTS", 
+        private _ctrlsGroup = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLES_UIELEMENTS", 
             [controlNull,controlNull,controlNull,controlNull]
         ];
 
@@ -102,8 +102,8 @@ switch (_type) do {
             };  
         };        
 
-        uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLE_UIELEMENTS", []];
-        missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLE_SELECTED", objNull];
+        uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLES_UIELEMENTS", [controlNull, controlNull, controlNull, controlNull, controlNull]];
+        missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLEGROUPS_SELECTED", []];
 
     };
 

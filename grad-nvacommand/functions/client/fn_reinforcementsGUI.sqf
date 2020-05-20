@@ -4,7 +4,7 @@ waitUntil {!isNil "GRAD_reinforcements_initDone"};
 ["GRAD_reinforcements_GUIEvent", {
     params ["_group", "_type"];
 
-    systemChat ("Received Event " + str _type);
+    // systemChat ("Received Event " + str _type);
 
     if (isNull _group) exitWith {
         if (_type == "deselected") then {
@@ -27,6 +27,11 @@ waitUntil {!isNil "GRAD_reinforcements_initDone"};
     private _statusTopLeft = _group getVariable ["GRAD_reinforcements_GUI_ctrlStatusTopLeft", controlNull];
     private _statusTopRight = _group getVariable ["GRAD_reinforcements_GUI_ctrlStatusTopRight", controlNull];
     private _button = _group getVariable ["GRAD_reinforcements_GUI_ctrlButton", controlNull];
+
+    // check if group exists in UI
+    private _existsInUI = !isNull _outline;
+
+    if (!_existsInUI) exitWith { systemChat "does not exist in UI"; };
 
     private _aliveCount = count units _group;
     private _percentAlive = 0;
@@ -52,7 +57,7 @@ waitUntil {!isNil "GRAD_reinforcements_initDone"};
 
     switch (_type) do {
         case "respawned": {
-            [_outline, [1,1,1,0], [0.3,1,0.3,1], 2, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
+            [_outline, [1,1,1,0], [0.3,1,0.3,1], 4, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
         };
         case "deselected": {
             _outline ctrlSetBackgroundColor [1,1,1,0];
@@ -65,28 +70,28 @@ waitUntil {!isNil "GRAD_reinforcements_initDone"};
         case "getInCrew": {
             _statusTopLeft ctrlSetText "";
             _statusTopLeft ctrlCommit 0;
-            [_outline, [1,1,1,0], [1,1,1,1], 2, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
+            [_outline, [1,1,1,0], [1,1,1,1], 4, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
         };
         case "getOutCrew": {
             _statusTopLeft ctrlSetText "\A3\ui_f\data\IGUI\Cfg\VehicleToggles\WheelBreakIconOn_ca.paa";
             _statusTopLeft ctrlCommit 0;
-            [_outline, [1,1,1,0], [1,1,1,1], 2, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
+            [_outline, [1,1,1,0], [1,1,1,1], 4, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
         };
         case "getInCargo": {
             _statusTopLeft ctrlSetText "";
             _statusTopLeft ctrlCommit 0;
-            [_outline, [1,1,1,0], [1,1,1,1], 2, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
+            [_outline, [1,1,1,0], [1,1,1,1], 4, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
         };
         case "getOutCargo": {
             _statusTopLeft ctrlSetText "\A3\ui_f\data\IGUI\Cfg\MPTable\infantry_ca.paa";
             _statusTopLeft ctrlCommit 0;
-            [_outline, [1,1,1,0], [1,1,1,1], 2, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
+            [_outline, [1,1,1,0], [1,1,1,1], 4, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
         };
         case "firing" : {  
-            [_outline, [1,1,1,0], [0,1,1,1], 2, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
+            [_outline, [1,1,1,0], [0,1,1,1], 4, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
         }; 
         case "damaged" : {
-            [_outline, [1,1,1,0], [1,0,0,1], 2, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
+            [_outline, [1,1,1,0], [1,0,0,1], 4, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
         }; 
         case "killed" : {
             [_outline, [1,1,1,0], [1,0,0,1], 4, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
