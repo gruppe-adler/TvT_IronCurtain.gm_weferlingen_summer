@@ -148,29 +148,29 @@ if (count _groups > 1) exitWith {};
 
         _btn ctrlCommit 0;
 
-
-
         _controlsCreated pushBackUnique _btn;
 
-        private _btn = _display ctrlCreate ["RscPicture", -1];
-        _btn ctrlSetPosition [_xPos, _yPos+_offset, 0.05, 0.05*4/3]; 
-        _btn ctrlSetText "grad-nvacommand\vehicles\empty.paa";
-        _btn ctrlSetFade 0;
-        _btn ctrlCommit 0;
+        private _bgPic = _display ctrlCreate ["RscPicture", -1];
+        _bgPic ctrlSetPosition [_xPos, _yPos+_offset, 0.05, 0.05*4/3]; 
+        _bgPic ctrlSetText "grad-nvacommand\vehicles\empty.paa";
+        _bgPic ctrlSetFade 0;
+        _bgPic ctrlCommit 0;
 
-        _controlsCreated pushBackUnique _btn;
+        _controlsCreated pushBackUnique _bgPic;
 
-        private _btn = _display ctrlCreate ["RscPicture", -1];
-        _btn ctrlSetPosition [_xPos, _yPos+_offset, 0.05, 0.05*4/3]; 
-        _btn ctrlSetText _path;
-        _btn ctrlSetTextColor _color;
-        _btn ctrlSetFade 0;
-        _btn ctrlCommit 0;
+        _btn setVariable ["GRAD_nvacommand_bgPic", _bgPic];
 
-        _controlsCreated pushBackUnique _btn;
+        private _icon = _display ctrlCreate ["RscPicture", -1];
+        _icon ctrlSetPosition [_xPos, _yPos+_offset, 0.05, 0.05*4/3]; 
+        _icon ctrlSetText _path;
+        _icon ctrlSetTextColor _color;
+        _icon ctrlSetFade 0;
+        _icon ctrlCommit 0;
+
+        _controlsCreated pushBackUnique _icon;
     } forEach [
         [0.76, 1.0, [1, 1, 1, 1], "grad-nvacommand\vehicles\stop2.paa", "grad-nvacommand\functions\ui\fn_actionStop.sqf" ],
-        [0.82, 1.0, [235/255, 87/255, 87/255, 1], "\a3\ui_f\Data\GUI\Cfg\Notifications\tridentFriendly_ca.paa", "grad-nvacommand\functions\ui\fn_actionStop.sqf" ],
+        [0.82, 1.0, [235/255, 87/255, 87/255, 1], "\a3\ui_f\Data\GUI\Cfg\Notifications\tridentFriendly_ca.paa", "grad-nvacommand\functions\ui\fn_actionIgnore.sqf" ],
         [0.88, 1.0, [235/255, 87/255, 87/255, 1], "\a3\ui_f_curator\Data\CfgWrapperUI\Cursors\curatorPlaceWaypointDestroyMulti_ca.paa", "grad-nvacommand\functions\ui\fn_actionStop.sqf" ],
         [0.94, 1.0, [1, 1, 1, 1], "grad-nvacommand\vehicles\flee2.paa", "grad-nvacommand\functions\ui\fn_actionFlee.sqf" ],
         [0.76, 1.08, [196/255, 196/255, 196/255, 1], "\a3\ui_f_curator\Data\RscCommon\RscAttributeFormation\column_ca.paa", "grad-nvacommand\functions\ui\fn_actionFormation.sqf"],

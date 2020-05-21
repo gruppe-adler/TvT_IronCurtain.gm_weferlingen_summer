@@ -12,7 +12,7 @@ if (!alive _vehicle || !canMove _vehicle || isNull _vehicle) exitWith {
 _vehicle forceFollowRoad !_onRoad;
 
 if (!_onRoad) then {
-    [_vehicle, "Bleibe auf Straßen", 7] execVM "grad-nvacommand\functions\ui\fn_drawIconHint.sqf";
+    [_vehicle, "Bleibe auf Straßen", 2.5] execVM "grad-nvacommand\functions\ui\fn_drawIconHint.sqf";
 } else {
-    [_vehicle, "Bewegung nach eigenem Ermessen", 7] execVM "grad-nvacommand\functions\ui\fn_drawIconHint.sqf";
+    [_vehicle, "Bewegung nach eigenem Ermessen", 2.5] execVM "grad-nvacommand\functions\ui\fn_drawIconHint.sqf";
 };
