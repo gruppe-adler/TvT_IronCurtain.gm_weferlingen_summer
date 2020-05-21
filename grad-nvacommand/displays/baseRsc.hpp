@@ -130,9 +130,9 @@ class grad_nvaCommand_RscButtonSilent {
     animTextureDefault = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButton\normal_ca.paa";
     animTextureNormal = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButton\normal_ca.paa";
     animTextureDisabled = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButton\normal_ca.paa";
-    animTextureOver = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButton\over_ca.paa";
+    animTextureOver = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButton\normal_ca.paa";
     animTextureFocused = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButton\normal_ca.paa";
-    animTexturePressed = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButton\down_ca.paa";
+    animTexturePressed = "\A3\ui_f\data\GUI\RscCommon\RscShortcutButton\normal_ca.paa";
     shadow = 0;
     font = "RobotoCondensed";
     sizeEx = 0.04;
@@ -141,4 +141,7 @@ class grad_nvaCommand_RscButtonSilent {
     offsetPressedX = 0.000;
     offsetPressedY = 0.001;
     borderSize = 0;
+    period = 0;
+    periodFocus = 0;
+    periodOver = 1;
 };

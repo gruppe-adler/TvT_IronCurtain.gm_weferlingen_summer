@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1372;
+		nextID=1374;
 	};
 	class MarkerIDProvider
 	{
@@ -1296,7 +1296,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=386;
+		items=388;
 		class Item0
 		{
 			dataType="Group";
@@ -10434,6 +10434,27 @@ class Mission
 			angle=8.7868385;
 			id=1367;
 			atlOffset=0.00031280518;
+		};
+		class Item386
+		{
+			dataType="Marker";
+			position[]={13938.985,75.712997,12875.933};
+			name="mrk_reinforcements_despawn";
+			type="Empty";
+			angle=8.7869997;
+			id=1372;
+			atlOffset=0.00080871582;
+		};
+		class Item387
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={13973.684,74.793999,12841.252};
+			};
+			title="NVA Despawn";
+			id=1373;
+			atlOffset=0.00039672852;
 		};
 	};
 	class Connections

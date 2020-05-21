@@ -31,10 +31,14 @@ sleep 1;
 
 _group setSpeedMode "FULL";
 _group setCombatMode "BLUE";
-_group setBehaviour "AWARE";
+_group setBehaviour "CARELESS";
 
-private _despawnPosition = getMarkerPos "mrk_reinforcements_spawn";
+private _vehicle = _group getVariable ["assignedVehicle", objNull];
+_vehicle forceFollowRoad true;
 
+private _despawnPosition = getMarkerPos "mrk_reinforcements_despawn";
+
+/*
 isNil {calculatePath ["wheeled_APC", "careless", getPos _vehicle, _despawnPosition] addEventHandler ["PathCalculated",
 { 
   params ["_agent", "_path"];
@@ -51,6 +55,7 @@ isNil {calculatePath ["wheeled_APC", "careless", getPos _vehicle, _despawnPositi
       };
   };
 }];};
+*/
 
 
 private _wp = _group addWaypoint [_despawnPosition, 0];
@@ -58,6 +63,11 @@ _wp setWaypointCompletionRadius 100;
 _wp setWaypointStatements ["true", "[this] execVM 'grad-nvacommand\functions\ui\fn_actionFleeReplace.sqf';"]; 
 _group setCurrentWaypoint _wp;
 
+
+[{
+    params ["_group"];
+    systemChat str (unitReady (leader _group));
+}, [_group], 3] call CBA_fnc_waitAndExecute;
 // _group move getMarkerPos "mrk_reinforcements_spawn";
 
 [{

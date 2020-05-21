@@ -17,3 +17,7 @@ _group spawn
         deleteWaypoint [_this, _i];
     };
 };
+
+private _vehicle = _group getVariable ["assignedVehicle", objNull];
+
+[_vehicle, "Stoppe", 2.5] execVM "grad-nvacommand\functions\ui\fn_drawIconHint.sqf";
