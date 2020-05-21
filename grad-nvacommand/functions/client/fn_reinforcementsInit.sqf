@@ -56,6 +56,12 @@ GRAD_reinforcements_fnc_getCrewControl = {
     [(_config >> "crewControl"), "number", 1] call CBA_fnc_getConfigEntry == 1
 };
 
+GRAD_reinforcements_fnc_getVehicleVoice = {
+    params ["_config"];
+    
+    [(_config >> "vehicleVoice"), "string", ""] call CBA_fnc_getConfigEntry
+};
+
 
 GRAD_reinforcements_fnc_spawnGroup = {
     params ["_config"];
@@ -66,6 +72,7 @@ GRAD_reinforcements_fnc_spawnGroup = {
     private _name = [_config] call GRAD_reinforcements_fnc_getDisplayName;
     private _pic = [_config] call GRAD_reinforcements_fnc_getPic;
     private _crewControl = [_config] call GRAD_reinforcements_fnc_getCrewControl;
+    private _vehicleVoice = [_config] call GRAD_reinforcements_fnc_getVehicleVoice;
 
     private _result = [
                 (getMarkerPos "mrk_reinforcements_spawn") findEmptyPosition [50,300], 
@@ -182,6 +189,8 @@ GRAD_reinforcements_fnc_spawnGroup = {
     _group setVariable ["assignedVehicle", _vehicle, true];
     _group setVariable ["configCache", _config, true];
     _group setVariable ["crewControl", _crewControl, true];
+    _group setVariable ["vehicleVoice", _vehicleVoice, true];
+    
 
     {
         private _curator = _x;

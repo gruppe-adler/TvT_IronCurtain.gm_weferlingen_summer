@@ -33,7 +33,27 @@ _group setSpeedMode "FULL";
 _group setCombatMode "BLUE";
 _group setBehaviour "AWARE";
 
-private _wp = _group addWaypoint [getMarkerPos "mrk_reinforcements_spawn", 0];
+private _despawnPosition = getMarkerPos "mrk_reinforcements_spawn";
+
+isNil {calculatePath ["wheeled_APC", "careless", getPos _vehicle, _despawnPosition] addEventHandler ["PathCalculated",
+{ 
+  params ["_agent", "_path"];
+
+  if (count _path < 1) then {
+      hint str _path;
+  };
+
+  if (count _path > 1) then {
+      _path params ["_pos1", "_pos2"];
+
+      if (_pos1 isEqualTo _pos2) then {
+          systemChat "double path";
+      };
+  };
+}];};
+
+
+private _wp = _group addWaypoint [_despawnPosition, 0];
 _wp setWaypointCompletionRadius 100;
 _wp setWaypointStatements ["true", "[this] execVM 'grad-nvacommand\functions\ui\fn_actionFleeReplace.sqf';"]; 
 _group setCurrentWaypoint _wp;

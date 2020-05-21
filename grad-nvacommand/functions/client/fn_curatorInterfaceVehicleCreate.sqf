@@ -167,6 +167,9 @@ if (count _groups > 1) exitWith {};
         _icon ctrlSetFade 0;
         _icon ctrlCommit 0;
 
+
+        _btn setVariable ["GRAD_nvacommand_icon", _icon];
+
         _controlsCreated pushBackUnique _icon;
     } forEach [
         [0.76, 1.0, [1, 1, 1, 1], "grad-nvacommand\vehicles\stop2.paa", "grad-nvacommand\functions\ui\fn_actionStop.sqf" ],
@@ -175,7 +178,7 @@ if (count _groups > 1) exitWith {};
         [0.94, 1.0, [1, 1, 1, 1], "grad-nvacommand\vehicles\flee2.paa", "grad-nvacommand\functions\ui\fn_actionFlee.sqf" ],
         [0.76, 1.08, [196/255, 196/255, 196/255, 1], "\a3\ui_f_curator\Data\RscCommon\RscAttributeFormation\column_ca.paa", "grad-nvacommand\functions\ui\fn_actionFormation.sqf"],
         [0.82, 1.08, [196/255, 196/255, 196/255, 1], "\a3\ui_f\Data\IGUI\RscIngameUI\RscUnitInfo\SI_crouch_ca.paa", "grad-nvacommand\functions\ui\fn_actionStance.sqf"],
-        [0.88, 1.08, [1, 1, 1, 1], "grad-nvacommand\vehicles\speed2.paa", "grad-nvacommand\functions\ui\fn_actionSpeed.sqf"],
+        [0.88, 1.08, [1, 1, 1, 1], [_group] call grad_nvacommand_fnc_getIconSpeed, "grad-nvacommand\functions\ui\fn_actionSpeed.sqf"],
         [0.94, 1.08, [1, 1, 1, 1], "grad-nvacommand\vehicles\road2.paa", "grad-nvacommand\functions\ui\fn_actionRoad.sqf"],
         [0.76, 1.16, [1, 1, 1, 1], "grad-nvacommand\vehicles\getout2.paa", "grad-nvacommand\functions\ui\fn_actionGetOut.sqf"],
         [0.82, 1.16, [1, 1, 1, 1], "grad-nvacommand\vehicles\heal2.paa", "grad-nvacommand\functions\ui\fn_actionHeal.sqf"],

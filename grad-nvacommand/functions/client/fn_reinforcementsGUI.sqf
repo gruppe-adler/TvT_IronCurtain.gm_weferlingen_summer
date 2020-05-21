@@ -28,6 +28,8 @@ waitUntil {!isNil "GRAD_reinforcements_initDone"};
     private _statusTopRight = _group getVariable ["GRAD_reinforcements_GUI_ctrlStatusTopRight", controlNull];
     private _button = _group getVariable ["GRAD_reinforcements_GUI_ctrlButton", controlNull];
 
+    private _vehicleVoice = _group getVariable ["vehicleVoice", ""];
+
     // check if group exists in UI
     private _existsInUI = !isNull _outline;
 
@@ -66,6 +68,7 @@ waitUntil {!isNil "GRAD_reinforcements_initDone"};
         case "selected": {
             _outline ctrlSetBackgroundColor [1,1,1,1];
             _outline ctrlCommit 0;
+            playSound3D [_vehicleVoice, curatorCamera];
         };
         case "getInCrew": {
             _statusTopLeft ctrlSetText "";
@@ -92,6 +95,12 @@ waitUntil {!isNil "GRAD_reinforcements_initDone"};
         }; 
         case "damaged" : {
             [_outline, [1,1,1,0], [1,0,0,1], 4, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;
+
+            private _sound = selectRandom ["UnderFireE_1", "UnderFireE_2", "UnderFireE_3", "UnderFireE_4", "UnderFireE_5", "UnderFireE_6"];
+            private _prefix = "gm\gm_languages\gm_deu_language\data\voice1\voicefiles\Normal\";
+            private _suffix = ".ogg";
+            // todo define in description.ext and playSound
+            playSound3D [_prefix + _sound + _suffix, curatorCamera];
         }; 
         case "killed" : {
             [_outline, [1,1,1,0], [1,0,0,1], 4, 0.25] spawn GRAD_reinforcements_fnc_GUIflash;

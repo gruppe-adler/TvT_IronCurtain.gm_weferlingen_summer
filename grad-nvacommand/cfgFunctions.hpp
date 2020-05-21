@@ -78,4 +78,9 @@ class GRAD_nvacommand {
          class towerShowOptions;
 
     };
+
+    class ui {
+        file = grad-nvacommand\functions\ui;
+        class getIconSpeed;
+    };
 };

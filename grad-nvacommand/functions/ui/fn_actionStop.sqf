@@ -1,5 +1,12 @@
 params ["_ctrl", "_group"];
 
+private _prefix = "gm\gm_languages\gm_deu_language\data\voice1\voicefiles\Normal\";
+private _suffix = ".ogg";
+
+private _sound = selectRandom ["VehStop_1", "VehStop_2", "VehStop_3"];
+// todo define in description.ext and playSound
+playSound3D [_prefix + _sound + _suffix, curatorCamera];
+
 // taken from biki
 _group spawn 
 {
