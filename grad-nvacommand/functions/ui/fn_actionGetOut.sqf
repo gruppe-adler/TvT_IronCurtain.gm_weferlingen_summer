@@ -1,7 +1,7 @@
 params ["_ctrl", "_group"];
 
-private _getOut = _group getVariable ["actionGetOut", false];
-_group setVariable ["actionGetOut", !_getOut];
+private _getOut = _group getVariable ["GRAD_nvaCommand_actionGetOut", false];
+_group setVariable ["GRAD_nvaCommand_actionGetOut", !_getOut];
 
 private _vehicle = _group getVariable ["assignedVehicle", objNull];
 

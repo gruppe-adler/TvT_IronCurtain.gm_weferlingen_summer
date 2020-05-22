@@ -15,7 +15,6 @@ if (_ignore) then {
     _bgPic ctrlSetText "grad-nvacommand\vehicles\empty_active_red.paa";
     _icon ctrlCommit 0;
     _bgPic ctrlCommit 0;
-    _ctrl setVariable ["GRAD_nvacommand_ctrlActive", true];
 
     {
       _x disableAI "AUTOTARGET";
@@ -32,6 +31,7 @@ if (_ignore) then {
     _group setBehaviour "AWARE";
 
     [_vehicle, "Ignoriere Feindkräfte", 2.5] execVM "grad-nvacommand\functions\ui\fn_drawIconHint.sqf";
+    _group setVariable ["GRAD_nvacommand_actionIgnore", true];
 
     private _sound = selectRandom ["Disengage"];
     // todo define in description.ext and playSound
@@ -41,7 +41,6 @@ if (_ignore) then {
     _bgPic ctrlSetText "grad-nvacommand\vehicles\empty.paa";
     _icon ctrlCommit 0;
     _bgPic ctrlCommit 0;
-    _ctrl setVariable ["GRAD_nvacommand_ctrlActive", false];
 
     {
       _x enableAI "AUTOTARGET";
@@ -58,6 +57,7 @@ if (_ignore) then {
     _group setBehaviour "AWARE";
 
     [_vehicle, "Bekämpfe Feindkräfte", 2.5] execVM "grad-nvacommand\functions\ui\fn_drawIconHint.sqf";
+    _group setVariable ["GRAD_nvacommand_actionIgnore", false];
 
     private _sound = selectRandom ["EngageAtWill"];
     // todo define in description.ext and playSound

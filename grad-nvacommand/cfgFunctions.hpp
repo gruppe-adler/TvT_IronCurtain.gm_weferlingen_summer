@@ -81,6 +81,8 @@ class GRAD_nvacommand {
 
     class ui {
         file = grad-nvacommand\functions\ui;
+        
+        class getButtonActive;
         class getIconSpeed;
         class getIconStance;
     };

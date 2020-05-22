@@ -133,12 +133,12 @@ if (count _groups > 1) exitWith {};
 
 
     {
-        _x params ["_xPos", "_yPos", "_colorDefault", "_colorActive", "_path", "_string", "_colorBgPic"];
+        _x params ["_xPos", "_yPos", "_colorDefault", "_colorActive", "_path", "_string", "_colorBgPic", "_type"];
 
-        private _offset = 0.016;
-        private _ctrlActive = _x getVariable ["GRAD_nvacommand_ctrlActive", false];
+        private _offset = 0.016;        
+        private _ctrlActive = [_group, _type] call grad_nvacommand_fnc_getButtonActive;
 
-        private _btn = _display ctrlCreate ["RscButton", -1];
+        private _btn = _display ctrlCreate ["grad_nvaCommand_RscButtonSilent", -1];
         _btn ctrlEnable true;
         _btn ctrlSetPosition [_xPos, _yPos+_offset, 0.05, 0.05*4/3];
 
@@ -154,7 +154,7 @@ if (count _groups > 1) exitWith {};
         _bgPic ctrlSetPosition [_xPos, _yPos+_offset, 0.05, 0.05*4/3];
 
         if (_ctrlActive) then {
-            _bgPic ctrlSetText "grad-nvacommand\vehicles\empty.paa";
+            _bgPic ctrlSetText "grad-nvacommand\vehicles\empty_active_" + _colorBgPic + ".paa";
         } else {
             _bgPic ctrlSetText "grad-nvacommand\vehicles\empty.paa";
         };
@@ -179,17 +179,17 @@ if (count _groups > 1) exitWith {};
 
         _controlsCreated pushBackUnique _icon;
     } forEach [
-        [0.76, 1.0, [1, 1, 1, 1], [1, 1, 1, 1], "grad-nvacommand\vehicles\stop2.paa", "grad-nvacommand\functions\ui\fn_actionStop.sqf", "red"],
-        [0.82, 1.0, [235/255, 87/255, 87/255, 1], [0, 0, 0, 1], "\a3\ui_f\Data\GUI\Cfg\Notifications\tridentFriendly_ca.paa", "grad-nvacommand\functions\ui\fn_actionIgnore.sqf", "red"],
-        [0.88, 1.0, [235/255, 87/255, 87/255, 1], [0, 0, 0, 1],"\a3\ui_f_curator\Data\CfgWrapperUI\Cursors\curatorPlaceWaypointDestroyMulti_ca.paa", "grad-nvacommand\functions\ui\fn_actionSuppress.sqf", "red"],
-        [0.94, 1.0, [1, 1, 1, 1], [1, 1, 1, 1], "grad-nvacommand\vehicles\flee2.paa", "grad-nvacommand\functions\ui\fn_actionFlee.sqf", "red"],
-        [0.76, 1.08, [196/255, 196/255, 196/255, 1], [0, 0, 0, 1], "\a3\ui_f_curator\Data\RscCommon\RscAttributeFormation\column_ca.paa", "grad-nvacommand\functions\ui\fn_actionFormation.sqf", "white"],
-        [0.82, 1.08, [196/255, 196/255, 196/255, 1], [0, 0, 0, 1], [_group] call grad_nvacommand_fnc_getIconStance, "grad-nvacommand\functions\ui\fn_actionStance.sqf", "white"],
-        [0.88, 1.08, [1, 1, 1, 1], [1, 1, 1, 1], [_group] call grad_nvacommand_fnc_getIconSpeed, "grad-nvacommand\functions\ui\fn_actionSpeed.sqf", "white"],
-        [0.94, 1.08, [1, 1, 1, 1], [1, 1, 1, 1], "grad-nvacommand\vehicles\road2.paa", "grad-nvacommand\functions\ui\fn_actionRoad.sqf", "white"],
-        [0.76, 1.16, [1, 1, 1, 1], [1, 1, 1, 1], "grad-nvacommand\vehicles\getout2.paa", "grad-nvacommand\functions\ui\fn_actionGetOut.sqf", "yellow"],
-        [0.82, 1.16, [1, 1, 1, 1], [1, 1, 1, 1], "grad-nvacommand\vehicles\heal2.paa", "grad-nvacommand\functions\ui\fn_actionHeal.sqf", "yellow"],
-        [0.88, 1.16, [1, 1, 1, 1], [1, 1, 1, 1], "grad-nvacommand\vehicles\build2.paa", "grad-nvacommand\functions\ui\fn_actionBuild.sqf", "yellow"]
+        [0.76, 1.0, [1, 1, 1, 1], [1, 1, 1, 1], "grad-nvacommand\vehicles\stop2.paa", "grad-nvacommand\functions\ui\fn_actionStop.sqf", "red", "actionStop"],
+        [0.82, 1.0, [235/255, 87/255, 87/255, 1], [0, 0, 0, 1], "\a3\ui_f\Data\GUI\Cfg\Notifications\tridentFriendly_ca.paa", "grad-nvacommand\functions\ui\fn_actionIgnore.sqf", "red", "actionIgnore"],
+        [0.88, 1.0, [235/255, 87/255, 87/255, 1], [0, 0, 0, 1],"\a3\ui_f_curator\Data\CfgWrapperUI\Cursors\curatorPlaceWaypointDestroyMulti_ca.paa", "grad-nvacommand\functions\ui\fn_actionSuppress.sqf", "red", "actionSuppress"],
+        [0.94, 1.0, [1, 1, 1, 1], [1, 1, 1, 1], "grad-nvacommand\vehicles\flee2.paa", "grad-nvacommand\functions\ui\fn_actionFlee.sqf", "red", "actionFlee"],
+        [0.76, 1.08, [196/255, 196/255, 196/255, 1], [0, 0, 0, 1], "\a3\ui_f_curator\Data\RscCommon\RscAttributeFormation\column_ca.paa", "grad-nvacommand\functions\ui\fn_actionFormation.sqf", "white", "actionFormation"],
+        [0.82, 1.08, [196/255, 196/255, 196/255, 1], [0, 0, 0, 1], [_group] call grad_nvacommand_fnc_getIconStance, "grad-nvacommand\functions\ui\fn_actionStance.sqf", "white", "actionStance"],
+        [0.88, 1.08, [1, 1, 1, 1], [1, 1, 1, 1], [_group] call grad_nvacommand_fnc_getIconSpeed, "grad-nvacommand\functions\ui\fn_actionSpeed.sqf", "white", "actionSpeed"],
+        [0.94, 1.08, [1, 1, 1, 1], [1, 1, 1, 1], "grad-nvacommand\vehicles\road2.paa", "grad-nvacommand\functions\ui\fn_actionRoad.sqf", "white", "actionRoad"],
+        [0.76, 1.16, [1, 1, 1, 1], [1, 1, 1, 1], "grad-nvacommand\vehicles\getout2.paa", "grad-nvacommand\functions\ui\fn_actionGetOut.sqf", "yellow", "actionGetOut"],
+        [0.82, 1.16, [1, 1, 1, 1], [1, 1, 1, 1], "grad-nvacommand\vehicles\heal2.paa", "grad-nvacommand\functions\ui\fn_actionHeal.sqf", "yellow", "actionHeal"],
+        [0.88, 1.16, [1, 1, 1, 1], [1, 1, 1, 1], "grad-nvacommand\vehicles\build2.paa", "grad-nvacommand\functions\ui\fn_actionBuild.sqf", "yellow", "actionBuild"]
     ];
 
 
