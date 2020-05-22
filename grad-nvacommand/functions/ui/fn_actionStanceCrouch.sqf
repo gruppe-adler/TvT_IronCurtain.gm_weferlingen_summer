@@ -12,7 +12,7 @@ _icon ctrlSetText ([_group] call grad_nvacommand_fnc_getIconStance);
     _x setUnitPos "MIDDLE";
 } forEach units _group;
 
-[leader _group, "Ducken", 2.5] execVM "grad-nvacommand\functions\ui\fn_drawIconHint.sqf";
+[leader _group, "Abhocken", 2.5] execVM "grad-nvacommand\functions\ui\fn_drawIconHint.sqf";
 
 private _prefix = "gm\gm_languages\gm_deu_language\data\voice1\voicefiles\Normal\";
 private _suffix = ".ogg";
