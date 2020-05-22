@@ -23,7 +23,7 @@ private _controlsCreated = [];
     _controlsCreated pushBackUnique _btn;
 
     private _bgPic = _display ctrlCreate ["RscPicture", -1];
-    _bgPic ctrlSetPosition [_xPos, _yPos, 0.05, 0.05*4/3]; 
+    _bgPic ctrlSetPosition [_xPos, _yPos, 0.05, 0.05*4/3];
     _bgPic ctrlSetText "grad-nvacommand\vehicles\empty.paa";
     _bgPic ctrlSetFade 0;
     _bgPic ctrlCommit 0;
@@ -33,7 +33,7 @@ private _controlsCreated = [];
     _btn setVariable ["GRAD_nvacommand_bgPic", _bgPic];
 
     private _icon = _display ctrlCreate ["RscPicture", -1];
-    _icon ctrlSetPosition [_xPos, _yPos, 0.05, 0.05*4/3]; 
+    _icon ctrlSetPosition [_xPos, _yPos, 0.05, 0.05*4/3];
     _icon ctrlSetText _path;
     _icon ctrlSetTextColor _color;
     _icon ctrlSetFade 0;
@@ -46,6 +46,7 @@ private _controlsCreated = [];
 
     _btn setVariable ["GRAD_nvacommand_subcontrols", _controlsCreated];
 } forEach [
+    [_xPos - 0.10, _yPos, [235/255, 87/255, 87/255, 1], "\A3\UI_F_Curator\Data\default_ca.paa", "grad-nvacommand\functions\ui\fn_actionStanceAuto.sqf" ],
     [_xPos - 0.05, _yPos, [235/255, 87/255, 87/255, 1], "\a3\ui_f\Data\IGUI\RscIngameUI\RscUnitInfo\SI_prone_ca.paa", "grad-nvacommand\functions\ui\fn_actionStanceProne.sqf" ],
     [_xPos + 0.0, _yPos, [235/255, 87/255, 87/255, 1], "\a3\ui_f\Data\IGUI\RscIngameUI\RscUnitInfo\SI_crouch_ca.paa", "grad-nvacommand\functions\ui\fn_actionStanceCrouch.sqf" ],
     [_xPos + 0.05, _yPos, [235/255, 87/255, 87/255, 1], "\a3\ui_f\Data\IGUI\RscIngameUI\RscUnitInfo\SI_stand_ca.paa", "grad-nvacommand\functions\ui\fn_actionStanceStand.sqf" ],

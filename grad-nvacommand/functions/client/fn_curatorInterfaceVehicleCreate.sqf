@@ -16,7 +16,7 @@ if (count _groups > 1) exitWith {};
 
     private _vehicleBackground = _display ctrlCreate ["RscText", -1];
     _vehicleBackground ctrlSetPosition [0, 1.1, 1, 0.26];
-    _vehicleBackground ctrlSetBackgroundColor [0,0,0,0.7]; 
+    _vehicleBackground ctrlSetBackgroundColor [0,0,0,0.7];
     _vehicleBackground ctrlSetFade 1;
     _vehicleBackground ctrlCommit 0;
 
@@ -27,7 +27,7 @@ if (count _groups > 1) exitWith {};
 
 
     private _vehiclePic = _display ctrlCreate ["RscPictureKeepAspect", -1];
-    _vehiclePic ctrlsetText _picturePath; 
+    _vehiclePic ctrlsetText _picturePath;
     _vehiclePic ctrlSetPosition [0.01, 1.1, 0.20, 0.20];
     _vehiclePic ctrlSetBackgroundColor [0,0,0,0];
     _vehiclePic setVariable ["IC_GUI_BGCOLOR", [0,0,0,0]];
@@ -52,7 +52,7 @@ if (count _groups > 1) exitWith {};
     private _vehicleBtnCenter = _display ctrlCreate ["RscText", -1];
     _vehicleBtnCenter ctrlEnable true;
     _vehicleBtnCenter ctrlSetPosition [0.1, 1.1, 0.18, 0.18];
-    _vehicleBtnCenter ctrlSetBackgroundColor [0,0,0,0]; 
+    _vehicleBtnCenter ctrlSetBackgroundColor [0,0,0,0];
     _vehicleBtnCenter ctrlSetFade 1;
     _vehicleBtnCenter ctrlCommit 0;
 
@@ -64,7 +64,7 @@ if (count _groups > 1) exitWith {};
     private _vehicleLabel = _display ctrlCreate ["RscText", -1];
     _vehicleLabel ctrlsetText _displayName;
     _vehicleLabel ctrlSetPosition [0.02, 1, 0.18, 0.18];
-    _vehicleLabel ctrlSetBackgroundColor [0,0,0,0]; 
+    _vehicleLabel ctrlSetBackgroundColor [0,0,0,0];
     _vehicleLabel ctrlSetFade 1;
     _vehicleLabel ctrlCommit 0;
 
@@ -121,7 +121,7 @@ if (count _groups > 1) exitWith {};
 
         if (!isNull _unit) then {
             private _btn = _display ctrlCreate ["RscPicture", -1];
-            _btn ctrlSetPosition [_xPos, _yPos, 0.05, 0.05*4/3]; 
+            _btn ctrlSetPosition [_xPos, _yPos, 0.05, 0.05*4/3];
 
             _btn ctrlSetText "grad-nvacommand\displays\alarmgroup.jpg";
             _btn ctrlSetFade 0;
@@ -151,7 +151,7 @@ if (count _groups > 1) exitWith {};
         _controlsCreated pushBackUnique _btn;
 
         private _bgPic = _display ctrlCreate ["RscPicture", -1];
-        _bgPic ctrlSetPosition [_xPos, _yPos+_offset, 0.05, 0.05*4/3]; 
+        _bgPic ctrlSetPosition [_xPos, _yPos+_offset, 0.05, 0.05*4/3];
         _bgPic ctrlSetText "grad-nvacommand\vehicles\empty.paa";
         _bgPic ctrlSetFade 0;
         _bgPic ctrlCommit 0;
@@ -161,7 +161,7 @@ if (count _groups > 1) exitWith {};
         _btn setVariable ["GRAD_nvacommand_bgPic", _bgPic];
 
         private _icon = _display ctrlCreate ["RscPicture", -1];
-        _icon ctrlSetPosition [_xPos, _yPos+_offset, 0.05, 0.05*4/3]; 
+        _icon ctrlSetPosition [_xPos, _yPos+_offset, 0.05, 0.05*4/3];
         _icon ctrlSetText _path;
         _icon ctrlSetTextColor _color;
         _icon ctrlSetFade 0;
@@ -177,7 +177,7 @@ if (count _groups > 1) exitWith {};
         [0.88, 1.0, [235/255, 87/255, 87/255, 1], "\a3\ui_f_curator\Data\CfgWrapperUI\Cursors\curatorPlaceWaypointDestroyMulti_ca.paa", "grad-nvacommand\functions\ui\fn_actionSuppress.sqf" ],
         [0.94, 1.0, [1, 1, 1, 1], "grad-nvacommand\vehicles\flee2.paa", "grad-nvacommand\functions\ui\fn_actionFlee.sqf" ],
         [0.76, 1.08, [196/255, 196/255, 196/255, 1], "\a3\ui_f_curator\Data\RscCommon\RscAttributeFormation\column_ca.paa", "grad-nvacommand\functions\ui\fn_actionFormation.sqf"],
-        [0.82, 1.08, [196/255, 196/255, 196/255, 1], "\a3\ui_f\Data\IGUI\RscIngameUI\RscUnitInfo\SI_crouch_ca.paa", "grad-nvacommand\functions\ui\fn_actionStance.sqf"],
+        [0.82, 1.08, [196/255, 196/255, 196/255, 1], [_group] call grad_nvacommand_fnc_getIconStance, "grad-nvacommand\functions\ui\fn_actionStance.sqf"],
         [0.88, 1.08, [1, 1, 1, 1], [_group] call grad_nvacommand_fnc_getIconSpeed, "grad-nvacommand\functions\ui\fn_actionSpeed.sqf"],
         [0.94, 1.08, [1, 1, 1, 1], "grad-nvacommand\vehicles\road2.paa", "grad-nvacommand\functions\ui\fn_actionRoad.sqf"],
         [0.76, 1.16, [1, 1, 1, 1], "grad-nvacommand\vehicles\getout2.paa", "grad-nvacommand\functions\ui\fn_actionGetOut.sqf"],
@@ -187,7 +187,7 @@ if (count _groups > 1) exitWith {};
 
 
 
-    uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLES_UIELEMENTS", 
+    uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLES_UIELEMENTS",
             _controlsCreated
     ];
 
@@ -196,7 +196,7 @@ if (count _groups > 1) exitWith {};
 } forEach _groups;
 /*
 [{
-    private _uiElements = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLES_UIELEMENTS", 
+    private _uiElements = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLES_UIELEMENTS",
         []
     ];
 
