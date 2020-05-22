@@ -1,9 +1,26 @@
 params ["_ctrl", "_group"];
 
+private _bgPic = _ctrl getVariable ["GRAD_nvacommand_bgPic", controlNull];
+private _icon = _ctrl getVariable ["GRAD_nvacommand_icon", controlNull];
+private _isSupressing = _group getVariable ["GRAD_nvacommand_isSuppressing", false];
+
+private _prefix = "gm\gm_languages\gm_deu_language\data\voice1\voicefiles\Normal\";
+private _suffix = ".ogg";
+
+if (_isSupressing) exitWith {
+    [leader _group, "Stopfe", 2.5] execVM "grad-nvacommand\functions\ui\fn_drawIconHint.sqf";
+    _group setVariable ["GRAD_nvacommand_isSuppressing", false];
+
+    _icon ctrlSetTextColor [235/255, 87/255, 87/255, 1];
+    _bgPic ctrlSetText "grad-nvacommand\vehicles\empty.paa";
+    _icon ctrlCommit 0;
+    _bgPic ctrlCommit 0;
+};
+
 // taken from ACE3 / bux, PabstMirror
 [leader _group, {
     params ["_successful", "_unit", "_mousePosASL"];
-    
+
     private _vehicle = vehicle _unit;
 
     private _targetASL = _mousePosASL vectorAdd [0,0,0.6];
@@ -15,7 +32,7 @@ params ["_ctrl", "_group"];
     if (_unit isEqualTo _vehicle) then { // Max range a unit can fire seems to be based on the weapon's config
         private _distance =  _targetASL vectorDistance eyePos _unit;
         private _maxWeaponRange = getNumber (configFile >> "CfgWeapons" >> (currentWeapon _unit) >> "maxRange");
-        
+
         if (_distance > (_maxWeaponRange - 50)) then {
             if (_distance > (2.5 * _maxWeaponRange)) then {
                 _targetASL = [];
@@ -28,16 +45,13 @@ params ["_ctrl", "_group"];
         };
     };
 
-    private _prefix = "gm\gm_languages\gm_deu_language\data\voice1\voicefiles\Normal\";
-    private _suffix = ".ogg";
-
     // feedback if target is shit
     if (count _targetASL < 1) then {
         private _sound = selectRandom ["NoCanDo_1", "NoCanDo_2"];
         // todo define in description.ext and playSound
         playSound3D [_prefix + _sound + _suffix, curatorCamera];
         [_vehicle, "Nicht erreichbar", 2.5] execVM "grad-nvacommand\functions\ui\fn_drawIconHint.sqf";
-        
+
     } else {
         private _sound = selectRandom ["SuppressingE_1", "SuppressingE_2", "SuppressingE_3", "SuppressingE_4"];
         // todo define in description.ext and playSound
@@ -52,8 +66,27 @@ params ["_ctrl", "_group"];
             };
         } forEach _units;
 
-        [_vehicle, "Unterdrücke", 2.5] execVM "grad-nvacommand\functions\ui\fn_drawIconHint.sqf";
-    }; 
+        [_unit, "Unterdrücke", 2.5] execVM "grad-nvacommand\functions\ui\fn_drawIconHint.sqf";
+
+        _icon ctrlSetTextColor [0/255, 0/255, 0/255, 1];
+        _bgPic ctrlSetText "grad-nvacommand\vehicles\empty_active_red.paa";
+        _icon ctrlCommit 0;
+        _bgPic ctrlCommit 0;
+
+        [{
+            params ["_args", "_handle"];
+            _args params ["_units", "_group"];
+
+            private _isSupressing = _group getVariable ["GRAD_nvacommand_isSuppressing", false];
+
+            if (_isSupressing) then {
+                { _x suppressFor 5; } forEach _units;
+            } else {
+                [_handle] call CBA_fnc_removePerFrameHandler;
+            };
+
+        }, 5, [_units, _group]] call CBA_fnc_addPerFrameHandler;
+    };
 
 }] call GRAD_nvaCommand_fnc_zeusSelectDestination;
 

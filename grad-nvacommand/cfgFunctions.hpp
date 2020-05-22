@@ -8,8 +8,8 @@ class GRAD_nvacommand {
 
         class alarmSetSector;
 
-        class curatorDisableZENactions { postInit = 1; }; 
-        class curatorZENAddCustomActions { postInit = 1; }; 
+        class curatorDisableZENactions { postInit = 1; };
+        class curatorZENAddCustomActions { postInit = 1; };
 
         class curatorInterfaceDetection;
         class curatorInterfaceInfantryCreate;
@@ -20,27 +20,27 @@ class GRAD_nvacommand {
         class curatorOnSelect;
         class curatorOnSelectEHAdd;
         class curatorSetCamera;
-        
+
         class deselectAllTowers;
-        class forceDefaultMap { postInit = 1; };  
+        class forceDefaultMap { postInit = 1; };
 
         class fortificationsMouseEH;
         class fortificationsStartBuild;
 
-        class getSectorForPosition;  
+        class getSectorForPosition;
         class gateLock;
-        
+
         class GUI_dismiss;
-        class GUI_refreshSelects;	
+        class GUI_refreshSelects;
     	class initMap;
         class initTowersLocal;
 
         class markerFade;
         class markerFenceCut;
 
-        class reinforcementsInit { postInit = 1; }; 
+        class reinforcementsInit { postInit = 1; };
         class reinforcementsGUI;
-       
+
         class repairFence;
         class towerCenterSelected;
         class towerGetNearest;
@@ -65,7 +65,7 @@ class GRAD_nvacommand {
          class getTrianglesForSector;
          class handleTripFlare;
          class hideFakeRunners;
-         class searchLightScanRandom;         
+         class searchLightScanRandom;
          class initSectors { postInit = 1; };
          class initTowers;
          class towerAlarmDismissGroup;
@@ -82,5 +82,6 @@ class GRAD_nvacommand {
     class ui {
         file = grad-nvacommand\functions\ui;
         class getIconSpeed;
+        class getIconStance;
     };
 };
