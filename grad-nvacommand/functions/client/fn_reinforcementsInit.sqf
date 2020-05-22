@@ -202,6 +202,7 @@ GRAD_reinforcements_fnc_spawnGroup = {
         };
          _curator addCuratorEditableObjects [_unitsInCargo, false];
         */
+        _curator removeCuratorEditableObjects [_unitsInCargo, false];
         _curator addCuratorEditableObjects [[_vehicle], false];
     } forEach allCurators;
 

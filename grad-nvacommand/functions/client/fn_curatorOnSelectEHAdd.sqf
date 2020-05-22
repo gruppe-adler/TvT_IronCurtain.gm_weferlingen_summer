@@ -20,5 +20,18 @@ _curator addEventHandler ["CuratorObjectSelectionChanged", {
             } forEach _selectedObjects;
         };
 
+        /*
+        private _selectedObjectsFiltered = [];
+        // if objects are also in groups selected, discard them
+        {
+            private _unit = _x;
+
+            if (_selectedGroups find group _unit < 0) then {
+                _selectedObjectsFiltered pushBackUnique _unit;
+            };
+        } forEach _selectedObjects;
+
+        [_selectedObjectsFiltered, _selectedGroups] call GRAD_nvaCommand_fnc_curatorOnSelect;
+        */
         [_selectedObjects, _selectedGroups] call GRAD_nvaCommand_fnc_curatorOnSelect;
 }];

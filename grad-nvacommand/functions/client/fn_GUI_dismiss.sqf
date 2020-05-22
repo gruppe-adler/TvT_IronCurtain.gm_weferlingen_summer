@@ -53,9 +53,9 @@ switch (_type) do {
 
         systemChat "dismissing inf";
         
-        private _ctrlsGroup = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTINFANTRY_UIELEMENTS", 
-            [controlNull,controlNull,controlNull,controlNull]
-        ];
+        private _ctrlsGroup = 
+        ((uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTINFANTRY_UIELEMENTS",[controlNull,controlNull,controlNull,controlNull]]) + 
+        (uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLES_UIBUTTONS",[]]));
 
         if (!isNull (_ctrlsGroup select 0)) then {
 
@@ -73,7 +73,8 @@ switch (_type) do {
             };  
         };
 
-        uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTINFANTRY_UIELEMENTS", []];
+        uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTINFANTRY_UIELEMENTS", [controlNull,controlNull,controlNull,controlNull]];
+        uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLES_UIBUTTONS",[]];
         missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTINFANTRY_SELECTED", objNull];
 
     };
@@ -82,9 +83,9 @@ switch (_type) do {
 
         systemChat "dismissing veh";
         
-        private _ctrlsGroup = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLES_UIELEMENTS", 
-            [controlNull,controlNull,controlNull,controlNull]
-        ];
+        private _ctrlsGroup = 
+        ((uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLES_UIELEMENTS",[controlNull,controlNull,controlNull,controlNull]]) + 
+        (uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLES_UIBUTTONS",[]]));
 
         if (!isNull (_ctrlsGroup select 0)) then {
 
@@ -103,6 +104,7 @@ switch (_type) do {
         };        
 
         uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLES_UIELEMENTS", [controlNull, controlNull, controlNull, controlNull, controlNull]];
+        uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLES_UIBUTTONS",[]];
         missionNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLEGROUPS_SELECTED", []];
 
     };

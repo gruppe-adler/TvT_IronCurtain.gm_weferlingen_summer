@@ -1,6 +1,7 @@
 params ["_entities", ["_groups", grpNull]];
 
 systemChat (str _entities + str _groups);
+diag_log format ["groups: %1", _groups];
 
 if (GRAD_nvaCommand_zeusSelectDestinationRunning) exitWith {};
 
@@ -19,7 +20,7 @@ if (count _entities == 1) then {
     _isTower = ((_entity getVariable ["GRAD_nvaCommand_towerID", -1]) > -1);
     _isInfantry = (_entity isKindOf "Man" && side _entity == east);
 
-    systemChat format ["isTower: %1 - isInfantry: %2", _isTower, _isInfantry];
+    // systemChat format ["isTower: %1 - isInfantry: %2", _isTower, _isInfantry];
 };
 
 

@@ -71,7 +71,7 @@ if (_isSupressing) exitWith {
         } forEach _units;
 
         [_unit, "Unterdrücke", 2.5] execVM "grad-nvacommand\functions\ui\fn_drawIconHint.sqf";
-        _group setVariable ["GRAD_nvacommand_isSuppressing", true];
+        (group _unit) setVariable ["GRAD_nvacommand_isSuppressing", true];
 
         _icon ctrlSetTextColor [0/255, 0/255, 0/255, 1];
         _bgPic ctrlSetText "grad-nvacommand\vehicles\empty_active_red.paa";

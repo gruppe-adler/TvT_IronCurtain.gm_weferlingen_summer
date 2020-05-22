@@ -5,6 +5,11 @@ params ["_ctrl", "_group"];
 private _display = findDisplay 312;
 private _controlsCreated = [];
 
+private _btnBelow = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLES_UIBUTTONS", []];
+{
+    _x ctrlEnable false;
+} forEach _btnBelow;
+
 {
     _x params ["_xPos", "_yPos", "_color", "_path", "_string"];
 
@@ -17,6 +22,7 @@ private _controlsCreated = [];
     _btn ctrlSetEventHandler ["ButtonClick", "params ['_control']; private _group = _control getVariable ['GRAD_nvacommand_groupassigned', grpNull]; [_control, _group] execVM (_control getVariable ['GRAD_nvacommand_code', '']);"];
     _btn setVariable ["GRAD_nvacommand_groupassigned", _group];
     _btn setVariable ["GRAD_nvacommand_code", _string];
+    _btn setVariable ["GRAD_nvacommand_originalCtrl", _ctrl];
 
     _btn ctrlCommit 0;
 
@@ -46,13 +52,13 @@ private _controlsCreated = [];
 
     _btn setVariable ["GRAD_nvacommand_subcontrols", _controlsCreated];
 } forEach [
-    [_xPos - 0.10, _yPos, [235/255, 87/255, 87/255, 1], "\A3\UI_F_Curator\Data\default_ca.paa", "grad-nvacommand\functions\ui\fn_actionStanceAuto.sqf" ],
-    [_xPos - 0.05, _yPos, [235/255, 87/255, 87/255, 1], "\a3\ui_f\Data\IGUI\RscIngameUI\RscUnitInfo\SI_prone_ca.paa", "grad-nvacommand\functions\ui\fn_actionStanceProne.sqf" ],
-    [_xPos + 0.0, _yPos, [235/255, 87/255, 87/255, 1], "\a3\ui_f\Data\IGUI\RscIngameUI\RscUnitInfo\SI_crouch_ca.paa", "grad-nvacommand\functions\ui\fn_actionStanceCrouch.sqf" ],
-    [_xPos + 0.05, _yPos, [235/255, 87/255, 87/255, 1], "\a3\ui_f\Data\IGUI\RscIngameUI\RscUnitInfo\SI_stand_ca.paa", "grad-nvacommand\functions\ui\fn_actionStanceStand.sqf" ],
+    [_xPos - 0.10, _yPos, [255/255, 255/255, 255/255, 1], "\A3\UI_F_Curator\Data\default_ca.paa", "grad-nvacommand\functions\ui\fn_actionStanceAuto.sqf" ],
+    [_xPos - 0.05, _yPos, [255/255, 255/255, 255/255, 1], "\a3\ui_f\Data\IGUI\RscIngameUI\RscUnitInfo\SI_prone_ca.paa", "grad-nvacommand\functions\ui\fn_actionStanceProne.sqf" ],
+    [_xPos + 0.0, _yPos, [255/255, 255/255, 255/255, 1], "\a3\ui_f\Data\IGUI\RscIngameUI\RscUnitInfo\SI_crouch_ca.paa", "grad-nvacommand\functions\ui\fn_actionStanceCrouch.sqf" ],
+    [_xPos + 0.05, _yPos, [255/255, 255/255, 255/255, 1], "\a3\ui_f\Data\IGUI\RscIngameUI\RscUnitInfo\SI_stand_ca.paa", "grad-nvacommand\functions\ui\fn_actionStanceStand.sqf" ],
     [_xPos + 0.10, _yPos, [255/255, 255/255, 255/255, 1], "\a3\ui_f\Data\GUI\Rsc\RscDisplayArcadeMap\top_close_gs.paa", "grad-nvacommand\functions\ui\fn_actionStanceAbort.sqf" ]
 ];
 
 private _controlsCreatedBefore = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLES_UIELEMENTS", []];
 
-uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLES_UIELEMENTS", _controlsCreatedBefore + _controlsCreated];
+uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLES_UIELEMENTS_SUBMENU", _controlsCreated];

@@ -118,7 +118,7 @@ class grad_nvaCommand_RscButtonSilent {
     colorDisabled[] = {1,1,1,0.1};
     colorBackground[] = {0,0,0,0};
     colorFocused[] = {0,0,0,0};
-    colorBackgroundActive[] = {1,1,1,0.8}; // hover
+    colorBackgroundActive[] = {0,0,0,0}; // hover
     colorBackgroundDisabled[] = {0,0,0,0};
     colorBackgroundFocused[] = {0,0,0,0};
     colorShadow[] = {0,0,0,0};
@@ -143,5 +143,5 @@ class grad_nvaCommand_RscButtonSilent {
     borderSize = 0;
     period = 0;
     periodFocus = 0;
-    periodOver = 1;
+    periodOver = 0;
 };
