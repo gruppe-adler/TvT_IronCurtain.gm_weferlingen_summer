@@ -15,6 +15,8 @@ if (_isSupressing) exitWith {
     _bgPic ctrlSetText "grad-nvacommand\vehicles\empty.paa";
     _icon ctrlCommit 0;
     _bgPic ctrlCommit 0;
+
+    _ctrl setVariable ["GRAD_nvacommand_ctrlActive", false];
 };
 
 // taken from ACE3 / bux, PabstMirror
@@ -72,6 +74,8 @@ if (_isSupressing) exitWith {
         _bgPic ctrlSetText "grad-nvacommand\vehicles\empty_active_red.paa";
         _icon ctrlCommit 0;
         _bgPic ctrlCommit 0;
+
+        _ctrl setVariable ["GRAD_nvacommand_ctrlActive", true];
 
         [{
             params ["_args", "_handle"];
