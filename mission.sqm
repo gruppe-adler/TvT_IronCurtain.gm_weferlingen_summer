@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1374;
+		nextID=1383;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={18128.49,80.748177,16515.395};
-		dir[]={-0.68042052,-0.24224545,0.691715};
-		up[]={-0.16990954,0.97020012,0.17272963};
-		aside[]={0.71294641,-2.9639341e-007,0.70130712};
+		pos[]={18115.727,85.846809,16456.275};
+		dir[]={-0.24507098,-0.56390542,-0.78864694};
+		up[]={-0.16734038,0.82583731,-0.53850603};
+		aside[]={-0.95496154,7.9162419e-008,0.29675302};
 	};
 };
 binarizationWanted=0;
@@ -1296,7 +1296,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=388;
+		items=389;
 		class Item0
 		{
 			dataType="Group";
@@ -10455,6 +10455,21 @@ class Mission
 			title="NVA Despawn";
 			id=1373;
 			atlOffset=0.00039672852;
+		};
+		class Item388
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={18147.637,82.024078,16536.215};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=1374;
+			type="land_gm_gc_lamp_02_01";
 		};
 	};
 	class Connections

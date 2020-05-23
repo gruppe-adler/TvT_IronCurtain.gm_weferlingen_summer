@@ -66,7 +66,8 @@ if (_isSupressing) exitWith {
 
         {
             if (((_unit distance _x) < 30) && {!([_x] call ace_common_fnc_isPlayer)} && {[_x] call ace_common_fnc_isAwake}) then {
-                ["ace_zeus_suppressiveFire", [_x, _targetASL, ""], _x] call CBA_fnc_targetEvent;
+                _x doSuppressiveFire _targetASL;
+                _x suppressFor 5;
             };
         } forEach _units;
 

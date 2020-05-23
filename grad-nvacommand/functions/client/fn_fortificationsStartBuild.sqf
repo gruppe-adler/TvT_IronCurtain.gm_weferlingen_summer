@@ -1,4 +1,4 @@
-params ["_buildTruck", "_type"];
+params ["_buildTruck", "_type", ["_magneticTo", ""]];
 
 // systemChat "bla";
 private _boundingBoxSize = [(missionConfigFile >> "CfgGradFortifications" >> "Fortifications" >> _type >> "boundingBoxSize"),"number",1] call CBA_fnc_getConfigEntry;
@@ -19,6 +19,11 @@ _fort allowDamage false;
 _fort enableSimulation false;
 _fort disableCollisionWith _builder;
 
+_builder setVariable ["GRAD_nvacommand_activeBuildTruck", _buildTruck];
+_builder setVariable ["grad_fortifications_currentFort", _fort];
+
+[_builder,_fort,_surfaceNormal, _magneticTo] execVM "grad-nvacommand\functions\client\fn_fortificationsUpdatePFH.sqf";
+
 private _boundingLines = [
     _fort,
     _boundingBoxSize,
@@ -30,10 +35,7 @@ private _groundLines = [_fort] call grad_fortifications_fnc_getGroundLines;
 
 private _moduleRoot = [] call grad_fortifications_fnc_getModuleRoot;
 
-
-_builder setVariable ["GRAD_nvacommand_activeBuildTruck", _buildTruck];
-_builder setVariable ["grad_fortifications_currentFort", _fort];
-
+// magnetic building is without collision check
 [
     _builder,
     _visualLines,
@@ -45,10 +47,10 @@ _builder setVariable ["grad_fortifications_currentFort", _fort];
     _canPlaceOnRoad,
     _moduleRoot,
     _surfaceNormal,
-    _surfaceNormalForced
-] call grad_fortifications_fnc_checkCollisionPFH;
+    _surfaceNormalForced,
+    _magneticTo
+] call grad_nvacommand_fortifications_checkCollisionPFH;
 
-[_builder,_fort,_surfaceNormal] execVM "grad-nvacommand\functions\client\fn_fortificationsUpdatePFH.sqf";
 
 [] call grad_nvacommand_fnc_fortificationsMouseEH;
 [] call grad_fortifications_fnc_addKeyEHs;
