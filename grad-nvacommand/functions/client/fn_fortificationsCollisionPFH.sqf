@@ -1,6 +1,6 @@
 grad_nvacommand_fortifications_checkCollisionPFH = [{
     params ["_args", "_handle"];
-    _args params ["_builder","_visualLines","_boundingLines","_groundLines","_fort","_canFloat","_canCollide","_canPlaceOnRoad","_moduleRoot","_surfaceNormal","_surfaceNormalForced", "_magneticTo"];
+    _args params ["_builder","_visualLines","_boundingLines","_groundLines","_fort","_canFloat","_canCollide","_canPlaceOnRoad","_moduleRoot","_surfaceNormal","_surfaceNormalForced"];
 
     if (isNull _fort) exitWith {[_handle] call CBA_fnc_removePerFrameHandler};
 
@@ -12,6 +12,9 @@ grad_nvacommand_fortifications_checkCollisionPFH = [{
     _isOnRoad = if (_canPlaceOnRoad) then {false} else {isOnRoad _fort};
     _customCondition = [_fort,_builder] call compile ([missionConfigFile >> "CfgGradFortifications" >> "Fortifications" >> typeOf _fort >> "condition","text","true"] call CBA_fnc_getConfigEntry);
 
+    _notSnappable = _builder getVariable ["grad_fortifications_isSnapped",0] == 0;
+    _notSnapped = _builder getVariable ["grad_fortifications_isSnapped",0] == 1;
+
     //check bounding box
     _builder setVariable ["grad_fortifications_isColliding",false];
     _builder setVariable ["grad_fortifications_isOnGround",_isOnGround];
@@ -21,7 +24,7 @@ grad_nvacommand_fortifications_checkCollisionPFH = [{
         _isColliding = if (_canCollide) then {false} else {[_x,_fort] call grad_fortifications_fnc_isColliding};
 
         _color = [0,1,0,1];
-        if (_isColliding) then {
+        if (_isColliding && _notSnappable || _notSnapped) then {
             _color = [1,0,0,1];
             _builder setVariable ["grad_fortifications_isColliding",true];
         };

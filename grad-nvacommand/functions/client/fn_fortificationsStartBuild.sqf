@@ -47,8 +47,7 @@ private _moduleRoot = [] call grad_fortifications_fnc_getModuleRoot;
     _canPlaceOnRoad,
     _moduleRoot,
     _surfaceNormal,
-    _surfaceNormalForced,
-    _magneticTo
+    _surfaceNormalForced
 ] call grad_nvacommand_fortifications_checkCollisionPFH;
 
 
@@ -56,4 +55,3 @@ private _moduleRoot = [] call grad_fortifications_fnc_getModuleRoot;
 [] call grad_fortifications_fnc_addKeyEHs;
 
 ["Place", "Cancel"] call ace_interaction_fnc_showMouseHint;
-
