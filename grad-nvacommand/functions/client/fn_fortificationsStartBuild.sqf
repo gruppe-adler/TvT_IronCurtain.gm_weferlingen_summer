@@ -48,7 +48,7 @@ private _moduleRoot = [] call grad_fortifications_fnc_getModuleRoot;
     _moduleRoot,
     _surfaceNormal,
     _surfaceNormalForced
-] call grad_nvacommand_fortifications_checkCollisionPFH;
+] call grad_nvacommand_fnc_fortificationsCollisionPFH;
 
 
 [] call grad_nvacommand_fnc_fortificationsMouseEH;
