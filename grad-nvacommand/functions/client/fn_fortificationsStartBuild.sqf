@@ -1,5 +1,9 @@
 params ["_buildTruck", "_type", ["_magneticTo", ""]];
 
+private _buildInterface = (findDisplay 312) createDisplay "RscDisplayEmpty";
+uiNamespace setVariable ["grad_nvacommand_buildInterface", _buildInterface];
+cameraEffectEnableHUD true; // enable drawing of icons et al
+
 // systemChat "bla";
 private _boundingBoxSize = [(missionConfigFile >> "CfgGradFortifications" >> "Fortifications" >> _type >> "boundingBoxSize"),"number",1] call CBA_fnc_getConfigEntry;
 private _boundingBoxOffset = [(missionConfigFile >> "CfgGradFortifications" >> "Fortifications" >> _type >> "boundingBoxOffset"),"array",[0,0,0]] call CBA_fnc_getConfigEntry;
@@ -22,7 +26,8 @@ _fort disableCollisionWith _builder;
 _builder setVariable ["GRAD_nvacommand_activeBuildTruck", _buildTruck];
 _builder setVariable ["grad_fortifications_currentFort", _fort];
 
-[_builder,_fort,_surfaceNormal, _magneticTo, getPos curatorCamera] execVM "grad-nvacommand\functions\client\fn_fortificationsUpdatePFH.sqf";
+missionNamespace setVariable ["grad_nvacommand_curatorCamPos", getPos curatorCamera];
+[_builder,_fort,_surfaceNormal, _magneticTo] execVM "grad-nvacommand\functions\client\fn_fortificationsUpdatePFH.sqf";
 
 private _boundingLines = [
     _fort,
@@ -51,6 +56,6 @@ private _moduleRoot = [] call grad_fortifications_fnc_getModuleRoot;
 
 
 [] call grad_nvacommand_fnc_fortificationsMouseEH;
-[] call grad_fortifications_fnc_addKeyEHs;
+[] call grad_nvacommand_fnc_fortificationsaddKeyEHs;
 
-["Place", "", "Cancel"] call ace_interaction_fnc_showMouseHint;
+["Place", "Cancel"] call ace_interaction_fnc_showMouseHint;

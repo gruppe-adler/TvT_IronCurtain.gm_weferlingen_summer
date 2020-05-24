@@ -75,7 +75,7 @@ GRAD_reinforcements_fnc_spawnGroup = {
     private _vehicleVoice = [_config] call GRAD_reinforcements_fnc_getVehicleVoice;
 
     private _result = [
-                (getMarkerPos "mrk_reinforcements_spawn") findEmptyPosition [50,300], 
+                (getMarkerPos "mrk_reinforcements_spawn") findEmptyPosition [25,100, _className], 
                 markerDir "mrk_reinforcements_spawn", 
                 _className, 
                 east
@@ -228,7 +228,7 @@ GRAD_reinforcements_fnc_spawnGroup = {
 
             systemChat str _group;
 
-            sleep 1;
+            sleep 0.1;
         };
 
         IC_reinforcements pushBackUnique _groupsOfAKind;

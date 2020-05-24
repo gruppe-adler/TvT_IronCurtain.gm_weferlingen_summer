@@ -1,7 +1,7 @@
 params ["_entities", ["_groups", grpNull]];
 
-systemChat (str _entities + str _groups);
-diag_log format ["groups: %1", _groups];
+// systemChat (str _entities + str _groups);
+// diag_log format ["groups: %1", _groups];
 
 if (GRAD_nvaCommand_zeusSelectDestinationRunning) exitWith {};
 

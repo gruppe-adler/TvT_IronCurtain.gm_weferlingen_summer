@@ -6,7 +6,7 @@ private _builder = player;
 [] call ace_interaction_fnc_hideMouseHint;
 
 private _fort = _builder getVariable ["grad_fortifications_currentFort", objNull];
-private _spawnParams = [typeOf _fort, getDir _fort, vectorUp _fort, getPosATLVisual _fort, _builder];
+private _spawnParams = [typeOf _fort, getDir _fort, vectorUp _fort, getPosATL _fort, _builder];
 // deleteVehicle _fort;
 
 private _dummyFort = "Land_ClutterCutter_medium_F" createVehicle [0,0,0];
@@ -41,12 +41,12 @@ deleteVehicle _fort;
         params ["_args", "_handle"];
         _args params ["_actualFort", "_dummyFort", "_zPosBelowSurface", "_zPosATL"];
 
-        (getPosATLVisual _actualFort) params ["_xPosDummyFort", "_yPosDummyFort", "_zPosDummyFort"];
+        (getPosATL _actualFort) params ["_xPosDummyFort", "_yPosDummyFort", "_zPosDummyFort"];
         
         //minFrom, maxFrom, value, minTo, maxTo, cli
         private _currentWidth = linearConversion [_zPosBelowSurface, _zPosATL, _zPosDummyFort, 0, 5, true];
-        diag_log format ["%1 - %2 - %3", _zPosBelowSurface, _zPosATL, _zPosDummyFort];
-        systemChat format ["%1 - %2 - %3", _zPosBelowSurface, _zPosATL, _zPosDummyFort];
+        // diag_log format ["%1 - %2 - %3", _zPosBelowSurface, _zPosATL, _zPosDummyFort];
+        // systemChat format ["%1 - %2 - %3", _zPosBelowSurface, _zPosATL, _zPosDummyFort];
 
         drawIcon3D ["\A3\ui_f\data\IGUI\Cfg\HelicopterHUD\border_line_ca.paa", 
             [0,0,0,1], 
@@ -66,15 +66,19 @@ deleteVehicle _fort;
          
     }, 0, [_actualFort, _dummyFort, _zPosBelowSurface, _zPosATL]] call CBA_fnc_addPerFrameHandler;
 
+    // necessary to define fix for strange glitch bug with GM lamp moving
+    (getPosATL _actualFort) params ["_xPosCurrent", "_yPosCurrent"];
+
     [{ 
         params ["_args", "_handle"];
-        _args params ["_actualFort", "_dummyFort", "_zPosATL", "_loadingBar", "_buildTruck", "_unit"];
+        _args params ["_xPosCurrent", "_yPosCurrent", "_actualFort", "_dummyFort", "_zPosATL", "_loadingBar", "_buildTruck", "_unit"];
 
-        (getPosATLVisual _actualFort) params ["_xPosCurrent", "_yPosCurrent", "_zPosCurrent"];
+        (getPosATL _actualFort) params ["", "", "_zPosCurrent"];
         
         if (_zPosCurrent < _zPosATL) then {
             _zPosCurrent = _zPosCurrent + 0.1;
             _actualFort setPosATL [_xPosCurrent, _yPosCurrent, _zPosCurrent];
+            // systemChat str [_xPosCurrent, _yPosCurrent, _zPosCurrent];
         } else {
             [_handle] call CBA_fnc_removePerFrameHandler;
             [_loadingBar] call CBA_fnc_removePerFrameHandler;
@@ -84,7 +88,12 @@ deleteVehicle _fort;
             [_unit] orderGetIn true;
 
             deleteVehicle _dummyFort;
+
+            private _amountString = format ["grad_nvaCommand_fortificationAmount_%1", typeOf _actualFort];
+            private _amountActual = _buildTruck getVariable [_amountString, 0];
+            _buildTruck setVariable [_amountString, (_amountActual - 1), true];
+            
         };
      
-    }, 0.1, [_actualFort, _dummyFort, _zPosATL, _loadingBar, _buildTruck, _unit]] call CBA_fnc_addPerFrameHandler;
+    }, 0.1, [_xPosCurrent, _yPosCurrent, _actualFort, _dummyFort, _zPosATL, _loadingBar, _buildTruck, _unit]] call CBA_fnc_addPerFrameHandler;
 };

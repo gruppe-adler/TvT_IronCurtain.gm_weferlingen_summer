@@ -33,7 +33,9 @@ waitUntil {!isNil "GRAD_reinforcements_initDone"};
     // check if group exists in UI
     private _existsInUI = !isNull _outline;
 
-    if (!_existsInUI) exitWith { systemChat "does not exist in UI"; };
+    if (!_existsInUI) exitWith { 
+    //    systemChat "does not exist in UI"; 
+    };
 
     private _aliveCount = count units _group;
     private _percentAlive = 0;
@@ -299,6 +301,7 @@ GRAD_reinforcements_fnc_GUIcreate = {
     
 } forEach _reinforcements;
 
+cameraEffectEnableHUD true; // enable drawing of icons et al
 
 /*
 sleep 10;

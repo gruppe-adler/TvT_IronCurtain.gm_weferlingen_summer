@@ -8,7 +8,7 @@ _curator addEventHandler ["CuratorObjectSelectionChanged", {
 
         curatorSelected params ["_selectedObjects", "_selectedGroups"];
 
-        systemChat ("selectionChanged " + str _selectedObjects + str _selectedGroups);
+        // systemChat ("selectionChanged " + str _selectedObjects + str _selectedGroups);
 
         // fill groups if player selects only the vehicle or individual units
         if (count _selectedGroups < 1 && count _selectedObjects > 0) then {

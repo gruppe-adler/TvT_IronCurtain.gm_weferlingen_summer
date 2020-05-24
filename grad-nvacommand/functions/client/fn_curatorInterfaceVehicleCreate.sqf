@@ -1,3 +1,7 @@
+/*
+    [curatorSelected select 0 select 0] execvM "grad-nvacommand\functions\client\fn_curatorInterfaceVehicleCreate.sqf";
+*/
+
 params ["_groups"];
 
 // dont create bottom window for multiple entities
@@ -15,64 +19,33 @@ if (count _groups > 1) exitWith {};
     private _controlsCreated = [];
     private _btnsCreated = [];
 
+    private _screenEdgeBottom = safeZoneY + safeZoneH;
+    private _vehicleControl_height = 0.26;
+    private _buttonSize = 0.05;
+
     private _vehicleBackground = _display ctrlCreate ["RscText", -1];
-    _vehicleBackground ctrlSetPosition [0, 1.1, 1, 0.26];
     _vehicleBackground ctrlSetBackgroundColor [0,0,0,0.7];
-    _vehicleBackground ctrlSetFade 1;
-    _vehicleBackground ctrlCommit 0;
-
-    _vehicleBackground ctrlSetPosition [0, 1, 1, 0.26];
-    _vehicleBackground ctrlSetFade 0;
-    _vehicleBackground ctrlCommit 0.1;
-    _controlsCreated pushBackUnique _vehicleBackground;
-
+    [_vehicleBackground, [0, _screenEdgeBottom - _vehicleControl_height, 1, _vehicleControl_height], true] spawn GRAD_nvacommand_fnc_GUI_animate;
 
     private _vehiclePic = _display ctrlCreate ["RscPictureKeepAspect", -1];
     _vehiclePic ctrlsetText _picturePath;
-    _vehiclePic ctrlSetPosition [0.01, 1.1, 0.20, 0.20];
     _vehiclePic ctrlSetBackgroundColor [0,0,0,0];
-    _vehiclePic setVariable ["IC_GUI_BGCOLOR", [0,0,0,0]];
-    _vehiclePic ctrlSetFade 1;
-    _vehiclePic ctrlCommit 0;
-
-    _vehiclePic ctrlSetPosition [0.01, 1.01, 0.20, 0.20];
-    _vehiclePic ctrlSetFade 0;
-    _vehiclePic ctrlCommit 0.1;
-    _controlsCreated pushBackUnique _vehiclePic;
-
-    _vehiclePic ctrlAddEventHandler ["MouseEnter", {
-        params ["_control"];
-        _control ctrlSetForegroundColor [0,0,0,0.2];
-
-    }];
-    _vehiclePic ctrlAddEventHandler ["MouseExit", {
-        params ["_control"];
-        _control ctrlSetForegroundColor (_control getVariable ["IC_GUI_BGCOLOR", [0,0,0,0.5]]);
-    }];
+    [_vehiclePic, [0.01, _screenEdgeBottom - _vehicleControl_height + 0.01, 0.18, 0.18*4/3], true] spawn GRAD_nvacommand_fnc_GUI_animate;
 
     private _vehicleBtnCenter = _display ctrlCreate ["RscText", -1];
     _vehicleBtnCenter ctrlEnable true;
-    _vehicleBtnCenter ctrlSetPosition [0.1, 1.1, 0.18, 0.18];
     _vehicleBtnCenter ctrlSetBackgroundColor [0,0,0,0];
-    _vehicleBtnCenter ctrlSetFade 1;
-    _vehicleBtnCenter ctrlCommit 0;
-
-    _vehicleBtnCenter ctrlSetPosition [0.1, 1.01, 0.18, 0.18];
-    _vehicleBtnCenter ctrlSetFade 0;
-    _vehicleBtnCenter ctrlCommit 0.1;
-    _controlsCreated pushBackUnique _vehicleBtnCenter;
+    [_vehicleBtnCenter, [0.1, _screenEdgeBottom - _vehicleControl_height + 0.01, 0.18, 0.18*4/3], true] spawn GRAD_nvacommand_fnc_GUI_animate;
 
     private _vehicleLabel = _display ctrlCreate ["RscText", -1];
     _vehicleLabel ctrlsetText _displayName;
-    _vehicleLabel ctrlSetPosition [0.02, 1, 0.18, 0.18];
-    _vehicleLabel ctrlSetBackgroundColor [0,0,0,0];
-    _vehicleLabel ctrlSetFade 1;
-    _vehicleLabel ctrlCommit 0;
+    _vehicleLabel ctrlSetBackgroundColor [0,0,0,0.8];
+    [_vehicleLabel, [0.01, _screenEdgeBottom - _buttonSize - _buttonSize/2, 0.18, _buttonSize], true] spawn GRAD_nvacommand_fnc_GUI_animate;
 
-    _vehicleLabel ctrlSetPosition [0.02, 1, 0.18, 0.05];
-    _vehicleLabel ctrlSetFade 0;
-    _vehicleLabel ctrlCommit 0.1;
-
+    
+    _controlsCreated pushBackUnique _vehicleBackground;
+    _controlsCreated pushBackUnique _vehiclePic;
+    _controlsCreated pushBackUnique _vehicleBtnCenter;
     _controlsCreated pushBackUnique _vehicleLabel;
 
     // GM trucks have mostly turret slots instead of cargo
@@ -94,12 +67,16 @@ if (count _groups > 1) exitWith {};
     {
         _x params ["_unit", "_role"];
 
-        private _offset = 0.20;
+        private _offset = 0.21;
         private _breakPoint = 0.7;
 
         // ultra ugly multiline
         private _xPos = _offset + _forEachIndex/15;
-        private _yPos = if (_xPos > _breakPoint) then { 1.15 } else { 1.05 };
+        private _yPos = if (_xPos > _breakPoint) then { 
+            _screenEdgeBottom - 4*_buttonSize + _buttonSize/8  // second line Y pos
+        } else { 
+            _screenEdgeBottom - 3*_buttonSize - _buttonSize/4  // single line Y pos
+        };
 
         // second line
         if (_xPos > _breakPoint) then {
@@ -107,26 +84,23 @@ if (count _groups > 1) exitWith {};
         };
 
         // third line
-        if (_xPos > _breakPoint && _yPos > 1.05) then {
-            _yPos = 1.25;
+        if (_xPos > _breakPoint && _yPos > (_screenEdgeBottom - 4*_buttonSize + _buttonSize/8)) then {
+            _yPos = _screenEdgeBottom - _buttonSize - _buttonSize/2; // third line Y pos
             _xPos = (_forEachIndex - 15)/15 + _offset;
         };
 
         private _bg = _display ctrlCreate ["RscText", -1];
         _bg ctrlSetPosition [_xPos, _yPos, 0.05, 0.05*4/3];
         _bg ctrlSetBackgroundColor [1,1,1,0.1];
-        _bg ctrlSetFade 0;
-        _bg ctrlCommit 0;
+        [_bg, [_xPos, _yPos, 0.05, 0.05*4/3], true] spawn GRAD_nvacommand_fnc_GUI_animate;
 
         _controlsCreated pushBackUnique _bg;
 
         if (!isNull _unit) then {
             private _btn = _display ctrlCreate ["RscPicture", -1];
             _btn ctrlSetPosition [_xPos, _yPos, 0.05, 0.05*4/3];
-
             _btn ctrlSetText "grad-nvacommand\displays\alarmgroup.jpg";
-            _btn ctrlSetFade 0;
-            _btn ctrlCommit 0;
+            [_btn, [_xPos, _yPos, 0.05, 0.05*4/3], true] spawn GRAD_nvacommand_fnc_GUI_animate;
 
             _controlsCreated pushBackUnique _btn;
         };
@@ -136,62 +110,57 @@ if (count _groups > 1) exitWith {};
     {
         _x params ["_xPos", "_yPos", "_colorDefault", "_colorActive", "_path", "_string", "_colorBgPic", "_type", "_isNativeIcon"];
 
-        private _offset = 0.016;        
+        private _offset = _buttonSize/8;        
         private _ctrlActive = [_group, _type] call grad_nvacommand_fnc_getButtonActive;
+
 
         private _btn = _display ctrlCreate ["grad_nvaCommand_RscButtonSilent", -1];
         _btn ctrlEnable true;
-        _btn ctrlSetPosition [_xPos, _yPos+_offset, 0.05, 0.05*4/3];
-
         _btn ctrlSetEventHandler ["ButtonClick", "params ['_control']; private _group = _control getVariable ['GRAD_nvacommand_groupassigned', grpNull]; [_control, _group] execVM (_control getVariable ['GRAD_nvacommand_code', '']);"];
         _btn setVariable ["GRAD_nvacommand_groupassigned", _group];
         _btn setVariable ["GRAD_nvacommand_code", _string];
 
-        _btn ctrlCommit 0;
-
-        _controlsCreated pushBackUnique _btn;
-        _btnsCreated pushBackUnique _btn;
+        [_btn, [_xPos, _yPos+_offset, _buttonSize, _buttonSize*4/3], true] spawn GRAD_nvacommand_fnc_GUI_animate;
+        
 
         private _bgPic = _display ctrlCreate ["RscPicture", -1];
-        _bgPic ctrlSetPosition [_xPos, _yPos+_offset, 0.05, 0.05*4/3];
-
         if (_ctrlActive && _isNativeIcon) then {
             _bgPic ctrlSetText "grad-nvacommand\vehicles\empty_active_" + _colorBgPic + ".paa";
         } else {
             _bgPic ctrlSetText "grad-nvacommand\vehicles\empty.paa";
         };
-        _bgPic ctrlCommit 0;
-
-        _controlsCreated pushBackUnique _bgPic;
-
-        _btn setVariable ["GRAD_nvacommand_bgPic", _bgPic];
+        [_bgPic, [_xPos, _yPos+_offset, _buttonSize, _buttonSize*4/3], true] spawn GRAD_nvacommand_fnc_GUI_animate;       
 
         private _icon = _display ctrlCreate ["RscPicture", -1];
-        _icon ctrlSetPosition [_xPos, _yPos+_offset, 0.05, 0.05*4/3];
         _icon ctrlSetText _path;
         if (_ctrlActive && _isNativeIcon) then {
             _icon ctrlSetTextColor _colorActive;
         } else {
             _icon ctrlSetTextColor _colorDefault;
         };
-        _icon ctrlCommit 0;
+        [_icon, [_xPos, _yPos+_offset, _buttonSize, _buttonSize*4/3], true] spawn GRAD_nvacommand_fnc_GUI_animate;
 
 
         _btn setVariable ["GRAD_nvacommand_icon", _icon];
-
+        _btn setVariable ["GRAD_nvacommand_bgPic", _bgPic];
+        
+        _controlsCreated pushBackUnique _btn;
+        _controlsCreated pushBackUnique _bgPic;
         _controlsCreated pushBackUnique _icon;
+        _btnsCreated pushBackUnique _btn;
+
     } forEach [
-        [0.76, 1.0, [1, 1, 1, 1], [1, 1, 1, 1], "grad-nvacommand\vehicles\stop2.paa", "grad-nvacommand\functions\ui\fn_actionStop.sqf", "red", "actionStop", false],
-        [0.82, 1.0, [235/255, 87/255, 87/255, 1], [0, 0, 0, 1], "\a3\ui_f\Data\GUI\Cfg\Notifications\tridentFriendly_ca.paa", "grad-nvacommand\functions\ui\fn_actionIgnore.sqf", "red", "actionIgnore", true],
-        [0.88, 1.0, [235/255, 87/255, 87/255, 1], [0, 0, 0, 1],"\a3\ui_f_curator\Data\CfgWrapperUI\Cursors\curatorPlaceWaypointDestroyMulti_ca.paa", "grad-nvacommand\functions\ui\fn_actionSuppress.sqf", "red", "actionSuppress", true],
-        [0.94, 1.0, [1, 1, 1, 1], [1, 1, 1, 1], "grad-nvacommand\vehicles\flee2.paa", "grad-nvacommand\functions\ui\fn_actionFlee.sqf", "red", "actionFlee", false],
-        [0.76, 1.08, [196/255, 196/255, 196/255, 1], [0, 0, 0, 1], [_group] call grad_nvacommand_fnc_getIconFormation, "grad-nvacommand\functions\ui\fn_actionFormation.sqf", "white", "actionFormation", true],
-        [0.82, 1.08, [196/255, 196/255, 196/255, 1], [0, 0, 0, 1], [_group] call grad_nvacommand_fnc_getIconStance, "grad-nvacommand\functions\ui\fn_actionStance.sqf", "white", "actionStance", true],
-        [0.88, 1.08, [1, 1, 1, 1], [1, 1, 1, 1], [_group] call grad_nvacommand_fnc_getIconSpeed, "grad-nvacommand\functions\ui\fn_actionSpeed.sqf", "white", "actionSpeed", true],
-        [0.94, 1.08, [1, 1, 1, 1], [1, 1, 1, 1], [_group] call grad_nvacommand_fnc_getIconRoad, "grad-nvacommand\functions\ui\fn_actionRoad.sqf", "white", "actionRoad", true],
-        [0.76, 1.16, [1, 1, 1, 1], [1, 1, 1, 1], [_group] call grad_nvacommand_fnc_getIconGetOut, "grad-nvacommand\functions\ui\fn_actionGetOut.sqf", "yellow", "actionGetOut", false],
-        [0.82, 1.16, [1, 1, 1, 1], [1, 1, 1, 1], "grad-nvacommand\vehicles\heal2.paa", "grad-nvacommand\functions\ui\fn_actionHeal.sqf", "yellow", "actionHeal", false],
-        [0.88, 1.16, [1, 1, 1, 1], [1, 1, 1, 1], "grad-nvacommand\vehicles\build2.paa", "grad-nvacommand\functions\ui\fn_actionBuild.sqf", "yellow", "actionBuild", false]
+        [0.76, _screenEdgeBottom - _vehicleControl_height + _buttonSize/8, [1, 1, 1, 1], [1, 1, 1, 1], "grad-nvacommand\vehicles\stop2.paa", "grad-nvacommand\functions\ui\fn_actionStop.sqf", "red", "actionStop", false],
+        [0.82, _screenEdgeBottom - _vehicleControl_height + _buttonSize/8, [235/255, 87/255, 87/255, 1], [0, 0, 0, 1], "\a3\ui_f\Data\GUI\Cfg\Notifications\tridentFriendly_ca.paa", "grad-nvacommand\functions\ui\fn_actionIgnore.sqf", "red", "actionIgnore", true],
+        [0.88, _screenEdgeBottom - _vehicleControl_height + _buttonSize/8, [235/255, 87/255, 87/255, 1], [0, 0, 0, 1],"\a3\ui_f_curator\Data\CfgWrapperUI\Cursors\curatorPlaceWaypointDestroyMulti_ca.paa", "grad-nvacommand\functions\ui\fn_actionSuppress.sqf", "red", "actionSuppress", true],
+        [0.94, _screenEdgeBottom - _vehicleControl_height + _buttonSize/8, [1, 1, 1, 1], [1, 1, 1, 1], "grad-nvacommand\vehicles\flee2.paa", "grad-nvacommand\functions\ui\fn_actionFlee.sqf", "red", "actionFlee", false],
+        [0.76, _screenEdgeBottom - _vehicleControl_height + 2*_buttonSize - _buttonSize/4, [196/255, 196/255, 196/255, 1], [0, 0, 0, 1], [_group] call grad_nvacommand_fnc_getIconFormation, "grad-nvacommand\functions\ui\fn_actionFormation.sqf", "white", "actionFormation", true],
+        [0.82, _screenEdgeBottom - _vehicleControl_height + 2*_buttonSize - _buttonSize/4, [196/255, 196/255, 196/255, 1], [0, 0, 0, 1], [_group] call grad_nvacommand_fnc_getIconStance, "grad-nvacommand\functions\ui\fn_actionStance.sqf", "white", "actionStance", true],
+        [0.88, _screenEdgeBottom - _vehicleControl_height + 2*_buttonSize - _buttonSize/4, [1, 1, 1, 1], [1, 1, 1, 1], [_group] call grad_nvacommand_fnc_getIconSpeed, "grad-nvacommand\functions\ui\fn_actionSpeed.sqf", "white", "actionSpeed", true],
+        [0.94, _screenEdgeBottom - _vehicleControl_height + 2*_buttonSize - _buttonSize/4, [1, 1, 1, 1], [1, 1, 1, 1], [_group] call grad_nvacommand_fnc_getIconRoad, "grad-nvacommand\functions\ui\fn_actionRoad.sqf", "white", "actionRoad", true],
+        [0.76, _screenEdgeBottom - _vehicleControl_height + 3*_buttonSize + _buttonSize/8 + _buttonSize/4, [1, 1, 1, 1], [1, 1, 1, 1], [_group] call grad_nvacommand_fnc_getIconGetOut, "grad-nvacommand\functions\ui\fn_actionGetOut.sqf", "yellow", "actionGetOut", false],
+        [0.82, _screenEdgeBottom - _vehicleControl_height + 3*_buttonSize + _buttonSize/8 + _buttonSize/4, [1, 1, 1, 1], [1, 1, 1, 1], "grad-nvacommand\vehicles\heal2.paa", "grad-nvacommand\functions\ui\fn_actionHeal.sqf", "yellow", "actionHeal", false],
+        [0.88, _screenEdgeBottom - _vehicleControl_height + 3*_buttonSize + _buttonSize/8 + _buttonSize/4, [1, 1, 1, 1], [1, 1, 1, 1], "grad-nvacommand\vehicles\build2.paa", "grad-nvacommand\functions\ui\fn_actionBuild.sqf", "yellow", "actionBuild", false]
     ];
 
 

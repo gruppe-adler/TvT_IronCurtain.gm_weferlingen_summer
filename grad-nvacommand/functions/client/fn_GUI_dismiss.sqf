@@ -51,7 +51,7 @@ switch (_type) do {
 
     case "infantry" : {
 
-        systemChat "dismissing inf";
+        // systemChat "dismissing inf";
         
         private _ctrlsGroup = 
         ((uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTINFANTRY_UIELEMENTS",[controlNull,controlNull,controlNull,controlNull]]) + 
@@ -81,26 +81,16 @@ switch (_type) do {
 
     case "vehicle" : {
 
-        systemChat "dismissing veh";
+        // systemChat "dismissing veh";
         
         private _ctrlsGroup = 
         ((uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLES_UIELEMENTS",[controlNull,controlNull,controlNull,controlNull]]) + 
         (uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLES_UIBUTTONS",[]]));
 
         if (!isNull (_ctrlsGroup select 0)) then {
-
             {
-                (ctrlPosition _x) params ["_xPos", "_yPos", "_width", "_height"];
-                _x ctrlSetPosition [_xPos, _yPos + 0.2, _width, _height];
-                _x ctrlSetFade 1;
-                _x ctrlCommit 0.2;
+                [_x, (ctrlPosition _x), false] spawn GRAD_nvaCommand_fnc_GUI_animate;
             } forEach (_ctrlsGroup);
-
-            [_ctrlsGroup] spawn {
-                params ["_ctrlsGroup"];
-                uiSleep 0.2;
-                { ctrlDelete _x } forEach (_ctrlsGroup);
-            };  
         };        
 
         uiNamespace setVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLES_UIELEMENTS", [controlNull, controlNull, controlNull, controlNull, controlNull]];

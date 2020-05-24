@@ -61,7 +61,7 @@ class CfgReinforcements {
         displayName = "Recon PT76B";
         pic = "grad-nvacommand\vehicles\pt76.paa";
         crewControl = 0;
-        vehicleVoice = "gm\gm_languages\gm_deu_language\data\voice1\voicefiles\Normal\gm_vehname_bmp_s.ogg";
+        vehicleVoice = "gm\gm_languages\gm_deu_language\data\voice1\voicefiles\Normal\gm_vehname_schwimmpanzer_s.ogg";
 
         crew[] = {
             "gm_gc_army_crew_mpiaks74nk_80_blk",

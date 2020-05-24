@@ -24,13 +24,19 @@ class GRAD_nvacommand {
         class deselectAllTowers;
         class forceDefaultMap { postInit = 1; };
 
+        class fortificationsAddKeyEHs;
         class fortificationsCollisionPFH;
         class fortificationsMouseEH;
+        class fortificationsPlaced;
+        class fortificationsPlacementCancel;
+        class fortificationsRemoveEHs;
         class fortificationsStartBuild;
+        class fortificationsUpdatePFH;
 
         class getSectorForPosition;
         class gateLock;
 
+        class GUI_animate;
         class GUI_dismiss;
         class GUI_refreshSelects;
     	class initMap;

@@ -1,6 +1,6 @@
 grad_nvacommand_fortifications_updatePFH = [{
     params ["_args", "_handle"];
-    _args params ["_unit", "_fort", "_surfaceNormal", "_magneticTo", "_cameraPosition"];
+    _args params ["_unit", "_fort", "_surfaceNormal", "_magneticTo"];
 
     _pos = screentoworld getMousePosition;
     _pos set [2, (_unit getVariable ["grad_fortifications_currentHeight",0]) + (getPosATL _unit select 2)];
@@ -28,8 +28,12 @@ grad_nvacommand_fortifications_updatePFH = [{
         [_unit, _fort, _surfaceNormal] call grad_fortifications_fnc_setUp;
     };
 
-    // locking camera in place for placement
-    curatorCamera setPos _cameraPosition;
+    // locking camera in place for placement when no key is pressed
+    if (!(_unit getVariable ["grad_fortifications_keyDown",false])) then {
+        curatorCamera setPos (missionNamespace getVariable ["grad_nvacommand_curatorCamPos", getPos curatorCamera]);
+    } else {
+        missionNamespace setVariable ["grad_nvacommand_curatorCamPos", getPos curatorCamera];
+    };
 
 },0,_this] call CBA_fnc_addPerFrameHandler;
 
