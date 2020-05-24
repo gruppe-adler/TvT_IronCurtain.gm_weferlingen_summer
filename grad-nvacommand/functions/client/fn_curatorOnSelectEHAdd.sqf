@@ -35,3 +35,13 @@ _curator addEventHandler ["CuratorObjectSelectionChanged", {
         */
         [_selectedObjects, _selectedGroups] call GRAD_nvaCommand_fnc_curatorOnSelect;
 }];
+
+_curator setCuratorCoef ["delete", -1e10];
+_curator setCuratorCoef ["edit", -1e10];
+
+_curator addEventHandler ["CuratorFeedbackMessage", {
+    params ["_curator", "_errorID"];
+
+    // suppress feedback
+    missionnamespace setvariable ["bis_fnc_showcuratorfeedbackmessage_time",time + 3];
+}];

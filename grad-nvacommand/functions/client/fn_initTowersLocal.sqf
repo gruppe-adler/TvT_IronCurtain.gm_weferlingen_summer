@@ -36,11 +36,13 @@ if (!(player getVariable ["GRAD_nvacommand_isCommander", false])) exitWith {};
 
 [{
     private _towers = missionNamespace getVariable ["GRAD_nvaCommand_towerList", []];
-    count _towers > 0
+    count _towers > 0 && !isNil "GRAD_reinforcements_initDone"
 },{
     
     {
         _curator = _x;
+        systemChat "NVA Zeus now available";
+
         // make curator selectable
         [_curator] call GRAD_nvaCommand_fnc_curatorOnSelectEHAdd; // add curator on select eh
         [] call GRAD_nvaCommand_fnc_curatorInterfaceDetection;

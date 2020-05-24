@@ -11,7 +11,7 @@ private _canPlaceOnRoad = ([(missionConfigFile >> "CfgGradFortifications" >> "Fo
 private _surfaceNormal = ([(missionConfigFile >> "CfgGradFortifications" >> "Fortifications"  >> _type >> "surfaceNormal"),"number",1] call CBA_fnc_getConfigEntry) == 1;
 private _surfaceNormalForced = ([(missionConfigFile >> "CfgGradFortifications" >> "Fortifications"  >> _type >> "surfaceNormalForced"),"number",0] call CBA_fnc_getConfigEntry) == 1;
 
-private _builder = player;
+private _builder = ACE_player;
 
 private _fort = _type createVehicleLocal [0,0,0];
 private _size = [_type] call grad_fortifications_fnc_getObjectSize;
@@ -22,7 +22,7 @@ _fort disableCollisionWith _builder;
 _builder setVariable ["GRAD_nvacommand_activeBuildTruck", _buildTruck];
 _builder setVariable ["grad_fortifications_currentFort", _fort];
 
-[_builder,_fort,_surfaceNormal, _magneticTo] execVM "grad-nvacommand\functions\client\fn_fortificationsUpdatePFH.sqf";
+[_builder,_fort,_surfaceNormal, _magneticTo, getPos curatorCamera] execVM "grad-nvacommand\functions\client\fn_fortificationsUpdatePFH.sqf";
 
 private _boundingLines = [
     _fort,
@@ -35,7 +35,6 @@ private _groundLines = [_fort] call grad_fortifications_fnc_getGroundLines;
 
 private _moduleRoot = [] call grad_fortifications_fnc_getModuleRoot;
 
-// magnetic building is without collision check
 [
     _builder,
     _visualLines,
@@ -54,4 +53,4 @@ private _moduleRoot = [] call grad_fortifications_fnc_getModuleRoot;
 [] call grad_nvacommand_fnc_fortificationsMouseEH;
 [] call grad_fortifications_fnc_addKeyEHs;
 
-["Place", "Cancel"] call ace_interaction_fnc_showMouseHint;
+["Place", "", "Cancel"] call ace_interaction_fnc_showMouseHint;
