@@ -4,24 +4,27 @@ grad_nvacommand_fortifications_checkCollisionPFH = [{
 
     if (isNull _fort) exitWith {[_handle] call CBA_fnc_removePerFrameHandler};
 
-    _visualLinesWorld = [_visualLines,_fort] call grad_fortifications_fnc_linesToWorld;
-    _boundingLinesWorld = [_boundingLines,_fort] call grad_fortifications_fnc_linesToWorld;
-    _groundLinesWorld = [_groundLines,_fort] call grad_fortifications_fnc_linesToWorld;
+    private _visualLinesWorld = [_visualLines,_fort] call grad_fortifications_fnc_linesToWorld;
+    private _boundingLinesWorld = [_boundingLines,_fort] call grad_fortifications_fnc_linesToWorld;
+    private _groundLinesWorld = [_groundLines,_fort] call grad_fortifications_fnc_linesToWorld;
 
-    _isOnGround = if (_canFloat) then {true} else {[_groundLinesWorld,_fort] call grad_fortifications_fnc_isOnGround};
-    _isOnRoad = if (_canPlaceOnRoad) then {false} else {isOnRoad _fort};
-    _customCondition = [_fort,_builder] call compile ([missionConfigFile >> "CfgGradFortifications" >> "Fortifications" >> typeOf _fort >> "condition","text","true"] call CBA_fnc_getConfigEntry);
+    private _isOnGround = if (_canFloat) then {true} else {[_groundLinesWorld,_fort] call grad_fortifications_fnc_isOnGround};
+    private _isOnRoad = if (_canPlaceOnRoad) then {false} else {isOnRoad _fort};
+    private _customCondition = [_fort,_builder] call compile ([missionConfigFile >> "CfgGradFortifications" >> "Fortifications" >> typeOf _fort >> "condition","text","true"] call CBA_fnc_getConfigEntry);
 
-    _notSnappable = _builder getVariable ["grad_fortifications_isSnapped",0] == 0;
-    _notSnapped = _builder getVariable ["grad_fortifications_isSnapped",0] == 1;
+    private _notSnappable = _builder getVariable ["grad_fortifications_isSnapped",0] == 0;
+    private _notSnapped = _builder getVariable ["grad_fortifications_isSnapped",0] == 1;
 
     //check bounding box
     _builder setVariable ["grad_fortifications_isColliding",false];
     _builder setVariable ["grad_fortifications_isOnGround",_isOnGround];
     _builder setVariable ["grad_fortifications_isOnRoad",_isOnRoad];
     _builder setVariable ["grad_fortifications_isCustomCondition",_customCondition];
+
     {
         _isColliding = if (_canCollide) then {false} else {[_x,_fort] call grad_fortifications_fnc_isColliding};
+
+        // systemChat str _isColliding;
 
         _color = [0,1,0,1];
         if (_isColliding && _notSnappable || _notSnapped) then {

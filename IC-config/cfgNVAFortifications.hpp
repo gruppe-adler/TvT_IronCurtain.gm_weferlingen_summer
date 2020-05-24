@@ -2,7 +2,6 @@ class CfgNVAFortifications {
 
     class Fortifications {
         class land_gm_gc_lamp_02_01 {
-            magneticTo = "land_gm_fence_border_gz1_600";
             demolitionTime = 20;
             icon = "grad-nvacommand\vehicles\build_lamp2.paa";
             amount = 40;
@@ -27,6 +26,7 @@ class CfgNVAFortifications {
             displayName = "Stacheldraht";
         };
         class land_gm_gc_g501_sm70_02 {
+            magneticTo = "land_gm_fence_border_gz1_600";
             demolitionTime = 60;
             icon = "grad-nvacommand\vehicles\build_SM702.paa";
             amount = 20;

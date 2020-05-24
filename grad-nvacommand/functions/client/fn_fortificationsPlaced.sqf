@@ -2,6 +2,10 @@ params ["_buildTruck"];
 
 private _builder = player;
 
+if (_builder getVariable ["grad_fortifications_isColliding",true]) exitWith {
+    playSound "AddItemFailed";
+};
+
 [] execVM "grad-nvacommand\functions\client\fn_fortificationsRemoveEHs.sqf";
 [] call ace_interaction_fnc_hideMouseHint;
 

@@ -73,9 +73,9 @@ if (count _groups > 1) exitWith {};
         // ultra ugly multiline
         private _xPos = _offset + _forEachIndex/15;
         private _yPos = if (_xPos > _breakPoint) then { 
-            _screenEdgeBottom - 4*_buttonSize + _buttonSize/8  // second line Y pos
+            _screenEdgeBottom - 3*_buttonSize - _buttonSize/4  // second line Y pos
         } else { 
-            _screenEdgeBottom - 3*_buttonSize - _buttonSize/4  // single line Y pos
+            _screenEdgeBottom - 5*_buttonSize + _buttonSize/4  // single line Y pos
         };
 
         // second line
@@ -84,7 +84,7 @@ if (count _groups > 1) exitWith {};
         };
 
         // third line
-        if (_xPos > _breakPoint && _yPos > (_screenEdgeBottom - 4*_buttonSize + _buttonSize/8)) then {
+        if (_xPos > _breakPoint && _yPos > (_screenEdgeBottom - 3*_buttonSize - _buttonSize/4)) then {
             _yPos = _screenEdgeBottom - _buttonSize - _buttonSize/2; // third line Y pos
             _xPos = (_forEachIndex - 15)/15 + _offset;
         };
