@@ -23,7 +23,7 @@ class CfgNVAFortifications {
             demolitionTime = 30;
             icon = "grad-nvacommand\vehicles\build_fence.paa";
             amount = 10;
-            displayName = "Stacheldraht";
+            displayName = "Flandernzaun";
         };
         class land_gm_gc_g501_sm70_02 {
             magneticTo = "land_gm_fence_border_gz1_600";

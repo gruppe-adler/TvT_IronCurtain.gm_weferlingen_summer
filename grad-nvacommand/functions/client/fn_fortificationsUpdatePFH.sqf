@@ -30,7 +30,10 @@ grad_nvacommand_fortifications_updatePFH = [{
     };
 
     // locking camera in place for placement when no key is pressed
-    if (!(_unit getVariable ["grad_fortifications_keyDown",false]) || _unit getVariable ["grad_fortifications_ctrlDown",false]) then {
+    if (!(_unit getVariable ["grad_fortifications_keyDown",false]) ||
+        _unit getVariable ["grad_fortifications_ctrlDown",false] ||
+        _unit getVariable ["grad_fortifications_altDown",false] ||
+        _unit getVariable ["grad_fortifications_shiftDown",false]) then {
         curatorCamera setPos (missionNamespace getVariable ["grad_nvacommand_curatorCamPos", getPos curatorCamera]);
     } else {
         missionNamespace setVariable ["grad_nvacommand_curatorCamPos", getPos curatorCamera];
