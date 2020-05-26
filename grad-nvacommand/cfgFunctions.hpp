@@ -96,4 +96,13 @@ class GRAD_nvacommand {
         class getIconSpeed;
         class getIconStance;
     };
+
+    class dogPatrol {
+        file = grad-nvacommand\functions\dogPatrol;
+        
+        class adjustLine;
+        class ropeCreate;
+        class dogRun;
+        class getDistances;
+    };
 };

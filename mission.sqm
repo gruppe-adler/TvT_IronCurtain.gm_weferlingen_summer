@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=1;
+	toggles=10;
 	class ItemIDProvider
 	{
-		nextID=1387;
+		nextID=1421;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={18100.713,91.183205,16447.672};
-		dir[]={0.71029681,-0.68615645,-0.15731063};
-		up[]={0.66992104,0.72744864,-0.14836954};
-		aside[]={-0.2162407,1.5985279e-007,-0.97637713};
+		pos[]={18129.629,95.221878,16465.561};
+		dir[]={0.12672627,-0.44991103,-0.88409519};
+		up[]={0.063841872,0.89305395,-0.44538698};
+		aside[]={-0.98993605,5.2561518e-008,-0.14189479};
 	};
 };
 binarizationWanted=0;
@@ -1296,7 +1296,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=389;
+		items=391;
 		class Item0
 		{
 			dataType="Group";
@@ -10470,6 +10470,40 @@ class Mission
 			};
 			id=1374;
 			type="land_gm_gc_lamp_02_01";
+		};
+		class Item389
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={18139.584,77.388138,16452.01};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				name="pole1";
+			};
+			id=1391;
+			type="land_gm_fence_border_gz1_600_post";
+			atlOffset=-0.25512695;
+		};
+		class Item390
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={18139.959,77.151695,16402.049};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				name="pole2";
+			};
+			id=1392;
+			type="land_gm_fence_border_gz1_600_post";
+			atlOffset=0.17276001;
 		};
 	};
 	class Connections
