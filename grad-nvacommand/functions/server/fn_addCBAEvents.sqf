@@ -1,7 +1,7 @@
 if (!isServer) exitWith {};
 
 ["ace_tripflareTriggered", {
-        
+
         params ["_flare", "_position"];
 
         [_position, "flare"] call GRAD_nvacommand_fnc_alarmRaise;
@@ -11,7 +11,7 @@ if (!isServer) exitWith {};
 
 
 ["ace_wireCuttingStarted", {
-        
+
         params ["_unit", "_fence"];
 
         private _position = position _fence;

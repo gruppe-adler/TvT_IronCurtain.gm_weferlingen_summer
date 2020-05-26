@@ -14,19 +14,23 @@ if (!_isAlarmed) then {
 [_sector, _position, _type] call GRAD_nvacommand_fnc_handleTripFlare;
 
 // give feedback whats happening
-switch (_type) do { 
-	case "fence" : { 
-		systemChat localize ("str_nvacommand_fenceCut");
+switch (_type) do {
+	case "fence" : {
+				systemChat localize ("str_nvacommand_fenceCut");
 
         [_position] remoteExec ["GRAD_nvacommand_fnc_markerFenceCut", [0,-2] select isDedicated];
-	}; 
+	};
 	case "flare" : {
-		systemChat localize ("str_nvacommand_tripflareTriggered");
+				systemChat localize ("str_nvacommand_tripflareTriggered");
 	};
     case "manual" : {
         systemChat "activated Alarm";
     };
+		case "dog" : {
+				systemChat "dog alarm";
+				[_position] remoteExec ["GRAD_nvacommand_fnc_markerFenceCut", [0,-2] select isDedicated];
+    };
 	default {
 		systemChat "NVACOMMAND-error: alarmRaise called without type.";
-	}; 
+	};
 };

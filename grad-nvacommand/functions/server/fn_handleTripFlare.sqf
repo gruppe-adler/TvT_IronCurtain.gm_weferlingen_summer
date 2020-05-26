@@ -1,5 +1,7 @@
 params ["_index", "_position", "_type"];
 
+if (_type == "dog") exitWith {};
+
 if (_type == "manual") then {
     _position set [2, 20];
 };
