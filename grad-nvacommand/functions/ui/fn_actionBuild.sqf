@@ -28,7 +28,10 @@ private _fortifications = [];
     private _displayName = [(_config >> "displayName"), "string", getText (configFile >>  "CfgVehicles" >> _classname >> "displayName")] call CBA_fnc_getConfigEntry;
     private _magneticTo = [(_config >> "magneticTo"), "string", ""] call CBA_fnc_getConfigEntry;
     private _demolitionTime = [(_config >> "demolitionTime"), "number", 3] call CBA_fnc_getConfigEntry;
-    private _iconPath = [(_config >> "icon"), "string", ""] call CBA_fnc_getConfigEntry;
+    private _iconPathRaw = [(_config >> "icon"), "string", ""] call CBA_fnc_getConfigEntry;
+    private _iconPath = _iconPathRaw + ".paa";
+    private _iconPathActive = _iconPath + "_active.paa";
+    private _customCode = [(_config >> "customCode"), "string", ""] call CBA_fnc_getConfigEntry;
     private _amountMax = [(_config >> "amount"), "number", 5] call CBA_fnc_getConfigEntry;
     private _amountString = format ["grad_nvaCommand_fortificationAmount_%1", _classname];
     private _amountActual = _vehicle getVariable [_amountString, -2];
@@ -39,7 +42,7 @@ private _fortifications = [];
         _amountActual = _amountMax;
     };
 
-    _fortifications pushBackUnique [_className, _displayName, _iconPath, _magneticTo, _amountMax, _amountActual];
+    _fortifications pushBackUnique [_className, _displayName, _iconPath, _iconPathActive, _magneticTo, _amountMax, _amountActual, _customCode];
 
     // systemChat str _fortifications;
 } forEach _allClasses;
@@ -51,15 +54,11 @@ _fortifications pushBackUnique ["UIabort", "Abbrechen", "grad-nvacommand\vehicle
     // [_className, _iconPath, _magneticTo, _amountMax, _amountActual]
 
     // _x params ["_xPos", "_yPos", "_color", "_iconPath", "_classname", "_string", ["_magneticTo", ""]];
-    _x params ["_classname", "_displayName", "_iconPath", "_magneticTo", "_amountMax", "_amountActual"];
+    _x params ["_classname", "_displayName", "_iconPath", "_iconPathActive", "_magneticTo", "_amountMax", "_amountActual", "_customCode"];
 
     private _amountOfItems = count _fortifications;
     private _isLast = _classname == "UIabort";
-    private _isCustom = _classname == "Sign_Circle_F";
-
-    if (_isCustom) exitWith {
-        // todo
-    };
+    private _isCustom = _classname == "Sign_Circle_F"; // identifier for custom stuff
 
     _xPos = _uiItemSize * (_forEachIndex + 1) + _offsetX;
 
@@ -71,16 +70,46 @@ _fortifications pushBackUnique ["UIabort", "Abbrechen", "grad-nvacommand\vehicle
 
     _btn ctrlSetEventHandler ["ButtonClick", "params ['_control']; private _group = _control getVariable ['GRAD_nvacommand_groupassigned', grpNull]; [_control, _group] execVM (_control getVariable ['GRAD_nvacommand_code', '']);"];
     _btn setVariable ["GRAD_nvacommand_groupassigned", _group];
-    _btn setVariable ["GRAD_nvacommand_code",
-        ["grad-nvacommand\functions\ui\fn_actionBuildStart.sqf",
-        "grad-nvacommand\functions\ui\fn_actionStanceAbort.sqf"]
-        select _isLast
-    ];
+    
+    if (_isCustom) then {
+        _btn setVariable ["GRAD_nvacommand_code",
+        [
+            _customCode,
+            "grad-nvacommand\functions\ui\fn_actionStanceAbort.sqf"]
+            select _isLast
+        ];
+    } else {
+        _btn setVariable ["GRAD_nvacommand_code",
+        [
+            "grad-nvacommand\functions\ui\fn_actionBuildStart.sqf",
+            "grad-nvacommand\functions\ui\fn_actionStanceAbort.sqf"]
+            select _isLast
+        ];
+    };
     _btn setVariable ["GRAD_nvacommand_classname", _classname];
     _btn setVariable ["GRAD_nvacommand_originalCtrl", _ctrl];
     _btn setVariable ["GRAD_nvacommand_magneticTo", _magneticTo];
+    _btn setVariable ["GRAD_nvacommand_fortification_isCustom", _isCustom];
+    _btn setVariable ["GRAD_nvacommand_iconPath", _iconPath];
+    _btn setVariable ["GRAD_nvacommand_iconPathActive", _iconPathActive];
     _btn ctrlSetFade 1;
     _btn ctrlCommit 0;
+
+    _btn ctrlAddEventHandler ["MouseEnter",{
+        params ["_control"];
+        private _icon = _btn getVariable ["GRAD_nvacommand_icon", controlNull];
+        private _iconPathActive = _btn getVariable ["GRAD_nvacommand_iconPathActive", ""];
+        _icon ctrlSetText _iconPathActive;
+        _icon ctrlCommit 0;
+    }];
+
+    _btn ctrlAddEventHandler ["MouseEnter",{
+        params ["_control"];
+        private _icon = _btn getVariable ["GRAD_nvacommand_icon", controlNull];
+        private _iconPath = _btn getVariable ["GRAD_nvacommand_iconPath", ""];
+        _icon ctrlSetText _iconPath;
+        _icon ctrlCommit 0;
+    }];
 
     [_btn, [_xPos, _yPos, _uiItemSize, _uiItemSize*4/3], true] spawn GRAD_nvacommand_fnc_GUI_animate;
 
