@@ -20,16 +20,16 @@ private _btnBelow = uiNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEH
 // get all fortifications available
 private _allClasses = "true" configClasses (missionConfigFile >> "CfgNVAFortifications" >> "Fortifications");
 private _fortifications = [];
-  
-{ 
+
+{
     private _config = _x;
-    
+
     private _className = configName _config;
     private _displayName = [(_config >> "displayName"), "string", getText (configFile >>  "CfgVehicles" >> _classname >> "displayName")] call CBA_fnc_getConfigEntry;
     private _magneticTo = [(_config >> "magneticTo"), "string", ""] call CBA_fnc_getConfigEntry;
     private _demolitionTime = [(_config >> "demolitionTime"), "number", 3] call CBA_fnc_getConfigEntry;
     private _iconPath = [(_config >> "icon"), "string", ""] call CBA_fnc_getConfigEntry;
-    private _amountMax = [(_config >> "amount"), "number", 5] call CBA_fnc_getConfigEntry; 
+    private _amountMax = [(_config >> "amount"), "number", 5] call CBA_fnc_getConfigEntry;
     private _amountString = format ["grad_nvaCommand_fortificationAmount_%1", _classname];
     private _amountActual = _vehicle getVariable [_amountString, -2];
 
@@ -55,6 +55,11 @@ _fortifications pushBackUnique ["UIabort", "Abbrechen", "grad-nvacommand\vehicle
 
     private _amountOfItems = count _fortifications;
     private _isLast = _classname == "UIabort";
+    private _isCustom = _classname == "Sign_Circle_F";
+
+    if (_isCustom) exitWith {
+        // todo
+    };
 
     _xPos = _uiItemSize * (_forEachIndex + 1) + _offsetX;
 
@@ -66,9 +71,9 @@ _fortifications pushBackUnique ["UIabort", "Abbrechen", "grad-nvacommand\vehicle
 
     _btn ctrlSetEventHandler ["ButtonClick", "params ['_control']; private _group = _control getVariable ['GRAD_nvacommand_groupassigned', grpNull]; [_control, _group] execVM (_control getVariable ['GRAD_nvacommand_code', '']);"];
     _btn setVariable ["GRAD_nvacommand_groupassigned", _group];
-    _btn setVariable ["GRAD_nvacommand_code", 
+    _btn setVariable ["GRAD_nvacommand_code",
         ["grad-nvacommand\functions\ui\fn_actionBuildStart.sqf",
-        "grad-nvacommand\functions\ui\fn_actionStanceAbort.sqf"] 
+        "grad-nvacommand\functions\ui\fn_actionStanceAbort.sqf"]
         select _isLast
     ];
     _btn setVariable ["GRAD_nvacommand_classname", _classname];
@@ -110,7 +115,7 @@ _fortifications pushBackUnique ["UIabort", "Abbrechen", "grad-nvacommand\vehicle
     };
 
     _controlsCreated pushBackUnique _label;
-    
+
 
 
     _btn setVariable ["GRAD_nvacommand_icon", _icon];
