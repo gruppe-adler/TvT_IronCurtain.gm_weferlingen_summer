@@ -37,7 +37,7 @@ class CfgNVAFortifications {
             displayName = "SM-70";
             info = "Tödliche Selbstschussanlage, löst bei Annäherung aus.";
         };
-        class Sign_Circle_F {
+        class land_gm_wall_gc_borderpost_04 {
             demolitionTime = 20;
             icon = "grad-nvacommand\vehicles\build_gmn";
             amount = 20;
@@ -45,7 +45,7 @@ class CfgNVAFortifications {
             info = "Ermöglicht die Kontaktaufnahme zum NVA-Kommandanten durch NVA, VoPo und Stasi.";
             customScript = "grad-nvacommand\functions\ui\fn_actionBuildGrenzmeldenetz.sqf";
         };
-        class Sign_Circle_F {
+        class Land_Psi_bouda {
             demolitionTime = 60;
             icon = "grad-nvacommand\vehicles\build_hunde";
             amount = 20;
