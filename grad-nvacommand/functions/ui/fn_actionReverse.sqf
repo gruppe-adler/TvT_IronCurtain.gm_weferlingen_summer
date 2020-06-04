@@ -6,8 +6,9 @@ params ["_ctrl", "_group"];
 
 private _vehicle = _group getVariable ["assignedVehicle", objNull];
 private _isReversing = _vehicle getVariable ["GRAD_nvacommand_isReversing", false];
-
 private _isEmpty = (count (crew _vehicle)) == 0;
+private _icon = _ctrl getVariable ["GRAD_nvacommand_icon", controlNull];
+
 
 if (_isEmpty) exitWith {
     systemChat "vehicle empty";
@@ -15,11 +16,15 @@ if (_isEmpty) exitWith {
 
 if (_isReversing) exitWith {
     _vehicle setVariable ["GRAD_nvacommand_isReversing", false, true];
+    _icon ctrlSetText "grad-nvacommand\vehicles\reverse.paa";
+    _icon ctrlCommit 0;
 };
 
 _vehicle setVariable ["GRAD_nvacommand_isReversing", true, true];
+_icon ctrlSetText "grad-nvacommand\vehicles\reverse_active.paa";
+_icon ctrlCommit 0;
 
-systemChat "reversing";
+// systemChat "reversing";
 
 private _agent = (group driver _vehicle) createUnit ["C_Man_1", position _vehicle, [], 0, "CARGO"];
 _agent moveInAny _vehicle;
