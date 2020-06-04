@@ -8,7 +8,7 @@ class EditorData
 	toggles=10;
 	class ItemIDProvider
 	{
-		nextID=1429;
+		nextID=1431;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={18115.438,81.104408,16423.957};
-		dir[]={-0.15829861,-0.30157897,0.94026721};
-		up[]={-0.050075106,0.95342284,0.29743469};
-		aside[]={0.98617846,-1.4854595e-007,0.16602583};
+		pos[]={18113.873,85.327682,16436.334};
+		dir[]={-0.17191963,-0.63160717,0.75606138};
+		up[]={-0.14004788,0.77527303,0.61589503};
+		aside[]={0.97516394,6.7986548e-007,0.22173874};
 	};
 };
 binarizationWanted=0;
@@ -61,13 +61,14 @@ addons[]=
 	"A3_Structures_F_Mil_Helipads",
 	"A3_Structures_F_Items_Electronics",
 	"A3_Props_F_Orange_Humanitarian_Camps",
-	"A3_Structures_F_Training"
+	"A3_Structures_F_Training",
+	"A3_Characters_F_Exp_Civil"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=33;
+		items=34;
 		class Item0
 		{
 			className="gm_characters_gc_civilians";
@@ -283,6 +284,13 @@ class AddonsMetaData
 		{
 			className="A3_Props_F_Orange";
 			name="Arma 3 Orange - Decorative and Mission Objects";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item33
+		{
+			className="A3_Characters_F_Exp";
+			name="Arma 3 Apex - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -1296,7 +1304,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=391;
+		items=392;
 		class Item0
 		{
 			dataType="Group";
@@ -10144,16 +10152,18 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={18114.971,78.586037,16448.811};
-				angles[]={6.269186,0,0};
+				position[]={18112.465,78.511787,16443.078};
+				angles[]={6.2691875,0,0};
 			};
-			side="Empty";
-			flags=4;
+			side="Civilian";
+			flags=6;
 			class Attributes
 			{
+				name="testcar";
 			};
 			id=1276;
 			type="RDS_Lada_Civ_01";
+			atlOffset=0.0060043335;
 		};
 		class Item377
 		{
@@ -10504,6 +10514,59 @@ class Mission
 			id=1392;
 			type="land_gm_fence_border_gz1_600_post";
 			atlOffset=0.17276001;
+		};
+		class Item391
+		{
+			dataType="Group";
+			side="Civilian";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={18112.465,77.000832,16443.15};
+						angles[]={6.2691875,0,0};
+					};
+					side="Civilian";
+					flags=7;
+					class Attributes
+					{
+						name="testcarD";
+					};
+					id=1430;
+					type="C_Man_casual_5_F";
+					atlOffset=0.0060043335;
+				};
+			};
+			class Attributes
+			{
+			};
+			class CrewLinks
+			{
+				class LinkIDProvider
+				{
+					nextID=1;
+				};
+				class Links
+				{
+					items=1;
+					class Item0
+					{
+						linkID=0;
+						item0=1430;
+						item1=1276;
+						class CustomData
+						{
+							role=1;
+						};
+					};
+				};
+			};
+			id=1429;
+			atlOffset=0.0060043335;
 		};
 	};
 	class Connections
