@@ -119,12 +119,14 @@ if (count _groups > 1) exitWith {};
         private _icon = [(_config >> "icon"), "string", ""] call CBA_fnc_getConfigEntry;
         private _script = [(_config >> "script"), "string", ""] call CBA_fnc_getConfigEntry;
         private _xPos = [(_config >> "xPos"), "number", 0.76] call CBA_fnc_getConfigEntry;
-        private _color = [(_config >> "xPos"), "array", [0,0,0,0]] call CBA_fnc_getConfigEntry;
+        private _colorDefault = [(_config >> "colorDefault"), "array", [0,0,0,0]] call CBA_fnc_getConfigEntry;
+        private _colorActive = [(_config >> "colorActive"), "array", [0,0,0,0]] call CBA_fnc_getConfigEntry;
+        private _colorBgPic = [(_config >> "colorBGPic"), "string", "red"] call CBA_fnc_getConfigEntry;
         private _row = [(_config >> "row"), "number", 1] call CBA_fnc_getConfigEntry;
 
         // systemChat _customScript;
 
-        _vehicleActions pushBackUnique [_name, _icon, _script, _color, _xPos, _row];
+        _vehicleActions pushBackUnique [_name, _icon, _script, _colorDefault, _colorActive, _colorBgPic, _xPos, _row];
 
         // systemChat str _vehicleActions;
     } forEach _allClasses;
@@ -132,7 +134,7 @@ if (count _groups > 1) exitWith {};
 
 
     {
-        _x params ["_name", "_icon", "_script", "_color", "_xPos", "_row"];
+        _x params ["_name", "_icon", "_script", "_colorDefault", "_colorActive", "_colorBgPic", "_xPos", "_row"];
 
         private _offset = _buttonSize/8;        
         private _ctrlActive = [_group, _type] call grad_nvacommand_fnc_getButtonActive;

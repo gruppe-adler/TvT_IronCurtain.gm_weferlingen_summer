@@ -6,7 +6,9 @@ class CfgNVAVehicleActions {
         type = "actionStop"; // configName could be used
         xPos = 0.76;
         row = 1;
-        color[] = {255/255, 255/255, 255/255, 1};
+        colorDefault[] = {255/255, 255/255, 255/255, 1};
+        colorActive[] = {255/255, 255/255, 255/255, 1};
+        colorBGPic = "red";
     };
 
     class actionIgnore {
@@ -15,7 +17,9 @@ class CfgNVAVehicleActions {
         type = "actionIgnore"; // configName could be used
         xPos = 0.82;
         row = 1;
-        color[] = {235/255, 87/255, 87/255, 1};
+        colorDefault[] = {235/255, 87/255, 87/255, 1};
+        colorActive[] = {0/255, 0/255, 0/255, 1};
+        colorBGPic = "red";
     };
 
     class actionReverse {
@@ -24,7 +28,9 @@ class CfgNVAVehicleActions {
         type = "actionReverse"; // configName could be used
         xPos = 0.88;
         row = 1;
-        color[] = {235/255, 87/255, 87/255, 1};
+        colorDefault[] = {235/255, 87/255, 87/255, 1};
+        colorActive[] = {0/255, 0/255, 0/255, 1};
+        colorBGPic = "red";
     };
 
     class actionFlee {
@@ -33,7 +39,9 @@ class CfgNVAVehicleActions {
         type = "actionFlee"; // configName could be used
         xPos = 0.94;
         row = 1;
-        color[] = {255/255, 255/255, 255/255, 1};
+        colorDefault[] = {255/255, 255/255, 255/255, 1};
+        colorActive[] = {255/255, 255/255, 255/255, 1};
+        colorBGPic = "red";
     };
 
     class actionFormation {
@@ -42,7 +50,9 @@ class CfgNVAVehicleActions {
         type = "actionFormation"; // configName could be used
         xPos = 0.76;
         row = 2;
-        color[] = {196/255, 196/255, 196/255, 1};
+        colorDefault[] = {196/255, 196/255, 196/255, 1};
+        colorActive[] = {0/255, 0/255, 0/255, 1};
+        colorBGPic = "white";
     };
 
     class actionStance {
@@ -51,7 +61,9 @@ class CfgNVAVehicleActions {
         type = "actionStance"; // configName could be used
         xPos = 0.82;
         row = 2;
-        color[] = {196/255, 196/255, 196/255, 1};
+        colorDefault[] = {196/255, 196/255, 196/255, 1};
+        colorActive[] = {0/255, 0/255, 0/255, 1};
+        colorBGPic = "white";
     };
 
     class actionSpeed {
@@ -60,7 +72,9 @@ class CfgNVAVehicleActions {
         type = "actionSpeed"; // configName could be used
         xPos = 0.88;
         row = 2;
-        color[] = {255/255, 255/255, 255/255, 1};
+        colorDefault[] = {255/255, 255/255, 255/255, 1};
+        colorActive[] = {255/255, 255/255, 255/255, 1};
+        colorBGPic = "white";
     };
 
     class actionRoad {
@@ -69,7 +83,9 @@ class CfgNVAVehicleActions {
         type = "actionRoad"; // configName could be used
         xPos = 0.94;
         row = 2;
-        color[] = {255/255, 255/255, 255/255, 1};
+        colorDefault[] = {255/255, 255/255, 255/255, 1};
+        colorActive[] = {255/255, 255/255, 255/255, 1};
+        colorBGPic = "white";
     };
 
     class actionGetOut {
@@ -78,7 +94,9 @@ class CfgNVAVehicleActions {
         type = "actionGetOut"; // configName could be used
         xPos = 0.76;
         row = 3;
-        color[] = {255/255, 255/255, 255/255, 1};
+        colorDefault[] = {255/255, 255/255, 255/255, 1};
+        colorActive[] = {255/255, 255/255, 255/255, 1};
+        colorBGPic = "yellow";
     };
 
     class actionHeal {
@@ -87,7 +105,9 @@ class CfgNVAVehicleActions {
         type = "actionHeal"; // configName could be used
         xPos = 0.82;
         row = 3;
-        color[] = {255/255, 255/255, 255/255, 1};
+        colorDefault[] = {255/255, 255/255, 255/255, 1};
+        colorActive[] = {255/255, 255/255, 255/255, 1};
+        colorBGPic = "yellow";
     };
 
     class actionBuild {
@@ -96,7 +116,9 @@ class CfgNVAVehicleActions {
         type = "actionBuild"; // configName could be used
         xPos = 0.88;
         row = 3;
-        color[] = {255/255, 255/255, 255/255, 1};
+        colorDefault[] = {255/255, 255/255, 255/255, 1};
+        colorActive[] = {255/255, 255/255, 255/255, 1};
+        colorBGPic = "yellow";
     };
 };
 
