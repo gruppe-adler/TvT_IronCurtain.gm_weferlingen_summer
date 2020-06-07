@@ -1,6 +1,13 @@
 #define VOLUME 5
 #define DISTANCE 15
 
+class GRAD_stasi_cutscene
+{
+    name = "GRAD_stasi_cutscene";
+    sound[] = {"grad-stasi\sounds\cutscene.ogg", VOLUME, 1, DISTANCE};
+    titles[] = {0, ""};
+};
+
 class GRAD_stasi_static
 {
     name = "GRAD_stasi_static";

@@ -59,8 +59,6 @@ stasi_cutscene_officer setRandomLip true;
 
 stasi_cutscene_officer disableAI "ANIM";
 stasi_cutscene_victim disableAI "ANIM";
-// stasi_cutscene_officer enableAI "ALL";
-// stasi_cutscene_victim enableAI "ALL";
 
 {
     _x addEventHandler ["AnimDone", {
@@ -71,8 +69,6 @@ stasi_cutscene_victim disableAI "ANIM";
     }];
 } forEach [stasi_cutscene_officer, stasi_cutscene_victim];
 
-// _cam camSetPos _position_2;
-// _cam camCommit _cutsceneDuration;
 
 
 diwako_dui_main_toggled_off = true;
@@ -98,17 +94,17 @@ private _introTextHeadline_content = "Aus Jürgen Fuchs: Vernehmungsprotokolle."
 private _introTextCopy_content = "Jürgen Fuchs saß 281 Tage in der Untersuchungshaftanstalt des Ministeriums für Staatssicherheit (MfS) in Berlin-Hohenschönhausen. Er sollte sich selbst belasten, er sollte seine Freunde verraten, er sollte sich von den zu Staatsfeinden abgestempelten Kritikern Wolf Biermann und Robert Havemann distanzieren. Trotz monatelanger Bemühungen konnte die für die Verfolgung des ,politischen Untergrundes' zuständige Hauptabteilung IX/2 des MfS keines dieser Ziele erreichen. Am Ende wurde Fuchs nach West-Berlin abgeschoben.";
 
 // private _display = findDisplay 46;
-private _introTextHeadline = _display ctrlCreate ["RscStructuredText", -1]; 
-_introTextHeadline ctrlSetStructuredText parseText format [ 
-    "<t color='#999999' size='2.1'>%1</t>",  
-    _introTextHeadline_content 
-]; 
-_introTextHeadline ctrlSetPosition [ 
-    safeZoneX+safeZoneW/60, 
-    safeZoneY+safeZoneH/30, 
-    safeZoneW, 
-    safeZoneH 
-]; 
+private _introTextHeadline = _display ctrlCreate ["RscStructuredText", -1];
+_introTextHeadline ctrlSetStructuredText parseText format [
+    "<t color='#999999' size='2.1'>%1</t>",
+    _introTextHeadline_content
+];
+_introTextHeadline ctrlSetPosition [
+    safeZoneX+safeZoneW/60,
+    safeZoneY+safeZoneH/30,
+    safeZoneW,
+    safeZoneH
+];
 _introTextHeadline ctrlsetFade 1;
 _introTextHeadline ctrlCommit 0;
 
@@ -121,18 +117,18 @@ _introTextHeadline ctrlCommit 3;
 
 uiSleep 3;
 
-private _introTextCopy = _display ctrlCreate ["RscStructuredText", -1]; 
-_introTextCopy ctrlSetStructuredText parseText format [ 
-    "<t color='#999999' size='1'>%1</t>",  
-    _introTextCopy_content 
-]; 
+private _introTextCopy = _display ctrlCreate ["RscStructuredText", -1];
+_introTextCopy ctrlSetStructuredText parseText format [
+    "<t color='#999999' size='1'>%1</t>",
+    _introTextCopy_content
+];
 
-_introTextCopy ctrlSetPosition [ 
-    safeZoneX+safeZoneW/60, 
-    safeZoneY+safeZoneH/30, 
-    safeZoneW-safeZoneW/60, 
-    safeZoneH 
-]; 
+_introTextCopy ctrlSetPosition [
+    safeZoneX+safeZoneW/60,
+    safeZoneY+safeZoneH/30,
+    safeZoneW-safeZoneW/60,
+    safeZoneH
+];
 _introTextCopy ctrlsetFade 1;
 _introTextCopy ctrlCommit 0;
 
