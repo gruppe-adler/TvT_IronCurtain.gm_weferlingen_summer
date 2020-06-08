@@ -63,7 +63,7 @@ if (count _groups > 0) then {
             [
                 "GRAD_reinforcements_GUIEvent", 
                 [_x,"deselected"]
-            ] call CBA_fnc_globalEvent;
+            ] call CBA_fnc_localEvent;
         } forEach _previouslySelected;
     };
 
@@ -76,7 +76,7 @@ if (count _groups > 0) then {
         [
             "GRAD_reinforcements_GUIEvent", 
             [_group,"selected"]
-        ] call CBA_fnc_globalEvent;
+        ] call CBA_fnc_localEvent;
         
     } forEach _groups;
 

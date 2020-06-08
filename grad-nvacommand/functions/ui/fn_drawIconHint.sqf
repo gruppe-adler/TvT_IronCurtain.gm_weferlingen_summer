@@ -1,6 +1,6 @@
 params ["_unit", "_string", "_duration"];
 
-systemChat "drawIconHint";
+// systemChat "drawIconHint";
 
 private _time = time;
 
@@ -8,7 +8,7 @@ private _drawHandler = [{
     params ["_args", "_handle"];
     _args params ["_unit", "_string", "_time", "_duration"];
 
-    private _iconPosition = getPos _unit;
+    private _iconPosition = getPosVisual _unit;
     _iconPosition params ["_iconPosX", "_iconPosY"];
 
     private _offset = 3 + (time - _time) * 4;

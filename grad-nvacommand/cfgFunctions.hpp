@@ -45,7 +45,6 @@ class GRAD_nvacommand {
         class markerFade;
         class markerFenceCut;
 
-        class reinforcementsInit { postInit = 1; };
         class reinforcementsGUI;
 
         class repairFence;
@@ -75,6 +74,7 @@ class GRAD_nvacommand {
          class searchLightScanRandom;
          class initSectors { postInit = 1; };
          class initTowers;
+         class reinforcementsInit { postInit = 1; };
          class towerAlarmDismissGroup;
          class towerAlarmDismissLamp;
          class towerAlarmDismissSound;
@@ -92,6 +92,7 @@ class GRAD_nvacommand {
         class getButtonActive;
         class getIconFormation;
         class getIconGetOut;
+        class getIconReverse;
         class getIconRoad;
         class getIconSpeed;
         class getIconStance;

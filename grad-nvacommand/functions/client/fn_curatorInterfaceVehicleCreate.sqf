@@ -158,6 +158,10 @@ if (count _groups > 1) exitWith {};
         _btn setVariable ["GRAD_nvacommand_groupassigned", _group];
         _btn setVariable ["GRAD_nvacommand_code", _script];
 
+        private _formatCtrl = format ["GRAD_nvacommand_ctrl_%1", _name];
+        _group setVariable [_formatCtrl, _btn];
+        // systemChat _formatCtrl;
+
         [_btn, [_xPos, _yPos+_offset, _buttonSize, _buttonSize*4/3], true] spawn GRAD_nvacommand_fnc_GUI_animate;
         
 
@@ -175,10 +179,10 @@ if (count _groups > 1) exitWith {};
 
         if (_ctrlActive && _isNativeIcon) then {
             _iconCtrl ctrlSetTextColor _colorActive;
-            systemChat str _colorActive;
+            // systemChat str _colorActive;
         } else {
             _iconCtrl ctrlSetTextColor _colorDefault;
-            systemChat str _colorDefault;
+            // systemChat str _colorDefault;
         };
         [_iconCtrl, [_xPos, _yPos+_offset, _buttonSize, _buttonSize*4/3], true] spawn GRAD_nvacommand_fnc_GUI_animate;
 

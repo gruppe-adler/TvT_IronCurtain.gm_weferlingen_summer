@@ -1,5 +1,15 @@
 params ["_ctrl", "_group"];
 
+private _vehicle = _group getVariable ["assignedVehicle", objNull];
+
+
+private _isReversing = _group getVariable ["GRAD_nvacommand_isReversing", false];
+if (_isReversing) exitWith {
+    [controlNull, _group] execVM "grad-nvacommand\functions\ui\fn_actionReverse.sqf";
+};
+
+
+
 private _prefix = "gm\gm_languages\gm_deu_language\data\voice1\voicefiles\Normal\";
 private _suffix = ".ogg";
 

@@ -25,14 +25,14 @@ class CfgNVAVehicleActions {
     };
 
     class actionReverse {
-        icon = "grad-nvacommand\vehicles\reverse.paa";
+        iconFnc = "grad_nvacommand_fnc_getIconReverse";
         script = "grad-nvacommand\functions\ui\fn_actionReverse.sqf";
         type = "actionReverse"; // configName could be used
         xPos = 0.88;
         yPos = 0.05/8;
         row = 1;
-        colorDefault[] = {0.92, 0.34, 0.34, 1};
-        colorActive[] = {0, 0, 0, 1};
+        colorDefault[] = {1, 1, 1, 1};
+        colorActive[] = {1, 1, 1, 1};
         colorBGPic = "red";
     };
 
@@ -53,7 +53,7 @@ class CfgNVAVehicleActions {
         script = "grad-nvacommand\functions\ui\fn_actionFormation.sqf";
         type = "actionFormation"; // configName could be used
         xPos = 0.76;
-        yPos = 0.05 - 0.05/4;
+        yPos = 0.05 - 0.05/8;
         row = 2;
         colorDefault[] = {0.76, 0.76, 0.76, 1};
         colorActive[] = {0, 0, 0, 1};
@@ -65,7 +65,7 @@ class CfgNVAVehicleActions {
         script = "grad-nvacommand\functions\ui\fn_actionStance.sqf";
         type = "actionStance"; // configName could be used
         xPos = 0.82;
-        yPos = 0.05 - 0.05/4;
+        yPos = 0.05 - 0.05/8;
         row = 2;
         colorDefault[] = {0.76, 0.76, 0.76, 1};
         colorActive[] = {0, 0, 0, 1};
@@ -77,7 +77,7 @@ class CfgNVAVehicleActions {
         script = "grad-nvacommand\functions\ui\fn_actionSpeed.sqf";
         type = "actionSpeed"; // configName could be used
         xPos = 0.88;
-        yPos = 0.05 - 0.05/4;
+        yPos = 0.05 - 0.05/8;
         row = 2;
         colorDefault[] = {1, 1, 1, 1};
         colorActive[] = {1, 1, 1, 1};
@@ -89,7 +89,7 @@ class CfgNVAVehicleActions {
         script = "grad-nvacommand\functions\ui\fn_actionRoad.sqf";
         type = "actionRoad"; // configName could be used
         xPos = 0.94;
-        yPos = 0.05 - 0.05/4;
+        yPos = 0.05 - 0.05/8;
         row = 2;
         colorDefault[] = {1, 1, 1, 1};
         colorActive[] = {1, 1, 1, 1};
