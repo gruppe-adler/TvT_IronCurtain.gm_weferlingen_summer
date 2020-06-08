@@ -109,16 +109,20 @@ if (count _groups > 1) exitWith {};
 
     
     // get all fortifications available
-    private _allClasses = "true" configClasses (missionConfigFile >> "CfgNVAVehicleActions" >> "Fortifications");
+    private _allClasses = "true" configClasses (missionConfigFile >> "CfgNVAVehicleActions");
+    // systemChat str _allClasses;
+    // diag_log str _allClasses;
     private _vehicleActions = [];
 
     {
         private _config = _x;
 
         private _name = configName _config;
-        private _icon = [(_config >> "icon"), "string", ""] call CBA_fnc_getConfigEntry;
+        private _iconPath = [(_config >> "icon"), "string", ""] call CBA_fnc_getConfigEntry;
+        private _iconFnc = [(_config >> "iconFnc"), "string", ""] call CBA_fnc_getConfigEntry;
         private _script = [(_config >> "script"), "string", ""] call CBA_fnc_getConfigEntry;
         private _xPos = [(_config >> "xPos"), "number", 0.76] call CBA_fnc_getConfigEntry;
+        private _yPos = [(_config >> "yPos"), "number", 0.76] call CBA_fnc_getConfigEntry;
         private _colorDefault = [(_config >> "colorDefault"), "array", [0,0,0,0]] call CBA_fnc_getConfigEntry;
         private _colorActive = [(_config >> "colorActive"), "array", [0,0,0,0]] call CBA_fnc_getConfigEntry;
         private _colorBgPic = [(_config >> "colorBGPic"), "string", "red"] call CBA_fnc_getConfigEntry;
@@ -126,20 +130,26 @@ if (count _groups > 1) exitWith {};
 
         // systemChat _customScript;
 
-        _vehicleActions pushBackUnique [_name, _icon, _script, _colorDefault, _colorActive, _colorBgPic, _xPos, _row];
+        _vehicleActions pushBackUnique [_name, _iconPath, _iconFnc, _script, _colorDefault, _colorActive, _colorBgPic, _xPos, _yPos, _row];
 
-        // systemChat str _vehicleActions;
+         // systemChat str _vehicleActions;
+         // diag_log str _vehicleActions;
     } forEach _allClasses;
 
 
 
     {
-        _x params ["_name", "_icon", "_script", "_colorDefault", "_colorActive", "_colorBgPic", "_xPos", "_row"];
+        _x params ["_name", "_iconPath", "_iconFnc", "_script", "_colorDefault", "_colorActive", "_colorBgPic", "_xPos", "_yPos", "_row"];
 
         private _offset = _buttonSize/8;        
-        private _ctrlActive = [_group, _type] call grad_nvacommand_fnc_getButtonActive;
+        private _ctrlActive = [_group, _name] call grad_nvacommand_fnc_getButtonActive;
+        private _isNativeIcon = _iconFnc == "";
+        
+        if (!_isNativeIcon) then {
+            _iconPath = [_group] call (call compile _iconFnc);
+        };
 
-        private _yPos = _screenEdgeBottom - _vehicleControl_height + _row * _buttonSize/8;
+        private _yPos = _screenEdgeBottom - _vehicleControl_height + _row * _yPos;
 
 
         private _btn = _display ctrlCreate ["grad_nvaCommand_RscButtonSilent", -1];
@@ -159,23 +169,29 @@ if (count _groups > 1) exitWith {};
         };
         [_bgPic, [_xPos, _yPos+_offset, _buttonSize, _buttonSize*4/3], true] spawn GRAD_nvacommand_fnc_GUI_animate;       
 
-        private _icon = _display ctrlCreate ["RscPicture", -1];
-        _icon ctrlSetText _path;
+        private _iconCtrl = _display ctrlCreate ["RscPicture", -1];
+        _iconCtrl ctrlSetText _iconPath;
+
+
         if (_ctrlActive && _isNativeIcon) then {
-            _icon ctrlSetTextColor _colorActive;
+            _iconCtrl ctrlSetTextColor _colorActive;
+            systemChat str _colorActive;
         } else {
-            _icon ctrlSetTextColor _colorDefault;
+            _iconCtrl ctrlSetTextColor _colorDefault;
+            systemChat str _colorDefault;
         };
-        [_icon, [_xPos, _yPos+_offset, _buttonSize, _buttonSize*4/3], true] spawn GRAD_nvacommand_fnc_GUI_animate;
+        [_iconCtrl, [_xPos, _yPos+_offset, _buttonSize, _buttonSize*4/3], true] spawn GRAD_nvacommand_fnc_GUI_animate;
 
 
-        _btn setVariable ["GRAD_nvacommand_icon", _icon];
+        _btn setVariable ["GRAD_nvacommand_icon", _iconCtrl];
         _btn setVariable ["GRAD_nvacommand_bgPic", _bgPic];
         
         _controlsCreated pushBackUnique _btn;
         _controlsCreated pushBackUnique _bgPic;
-        _controlsCreated pushBackUnique _icon;
+        _controlsCreated pushBackUnique _iconCtrl;
         _btnsCreated pushBackUnique _btn;
+
+        // systemChat str _controlsCreated;
 
     } forEach _vehicleActions;
 

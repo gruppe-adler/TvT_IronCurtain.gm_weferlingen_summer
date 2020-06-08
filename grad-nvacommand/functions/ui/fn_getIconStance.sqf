@@ -5,7 +5,7 @@ private _return = "";
 
 switch (_stance) do {
     case "auto" : {
-        _return = "\A3\UI_F_Curator\Data\default_ca.paa";
+        _return = "\a3\ui_f\Data\IGUI\Cfg\VehicleToggles\AutohoverIconOn_ca.paa";        
     };
 
     case "prone" : {
@@ -20,7 +20,7 @@ switch (_stance) do {
         _return = "\a3\ui_f\Data\IGUI\RscIngameUI\RscUnitInfo\SI_stand_ca.paa";
     };
 
-    default {};
+    default { };
 };
 
 _return
