@@ -1,8 +1,8 @@
-params ["_group", "_type"];
+params ["_group", "_name"];
 
 private _return = false;
 
-switch (_type) do { 
+switch (_name) do { 
     case "actionStop" : {  
         _return = false;
     }; 

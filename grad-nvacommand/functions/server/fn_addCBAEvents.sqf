@@ -19,3 +19,14 @@ if (!isServer) exitWith {};
         [_position, "fence", _unit] call GRAD_nvacommand_fnc_alarmRaise;
 
 }] call CBA_fnc_addEventHandler;
+
+
+["dogPatrol", {
+
+        params ["_unit"];
+
+        private _position = position _unit;
+
+        [_position, "dog", _unit] call GRAD_nvacommand_fnc_alarmRaise;
+
+}] call CBA_fnc_addEventHandler;

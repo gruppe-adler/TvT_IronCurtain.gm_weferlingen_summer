@@ -115,11 +115,16 @@ _realDog setDestination [_posBDog, "LEADER DIRECT", true];
         params ["_args", "_handle"];
         _args params ["_realDog", "_posA", "_posB", "_posAdog", "_posBdog", "_anchorA", "_anchorB", "_ropeAnchor", "_direction"];
 
+        if (!alive _realDog) exitWith {
+            [_handle] call CBA_fnc_removePerFrameHandler;
+        };
+
         private _positionDogCurrent = getPos _realDog;
         private _targetPos = _realDog getVariable ['targetPos', _posAdog];
 
         if (random 100 > 99) then {
             _realDog playMoveNow (selectRandom ["Dog_Stop", "Dog_Sit", "Dog_Walk", "Dog_Run", "Dog_Sprint"]);
+            [_realDog, selectRandom ["nomi_bark1", "nomi_bark2", "nomi_bark3"]] remoteExec ["say3D", [0,-2] select isDedicated];
         };
 
         if (_realDog distance2d _posADog < 1) then {
@@ -140,53 +145,23 @@ _realDog setDestination [_posBDog, "LEADER DIRECT", true];
 
 }, 0, [_realDog, _posA, _posB, _posAdog, _posBdog, _anchorA, _anchorB, _ropeAnchor, _direction]] call CBA_fnc_addPerFrameHandler;
 
-/*
-[{	 
+
+[{   
         params ["_args", "_handle"];
-		_args params ["_posA", "_posB", "_dog", "_ropeA"];
+        _args params ["_realDog"];
 
-        
-		private _ropeLength = [_posA, _posB, getPos _dog] call GRAD_nvaCommand_fnc_getDistances;
-		_ropeLength params ["_da", "_bd"];
+        if (!alive _realDog) exitWith {
+            [_handle] call CBA_fnc_removePerFrameHandler;
+        };        
 
-		[_ropeA, _da] call GRAD_nvaCommand_fnc_adjustLine;
-		[_ropeB, _bd] call GRAD_nvaCommand_fnc_adjustLine;
+        private _nearEnemies = _realDog nearEntities [["Car", "Motorcycle", "Tank"], 150];
+        private _enemyFound = { side _x != east } count _nearEnemies > 0;
 
-        private _intent = _dog getVariable ["GRAD_dogRun_intent", true];
-        
-        if (_intent) then {
-            if (_dog distance2D _posB < 3) then {
-                _dog playMoveNow "Dog_Sit";
-                _dog setDir (_dog getRelDir _posA);
-                
-                [{ 
-                    params ["_dog"];
+        if (_enemyFound) then {
+            ["dog", [_realDog]] call CBA_fnc_globalEvent;
 
-                    _intent = !_intent;
-                    _dog setVariable ["GRAD_dogRun_intent", _intent];
-
-                }, [_dog], 3] call CBA_fnc_waitAndExecute; 
-            } else {
-                _dog setDestination [_posB, "LEADER PLANNED", true];
-                _dog playMoveNow "Dog_Sprint";
-            };
-        } else {            
-             if (_dog distance2D _posA < 3) then {
-                _dog playMoveNow "Dog_Sit";
-                _dog setDir (_dog getRelDir _posB);
-                [{ 
-                    params ["_dog"];
-
-                    _intent = !_intent;
-                    _dog setVariable ["GRAD_dogRun_intent", _intent];
-
-                }, [_dog], 3] call CBA_fnc_waitAndExecute; 
-            } else {
-                _dog setDestination [_posA, "LEADER PLANNED", true];
-                _dog playMoveNow "Dog_Sprint";
-            };
+            _realDog playMoveNow (selectRandom ["Dog_Stop"]);
+            [_realDog, selectRandom ["nomi_growl1", "nomi_growl2", "nomi_growl3", "nomi_growl4"]] remoteExec ["say3D", [0,-2] select isDedicated];
         };
 
-}, 1, [_posA, _posB, _dog, _ropeA]] call CBA_fnc_addPerFrameHandler;
-
-*/
+}, 5, [_realDog]] call CBA_fnc_addPerFrameHandler;

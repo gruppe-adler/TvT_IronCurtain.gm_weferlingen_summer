@@ -24,8 +24,9 @@ onLoadMission = "Den Sozialismus in seinem Lauf, hält weder Ochs noch Esel auf.
 // configs for IC stuff
 #include "IC-config\cfgGradCivs.hpp"
 #include "IC-config\cfgCustomIdentities.hpp"
-#include "IC-config\cfgNVAFortifications.hpp"
 #include "IC-config\cfgReinforcements.hpp"
+#include "grad-nvacommand\cfgFortifications.hpp"
+#include "grad-nvacommand\cfgVehicleActions.hpp"
 
 
 #include "node_modules\grad-fortifications\grad_fortifications.hpp"

@@ -16,7 +16,7 @@ if (count (missionNamespace getVariable ["GRAD_NVACOMMAND_CURATOR_CURRENTVEHICLE
 [
 "GRAD_reinforcements_GUIEvent", 
     [grpNull,"deselected"]
-] call CBA_fnc_globalEvent;
+] call CBA_fnc_localEvent;
 
 switch (_type) do {
 
